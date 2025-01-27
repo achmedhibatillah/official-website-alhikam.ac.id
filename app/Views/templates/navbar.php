@@ -30,7 +30,7 @@
     </ul>
     <div class="me-md-4 mt-2 mt-md-0">
         <a href="<?= base_url('masuk') ?>" class="btn btn-sm btn-clr2-clr5-clr1 fw-bold">Masuk</a>
-        <a href="<?= base_url('masuk') ?>" class="btn btn-sm btn-n-clr2-clr1 fw-bold">Daftar Sekarang</a>
+        <a href="<?= base_url('daftar') ?>" class="btn btn-sm btn-n-clr2-clr1 fw-bold">Daftar Sekarang</a>
     </div>
     
     </div>

@@ -142,7 +142,7 @@
 
     </div>
     <div class="col-md-6 px-4 px-md-5 mt-5 mt-md-0">
-        <h5 class="text-clr5 border-clr5 px-3 py-2 ls-s fw-bold rounded d-inline" style="background: linear-gradient(to bottom left, #69be6a, #238f23);">Persyaratan Pendaftaran</h5>
+        <h5 class="text-clr5 border-clr5 px-3 py-2 ls-s fw-bold rounded d-inline" style="background: linear-gradient(to bottom left, #69be6a, #238f23);">Alur Pendaftaran</h5>
         <table class="mt-4 text-clr5 mb-5">
             <tbody>
                 <tr>
@@ -181,9 +181,9 @@
 </section>
 
 <section class="bg-clr5 bg-web position-relative" style="padding-top:160px;padding-bottom:100px;background-image:url('<?= base_url('images/bg-main.png') ?>');">
-    <div style="z-index:3;">
-        <h1 class="text-center text-clr1 ls-s fw-800 px-3" style="">TANYA JAWAB PSB AL-HIKAM</h1>
-        <h5 class="text-clr1 ls-s lh-1 text-center mx-3 mx-md-5">Temukan jawaban atas pertanyaan Anda di sini. Jika tidak menemukan, silakan hubungi kami melalui contact panitia.</h5>
+    <div class="position-relative" style="z-index:3 !important;">
+        <h1 class="text-center text-clr1 ls-s fw-800 px-3" style="z-index:1">TANYA JAWAB PSB AL-HIKAM</h1>
+        <h5 class="text-clr1 ls-s lh-1 text-center mx-3 mx-md-5" style="z-index:3">Temukan jawaban atas pertanyaan Anda di sini. Jika tidak menemukan, silakan hubungi kami melalui contact panitia.</h5>
         <div class="row w-100 m-0 p-0 mt-5">
             <div class="col-md-5 d-flex justify-content-center align-items-center">
                 <img src="<?= base_url('images/other/qna.png') ?>" style="width:40%;z-index:3;">
@@ -224,5 +224,7 @@
             </div>
         </div>
     </div>
-    <img src="<?= base_url('images/trans-wave.png') ?>" class="w-100 position-absolute" style="z-index:0;top:0;left:50%;transform:translate(-50%, 0%) rotateX(180deg);">
+    <div class="" style="z-index:0 !important;">
+        <img src="<?= base_url('images/trans-wave.png') ?>" class="w-100 position-absolute" style="z-index:0;top:0;left:50%;transform:translate(-50%, 0%) rotateX(180deg);">
+    </div>
 </section>
