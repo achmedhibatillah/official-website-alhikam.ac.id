@@ -28,11 +28,21 @@
             <a class="nav-link fw-bold text-clr1 <?= ($page == 'tanya-jawab') ? 'active' : '' ?>" href="#">Tanya Jawab</a>
         </li>
     </ul>
-    <div class="me-md-4 mt-2 mt-md-0">
-        <a href="<?= base_url('masuk') ?>" class="btn btn-sm btn-clr2-clr5-clr1 fw-bold">Masuk</a>
-        <a href="<?= base_url('daftar') ?>" class="btn btn-sm btn-n-clr2-clr1 fw-bold">Daftar Sekarang</a>
-    </div>
-    
+    <?php if (!(session()->get('status') === 'login-user')): ?>
+        <div class="me-md-4 mt-2 mt-md-0">
+            <a href="<?= base_url('masuk') ?>" class="btn btn-sm btn-clr2-clr5-clr1 fw-bold">Masuk</a>
+            <a href="<?= base_url('daftar') ?>" class="btn btn-sm btn-n-clr2-clr1 fw-bold">Daftar Sekarang</a>
+        </div>
+    <?php elseif (session()->get('status') === 'login-user' && isset($user)): ?>
+        <div class="row m-0 p-0 mt-3 mt-md-0 mb-3 mb-md-0" style="width:240px;">
+            <div class="col-10 m-0 p-0 d-flex justify-content-start justify-content-md-end align-items-center order-2 order-md-1">
+                <div class="text-clr1 fsz-16 fw-bold ls-s p-0 me-0 me-md-2 cursor-pointer"><?= esc($user['peserta_nama']) ?></div>
+            </div>
+            <div class="col-2 m-0 p-0 d-flex align-items-center justify-content-center justify-content-md-start  order-1 order-md-2">
+                <i class="fas fa-user-circle text-clr1 me-2 me-md-0 cursor-pointer"></i>
+            </div>
+        </div>
+    <?php endif; ?>
     </div>
 </div>
 </nav>

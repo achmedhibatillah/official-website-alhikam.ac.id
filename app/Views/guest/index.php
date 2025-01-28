@@ -208,21 +208,7 @@
                 <iframe class="rounded" style="z-index:3;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3951.491282441245!2d112.62919787500668!3d-7.948075292076275!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd629db35f43441%3A0x925b243766b572da!2sStudents%20Pesantren%20Al-Hikam%20Malang!5e0!3m2!1sen!2sid!4v1737923779144!5m2!1sen!2sid" width="100%%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
-        <h1 class="text-center text-clr1 ls-s fw-800 px-3 mt-5" style="z-index:3;">SOSIAL MEDIA KAMI</h1>
-        <div class="row m-0 p-0 mt-5">
-            <div class="col-md-5 d-flex justify-content-center px-5">
-                <img src="<?= base_url('images/other/sosmed.png') ?>" class="w-100">
-            </div>
-            <div class="col-md-7">
-                <p class="text-center ls-1 lh-1 mt-4 mt-md-0 text-clr1">Ikuti Instagram kami untuk informasi dan pembaruan terbaru.</p>
-                <div class="row m-0 p-0 justify-content-center">
-                    <div class="col-md-4 m-0 p-0 d-flex justify-content-center"><a href="https://" style="width:190px;" class="btn btn-clr1-clr2-clr1 m-0 fw-bold px-5 fsz-14"><i class="fab fa-instagram me-2"></i> Instagram</a></div>
-                    <div class="col-md-4 m-0 p-0 d-flex justify-content-center"><a href="https://" style="width:190px;" class="btn btn-clr1-clr2-clr1 m-0 fw-bold px-5 fsz-14 mt-3 mt-md-0"><i class="fab fa-tiktok me-2"></i> Tiktok</a></div>
-                    <div class="col-md-4 m-0 p-0 d-flex justify-content-center"><a href="https://" style="width:190px;" class="btn btn-clr1-clr2-clr1 m-0 fw-bold px-5 fsz-14 mt-3 mt-md-0"><i class="fab fa-youtube me-2"></i> Youtube</a></div>
-
-                </div>
-            </div>
-        </div>
+        <?= $this->include('templates/medsos') ?>
     </div>
     <div class="" style="z-index:0 !important;">
         <img src="<?= base_url('images/trans-wave.png') ?>" class="w-100 position-absolute" style="z-index:0;top:0;left:50%;transform:translate(-50%, 0%) rotateX(180deg);">

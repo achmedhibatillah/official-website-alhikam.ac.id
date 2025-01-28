@@ -29,6 +29,7 @@
 .bg-clr4 { background-color: var(--clr4); }
 .bg-clr5 { background-color: var(--clr5); }
 
+.border-none { border: none !important; }
 .border-clr1 { border: 1px solid var(--clr1); }
 .border-clr1-3 { border: 3px solid var(--clr1); }
 .border-clr2 { border: 1px solid var(--clr2); }

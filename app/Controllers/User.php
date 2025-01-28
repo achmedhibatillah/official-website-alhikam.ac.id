@@ -15,13 +15,20 @@ class User extends BaseController
 
     public function index(): string
     {
+        $session_id = session()->get('peserta_id');
+        $user = $this->pesertaModel->where('peserta_id', $session_id)->first();
+
         $data = [
             'title' => 'Berkas Pendaftaran',
-            'page' => 'user'
+            'page' => 'user',
+            'user' => $user
         ];
+
         return 
         view('templates/header', $data) .
+        view('templates/navbar', $data) .
         view('user/index') .
+        view('templates/footbar') .
         view('templates/footer');
     }
 }

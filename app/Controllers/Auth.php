@@ -84,7 +84,7 @@ class Auth extends BaseController
             session()->set('status', 'login-user');
             session()->set('peserta_id', $peserta['peserta_id']);
         }
-    
+        
         return redirect()->to('berkas-pendaftaran');
     }    
 
