@@ -3,14 +3,23 @@
 namespace App\Controllers;
 
 use \App\Models\PesertaModel;
+use \App\Models\SantriModel;
+use \App\Models\OrtuModel;
+use \App\Models\RiwayatKesehatanModel;
 
 class Auth extends BaseController
 {
     protected $pesertaModel;
+    protected $santriModel;
+    protected $ortuModel;
+    protected $rkModel;
 
     public function __construct()
     {
         $this->pesertaModel = new PesertaModel();
+        $this->santriModel = new SantriModel();
+        $this->ortuModel = new OrtuModel();
+        $this->rkModel = new RiwayatKesehatanModel();
     }
 
     public function masuk(): string
@@ -153,9 +162,19 @@ class Auth extends BaseController
             'peserta_email'    => $this->request->getPost('email'),
             'peserta_ktp'      => $this->request->getPost('ktp'),
         ];
-
         $pesertaModel = $this->pesertaModel;
         $pesertaModel->insert($pesertaData);
+        $pesertaId = $pesertaModel->insertID();
+
+        $santriData = [ 'peserta_id' => $pesertaId ];
+        
+        $santriModel = $this->santriModel;
+        $ortuModel = $this->ortuModel;
+        $rkModel = $this->rkModel;
+
+        $santriModel->insert($santriData);
+        $ortuModel->insert($santriData);
+        $rkModel->insert($santriData);
     
         return redirect()->to('masuk');
     }

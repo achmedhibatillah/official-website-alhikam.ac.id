@@ -8,3 +8,108 @@ CREATE TABLE peserta (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
+CREATE TABLE santri (
+    santri_id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    santri_nama VARCHAR(255) DEFAULT NULL,
+    santri_panggilan VARCHAR(255) DEFAULT NULL,
+    santri_nik INT DEFAULT NULL,
+    santri_tempatlahir VARCHAR(255) DEFAULT NULL,
+    santri_tanggallahir DATE DEFAULT NULL,
+    santri_alamat VARCHAR(255) DEFAULT NULL,
+    santri_anakke INT DEFAULT NULL,
+    santri_bersaudara INT DEFAULT NULL,
+    santri_hp INT DEFAULT NULL,
+
+    santri_sdmasuk INT DEFAULT NULL,
+    santri_sdlulus INT DEFAULT NULL,
+    santri_smpmasuk INT DEFAULT NULL,
+    santri_smplulus INT DEFAULT NULL,
+    santri_smamasuk INT DEFAULT NULL,
+    santri_smalulus INT DEFAULT NULL,
+    santri_pa VARCHAR(255) DEFAULT NULL,
+    santri_pa_alamat VARCHAR(255) DEFAULT NULL,
+    santri_pa_jurusan VARCHAR(255) DEFAULT NULL,
+    santri_pa_lulus INT DEFAULT NULL,
+
+    santri_ps_pt VARCHAR(255) DEFAULT NULL,
+    santri_ps_fakultas VARCHAR(255) DEFAULT NULL,
+    santri_ps_prodi VARCHAR(255) DEFAULT NULL,
+    santri_ps_masuk VARCHAR(255) DEFAULT NULL,
+
+    santri_saved BOOL DEFAULT FALSE,
+
+    peserta_id INT DEFAULT NULL,
+    FOREIGN KEY (peserta_id) REFERENCES peserta(peserta_id),
+
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE ortu (
+    ortu_id INT AUTO_INCREMENT PRIMARY KEY,
+    
+    -- Data Ayah
+    ortu_a_nama VARCHAR(255) DEFAULT NULL,
+    ortu_a_pekerjaan INT DEFAULT NULL,
+    ortu_a_pekerjaan_lain VARCHAR(255) DEFAULT NULL,
+    ortu_a_agama INT DEFAULT NULL,
+    ortu_a_agama_lain VARCHAR(255) DEFAULT NULL,
+    ortu_a_pendidikan INT DEFAULT NULL,
+    ortu_a_pendidikan_lain VARCHAR(255) DEFAULT NULL,
+    ortu_a_hp BIGINT DEFAULT NULL,
+    ortu_a_pendapatan INT DEFAULT NULL,
+
+    -- Data Ibu
+    ortu_i_nama VARCHAR(255) DEFAULT NULL,
+    ortu_i_pekerjaan INT DEFAULT NULL,
+    ortu_i_pekerjaan_lain VARCHAR(255) DEFAULT NULL,
+    ortu_i_agama INT DEFAULT NULL,
+    ortu_i_agama_lain VARCHAR(255) DEFAULT NULL,
+    ortu_i_pendidikan INT DEFAULT NULL,
+    ortu_i_pendidikan_lain VARCHAR(255) DEFAULT NULL,
+    ortu_i_hp BIGINT DEFAULT NULL,
+    ortu_i_pendapatan INT DEFAULT NULL,
+
+    ortu_saved BOOL DEFAULT FALSE,
+
+    peserta_id INT,
+    FOREIGN KEY (peserta_id) REFERENCES peserta(peserta_id) ON DELETE CASCADE ON UPDATE CASCADE,
+
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+-- Tabel riwayatkesehatan
+CREATE TABLE riwayatkesehatan (
+    rk_id INT AUTO_INCREMENT PRIMARY KEY,
+    rk_golongandarah INT DEFAULT NULL,
+    rk_perawatan INT DEFAULT NULL,
+    rk_kontak_nama VARCHAR(255) DEFAULT NULL,
+    rk_kontak_alamat VARCHAR(255) DEFAULT NULL,
+    rk_kontak_hp BIGINT DEFAULT NULL,
+    rk_saved BOOL DEFAULT FALSE,
+    peserta_id INT DEFAULT NULL,
+    FOREIGN KEY (peserta_id) REFERENCES peserta(peserta_id) ON DELETE CASCADE ON UPDATE CASCADE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+-- Tabel rk_penyakit_pernah_dialami
+CREATE TABLE rk_penyakit_pernah_dialami (
+    rk_pernah_id INT AUTO_INCREMENT PRIMARY KEY,
+    rk_pernah_penyakit VARCHAR(255) DEFAULT NULL,
+    rk_id INT DEFAULT NULL,
+    FOREIGN KEY (rk_id) REFERENCES riwayatkesehatan(rk_id) ON DELETE CASCADE ON UPDATE CASCADE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+-- Tabel rk_penyakit_sedang_dialami
+CREATE TABLE rk_penyakit_sedang_dialami (
+    rk_sedang_id INT AUTO_INCREMENT PRIMARY KEY,
+    rk_sedang_penyakit VARCHAR(255) DEFAULT NULL,
+    rk_id INT DEFAULT NULL,
+    FOREIGN KEY (rk_id) REFERENCES riwayatkesehatan(rk_id) ON DELETE CASCADE ON UPDATE CASCADE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
