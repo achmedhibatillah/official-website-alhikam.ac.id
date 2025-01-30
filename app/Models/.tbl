@@ -113,3 +113,110 @@ CREATE TABLE rk_penyakit_sedang_dialami (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
+
+CREATE TABLE lain (
+    lain_id INT AUTO_INCREMENT PRIMARY KEY,
+    lain_btq_membaca BOOL DEFAULT FALSE,
+    lain_btq_menulis BOOL DEFAULT FALSE,
+    lain_btq_terjemah BOOL DEFAULT FALSE,
+    lain_khatam INT DEFAULT NULL,
+    lain_juz INT DEFAULT NULL,
+    lain_bahasa_arab BOOL DEFAULT FALSE,
+    lain_bahasa_inggris BOOL DEFAULT FALSE,
+    lain_bahasa_jepang BOOL DEFAULT FALSE,
+    lain_keahlian_komputer BOOL DEFAULT FALSE,
+    lain_keahlian_elektro BOOL DEFAULT FALSE,
+    lain_keahlian_desain BOOL DEFAULT FALSE,
+    lain_olahraga_footbal BOOL DEFAULT FALSE,
+    lain_olahraga_basket BOOL DEFAULT FALSE,
+    lain_olahraga_badminton BOOL DEFAULT FALSE,
+    lain_senbud_musik BOOL DEFAULT FALSE,
+    lain_senbud_senisuara BOOL DEFAULT FALSE,
+    lain_senbud_senilukis BOOL DEFAULT FALSE,
+    lain_penalaran_seminar BOOL DEFAULT FALSE,
+    lain_penalaran_jurnalistik BOOL DEFAULT FALSE,
+    lain_penalaran_karyatulis BOOL DEFAULT FALSE,
+    lain_agama_qiroah BOOL DEFAULT FALSE,
+    lain_agama_sholawat BOOL DEFAULT FALSE,
+    lain_agama_ptq BOOL DEFAULT FALSE,
+    lain_bahasam_arab BOOL DEFAULT FALSE,
+    lain_bahasam_inggris BOOL DEFAULT FALSE,
+    lain_bahasam_jepang BOOL DEFAULT FALSE,
+    peserta_id INT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    CONSTRAINT fk_peserta_id FOREIGN KEY (peserta_id) REFERENCES peserta(peserta_id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+
+CREATE TABLE lain_prestasi (
+    lain_prestasi_id INT PRIMARY KEY AUTO_INCREMENT,
+    lain_prestasi_prestasi VARCHAR(255) DEFAULT NULL,
+    lain_id_lain INT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE lain_organisasi (
+    lain_organisasi_id INT PRIMARY KEY AUTO_INCREMENT,
+    lain_organisasi_organisasi VARCHAR(255) DEFAULT NULL,
+    lain_id_lain INT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE lain_bahasa (
+    lain_bahasa_id INT PRIMARY KEY AUTO_INCREMENT,
+    lain_bahasa_bahasa VARCHAR(255) DEFAULT NULL,
+    lain_id_lain INT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE lain_keahlian (
+    lain_keahlian_id INT PRIMARY KEY AUTO_INCREMENT,
+    lain_keahlian_keahlian VARCHAR(255) DEFAULT NULL,
+    lain_id_lain INT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE lain_olahraga (
+    lain_olahraga_id INT PRIMARY KEY AUTO_INCREMENT,
+    lain_olahraga_olahraga VARCHAR(255) DEFAULT NULL,
+    lain_id_lain INT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE lain_senbud (
+    lain_senbud_id INT PRIMARY KEY AUTO_INCREMENT,
+    lain_senbud_senbud VARCHAR(255) DEFAULT NULL,
+    lain_id_lain INT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE lain_penalaran (
+    lain_penalaran_id INT PRIMARY KEY AUTO_INCREMENT,
+    lain_penalaran_penalaran VARCHAR(255) DEFAULT NULL,
+    lain_id_lain INT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE lain_agama (
+    lain_agama_id INT PRIMARY KEY AUTO_INCREMENT,
+    lain_agama_agama VARCHAR(255) DEFAULT NULL,
+    lain_id_lain INT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE lain_bahasam (
+    lain_bahasam_id INT PRIMARY KEY AUTO_INCREMENT,
+    lain_bahasam_bahasam VARCHAR(255) DEFAULT NULL,
+    lain_id_lain INT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);

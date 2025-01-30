@@ -6,6 +6,7 @@ use \App\Models\PesertaModel;
 use \App\Models\SantriModel;
 use \App\Models\OrtuModel;
 use \App\Models\RiwayatKesehatanModel;
+use \App\Models\LainModel;
 
 class User extends BaseController
 {
@@ -13,6 +14,7 @@ class User extends BaseController
     protected $santriModel;
     protected $ortuModel;
     protected $riwayatKesehatanModel;
+    protected $lainModel;
 
     public function __construct()
     {
@@ -20,6 +22,7 @@ class User extends BaseController
         $this->santriModel = new SantriModel();
         $this->ortuModel = new OrtuModel();
         $this->riwayatKesehatanModel = new RiwayatKesehatanModel();
+        $this->lainModel = new LainModel();
     }
 
     public function index(): string
@@ -127,7 +130,9 @@ class User extends BaseController
         ];
 
         $riwayatKesehatanModel = $this->riwayatKesehatanModel;
+        $lainModel = $this->lainModel;
         $riwayatKesehatanData = $riwayatKesehatanModel->getRiwayatKesehatanByIdPeserta($session_id);
+        $lainData = $lainModel->getLainByIdPeserta($session_id);
 
         if ($riwayatKesehatanData['rk_saved'] == 1) {
             $view = 'user/riwayat-kesehatan-dan-lain-lain';
@@ -139,7 +144,8 @@ class User extends BaseController
         view('templates/header', $data) .
         view('templates/navbar', $data) .
         view($view, [
-            'rk' => $riwayatKesehatanData
+            'rk' => $riwayatKesehatanData,
+            'lain' => $lainData
         ]) .
         view('templates/footbar') .
         view('templates/footer');
