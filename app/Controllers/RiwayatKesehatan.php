@@ -145,8 +145,6 @@ class RiwayatKesehatan extends BaseController
 
         $riwayatKesehatanModel->update($rk_id, $update_rk);
         $lainModel->update($lain_id, $update_lain);
-
-        
     
         return redirect()->to('berkas-pendaftaran');
     }

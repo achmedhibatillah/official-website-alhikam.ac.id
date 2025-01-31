@@ -51,6 +51,8 @@
 .btn-clr5-out:hover { border: 1px solid var(--clr5); background-color: transparent; filter: brightness(90%); }
 .btn-clr1 { background-color: var(--clr1); color: var(--clr5); }
 .btn-clr1:hover { background-color: var(--clr1); color: var(--clr5); filter: brightness(90%); }
+.btn-clr2 { background-color: var(--clr2); color: var(--clr1); }
+.btn-clr2:hover { background-color: var(--clr2); color: var(--clr1); filter: brightness(90%); }
 
 .btn-outline-clr1 { background-color: transparent; color: var(--clr1); border: 1px solid var(--clr1); }
 .btn-outline-clr1:hover { background-color: var(--clr1); color: var(--clr5); filter: brightness(90%); }

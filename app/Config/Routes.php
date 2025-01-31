@@ -17,10 +17,14 @@ $routes->get('/berkas-pendaftaran', 'User::index', ['filter' => 'user-auth']);
 $routes->get('/biodata-calon-santri', 'User::biodata_calon_santri', ['filter' => 'user-auth']);
 $routes->get('/biodata-orang-tua', 'User::biodata_orang_tua', ['filter' => 'user-auth']);
 $routes->get('/riwayat-kesehatan-dan-lain-lain', 'User::riwayat_kesehatan_dan_lain_lain', ['filter' => 'user-auth']);
+$routes->get('/bukti-pembayaran', 'User::bukti_pembayaran', ['filter' => 'user-auth']);
+$routes->get('/tes-tulis', 'User::tes_tulis', ['filter' => 'user-auth']);
+$routes->get('/tes-wawancara', 'User::tes_wawancara', ['filter' => 'user-auth']);
 
 $routes->post('/simpan-santri', 'Santri::update', ['filter' => 'user-auth']);
 $routes->post('/simpan-ortu', 'Ortu::update', ['filter' => 'user-auth']);
 $routes->post('/simpan-riwayat-kesehatan-dan-lain-lain', 'RiwayatKesehatan::update', ['filter' => 'user-auth']);
+$routes->post('/simpan-bukti-pembayaran', 'BuktiPembayaran::update', ['filter' => 'user-auth']);
 
 $routes->post('/simpan-penyakit-pernah-dialami', 'RiwayatKesehatan::update_penyakit_pernah', ['filter' => 'user-auth']);
 $routes->post('/simpan-penyakit-sedang-dialami', 'RiwayatKesehatan::update_penyakit_sedang', ['filter' => 'user-auth']);

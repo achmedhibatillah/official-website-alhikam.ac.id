@@ -6,6 +6,10 @@ use \App\Models\PesertaModel;
 use \App\Models\SantriModel;
 use \App\Models\OrtuModel;
 use \App\Models\RiwayatKesehatanModel;
+use \App\Models\LainModel;
+use \App\Models\BpModel;
+use \App\Models\TesTulisModel;
+use \App\Models\TeswawancaraModel;
 
 class Auth extends BaseController
 {
@@ -13,6 +17,10 @@ class Auth extends BaseController
     protected $santriModel;
     protected $ortuModel;
     protected $rkModel;
+    protected $lainModel;
+    protected $bpModel;
+    protected $ttModel;
+    protected $twModel;
 
     public function __construct()
     {
@@ -20,6 +28,10 @@ class Auth extends BaseController
         $this->santriModel = new SantriModel();
         $this->ortuModel = new OrtuModel();
         $this->rkModel = new RiwayatKesehatanModel();
+        $this->lainModel = new LainModel();
+        $this->bpModel = new BpModel();
+        $this->ttModel = new TesTulisModel();
+        $this->twModel = new TeswawancaraModel();
     }
 
     public function masuk(): string
@@ -171,10 +183,18 @@ class Auth extends BaseController
         $santriModel = $this->santriModel;
         $ortuModel = $this->ortuModel;
         $rkModel = $this->rkModel;
+        $lainModel = $this->lainModel;
+        $bpModel = $this->bpModel;
+        $ttModel = $this->ttModel;
+        $twModel = $this->twModel;
 
         $santriModel->insert($santriData);
         $ortuModel->insert($santriData);
         $rkModel->insert($santriData);
+        $lainModel->insert($santriData);
+        $bpModel->insert($santriData);
+        $ttModel->insert($santriData);
+        $twModel->insert($santriData);
     
         return redirect()->to('masuk');
     }

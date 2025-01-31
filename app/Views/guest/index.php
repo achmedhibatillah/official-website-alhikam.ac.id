@@ -1,11 +1,13 @@
+<?= $this->include('templates/style') ?>
+
 <section class="bg-clr5 bg-web" style="background-image:url('<?= base_url('images/bg-main.png') ?>');">
 <div class="position-relative">
-<div class="bg-color5 d-flex justify-content-center align-items-center w-100 m-0 p-0 bg-web" style="border-bottom:4px solid var(--clr1);border-radius: 0 0 100px 100px;50px;height:100vh;background-image:url('<?= base_url('images/bg-lp-top.png') ?>');background-position: right center;">
+<div id="bg-top" class="bg-color5 d-flex justify-content-center align-items-center w-100 m-0 p-0 bg-web" style="border:4px solid var(--clr1);border-radius: 0 0 100px 100px;height:100vh;background-position: right center;">
     <div class="row m-0 p-0 w-100">
-        <div class="col-md-8 d-flex justify-content-center align-items-center">
+        <div class="col-md-12 d-flex justify-content-center align-items-center">
             <div class="">
-                <h1 class="ff-ephesis fsz-60 mb-0">Selamat Datang</h1>
-                <h5 class="fsz-14 fw-800 ls-1 mb-0" style="margin-top:-10px;">PENERIMAAN SANTRI BARU TAHUN 2025</h5>
+                <h1 class="ff-ephesis mb-0" style="font-size:100px;">Selamat Datang</h1>
+                <h5 class="fsz-23 fw-800 ls-1 mb-0" style="margin-top:-23px;">PENERIMAAN SANTRI BARU TAHUN 2025</h5>
                 <p class="ls-s fsz-14 fw-bold mt--1 mb-0">Pesantren Mahasiswa/I Al-Hikam Malang</p>
                 <div class="mt-1">
                     <a href="<?= base_url('daftar') ?>" class="btn btn-clr1-clr2-clr1 m-0 fw-bold py-1 fsz-14"><img src="<?= base_url('images/icon/daftar.png') ?>" class="he-14 mb-1"> Daftar Sekarang</a>

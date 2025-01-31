@@ -7,6 +7,9 @@ use \App\Models\SantriModel;
 use \App\Models\OrtuModel;
 use \App\Models\RiwayatKesehatanModel;
 use \App\Models\LainModel;
+use \App\Models\BpModel;
+use \App\Models\TesTulisModel;
+use \App\Models\TeswawancaraModel;
 
 class User extends BaseController
 {
@@ -15,6 +18,9 @@ class User extends BaseController
     protected $ortuModel;
     protected $riwayatKesehatanModel;
     protected $lainModel;
+    protected $bpModel;
+    protected $ttModel;
+    protected $twModel;
 
     public function __construct()
     {
@@ -23,6 +29,9 @@ class User extends BaseController
         $this->ortuModel = new OrtuModel();
         $this->riwayatKesehatanModel = new RiwayatKesehatanModel();
         $this->lainModel = new LainModel();
+        $this->bpModel = new BpModel();
+        $this->ttModel = new TesTulisModel();
+        $this->twModel = new TeswawancaraModel();
     }
 
     public function index(): string
@@ -39,10 +48,16 @@ class User extends BaseController
         $santriModel = $this->santriModel;
         $ortuModel = $this->ortuModel;
         $rkModel = $this->riwayatKesehatanModel;
+        $bpModel = $this->bpModel;
+        $ttModel = $this->ttModel;
+        $twModel = $this->twModel;
 
         $santriData = $santriModel->getSantriByPesertaId($session_id);
         $ortuData = $ortuModel->getOrtuByPesertaId($session_id);
         $rkData = $rkModel->getRiwayatKesehatanByIdPeserta($session_id);
+        $bpData = $bpModel->getBpByPesertaId($session_id);
+        $ttData = $ttModel->getTtByPesertaId($session_id);
+        $twData = $twModel->getTwByPesertaId($session_id);
 
         return 
         view('templates/header', $data) .
@@ -50,7 +65,10 @@ class User extends BaseController
         view('user/index', [
             'santri' => $santriData,
             'ortu' => $ortuData,
-            'rk' => $rkData
+            'rk' => $rkData,
+            'bp' => $bpData,
+            'tt' => $ttData,
+            'tw' => $twData
         ]) .
         view('templates/footbar') .
         view('templates/footer');
@@ -146,6 +164,88 @@ class User extends BaseController
         view($view, [
             'rk' => $riwayatKesehatanData,
             'lain' => $lainData
+        ]) .
+        view('templates/footbar') .
+        view('templates/footer');
+    }
+
+    public function bukti_pembayaran(): string
+    {
+        $session_id = session()->get('peserta_id');
+        $user = $this->pesertaModel->where('peserta_id', $session_id)->first();
+
+        $data = [
+            'title' => 'Bukti Pembayaran',
+            'page' => 'user',
+            'user' => $user
+        ];
+
+        $bpModel = $this->bpModel;
+        $bpData = $bpModel->getBpByPesertaId($session_id);
+
+        if ($bpData['bp_saved'] == 1) {
+            $view = 'user/bukti-pembayaran';
+        } else {
+            $view = 'user/edit-bukti-pembayaran';
+        }
+        
+        return 
+        view('templates/header', $data) .
+        view('templates/navbar', $data) .
+        view($view, [
+            'bp' => $bpData
+        ]) .
+        view('templates/footbar') .
+        view('templates/footer');
+    }
+
+    public function tes_tulis(): string
+    {
+        $session_id = session()->get('peserta_id');
+        $user = $this->pesertaModel->where('peserta_id', $session_id)->first();
+
+        $data = [
+            'title' => 'Tes Tulis',
+            'page' => 'user',
+            'user' => $user
+        ];
+
+        $ttModel = $this->ttModel;
+        $ttData = $ttModel->getTtByPesertaId($session_id);
+        
+        return 
+        view('templates/header', $data) .
+        view('templates/navbar', $data) .
+        view('user/tes-tulis', [
+            'tt' => $ttData
+        ]) .
+        view('templates/footbar') .
+        view('templates/footer');
+    }
+
+    public function tes_wawancara(): string
+    {
+        $session_id = session()->get('peserta_id');
+        $user = $this->pesertaModel->where('peserta_id', $session_id)->first();
+
+        $data = [
+            'title' => 'Tes Wawancara',
+            'page' => 'user',
+            'user' => $user
+        ];
+
+        $santriModel = $this->santriModel;
+        $twModel = $this->twModel;
+
+        $santriData = $santriModel->getSantriByPesertaId($session_id);
+        $twData = $twModel->getTwByPesertaId($session_id);
+        
+        return 
+        view('templates/header', $data) .
+        view('templates/navbar', $data) .
+        view('user/tes-wawancara', [
+            'santri' => $santriData,
+            'tw' => $twData
         ]) .
         view('templates/footbar') .
         view('templates/footer');

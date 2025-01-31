@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-clr5 p-0 py-2 w-100">
 <div class="container-fluid">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="<?= base_url() ?>">
         <div class="row m-0 p-0" style="width:200px;">
             <div class="col-3 m-0 p-0 d-flex justify-content-center align-items-center">
                 <img src="<?= base_url('images/logo.png') ?>" alt="al-hikam" style="height:38px;">
@@ -30,8 +30,8 @@
     </ul>
     <?php if (!(session()->get('status') === 'login-user')): ?>
         <div class="me-md-4 mt-2 mt-md-0">
-            <a href="<?= base_url('masuk') ?>" class="btn btn-sm btn-clr2-clr5-clr1 fw-bold">Masuk</a>
-            <a href="<?= base_url('daftar') ?>" class="btn btn-sm btn-n-clr2-clr1 fw-bold">Daftar Sekarang</a>
+            <a href="<?= base_url('masuk') ?>" class="btn btn-clr2-clr5-clr1 fw-bold">Masuk</a>
+            <a href="<?= base_url('daftar') ?>" class="btn btn-n-clr2-clr1 fw-bold">Daftar Sekarang</a>
         </div>
     <?php elseif (session()->get('status') === 'login-user' && isset($user)): ?>
         <div class="row m-0 p-0 mt-3 mt-md-0 mb-3 mb-md-0" style="width:240px;">
