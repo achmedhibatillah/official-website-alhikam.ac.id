@@ -49,6 +49,6 @@
 
 
 <style>
-.navbar { z-index:2; position: absolute; top: 0; left: 0; border-bottom: 3px solid var(--clr1); border-radius: 0 0 20px 20px; }
+.navbar { z-index:2; position: fixed; top: 0; left: 0; border-bottom: 3px solid var(--clr1); border-radius: 0 0 20px 20px; }
 .active { background-color: var(--clr1); color: var(--clr5) !important; font-weight: bold; border-radius: 5px; }
 </style>

@@ -2,24 +2,28 @@
 
 <section class="bg-clr5 bg-web" style="background-image:url('<?= base_url('images/bg-main.png') ?>');">
 <div class="position-relative">
-<div id="bg-top" class="bg-color5 d-flex justify-content-center align-items-center w-100 m-0 p-0 bg-web" style="border:4px solid var(--clr1);border-radius: 0 0 100px 100px;height:100vh;background-position: right center;">
+<div id="bg-top" class="bg-color5 d-flex justify-content-center align-items-start align-items-md-center w-100 m-0 p-0 bg-web" style="border:4px solid var(--clr1);border-radius: 0 0 100px 100px;height:110vh;background-position: bottom center;">
     <div class="row m-0 p-0 w-100">
-        <div class="col-md-12 d-flex justify-content-center align-items-center">
-            <div class="">
-                <h1 class="ff-ephesis mb-0" style="font-size:100px;">Selamat Datang</h1>
-                <h5 class="fsz-23 fw-800 ls-1 mb-0" style="margin-top:-23px;">PENERIMAAN SANTRI BARU TAHUN 2025</h5>
-                <p class="ls-s fsz-14 fw-bold mt--1 mb-0">Pesantren Mahasiswa/I Al-Hikam Malang</p>
-                <div class="mt-1">
-                    <a href="<?= base_url('daftar') ?>" class="btn btn-clr1-clr2-clr1 m-0 fw-bold py-1 fsz-14"><img src="<?= base_url('images/icon/daftar.png') ?>" class="he-14 mb-1"> Daftar Sekarang</a>
-                    <a href="<?= base_url('daftar') ?>" class="btn btn-clr1-clr2-clr1 m-0 fw-bold py-1 fsz-14"><img src="<?= base_url('images/icon/cp.png') ?>" class="he-14 mb-1"> Contact Person</a>
+        <div class="col-md-8 m-0 p-0 d-flex justify-content-center justify-content-lg-end align-items-center order-1 order-md-1">
+            <div class="" id="welcome">
+                <h1 class="ff-ephesis mb-0">Selamat Datang</h1>
+                <h5 class="fw-900 ls-1 mb-0">PENERIMAAN SANTRI BARU TAHUN 2025</h5>
+                <p class="ls-s fw-bold mt--1 mb-0">Pesantren Mahasiswa/i Al-Hikam Malang</p>
+                <div class="mt-1 mb-lg-5">
+                    <a href="<?= base_url('daftar') ?>" class="btn btn-clr1-clr2-clr1 m-0 fw-bold py-1 fsz-12"><img src="<?= base_url('images/icon/daftar.png') ?>" class="he-14 mb-1"> Daftar Sekarang</a>
+                    <a href="<?= base_url('daftar') ?>" class="btn btn-clr1-clr2-clr1 m-0 fw-bold py-1 fsz-12"><img src="<?= base_url('images/icon/cp.png') ?>" class="he-14 mb-1"> Contact Person</a>
                 </div>
             </div>
+        </div>
+        <div class="col-md-4 m-0 p-0 d-flex justify-content-center order-2 order-md-2">
+            <img src="<?= base_url('images/kyai.png') ?>" id="kyai">
         </div>
     </div>
 </div>
 <div class="bg-color5 w-100 m-0 p-0">
-    <div class="">
-        <h1 class="fw-bold text-clr1 text-center ls-xs mt-5">PROGRAM UNGGULAN</h1>
+    <div class=""></div>
+    <div style="margin-top: 150px;">
+        <h1 class="fw-bold text-clr1 text-center ls-xs mt-5" style="">PROGRAM UNGGULAN</h1>
         <div class="row justify-content-center m-0 p-0 mt-4">
             <div class="col-4 col-md-2 m-0 p-0 d-flex justify-content-center align-items-start mb-2">
                 <div class="">
