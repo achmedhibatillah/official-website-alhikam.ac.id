@@ -37,7 +37,7 @@ class User extends BaseController
     public function index(): string
     {
         $session_id = session()->get('peserta_id');
-        $user = $this->pesertaModel->where('peserta_id', $session_id)->first();
+        $user = $this->pesertaModel->where('peserta_id', $session_id)->first(); 
 
         $data = [
             'title' => 'Berkas Pendaftaran',
@@ -119,6 +119,66 @@ class User extends BaseController
         $ortuModel = $this->ortuModel;
 
         $ortuData = $ortuModel->getOrtuByPesertaId($session_id);
+
+        $pekerjaanOptions = [
+            1 => 'Tidak bekerja',
+            2 => 'Nelayan',
+            3 => 'Petani',
+            4 => 'Peternak',
+            5 => 'PNS/TNI/Polri',
+            6 => 'Karyawan swasta',
+            7 => 'Pedagang kecil',
+            8 => 'Pedagang besar',
+            9 => 'Wiraswasta',
+            10 => 'Buruh',
+            11 => 'Pensiunan',
+            12 => 'Sudah meninggal',
+            13 => 'Lainnya'
+        ];
+        $ortuData['ortu_a_pekerjaan_string'] = $pekerjaanOptions[$ortuData['ortu_a_pekerjaan']] ?? 'Tidak Diketahui';
+        $ortuData['ortu_i_pekerjaan_string'] = $pekerjaanOptions[$ortuData['ortu_i_pekerjaan']] ?? 'Tidak Diketahui';
+
+        $agamaOptions = [
+            1 => 'Islam',
+            2 => 'Protestan',
+            3 => 'Katolik',
+            4 => 'Hindu',
+            5 => 'Buddha',
+            6 => 'Konghuchu',
+            7 => 'Lainnya'
+        ];
+        $ortuData['ortu_a_agama_string'] = $agamaOptions[$ortuData['ortu_a_agama']] ?? 'Tidak Diketahui';
+        $ortuData['ortu_i_agama_string'] = $agamaOptions[$ortuData['ortu_i_agama']] ?? 'Tidak Diketahui';
+
+        $pendidikanOptions = [
+            1 => 'Tidak sekolah',
+            2 => 'PAUD',
+            3 => 'TK / sederajat',
+            4 => 'Putus SD',
+            5 => 'SD / sederajat',
+            6 => 'SMP / sederajat',
+            7 => 'SMA / sederajat',
+            8 => 'Paket A',
+            9 => 'Paket B',
+            10 => 'Paket C',
+            11 => 'D1',
+            12 => 'D2',
+            13 => 'D3',
+            14 => 'D4',
+            15 => 'Profesi',
+            16 => 'S1',
+            17 => 'SP-1',
+            18 => 'S2',
+            19 => 'SP-2',
+            20 => 'S3',
+            21 => 'Non-Formal',
+            22 => 'Informal',
+            23 => 'Lainnya'
+        ];
+        $ortuData['ortu_a_pendidikan_string'] = $pendidikanOptions[$ortuData['ortu_a_pendidikan']] ?? 'Tidak Diketahui';
+        $ortuData['ortu_i_pendidikan_string'] = $pendidikanOptions[$ortuData['ortu_i_pendidikan']] ?? 'Tidak Diketahui';
+                   
+
 
         if ($ortuData['ortu_saved'] == 1) {
             $view = 'user/biodata-orang-tua';

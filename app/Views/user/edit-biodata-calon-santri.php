@@ -1,11 +1,12 @@
 <section class="bg-clr5 bg-web position-relative text-clr1" style="padding-top:160px;padding-bottom:100px;min-height:100vh;background-image:url('<?= base_url('images/bg-main.png') ?>');">
 
-<h1 class="text-center fw-800 ls-xs mb-5">BIODATA CALON SANTRI</h1>
+<h1 class="text-center fw-800 ls-xs mb-3">BIODATA CALON SANTRI</h1>
 <form action="<?= base_url('simpan-santri') ?>" method="post" class="mt-4">
 <input type="hidden" name="santri_id" value="<?= $santri['santri_id'] ?>">
-<div class="text-clr1 row m-0 p-0">
-    <div class="col-md-6 m-0 p-0 px-3 px-md-3">
-        <h4 class=" bg-clr1 text-clr2 rounded py-3 px-4 fw-bold ls-xs mb-4 mx-2">I. IDENTITAS CALON SANTRI</h4>
+<div class="text-clr1 row justify-content-center m-0 p-0">
+    <div class="col-md-8 m-0 p-0 px-3 px-md-3">
+    <div class="card m-1 m-md-4 p-3">
+        <h4 class="bg-clr1 text-clr5 rounded py-3 px-4 fw-bold ls-xs mb-4">I. IDENTITAS CALON SANTRI</h4>
         <!-- Nama Lengkap -->
         <div class="mb-3">
             <label for="santri_nama" class="form-label mb-0 fsz-14 ls-1 fw-bold">1. Nama Lengkap:</label>
@@ -101,10 +102,9 @@
                 <div class="text-danger mt-0 mb-1 lh-s ms-2" style="font-size:13px;"><?= session()->getFlashdata('errors-santri')['santri_hp'] ?></div>
             <?php endif; ?>
         </div>
-
     </div>
-    <div class="col-md-6 m-0 p-0 mt-4 px-3 px-md-3 mt-md-0">
-        <h4 class="bg-clr1 text-clr2 rounded py-3 px-4 fw-bold ls-xs mx-2 mb-4">II. PENDIDIKAN CALON SANTRI</h4>
+    <div class="card m-1 m-md-4 p-3">
+        <h4 class="bg-clr1 text-clr5 rounded py-3 px-4 fw-bold ls-xs mb-4">II. PENDIDIKAN CALON SANTRI</h4>
         <!-- Riwayat Pendidikan -->
         <p class="form-label mb-0 ms-0 fsz-14 ls-1 fw-bold mb-0">1. Riwayat Pendidikan:</p>
         <?php if (session()->getFlashdata('errors-santri') && isset(session()->getFlashdata('errors-santri')['santri_sdmasuk'])): ?>
@@ -293,7 +293,25 @@
             </tr>
         </table>
     </div>
+    <div class="">
+        <div class="card px-3 px-md-3 m-1 m-md-4 rounded mt-2">
+            <div class="py-3">
+            <div class="form-check">
+                <input class="form-check-input border-clr1" type="checkbox" id="santri_saved" name="santri_saved" value="1">
+                <label class="form-check-label text-clr1 fsz-14 mb-0" for="santri_saved">
+                    Pastikan seluruh data sudah diisi dengan benar & lengkap sebelum klik tombol simpan.
+                </label>
+            </div>
+            <?php if (session()->getFlashdata('errors-santri') && isset(session()->getFlashdata('errors-santri')['santri_saved'])): ?>
+                <div class="text-danger fsz-12 mt-0" id="errors-santri">
+                    <?= session()->getFlashdata('errors-santri')['santri_saved'] ?>
+                </div>
+            <?php endif; ?>
+            <button type="submit" class="btn btn-sm btn-outline-clr1 ls-s mt-2" style="width:140px;"><i class="fas fa-save me-2"></i> Simpan</button>
+            </div>
+        </div>
+    </div>
+    </div>
 </div>
-<button type="submit" class="btn btn-clr1 mt-4 ms-5">Simpan</button>
 </form>
 </section>

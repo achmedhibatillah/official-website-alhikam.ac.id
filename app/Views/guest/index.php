@@ -2,9 +2,9 @@
 
 <section class="bg-clr5 bg-web" style="background-image:url('<?= base_url('images/bg-main.png') ?>');">
 <div class="position-relative">
-<div id="bg-top" class="bg-color5 d-flex justify-content-center align-items-start align-items-md-center w-100 m-0 p-0 bg-web" style="border:4px solid var(--clr1);border-radius: 0 0 100px 100px;height:110vh;background-position: bottom center;">
+<div id="bg-top" class="bg-color5 d-flex justify-content-center align-items-start align-items-md-center w-100 m-0 p-0 bg-web" style="border:4px solid var(--clr1);border-radius: 0 0 100px 100px;height:110vh;background-position: bottom right;">
     <div class="row m-0 p-0 w-100">
-        <div class="col-md-8 m-0 p-0 d-flex justify-content-center justify-content-lg-end align-items-center order-1 order-md-1">
+        <div class="col-md-8 m-0 p-0 d-flex justify-content-center justify-content-lg-end align-items-center order-2 order-md-1">
             <div class="" id="welcome">
                 <h1 class="ff-ephesis mb-0">Selamat Datang</h1>
                 <h5 class="fw-900 ls-1 mb-0">PENERIMAAN SANTRI BARU TAHUN 2025</h5>
@@ -15,7 +15,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4 m-0 p-0 d-flex justify-content-center order-2 order-md-2">
+        <div class="col-md-4 m-0 p-0 d-flex justify-content-center order-1 order-md-2">
             <img src="<?= base_url('images/kyai.png') ?>" id="kyai">
         </div>
     </div>
@@ -75,12 +75,13 @@
                     <p class="text-clr1 fw-bold ls-s text-center m-0 p-0 mt-2 lh-1 mx-2">Asosiasi Rumpun Keilmuan</p>
                 </div>
             </div>
+            <div class="" id="profil-pondok"></div>
         </div>
     </div>
 </div>
 <div class="bg-color5 w-100 m-0 p-0">
     <div class="">
-        <h1 class="fw-bold text-clr1 text-center ls-xs mt-5">PROFIL SINGKAT PONDOK</h1>
+        <h1 class="fw-bold text-clr1 text-center ls-xs" style="margin-top: 120px;">PROFIL SINGKAT PONDOK</h1>
         <div class="px-1 px-md-5 mt-4">
             <p class="text-clr1 mx-1 mx-md-5 text-justify fw-bold ls-1">Pesantren Mahasiswa Al-Hikam Malang didirikan pada tanggal 17 Ramadhan 1413 H / 21 Maret 1992 oleh almarhum Dr. KH. Ahmad Hasyim Muzadi.<br><br>Pesantren Mahasiswa Al-Hikam merupakan lembaga pendidikan Islam yang berikhtiar mengembangkan potensi intelektual mahasiswa dan penanaman kepribadian (moralitas) beragama. Keduanya harus dilakukan secara berkesinambungan sehingga memperoleh signifikasi metafisik dan spiritual dari ajaran agama. Begitu pula sebaliknya, ajaran agama akan mendapat signifikasi nilai-nilai ilmiah dalam ilmu pengetahuan dan teknologi.<br><br>Saat ini, Al-Hikam memiliki dua pondok pesantren mahasiswa. Pondok pertama berada di Malang dengan pengasuh KH. Muhammad Nafi', sedangkan pondok kedua berada di Depok dengan pengasuh KH. M. Yusron Shidqi, Lc., M.A. (Pengasuh Pondok Pesantren Al-Hikam Depok).</p>
         </div>
@@ -94,6 +95,7 @@
 <div class="" style="margin-top:130px;">.</div>
 <img src="<?= base_url('images/trans-wave.png') ?>" class="w-100 position-absolute" style="bottom:0;left:50%;transform: translate(-50%, 0%);">
 </div>
+<div class="" id="pendaftaran"></div>
 </section>
 
 <section class="py-5" style="background: linear-gradient(to bottom, #005501, #00BB02);">
@@ -183,6 +185,7 @@
         </table>
         <img src="<?= base_url('images/other/slogan.png') ?>" class="w-100">
     </div>
+    <div class="" id="tanya-jawab"></div>
 </div>
 </section>
 

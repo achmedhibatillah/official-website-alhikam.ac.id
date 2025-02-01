@@ -19,13 +19,13 @@
             <a class="nav-link fw-bold <?= ($page == 'beranda') ? 'active' : '' ?>" aria-current="page" href="#">Beranda</a>
         </li>
         <li class="nav-item d-flex align-items-center mx-md-2">
-            <a class="nav-link fw-bold text-clr1 <?= ($page == 'profil') ? 'active' : '' ?>" href="#">Profil Pondok</a>
+            <a class="nav-link fw-bold text-clr1 <?= ($page == 'profil') ? 'active' : '' ?>" href="<?= base_url('/#profil-pondok') ?>">Profil Pondok</a>
         </li>
         <li class="nav-item d-flex align-items-center mx-md-2">
-            <a class="nav-link fw-bold text-clr1 <?= ($page == 'pendaftaran') ? 'active' : '' ?>" href="#">Pendaftaran</a>
+            <a class="nav-link fw-bold text-clr1 <?= ($page == 'pendaftaran') ? 'active' : '' ?>" href="<?= base_url('/#pendaftaran') ?>">Pendaftaran</a>
         </li>
         <li class="nav-item d-flex align-items-center mx-md-2">
-            <a class="nav-link fw-bold text-clr1 <?= ($page == 'tanya-jawab') ? 'active' : '' ?>" href="#">Tanya Jawab</a>
+            <a class="nav-link fw-bold text-clr1 <?= ($page == 'tanya-jawab') ? 'active' : '' ?>" href="<?= base_url('/#tanya-jawab') ?>">Tanya Jawab</a>
         </li>
     </ul>
     <?php if (!(session()->get('status') === 'login-user')): ?>
@@ -38,7 +38,7 @@
             <div class="col-10 m-0 p-0 d-flex justify-content-start justify-content-md-end align-items-center order-2 order-md-1">
                 <div class="text-clr1 fsz-16 fw-bold ls-s p-0 me-0 me-md-2 cursor-pointer"><?= esc($user['peserta_nama']) ?></div>
             </div>
-            <div class="col-2 m-0 p-0 d-flex align-items-center justify-content-center justify-content-md-start  order-1 order-md-2">
+            <div class="col-2 m-0 p-0 d-flex align-items-center justify-content-center justify-content-md-start order-1 order-md-2">
                 <i class="fas fa-user-circle text-clr1 me-2 me-md-0 cursor-pointer"></i>
             </div>
         </div>
@@ -49,6 +49,6 @@
 
 
 <style>
-.navbar { z-index:2; position: fixed; top: 0; left: 0; border-bottom: 3px solid var(--clr1); border-radius: 0 0 20px 20px; }
+.navbar { z-index:5; position: fixed; top: 0; left: 0; border-bottom: 3px solid var(--clr1); border-radius: 0 0 20px 20px; }
 .active { background-color: var(--clr1); color: var(--clr5) !important; font-weight: bold; border-radius: 5px; }
 </style>

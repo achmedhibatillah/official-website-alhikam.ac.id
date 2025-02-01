@@ -28,20 +28,21 @@ class Santri extends BaseController
             'santri_anakke' => 'required|numeric|max_length[2]',
             'santri_bersaudara' => 'required|numeric|max_length[2]',
             'santri_hp' => 'required|numeric|min_length[9]|max_length[16]',
-            'santri_sdmasuk' => 'required|numeric|exact_length[4]|regex_match[/^20\d{2}$/]|less_than[2025]',
-            'santri_sdlulus' => 'required|numeric|exact_length[4]|regex_match[/^20\d{2}$/]|less_than[2025]',
-            'santri_smpmasuk' => 'required|numeric|exact_length[4]|regex_match[/^20\d{2}$/]|less_than[2025]',
-            'santri_smplulus' => 'required|numeric|exact_length[4]|regex_match[/^20\d{2}$/]|less_than[2025]',
-            'santri_smamasuk' => 'required|numeric|exact_length[4]|regex_match[/^20\d{2}$/]|less_than[2026]',
-            'santri_smalulus' => 'required|numeric|exact_length[4]|regex_match[/^20\d{2}$/]|less_than[2026]',
+            'santri_sdmasuk' => 'required|numeric|exact_length[4]|regex_match[/^20\d{2}$/]|less_than[' . date('Y') + 1 . ']',
+            'santri_sdlulus' => 'required|numeric|exact_length[4]|regex_match[/^20\d{2}$/]|less_than[' . date('Y') + 1 . ']',
+            'santri_smpmasuk' => 'required|numeric|exact_length[4]|regex_match[/^20\d{2}$/]|less_than[' . date('Y') + 1 . ']',
+            'santri_smplulus' => 'required|numeric|exact_length[4]|regex_match[/^20\d{2}$/]|less_than[' . date('Y') + 1 . ']',
+            'santri_smamasuk' => 'required|numeric|exact_length[4]|regex_match[/^20\d{2}$/]|less_than[' . date('Y') + 1 . ']',
+            'santri_smalulus' => 'required|numeric|exact_length[4]|regex_match[/^20\d{2}$/]|less_than[' . date('Y') + 1 . ']',
             'santri_pa' => 'required|max_length[225]',
             'santri_pa_alamat' => 'required|max_length[225]',
             'santri_pa_jurusan' => 'required|max_length[225]',
-            'santri_pa_lulus' => 'required|numeric|exact_length[4]|regex_match[/^20\d{2}$/]|less_than[2026]',
+            'santri_pa_lulus' => 'required|numeric|exact_length[4]|regex_match[/^20\d{2}$/]|less_than[' . date('Y') + 1 . ']',
             'santri_ps_pt' => 'required|max_length[225]',
             'santri_ps_fakultas' => 'required|max_length[225]',
             'santri_ps_prodi' => 'required|max_length[225]',
-            'santri_ps_masuk' => 'required|numeric|exact_length[4]|regex_match[/^20\d{2}$/]|less_than[2026]',
+            'santri_ps_masuk' => 'required|numeric|exact_length[4]|regex_match[/^20\d{2}$/]|less_than[' . date('Y') + 1 . ']',
+            'santri_saved' => 'required',
         ];
         
         $errors = [
@@ -63,7 +64,7 @@ class Santri extends BaseController
                 'exact_length' => 'Masukkan tahun masuk yang valid.',
                 'regex_match' => 'Masukkan tahun masuk yang valid.',
                 'less_than' => 'Masukkan tahun masuk yang tepat.'
-            ],
+            ], 
             'santri_nama' => [
                 'required' => 'Nama lengkap harus diisi.',
                 'max_length' => 'Nama lengkap maksimal 255 karakter.'
@@ -166,6 +167,9 @@ class Santri extends BaseController
                 'regex_match' => 'Masukkan lulus yang valid.',
                 'less_than' => 'Masukkan lulus yang tepat.'
             ],
+            'santri_saved' => [
+                'required' => 'Klik checkbox ini sebelum menyimpan.',
+            ],
         ];
     
         if (!$this->validate($rules, $errors)) {
@@ -201,7 +205,8 @@ class Santri extends BaseController
             'santri_ps_pt' => $this->request->getPost('santri_ps_pt'),
             'santri_ps_fakultas' => $this->request->getPost('santri_ps_fakultas'),
             'santri_ps_prodi' => $this->request->getPost('santri_ps_prodi'),
-            'santri_ps_masuk' => $this->request->getPost('santri_ps_masuk')
+            'santri_ps_masuk' => $this->request->getPost('santri_ps_masuk'),
+            'santri_saved' => $this->request->getPost('santri_saved') 
         ];
         $santri_id = $this->request->getPost('santri_id');
         $santriModel = $this->santriModel;

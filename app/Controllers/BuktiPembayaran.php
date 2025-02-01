@@ -73,5 +73,16 @@ class BuktiPembayaran extends BaseController
         return redirect()->to('berkas-pendaftaran');
     }
     
+    public function downloadBp($filePath)
+    {
+        $filePath = urldecode($filePath);
+        $fullPath = FCPATH . 'uploads/bp/' . $filePath;
+    
+        if (!file_exists($fullPath)) {
+            return redirect()->back()->with('error', 'File tidak ditemukan.');
+        }
+    
+        return $this->response->download($fullPath, null);
+    }
     
 }

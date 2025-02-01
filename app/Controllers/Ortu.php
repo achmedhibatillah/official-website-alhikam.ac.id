@@ -40,6 +40,7 @@ class Ortu extends BaseController
             'ortu_i_pendidikan_lain' => 'max_length[225]' . (($this->request->getPost('ortu_i_pendidikan') == 23) ? '|required' : ''),
             'ortu_i_hp' => 'required|numeric|min_length[9]|max_length[16]',
             'ortu_i_pendapatan' => 'required',
+            'ortu_saved' => 'required',
         ];
         
         $errors = [
@@ -113,6 +114,9 @@ class Ortu extends BaseController
             'ortu_i_pendapatan' => [
                 'required' => 'Pendapatan ibu harus diisi.'
             ],
+            'ortu_saved' => [
+                'required' => 'Klik checkbox ini sebelum menyimpan.',
+            ],
         ];
     
         if (!$this->validate($rules, $errors)) {
@@ -144,6 +148,7 @@ class Ortu extends BaseController
             'ortu_i_pendidikan_lain' => $this->request->getPost('ortu_i_pendidikan_lain'),
             'ortu_i_hp' => $telp_i,
             'ortu_i_pendapatan' => $this->request->getPost('ortu_i_pendapatan'),
+            'ortu_saved' => $this->request->getPost('ortu_saved') 
         ];
         
         $ortu_id = $this->request->getPost('ortu_id');

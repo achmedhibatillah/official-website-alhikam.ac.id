@@ -22,9 +22,13 @@ $routes->get('/tes-tulis', 'User::tes_tulis', ['filter' => 'user-auth']);
 $routes->get('/tes-wawancara', 'User::tes_wawancara', ['filter' => 'user-auth']);
 
 $routes->post('/simpan-santri', 'Santri::update', ['filter' => 'user-auth']);
+
 $routes->post('/simpan-ortu', 'Ortu::update', ['filter' => 'user-auth']);
+
 $routes->post('/simpan-riwayat-kesehatan-dan-lain-lain', 'RiwayatKesehatan::update', ['filter' => 'user-auth']);
+
 $routes->post('/simpan-bukti-pembayaran', 'BuktiPembayaran::update', ['filter' => 'user-auth']);
+$routes->get('/download-bukti-pembayaran/(:segment)', 'BuktiPembayaran::downloadBp/$1', ['filter' => 'user-auth']);
 
 $routes->post('/simpan-penyakit-pernah-dialami', 'RiwayatKesehatan::update_penyakit_pernah', ['filter' => 'user-auth']);
 $routes->post('/simpan-penyakit-sedang-dialami', 'RiwayatKesehatan::update_penyakit_sedang', ['filter' => 'user-auth']);

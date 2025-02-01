@@ -6,7 +6,8 @@
 <div class="text-clr1 row m-0 p-0">
 
     <div class="col-md-6 m-0 p-0 px-3 px-md-3">
-        <h4 class=" bg-clr1 text-clr2 rounded py-3 px-4 fw-bold ls-xs mb-4 mx-2">I. IDENTITAS AYAH</h4>
+    <div class="card m-1 m-md-4 p-3">
+        <h4 class="bg-clr1 text-clr5 rounded py-3 px-4 fw-bold ls-xs mb-4">1. IDENTITAS AYAH</h4>
         <!-- Nama Ayah -->
         <div class="">
             <label for="ortu_a_nama" class="form-label mb-0 fsz-14 ls-1 fw-bold">1. Nama Lengkap Ayah:</label>
@@ -131,12 +132,8 @@
         <!-- Pendapatan Ayah -->
         <div class="mt-3">
             <label for="ortu_a_pendapatan" class="form-label mb-0 fsz-14 ls-1 fw-bold">6. Pendapatan Per-Bulan:</label>
-            <select name="ortu_a_pendapatan" class="form-select input-clr1-out ps-3 py-2 mt--1 fsz-13 <?= isset(session()->getFlashdata('errors-ortu')['ortu_a_pendapatan']) ? 'is-invalid' : '' ?>" id="ortu_a_pendapatan">
-                <option value="" disabled <?= old('ortu_a_pendapatan') || (isset($ortu['ortu_a_pendapatan']) && $ortu['ortu_a_pendapatan'] !== '') ? '' : 'selected' ?>>Pilih Pendapatan Ayah</option>
-                <option value="1" <?= old('ortu_a_pendapatan') == '1' || (isset($ortu['ortu_a_pendapatan']) && $ortu['ortu_a_pendapatan'] == '1') ? 'selected' : '' ?>>< 2 juta</option>
-                <option value="2" <?= old('ortu_a_pendapatan') == '2' || (isset($ortu['ortu_a_pendapatan']) && $ortu['ortu_a_pendapatan'] == '2') ? 'selected' : '' ?>>2 - 5 juta</option>
-                <option value="3" <?= old('ortu_a_pendapatan') == '3' || (isset($ortu['ortu_a_pendapatan']) && $ortu['ortu_a_pendapatan'] == '3') ? 'selected' : '' ?>>> 5 juta</option>
-            </select>
+            <input name="ortu_a_pendapatan" type="number" class="form-control input-clr1-out ps-3 py-2 mt--1 fsz-13 <?= session()->getFlashdata('errors-ortu') && isset(session()->getFlashdata('errors-ortu')['ortu_a_pendapatan']) ? 'is-invalid' : '' ?>" id="ortu_a_pendapatan" autocomplete="off" placeholder="Rp. ..." 
+            value="<?= old('ortu_a_pendapatan') ? old('ortu_a_pendapatan') : (isset($ortu['ortu_a_pendapatan']) ? $ortu['ortu_a_pendapatan'] : '') ?>">
             <?php if (isset(session()->getFlashdata('errors-ortu')['ortu_a_pendapatan'])): ?>
                 <div class="text-danger mt-0 mb-1 lh-s ms-2" style="font-size:13px;">
                     <?= session()->getFlashdata('errors-ortu')['ortu_a_pendapatan'] ?>
@@ -144,8 +141,10 @@
             <?php endif; ?>
         </div>
     </div>
+    </div>
     <div class="col-md-6 m-0 p-0 mt-4 px-3 px-md-3 mt-md-0">
-    <h4 class=" bg-clr1 text-clr2 rounded py-3 px-4 fw-bold ls-xs mb-4 mx-2">II. IDENTITAS IBU</h4>
+    <div class="card m-1 m-md-4 p-3">
+        <h4 class="bg-clr1 text-clr5 rounded py-3 px-4 fw-bold ls-xs mb-4">2. IDENTITAS IBU</h4>
         <!-- Nama Ibu -->
         <div class="">
             <label for="ortu_i_nama" class="form-label mb-0 fsz-14 ls-1 fw-bold">1. Nama Lengkap Ibu:</label>
@@ -270,12 +269,8 @@
         <!-- Pendapatan Ibu -->
         <div class="mt-3">
             <label for="ortu_i_pendapatan" class="form-label mb-0 fsz-14 ls-1 fw-bold">6. Pendapatan Per-Bulan:</label>
-            <select name="ortu_i_pendapatan" class="form-select input-clr1-out ps-3 py-2 mt--1 fsz-13 <?= isset(session()->getFlashdata('errors-ortu')['ortu_i_pendapatan']) ? 'is-invalid' : '' ?>" id="ortu_i_pendapatan">
-                <option value="" disabled <?= old('ortu_i_pendapatan') || (isset($ortu['ortu_i_pendapatan']) && $ortu['ortu_i_pendapatan'] !== '') ? '' : 'selected' ?>>Pilih Pendapatan Ibu</option>
-                <option value="1" <?= old('ortu_i_pendapatan') == '1' || (isset($ortu['ortu_i_pendapatan']) && $ortu['ortu_i_pendapatan'] == '1') ? 'selected' : '' ?>>< 2 juta</option>
-                <option value="2" <?= old('ortu_i_pendapatan') == '2' || (isset($ortu['ortu_i_pendapatan']) && $ortu['ortu_i_pendapatan'] == '2') ? 'selected' : '' ?>>2 - 5 juta</option>
-                <option value="3" <?= old('ortu_i_pendapatan') == '3' || (isset($ortu['ortu_i_pendapatan']) && $ortu['ortu_i_pendapatan'] == '3') ? 'selected' : '' ?>>> 5 juta</option>
-            </select>
+            <input name="ortu_i_pendapatan" type="number" class="form-control input-clr1-out ps-3 py-2 mt--1 fsz-13 <?= session()->getFlashdata('errors-ortu') && isset(session()->getFlashdata('errors-ortu')['ortu_i_pendapatan']) ? 'is-invalid' : '' ?>" id="ortu_i_pendapatan" autocomplete="off" placeholder="Rp. ..." 
+            value="<?= old('ortu_i_pendapatan') ? old('ortu_i_pendapatan') : (isset($ortu['ortu_i_pendapatan']) ? $ortu['ortu_i_pendapatan'] : '') ?>">
             <?php if (isset(session()->getFlashdata('errors-ortu')['ortu_i_pendapatan'])): ?>
                 <div class="text-danger mt-0 mb-1 lh-s ms-2" style="font-size:13px;">
                     <?= session()->getFlashdata('errors-ortu')['ortu_i_pendapatan'] ?>
@@ -283,9 +278,26 @@
             <?php endif; ?>
         </div>
     </div>
-
+    </div>
+    <div class="w-100">
+        <div class="card px-3 px-md-3 m-1 m-md-4 mx-3 rounded mt-2">
+            <div class="py-3">
+            <div class="form-check">
+                <input class="form-check-input border-clr1" type="checkbox" id="ortu_saved" name="ortu_saved" value="1">
+                <label class="form-check-label text-clr1 fsz-14 mb-0" for="ortu_saved">
+                    Pastikan seluruh data sudah diisi dengan benar & lengkap sebelum klik tombol simpan.
+                </label>
+            </div>
+            <?php if (session()->getFlashdata('errors-ortu') && isset(session()->getFlashdata('errors-ortu')['ortu_saved'])): ?>
+                <div class="text-danger fsz-12 mt-0" id="errors-ortu">
+                    <?= session()->getFlashdata('errors-ortu')['ortu_saved'] ?>
+                </div>
+            <?php endif; ?>
+            <button type="submit" class="btn btn-sm btn-outline-clr1 ls-s mt-2" style="width:140px;"><i class="fas fa-save me-2"></i> Simpan</button>
+            </div>
+        </div>
+    </div>
 </div>
-<button type="submit" class="btn btn-clr1 mt-4 ms-5">Simpan</button>
 </form>
 
 </section>

@@ -8,7 +8,7 @@
 
     <div class="col-md-6 m-0 p-0 px-3 px-md-3">
         <div class="card m-1 m-md-4 p-3">
-        <h4 class=" bg-clr1 text-clr5 rounded py-3 px-4 fw-bold ls-xs mb-4">IV. RIWAYAT KESEHATAN</h4>
+        <h4 class="bg-clr1 text-clr5 rounded py-3 px-4 fw-bold ls-xs mb-4">IV. RIWAYAT KESEHATAN</h4> 
         <!-- Gplongan Darah -->
         <div class="mt-3">
             <label for="rk_golongandarah" class="form-label mb-0 fsz-14 ls-1 fw-bold">A. Golongan Darah:</label>
