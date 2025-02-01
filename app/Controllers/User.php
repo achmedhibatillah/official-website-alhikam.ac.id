@@ -212,6 +212,23 @@ class User extends BaseController
         $riwayatKesehatanData = $riwayatKesehatanModel->getRiwayatKesehatanByIdPeserta($session_id);
         $lainData = $lainModel->getLainByIdPeserta($session_id);
 
+        $golonganDarahOptions = [
+            1 => 'A',
+            2 => 'B',
+            3 => 'AB',
+            4 => 'O',
+            5 => '-'
+        ];
+        $riwayatKesehatanData['rk_golongandarah_string'] = $golonganDarahOptions[$riwayatKesehatanData['rk_golongandarah']] ?? 'Tidak Diketahui';
+        
+        $perawatanOptions = [
+            1 => 'Iya',
+            2 => 'Tidak',
+            3 => 'Jalan',
+            4 => 'Inap'
+        ];
+        $riwayatKesehatanData['rk_perawatan_string'] = $perawatanOptions[$riwayatKesehatanData['rk_perawatan']] ?? 'Tidak Diketahui';
+
         if ($riwayatKesehatanData['rk_saved'] == 1) {
             $view = 'user/riwayat-kesehatan-dan-lain-lain';
         } else {
