@@ -34,13 +34,26 @@
             <a href="<?= base_url('daftar') ?>" class="btn btn-n-clr2-clr1 fw-bold">Daftar Sekarang</a>
         </div>
     <?php elseif (session()->get('status') === 'login-user' && isset($user)): ?>
-        <div class="row m-0 p-0 mt-3 mt-md-0 mb-3 mb-md-0" style="width:240px;">
+        <div class="row m-0 p-0 mt-3 mt-md-0 mb-3 mb-md-0" style="width:240px;" id="username-login">
             <div class="col-10 m-0 p-0 d-flex justify-content-start justify-content-md-end align-items-center order-2 order-md-1">
                 <div class="text-clr1 fsz-16 fw-bold ls-s p-0 me-0 me-md-2 cursor-pointer"><?= esc($user['peserta_nama']) ?></div>
             </div>
             <div class="col-2 m-0 p-0 d-flex align-items-center justify-content-center justify-content-md-start order-1 order-md-2">
                 <i class="fas fa-user-circle text-clr1 me-2 me-md-0 cursor-pointer"></i>
             </div>
+        </div>
+        <div id="fixed-card" class="fixed-card bg-clr4">
+            <p class="fw-bold ls-1 lh-1 mb-0"><i class="fas fa-user-circle lh-1 me-2"></i><?= esc($user['peserta_nama']) ?></p>
+            <div class="card m-0 p-3 mt-3">
+                <p class="ls-s lh-1 fsz-14 mb-1 text-clr1">No KTP</p>
+                <p class="ls-s lh-1 mb-0 fw-bold ms-2 text-clr1" style="width:70%;"><?= esc($user['peserta_ktp']) ?></p>
+                <p class="ls-s lh-1 fsz-14 mt-3 mb-1 text-clr1">Username / No Telp</p>
+                <p class="ls-s lh-1 mb-0 fw-bold ms-2 text-clr1" style="width:70%;"><?= esc($user['peserta_username']) ?></p>
+                <p class="ls-s lh-1 fsz-14 mt-3 mb-1 text-clr1">Email</p>
+                <p class="ls-s lh-1 mb-0 fw-bold ms-2 text-clr1" style="width:70%;"><?= esc($user['peserta_email']) ?></p>
+            </div>
+            <a href="<?= base_url('d') ?>" class="btn btn-danger fsz-14 py-0 mt-2" style="width:100px;">Logout</a>
+            <button id="close-card">x</button>
         </div>
     <?php endif; ?>
     </div>
@@ -51,4 +64,23 @@
 <style>
 .navbar { z-index:5; position: fixed; top: 0; left: 0; border-bottom: 3px solid var(--clr1); border-radius: 0 0 20px 20px; }
 .active { background-color: var(--clr1); color: var(--clr5) !important; font-weight: bold; border-radius: 5px; }
+
+.fixed-card { display: none; position: fixed; padding: 20px; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); border-radius: 8px; border: 2px solid var(--clr5); z-index: 1000; }
+#close-card { position: absolute; top: 10px; right: 10px; padding: 5px 10px; background: red; color: white; border: none; cursor: pointer; }
+@media screen and (max-width: 990px) {
+    .fixed-card { top: 50%; left: 50%; transform: translate(-50%, -50%); width: 90%; }
+}
+@media screen and (min-width: 991px) {
+.fixed-card { top: 70px; right: 20px; transform: translate(0%, 0%); width: 300px; }
+}
 </style>
+
+<script>
+document.getElementById("username-login").addEventListener("click", function() {
+    document.getElementById("fixed-card").style.display = "block";
+});
+
+document.getElementById("close-card").addEventListener("click", function() {
+    document.getElementById("fixed-card").style.display = "none";
+});
+</script>
