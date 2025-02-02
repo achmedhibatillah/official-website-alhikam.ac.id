@@ -16,7 +16,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav me-auto ms-md-5 mb-2 mb-lg-0 mt-3 mt-md-0">
         <li class="nav-item d-flex align-items-center mx-md-2">
-            <a class="nav-link fw-bold <?= ($page == 'beranda') ? 'active' : '' ?>" aria-current="page" href="#">Beranda</a>
+            <a class="nav-link fw-bold text-clr1 <?= ($page == 'beranda') ? 'active' : '' ?>" aria-current="page" href="#">Beranda</a>
         </li>
         <li class="nav-item d-flex align-items-center mx-md-2">
             <a class="nav-link fw-bold text-clr1 <?= ($page == 'profil') ? 'active' : '' ?>" href="<?= base_url('/#profil-pondok') ?>">Profil Pondok</a>
@@ -52,7 +52,12 @@
                 <p class="ls-s lh-1 fsz-14 mt-3 mb-1 text-clr1">Email</p>
                 <p class="ls-s lh-1 mb-0 fw-bold ms-2 text-clr1" style="width:70%;"><?= esc($user['peserta_email']) ?></p>
             </div>
-            <a href="<?= base_url('d') ?>" class="btn btn-danger fsz-14 py-0 mt-2" style="width:100px;">Logout</a>
+            <div class="d-flex justify-content-center">
+                <a href="<?= base_url('berkas-pendaftaran') ?>" class="btn btn-clr1 fsz-14 py-0 mt-3" style="width:70%;">Berkas Pendaftaran</a>
+            </div>
+            <div class="d-flex justify-content-center">
+                <a href="<?= base_url('d') ?>" class="btn btn-danger fsz-14 py-0 mt-2 mb-0" style="width:70%;">Logout</a>
+            </div>
             <button id="close-card">x</button>
         </div>
     <?php endif; ?>

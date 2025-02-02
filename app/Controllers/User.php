@@ -327,4 +327,17 @@ class User extends BaseController
         view('templates/footbar') .
         view('templates/footer');
     }
+
+    private function isSaved(): bool
+    {
+        $session_id = session()->get('peserta_id');
+        $santriModel = $this->santriModel;
+        $santriData = $santriModel->getSantriByPesertaId($session_id);
+    
+        if ($santriData['santri_saved'] !== 1) {
+            return false;
+        }
+    
+        return true;
+    }
 }

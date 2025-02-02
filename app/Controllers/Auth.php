@@ -196,7 +196,7 @@ class Auth extends BaseController
         $ttModel->insert($santriData);
         $twModel->insert($santriData);
     
-        return redirect()->to('masuk');
+        return redirect()->to('masuk')->with('success-daftar', 'Anda berhasil melakukan pendaftaran. Silakan login dengan akun yang baru Anda buat.');
     }
     
     public function destroy()

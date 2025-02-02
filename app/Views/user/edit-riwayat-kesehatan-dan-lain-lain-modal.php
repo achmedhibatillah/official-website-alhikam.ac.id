@@ -25,6 +25,7 @@
         </div>
     </div>
 </div>
+
 <div class="modal fade" id="modalTambahPenyakitSedang" tabindex="-1" aria-labelledby="modalTambahPenyakitLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">

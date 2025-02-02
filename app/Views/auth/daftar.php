@@ -1,6 +1,6 @@
 <section class="bg-clr5 bg-web position-relative d-flex justify-content-center align-items-center" style="min-height:100vh;padding:80px 0;background-image:url('<?= base_url('images/bg-auth.png') ?>');">
 <div class="card m-0 p-0 border-clr1-3 mx-2 position-relative" style="border-radius:40px;">
-    <a href="<?= base_url() ?>" class="position-absolute td-none text-clr1 ls-xs" style="top:20px;left:20px;"><img src="<?= base_url('images/icon/back.png') ?>" class="he-15 mb-2"> beranda</a>
+    <a href="<?= base_url() ?>" class="position-absolute td-none text-clr1 ls-xs" style="top:20px;left:20px;"><img src="<?= base_url('images/icon/back.png') ?>" class="he-15 mb-2"></a>
     <div class="card-body p-0 text-clr1" style="margin:38px;">
         <div class="d-flex justify-content-center">
             <img src="<?= base_url('images/logo.png') ?>" class="he-30 mb-2">

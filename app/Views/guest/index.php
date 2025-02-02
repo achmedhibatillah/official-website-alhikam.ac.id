@@ -199,15 +199,15 @@
             </div>
             <div class="col-md-7 row m-0 p-0 mt-5 mt-md-0" style="z-index:3;">
                 <div class="col-md-9">
-                    <a href="<?= base_url() ?>" class="text-clr1 d-flex td-none" style="border-bottom:1px solid #005501;">Apakah ada tes masuk untuk calon santri baru? <i class="fas fa-plus ms-auto"></i></a>
-                    <a href="<?= base_url() ?>" class="text-clr1 d-flex td-none mt-2" style="border-bottom:1px solid #005501;">Apakah boleh membawa hp dan laptop di pondok? <i class="fas fa-plus ms-auto"></i></a>
-                    <a href="<?= base_url() ?>" class="text-clr1 d-flex td-none mt-2" style="border-bottom:1px solid #005501;">Waktu kegiatan pondok kapan saja? <i class="fas fa-plus ms-auto"></i></a>
-                    <a href="<?= base_url() ?>" class="text-clr1 d-flex td-none mt-2" style="border-bottom:1px solid #005501;">Kitabnya apa saja? <i class="fas fa-plus ms-auto"></i></a>
-                    <a href="<?= base_url() ?>" class="text-clr1 d-flex td-none mt-2" style="border-bottom:1px solid #005501;">SPP setiap bulan? <i class="fas fa-plus ms-auto"></i></a>
-                    <a href="<?= base_url() ?>" class="text-clr1 d-flex td-none mt-2" style="border-bottom:1px solid #005501;">Jumlah santri setiap kamar? <i class="fas fa-plus ms-auto"></i></a>
-                    <a href="<?= base_url() ?>" class="text-clr1 d-flex td-none mt-2" style="border-bottom:1px solid #005501;">Fasilitas kamar setiap santri? <i class="fas fa-plus ms-auto"></i></a>
-                    <a href="<?= base_url() ?>" class="text-clr1 d-flex td-none mt-2" style="border-bottom:1px solid #005501;">Apakah ada biaya daftar ulang? <i class="fas fa-plus ms-auto"></i></a>
-                    <a href="<?= base_url() ?>" class="text-clr1 d-flex td-none mt-2" style="border-bottom:1px solid #005501;">Biaya tersebut termasuk apa saja? <i class="fas fa-plus ms-auto"></i></a>
+                    <div class="text-clr1 d-flex cursor-pointer td-none" style="border-bottom:1px solid #005501;" data-bs-toggle="modal" data-bs-target="#modalQNA1">Apakah ada tes masuk untuk calon santri baru? <i class="fas fa-plus ms-auto"></i></div>
+                    <div class="text-clr1 d-flex cursor-pointer td-none mt-2" style="border-bottom:1px solid #005501;" data-bs-toggle="modal" data-bs-target="#modalQNA2">Apakah boleh membawa hp dan laptop di pondok? <i class="fas fa-plus ms-auto"></i></div>
+                    <div class="text-clr1 d-flex cursor-pointer td-none mt-2" style="border-bottom:1px solid #005501;" data-bs-toggle="modal" data-bs-target="#modalQNA3">Waktu kegiatan pondok kapan saja? <i class="fas fa-plus ms-auto"></i></div>
+                    <div class="text-clr1 d-flex cursor-pointer td-none mt-2" style="border-bottom:1px solid #005501;" data-bs-toggle="modal" data-bs-target="#modalQNA4">Kitabnya apa saja? <i class="fas fa-plus ms-auto"></i></div>
+                    <div class="text-clr1 d-flex cursor-pointer td-none mt-2" style="border-bottom:1px solid #005501;" data-bs-toggle="modal" data-bs-target="#modalQNA5">SPP setiap bulan? <i class="fas fa-plus ms-auto"></i></div>
+                    <div class="text-clr1 d-flex cursor-pointer td-none mt-2" style="border-bottom:1px solid #005501;" data-bs-toggle="modal" data-bs-target="#modalQNA6">Jumlah santri setiap kamar? <i class="fas fa-plus ms-auto"></i></div>
+                    <div class="text-clr1 d-flex cursor-pointer td-none mt-2" style="border-bottom:1px solid #005501;" data-bs-toggle="modal" data-bs-target="#modalQNA7">Fasilitas kamar setiap santri? <i class="fas fa-plus ms-auto"></i></div>
+                    <div class="text-clr1 d-flex cursor-pointer td-none mt-2" style="border-bottom:1px solid #005501;" data-bs-toggle="modal" data-bs-target="#modalQNA8">Apakah ada biaya daftar ulang? <i class="fas fa-plus ms-auto"></i></div>
+                    <div class="text-clr1 d-flex cursor-pointer td-none mt-2" style="border-bottom:1px solid #005501;" data-bs-toggle="modal" data-bs-target="#modalQNA9">Biaya tersebut termasuk apa saja? <i class="fas fa-plus ms-auto"></i></div>
                 </div>
             </div>
         </div>
@@ -223,3 +223,5 @@
         <img src="<?= base_url('images/trans-wave.png') ?>" class="w-100 position-absolute" style="z-index:0;top:0;left:50%;transform:translate(-50%, 0%) rotateX(180deg);">
     </div>
 </section>
+
+<?= $this->include('guest/modalqna') ?>
