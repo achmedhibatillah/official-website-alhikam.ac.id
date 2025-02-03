@@ -4,9 +4,9 @@
 <form action="<?= base_url('simpan-riwayat-kesehatan-dan-lain-lain') ?>" method="post" class="mt-4">
 <input type="hidden" name="rk_id" value="<?= $rk['rk_id'] ?>">
 <input type="hidden" name="lain_id" value="<?= $lain['lain_id'] ?>">
-<div class="text-clr1 row m-0 p-0">
+<div class="text-clr1 row m-0 p-0 justify-content-center">
 
-    <div class="col-md-6 m-0 p-0 px-3 px-md-3">
+    <div class="col-md-8 m-0 p-0 px-3 px-md-3">
         <div class="card m-1 m-md-4 p-3">
         <h4 class="bg-clr1 text-clr5 rounded py-3 px-4 fw-bold ls-xs mb-4">IV. RIWAYAT KESEHATAN</h4> 
         <!-- Gplongan Darah -->
@@ -125,9 +125,6 @@
             </table>
         </div>
         </div>
-    </div>
-    
-    <div class="col-md-6 mt-4 px-3 px-md-3 mt-md-0">
         <div class="card m-1 m-md-4 p-3">
         <h4 class=" bg-clr1 text-clr5 rounded py-3 px-4 fw-bold ls-xs mb-4">V. LAIN-LAIN</h4>
         <!-- Prestasi -->
@@ -588,22 +585,23 @@
             </div>
         </div>
         </div>
-    </div>
-    <div class="w-100">
-        <div class="card px-3 px-md-3 m-0 mx-3 rounded mt-2">
-            <div class="py-3">
-            <div class="form-check">
-                <input class="form-check-input border-clr1" type="checkbox" id="rk_saved" name="rk_saved" value="1">
-                <label class="form-check-label text-clr1 fsz-14 mb-0" for="rk_saved">
-                    Pastikan seluruh data sudah diisi dengan benar & lengkap sebelum klik tombol simpan.
-                </label>
-            </div>
-            <?php if (session()->getFlashdata('errors-rk') && isset(session()->getFlashdata('errors-rk')['rk_saved'])): ?>
-                <div class="text-danger fsz-12 mt-0" id="errors-rk">
-                    <?= session()->getFlashdata('errors-rk')['rk_saved'] ?>
+        
+        <div class="">
+            <div class="card px-3 px-md-3 m-1 m-md-4 rounded mt-2">
+                <div class="py-3">
+                <div class="form-check">
+                    <input class="form-check-input border-clr1" type="checkbox" id="rk_saved" name="rk_saved" value="1">
+                    <label class="form-check-label text-clr1 fsz-14 mb-0" for="rk_saved">
+                        Pastikan seluruh data sudah diisi dengan benar & lengkap sebelum klik tombol simpan.
+                    </label>
                 </div>
-            <?php endif; ?>
-            <button type="submit" class="btn btn-sm btn-outline-clr1 ls-s mt-2" style="width:140px;"><i class="fas fa-save me-2"></i> Simpan</button>
+                <?php if (session()->getFlashdata('errors-rk') && isset(session()->getFlashdata('errors-rk')['rk_saved'])): ?>
+                    <div class="text-danger fsz-12 mt-0" id="errors-rk">
+                        <?= session()->getFlashdata('errors-rk')['rk_saved'] ?>
+                    </div>
+                <?php endif; ?>
+                <button type="submit" class="btn btn-sm btn-outline-clr1 ls-s mt-2" style="width:140px;"><i class="fas fa-save me-2"></i> Simpan</button>
+                </div>
             </div>
         </div>
     </div>

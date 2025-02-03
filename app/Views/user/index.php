@@ -5,6 +5,11 @@
 <h1 class="text-center fw-800 ls-xs mb-5">BERKAS PENDAFTARAN</h1>
 <div class="d-flex justify-content-center align-items-center">
     <div class="card m-0 py-5 px-3 px-md-4 bg-clr5 border-clr1-3" style="width:90%;">
+        <?php if (session()->getFlashdata('errors-saved')): ?>
+            <div class="alert alert-danger text-center lh-1">
+                <?= session()->getFlashdata('errors-saved') ?>
+            </div>
+        <?php endif; ?>
         <!-- Biodata Calon Santri -->
         <div class="card m-0 py-3 border-none cursor-pointer <?= ($santri['santri_saved'] == 1) ? 'btn-isi' : 'btn-bisi' ?>" onclick="window.location.href = '<?= base_url('biodata-calon-santri'); ?>'">
             <div class="row m-0 p-0">

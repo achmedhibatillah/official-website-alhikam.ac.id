@@ -246,7 +246,7 @@ class User extends BaseController
         view('templates/footer');
     }
 
-    public function bukti_pembayaran(): string
+    public function bukti_pembayaran(): mixed
     {
         $session_id = session()->get('peserta_id');
         $user = $this->pesertaModel->where('peserta_id', $session_id)->first();
@@ -259,6 +259,10 @@ class User extends BaseController
 
         $bpModel = $this->bpModel;
         $bpData = $bpModel->getBpByPesertaId($session_id);
+
+        if ($this->isSaved(1) == false) {
+            return redirect()->to('berkas-pendaftaran')->with('errors-saved', 'Isi biodata calon santri, biodata orang tua, riwayat kesehatan dan lain-lain sebelum masuk ke halaman bukti pembayaran.');
+        }
 
         if ($bpData['bp_saved'] == 1) {
             $view = 'user/bukti-pembayaran';
@@ -328,13 +332,21 @@ class User extends BaseController
         view('templates/footer');
     }
 
-    private function isSaved(): bool
+    private function isSaved($rule): bool
     {
         $session_id = session()->get('peserta_id');
         $santriModel = $this->santriModel;
+        $ortuModel = $this->ortuModel;
+        $rkModel = $this->riwayatKesehatanModel;
+        $bpModel = $this->bpModel;
         $santriData = $santriModel->getSantriByPesertaId($session_id);
+        $ortuData = $ortuModel->getOrtuByPesertaId($session_id);
+        $rkData = $rkModel->getRiwayatKesehatanByIdPeserta($session_id);
+        $bpData = $bpModel->getBpByPesertaId($session_id);
     
-        if ($santriData['santri_saved'] !== 1) {
+        if ($rule == 1 && ($santriData['santri_saved'] !== 1 || $ortuData['ortu_saved'] !== 1 || $rkData['rk_saved'] !== 1)) {
+            return false;
+        } elseif ($rule == 2 && ($santriData['santri_saved'] !== 1 || $ortuData['ortu_saved'] !== 1 || $rkData['rk_saved'] !== 1)) {
             return false;
         }
     

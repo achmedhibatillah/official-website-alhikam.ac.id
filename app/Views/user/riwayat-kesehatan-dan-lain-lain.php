@@ -1,6 +1,6 @@
 <section class="bg-clr5 bg-web position-relative text-clr1" style="padding-top:160px;padding-bottom:100px;min-height:100vh;background-image:url('<?= base_url('images/bg-main.png') ?>');">
 
-<h1 class="text-center fw-800 ls-xs mb-3">BIODATA ORANG TUA CALON SANTRI</h1>
+<h1 class="text-center fw-800 ls-xs mb-3">RIWAYAT KESEHATAN DAN LAIN-LAIN</h1>
 <div class="text-clr1 row justify-content-center m-0 p-0">
     <div class="col-md-8 m-0 p-0 px-3 px-md-3">
         <div class="card m-1 m-md-4 p-3">
