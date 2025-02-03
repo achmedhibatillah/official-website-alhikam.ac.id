@@ -261,7 +261,7 @@ class User extends BaseController
         $bpData = $bpModel->getBpByPesertaId($session_id);
 
         if ($this->isSaved(1) == false) {
-            return redirect()->to('berkas-pendaftaran')->with('errors-saved', 'Isi biodata calon santri, biodata orang tua, riwayat kesehatan dan lain-lain sebelum masuk ke halaman bukti pembayaran.');
+            return redirect()->to('berkas-pendaftaran')->with('errors-saved', 'Isi biodata calon santri, biodata orang tua, riwayat kesehatan, dan lain-lain sebelum mengisi bukti pembayaran.');
         }
 
         if ($bpData['bp_saved'] == 1) {
@@ -280,7 +280,7 @@ class User extends BaseController
         view('templates/footer');
     }
 
-    public function tes_tulis(): string
+    public function tes_tulis(): mixed
     {
         $session_id = session()->get('peserta_id');
         $user = $this->pesertaModel->where('peserta_id', $session_id)->first();
@@ -293,6 +293,10 @@ class User extends BaseController
 
         $ttModel = $this->ttModel;
         $ttData = $ttModel->getTtByPesertaId($session_id);
+
+        if ($this->isSaved(2) == false) {
+            return redirect()->to('berkas-pendaftaran')->with('errors-saved', 'Isi biodata calon santri, biodata orang tua, riwayat kesehatan, dan lain-lain, serta bukti pembayaran harus terverifikasi sebelum mengisi tes tulis.');
+        }
         
         return 
         view('templates/header', $data) .
@@ -304,7 +308,7 @@ class User extends BaseController
         view('templates/footer');
     }
 
-    public function tes_wawancara(): string
+    public function tes_wawancara(): mixed
     {
         $session_id = session()->get('peserta_id');
         $user = $this->pesertaModel->where('peserta_id', $session_id)->first();
@@ -320,6 +324,10 @@ class User extends BaseController
 
         $santriData = $santriModel->getSantriByPesertaId($session_id);
         $twData = $twModel->getTwByPesertaId($session_id);
+
+        if ($this->isSaved(2) == false) {
+            return redirect()->to('berkas-pendaftaran')->with('errors-saved', 'Isi biodata calon santri, biodata orang tua, riwayat kesehatan, dan lain-lain, serta bukti pembayaran harus terverifikasi sebelum mengisi tes wawancara.');
+        }
         
         return 
         view('templates/header', $data) .
@@ -335,21 +343,30 @@ class User extends BaseController
     private function isSaved($rule): bool
     {
         $session_id = session()->get('peserta_id');
+        
         $santriModel = $this->santriModel;
         $ortuModel = $this->ortuModel;
         $rkModel = $this->riwayatKesehatanModel;
         $bpModel = $this->bpModel;
-        $santriData = $santriModel->getSantriByPesertaId($session_id);
-        $ortuData = $ortuModel->getOrtuByPesertaId($session_id);
-        $rkData = $rkModel->getRiwayatKesehatanByIdPeserta($session_id);
-        $bpData = $bpModel->getBpByPesertaId($session_id);
     
-        if ($rule == 1 && ($santriData['santri_saved'] !== 1 || $ortuData['ortu_saved'] !== 1 || $rkData['rk_saved'] !== 1)) {
-            return false;
-        } elseif ($rule == 2 && ($santriData['santri_saved'] !== 1 || $ortuData['ortu_saved'] !== 1 || $rkData['rk_saved'] !== 1)) {
-            return false;
+        $santriData = $santriModel->getSantriByPesertaId($session_id) ?? [];
+        $ortuData = $ortuModel->getOrtuByPesertaId($session_id) ?? [];
+        $rkData = $rkModel->getRiwayatKesehatanByIdPeserta($session_id) ?? [];
+        $bpData = $bpModel->getBpByPesertaId($session_id) ?? [];
+    
+        $santriSaved = isset($santriData['santri_saved']) ? (int) $santriData['santri_saved'] : 0;
+        $ortuSaved = isset($ortuData['ortu_saved']) ? (int) $ortuData['ortu_saved'] : 0;
+        $rkSaved = isset($rkData['rk_saved']) ? (int) $rkData['rk_saved'] : 0;
+        $bpKonfirm = isset($bpData['bp_konfirm']) ? (int) $bpData['bp_konfirm'] : 0;
+    
+        if ($rule == 1) {
+            return ($santriSaved === 1 && $ortuSaved === 1 && $rkSaved === 1);
         }
     
-        return true;
-    }
+        if ($rule == 2) {
+            return ($santriSaved === 1 && $ortuSaved === 1 && $rkSaved === 1 && $bpKonfirm === 1);
+        }
+    
+        return false;
+    }    
 }

@@ -204,4 +204,67 @@ class Auth extends BaseController
         session()->destroy();
         return redirect()->to('/')->with('message', 'Anda telah berhasil keluar.');
     }
+
+    public function admin(): string
+    {
+        $data = [
+            'title' => 'Login Admin',
+            'page' => 'masuk'
+        ];
+        return 
+        view('templates/header', $data) .
+        view('auth/admin') .
+        view('templates/footer');
+    }
+
+    public function admin_auth()
+    {
+        $rules = [
+            'username' => 'required',
+            'pass' => 'required'
+        ];
+    
+        $errors = [
+            'username' => [
+                'required' => 'Username harus diisi.'
+            ],
+            'pass' => [
+                'required' => 'Password harus diisi.'
+            ]
+        ];
+    
+        if (!$this->validate($rules, $errors)) {
+            session()->setFlashdata('errors-masuk', $this->validator->getErrors());
+            return redirect()->to('admin')->withInput();
+        }
+    
+        $username = $this->request->getPost('username');
+        $password = $this->request->getPost('pass');
+    
+        if (str_starts_with($username, '08')) {
+            $username = '628' . substr($username, 2);
+        }
+    
+        $peserta = $this->pesertaModel->where('peserta_username', $username)->first();
+    
+        if (!$peserta) {
+            session()->setFlashdata('errors-masuk', ['auth' => 'Username tidak ditemukan.']);
+            return redirect()->to('masuk')->withInput();
+        }
+    
+        if (!password_verify($password, $peserta['peserta_pass'])) {
+            session()->setFlashdata('errors-masuk', ['auth' => 'Password salah.']);
+            return redirect()->to('masuk')->withInput();
+        }
+
+        if ($this->request->getPost('ingat')) {
+            session()->setTempdata('status', 'login-user', 60 * 60 * 24 * 7);
+            session()->setTempdata('peserta_id', $peserta['peserta_id'], 60 * 60 * 24 * 7);
+        } else {
+            session()->set('status', 'login-user');
+            session()->set('peserta_id', $peserta['peserta_id']);
+        }
+        
+        return redirect()->to('berkas-pendaftaran');
+    }
 }

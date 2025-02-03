@@ -5,14 +5,18 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
+
+// Guest
 $routes->get('/', 'Guest::index');
 
+// Auth user
 $routes->get('/masuk', 'Auth::masuk');
 $routes->get('/daftar', 'Auth::daftar');
 $routes->post('/authentication', 'Auth::masuk_auth');
 $routes->post('/registration', 'Auth::daftar_auth');
 $routes->get('/d', 'Auth::destroy');
 
+// User
 $routes->get('/berkas-pendaftaran', 'User::index', ['filter' => 'user-auth']);
 $routes->get('/biodata-calon-santri', 'User::biodata_calon_santri', ['filter' => 'user-auth']);
 $routes->get('/biodata-orang-tua', 'User::biodata_orang_tua', ['filter' => 'user-auth']);
@@ -53,3 +57,9 @@ $routes->get('/hapus-senbud/(:num)', 'RiwayatKesehatan::hapus_senbud/$1', ['filt
 $routes->get('/hapus-penalaran/(:num)', 'RiwayatKesehatan::hapus_penalaran/$1', ['filter' => 'user-auth']);
 $routes->get('/hapus-agama/(:num)', 'RiwayatKesehatan::hapus_agama/$1', ['filter' => 'user-auth']);
 $routes->get('/hapus-bahasam/(:num)', 'RiwayatKesehatan::hapus_bahasam/$1', ['filter' => 'user-auth']);
+
+// Admin
+$routes->get('/admin', 'Auth::admin');
+$routes->post('/authentication-admin', 'Auth::admin_auth');
+
+$routes->get('/dashboard-admin', 'Admin::index');

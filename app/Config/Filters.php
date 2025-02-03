@@ -14,6 +14,7 @@ use CodeIgniter\Filters\PerformanceMetrics;
 use CodeIgniter\Filters\SecureHeaders;
 
 use App\Filters\UserAuth;
+use App\Filters\AdminAuth;
 
 class Filters extends BaseFilters
 {
@@ -37,6 +38,7 @@ class Filters extends BaseFilters
         'pagecache'     => PageCache::class,
         'performance'   => PerformanceMetrics::class,
         'user-auth'     => UserAuth::class,  // Filter untuk login-user
+        'admin-auth'     => AdminAuth::class,  // Filter untuk login-user
     ];
 
     /**

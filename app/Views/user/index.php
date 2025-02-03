@@ -34,7 +34,7 @@
                 </div>
                 <div class="col-9 col-md-10 col-lg-11 m-0 p-0">
                     <h5 class="fw-bold text-clr1 ls-s ls-1 mb-0">Biodata Orang Tua</h5>
-                    <?php if($santri['santri_saved'] == 1): ?>
+                    <?php if($ortu['ortu_saved'] == 1): ?>
                         <p class="text-clr1 m-0 ls-s">Sudah mengisi</p>
                     <?php else: ?>
                         <p class="text-danger m-0 ls-s">Belum mengisi</p>
