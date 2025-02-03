@@ -41,7 +41,7 @@ class Admin extends BaseController
 
         $data = [
             'title' => 'Dashboard Admin',
-            'page' => 'user',
+            'page' => 'admin-dashboard',
         ];
 
         $santriModel = $this->santriModel;
@@ -68,6 +68,26 @@ class Admin extends BaseController
             'bp' => $bpData,
             'tt' => $ttData,
             'tw' => $twData
+        ]) .
+        view('templates/footbar-admin') .
+        view('templates/footer');
+    }
+
+    public function santri(): string
+    {
+        $data = [
+            'title' => 'Daftar Calon Santri',
+            'page' => 'admin-santri',
+        ];
+
+        $santriModel = $this->santriModel;
+        $santriData = $santriModel->findAll();
+
+        return 
+        view('templates/header', $data) .
+        view('templates/navbar-admin', $data) .
+        view('admin/santri', [
+            'santri' => $santriData
         ]) .
         view('templates/footbar-admin') .
         view('templates/footer');

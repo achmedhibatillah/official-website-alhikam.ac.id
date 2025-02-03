@@ -6,6 +6,8 @@
 #welcome h5 { font-size: 13px; margin-top: -10px; }
 #welcome p { font-size: 12px; margin-top: -3px; }
 img#kyai { width: 230px; margin-top: 130px; }
+
+#navbar-admin { min-height: 0vh; }
 }
 
 @media screen and (min-width: 768px) and (max-width: 990px) {
@@ -14,6 +16,8 @@ img#kyai { width: 230px; margin-top: 130px; }
 #welcome h5 { font-size: 17px; margin-top: -15px; }
 #welcome p { font-size: 15px; margin-top: -3px; }
 img#kyai { width: 300px; margin-left: -90px; }
+
+#navbar-admin { min-height: 100vh; }
 }
 
 @media screen and (min-width: 991px) {
@@ -23,5 +27,7 @@ img#kyai { width: 300px; margin-left: -90px; }
 #welcome h5 { font-size: 17px; margin-top: -15px; }
 #welcome p { font-size: 15px; margin-top: -3px; }
 img#kyai { width: 350px; margin-left: -90px; margin-bottom: 190px; }
+
+#navbar-admin { min-height: 100vh; }
 }
 </style>

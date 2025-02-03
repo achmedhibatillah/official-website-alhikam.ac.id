@@ -63,3 +63,4 @@ $routes->get('/admin', 'Auth::admin');
 $routes->post('/authentication-admin', 'Auth::admin_auth');
 
 $routes->get('/dashboard-admin', 'Admin::index');
+$routes->get('/daftar-calon-santri', 'Admin::santri');
