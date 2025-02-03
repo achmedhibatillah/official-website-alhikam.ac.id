@@ -79,10 +79,24 @@ class Admin extends BaseController
             'title' => 'Daftar Calon Santri',
             'page' => 'admin-santri',
         ];
-
+        
         $santriModel = $this->santriModel;
-        $santriData = $santriModel->findAll();
-
+        $santriData = $santriModel->orderBy('created_at', 'DESC')->where('santri_saved', '1')->findAll();
+    
+        $ortuModel = $this->ortuModel;
+        $rkModel = $this->riwayatKesehatanModel;
+        $bpModel = $this->bpModel;
+        $ttModel = $this->ttModel;
+        $twModel = $this->twModel;
+    
+        foreach ($santriData as $key => $x) {
+            $santriData[$key]['ortu_saved'] = $ortuModel->getOrtuByPesertaId($x['peserta_id'])['ortu_saved'] ?? 0;
+            $santriData[$key]['rk_saved'] = $rkModel->getRiwayatKesehatanByIdPeserta($x['peserta_id'])['rk_saved'] ?? 0;
+            $santriData[$key]['bp_saved'] = $bpModel->getBpByPesertaId($x['peserta_id'])['bp_saved'] ?? 0;
+            $santriData[$key]['tt_konfirm'] = $ttModel->getTtByPesertaId($x['peserta_id'])['tt_konfirm'] ?? 0;
+            $santriData[$key]['tw_status'] = $twModel->getTwByPesertaId($x['peserta_id'])['tw_status'] ?? 0;
+        }
+    
         return 
         view('templates/header', $data) .
         view('templates/navbar-admin', $data) .
@@ -92,4 +106,39 @@ class Admin extends BaseController
         view('templates/footbar-admin') .
         view('templates/footer');
     }
+    
+    public function santri_d(): string
+    {
+        $data = [
+            'title' => 'Daftar Calon Santri',
+            'page' => 'admin-santri',
+        ];
+        
+        $santriModel = $this->santriModel;
+        $santriData = $santriModel->orderBy('created_at', 'DESC')->where('santri_saved', '1')->findAll();
+    
+        $ortuModel = $this->ortuModel;
+        $rkModel = $this->riwayatKesehatanModel;
+        $bpModel = $this->bpModel;
+        $ttModel = $this->ttModel;
+        $twModel = $this->twModel;
+    
+        foreach ($santriData as $key => $x) {
+            $santriData[$key]['ortu_saved'] = $ortuModel->getOrtuByPesertaId($x['peserta_id'])['ortu_saved'] ?? 0;
+            $santriData[$key]['rk_saved'] = $rkModel->getRiwayatKesehatanByIdPeserta($x['peserta_id'])['rk_saved'] ?? 0;
+            $santriData[$key]['bp_saved'] = $bpModel->getBpByPesertaId($x['peserta_id'])['bp_saved'] ?? 0;
+            $santriData[$key]['tt_konfirm'] = $ttModel->getTtByPesertaId($x['peserta_id'])['tt_konfirm'] ?? 0;
+            $santriData[$key]['tw_status'] = $twModel->getTwByPesertaId($x['peserta_id'])['tw_status'] ?? 0;
+        }
+    
+        return 
+        view('templates/header', $data) .
+        view('templates/navbar-admin', $data) .
+        view('admin/santri', [
+            'santri' => $santriData
+        ]) .
+        view('templates/footbar-admin') .
+        view('templates/footer');
+    }
+    
 }
