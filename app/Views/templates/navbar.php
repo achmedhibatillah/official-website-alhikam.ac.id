@@ -16,7 +16,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav me-auto ms-md-5 mb-2 mb-lg-0 mt-3 mt-md-0">
         <li class="nav-item d-flex align-items-center mx-md-2">
-            <a class="nav-link fw-bold text-clr1 <?= ($page == 'beranda') ? 'active' : '' ?>" aria-current="page" href="#">Beranda</a>
+            <a class="nav-link fw-bold text-clr1 <?= ($page == 'beranda') ? 'active' : '' ?>" href="<?= base_url('') ?>">Beranda</a>
         </li>
         <li class="nav-item d-flex align-items-center mx-md-2">
             <a class="nav-link fw-bold text-clr1 <?= ($page == 'profil') ? 'active' : '' ?>" href="<?= base_url('/#profil-pondok') ?>">Profil Pondok</a>
@@ -87,5 +87,31 @@ document.getElementById("username-login").addEventListener("click", function() {
 
 document.getElementById("close-card").addEventListener("click", function() {
     document.getElementById("fixed-card").style.display = "none";
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    function activateNav() {
+        let scrollPosition = window.scrollY + window.innerHeight / 3; // Ambil posisi scroll, lebih awal sedikit
+
+        sections.forEach(section => {
+            let id = section.getAttribute("id");
+            let sectionTop = section.offsetTop;
+            let sectionHeight = section.offsetHeight;
+
+            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                navLinks.forEach(link => {
+                    link.classList.remove("active");
+                    if (link.getAttribute("href") === `#${id}`) {
+                        link.classList.add("active");
+                    }
+                });
+            }
+        });
+    }
+
+    window.addEventListener("scroll", activateNav);
 });
 </script>

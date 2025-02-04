@@ -34,24 +34,40 @@ class Auth extends BaseController
         $this->twModel = new TeswawancaraModel();
     }
 
-    public function masuk(): string
+    public function masuk(): mixed
     {
         $data = [
             'title' => 'Masuk',
             'page' => 'masuk'
         ];
+
+        if (session()->get('status') == 'login-admin') {
+            return redirect()->back();
+        }
+        if (session()->get('status') == 'login-user') {
+            return redirect()->back();
+        }
+
         return 
         view('templates/header', $data) .
         view('auth/masuk') .
         view('templates/footer');
     }
 
-    public function daftar(): string
+    public function daftar(): mixed
     {
         $data = [
             'title' => 'Masuk',
             'page' => 'masuk'
         ];
+
+        if (session()->get('status') == 'login-admin') {
+            return redirect()->back();
+        }
+        if (session()->get('status') == 'login-user') {
+            return redirect()->back();
+        }
+
         return 
         view('templates/header', $data) .
         view('auth/daftar') .
@@ -241,30 +257,31 @@ class Auth extends BaseController
         $username = $this->request->getPost('username');
         $password = $this->request->getPost('pass');
     
-        if (str_starts_with($username, '08')) {
-            $username = '628' . substr($username, 2);
-        }
-    
-        $peserta = $this->pesertaModel->where('peserta_username', $username)->first();
-    
-        if (!$peserta) {
+        if ($username !== $this->admin_ver('username')) {
             session()->setFlashdata('errors-masuk', ['auth' => 'Username tidak ditemukan.']);
-            return redirect()->to('masuk')->withInput();
+            return redirect()->to('admin')->withInput();
         }
     
-        if (!password_verify($password, $peserta['peserta_pass'])) {
+        if ($password !== $this->admin_ver('pass')) {
             session()->setFlashdata('errors-masuk', ['auth' => 'Password salah.']);
-            return redirect()->to('masuk')->withInput();
+            return redirect()->to('admin')->withInput();
         }
 
         if ($this->request->getPost('ingat')) {
-            session()->setTempdata('status', 'login-user', 60 * 60 * 24 * 7);
-            session()->setTempdata('peserta_id', $peserta['peserta_id'], 60 * 60 * 24 * 7);
+            session()->setTempdata('status', 'login-admin', 60 * 60 * 24 * 7);
         } else {
-            session()->set('status', 'login-user');
-            session()->set('peserta_id', $peserta['peserta_id']);
+            session()->set('status', 'login-admin');
         }
         
-        return redirect()->to('berkas-pendaftaran');
+        return redirect()->to('dashboard-admin');
+    }
+
+    private function admin_ver($x)
+    {
+        if ($x == 'pass') {
+            return 'xxx';
+        } elseif ($x == 'username') {
+            return 'x';
+        }
     }
 }

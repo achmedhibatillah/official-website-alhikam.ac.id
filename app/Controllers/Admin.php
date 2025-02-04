@@ -95,6 +95,7 @@ class Admin extends BaseController
             $santriData[$key]['bp_saved'] = $bpModel->getBpByPesertaId($x['peserta_id'])['bp_saved'] ?? 0;
             $santriData[$key]['tt_konfirm'] = $ttModel->getTtByPesertaId($x['peserta_id'])['tt_konfirm'] ?? 0;
             $santriData[$key]['tw_status'] = $twModel->getTwByPesertaId($x['peserta_id'])['tw_status'] ?? 0;
+            $santriData[$key]['bp_foto'] = $bpModel->getBpByPesertaId($x['peserta_id'])['bp_foto'] ?? 0;
         }
     
         return 
@@ -106,39 +107,129 @@ class Admin extends BaseController
         view('templates/footbar-admin') .
         view('templates/footer');
     }
-    
-    public function santri_d(): string
+
+    public function santri_d($peserta_id): string
     {
         $data = [
-            'title' => 'Daftar Calon Santri',
+            'title' => 'Calon Santri',
             'page' => 'admin-santri',
         ];
         
         $santriModel = $this->santriModel;
-        $santriData = $santriModel->orderBy('created_at', 'DESC')->where('santri_saved', '1')->findAll();
-    
         $ortuModel = $this->ortuModel;
         $rkModel = $this->riwayatKesehatanModel;
+        $lainModel = $this->lainModel;
         $bpModel = $this->bpModel;
         $ttModel = $this->ttModel;
         $twModel = $this->twModel;
     
-        foreach ($santriData as $key => $x) {
-            $santriData[$key]['ortu_saved'] = $ortuModel->getOrtuByPesertaId($x['peserta_id'])['ortu_saved'] ?? 0;
-            $santriData[$key]['rk_saved'] = $rkModel->getRiwayatKesehatanByIdPeserta($x['peserta_id'])['rk_saved'] ?? 0;
-            $santriData[$key]['bp_saved'] = $bpModel->getBpByPesertaId($x['peserta_id'])['bp_saved'] ?? 0;
-            $santriData[$key]['tt_konfirm'] = $ttModel->getTtByPesertaId($x['peserta_id'])['tt_konfirm'] ?? 0;
-            $santriData[$key]['tw_status'] = $twModel->getTwByPesertaId($x['peserta_id'])['tw_status'] ?? 0;
-        }
+        // Ambil data santri
+        $santriData = $santriModel->getSantriByPesertaId($peserta_id);
+    
+        $ortuData = $ortuModel->getOrtuByPesertaId($peserta_id);
+        $rkData = $rkModel->getRiwayatKesehatanByIdPeserta($peserta_id);
+        $lainData = $lainModel->getLainByIdPeserta($peserta_id);
+        $bpData = $bpModel->getBpByPesertaId($peserta_id);
+        $ttData = $ttModel->getTtByPesertaId($peserta_id);
+        $twData = $twModel->getTwByPesertaId($peserta_id);
+    
+        $santriData['ortu_saved'] = $ortuData['ortu_saved'] ?? 0;
+        $santriData['rk_saved'] = $rkData['rk_saved'] ?? 0;
+        $santriData['bp_saved'] = $bpData['bp_saved'] ?? 0;
+        $santriData['tt_konfirm'] = $ttData['tt_konfirm'] ?? 0;
+        $santriData['tw_status'] = $twData['tw_status'] ?? 0;
+
+        $pekerjaanOptions = [
+            1 => 'Tidak bekerja',
+            2 => 'Nelayan',
+            3 => 'Petani',
+            4 => 'Peternak',
+            5 => 'PNS/TNI/Polri',
+            6 => 'Karyawan swasta',
+            7 => 'Pedagang kecil',
+            8 => 'Pedagang besar',
+            9 => 'Wiraswasta',
+            10 => 'Buruh',
+            11 => 'Pensiunan',
+            12 => 'Sudah meninggal',
+            13 => 'Lainnya'
+        ];
+        $ortuData['ortu_a_pekerjaan_string'] = $pekerjaanOptions[$ortuData['ortu_a_pekerjaan']] ?? '';
+        $ortuData['ortu_i_pekerjaan_string'] = $pekerjaanOptions[$ortuData['ortu_i_pekerjaan']] ?? '';
+
+        $agamaOptions = [
+            1 => 'Islam',
+            2 => 'Protestan',
+            3 => 'Katolik',
+            4 => 'Hindu',
+            5 => 'Buddha',
+            6 => 'Konghuchu',
+            7 => 'Lainnya'
+        ];
+        $ortuData['ortu_a_agama_string'] = $agamaOptions[$ortuData['ortu_a_agama']] ?? '';
+        $ortuData['ortu_i_agama_string'] = $agamaOptions[$ortuData['ortu_i_agama']] ?? '';
+
+        $pendidikanOptions = [
+            1 => 'Tidak sekolah',
+            2 => 'PAUD',
+            3 => 'TK / sederajat',
+            4 => 'Putus SD',
+            5 => 'SD / sederajat',
+            6 => 'SMP / sederajat',
+            7 => 'SMA / sederajat',
+            8 => 'Paket A',
+            9 => 'Paket B',
+            10 => 'Paket C',
+            11 => 'D1',
+            12 => 'D2',
+            13 => 'D3',
+            14 => 'D4',
+            15 => 'Profesi',
+            16 => 'S1',
+            17 => 'SP-1',
+            18 => 'S2',
+            19 => 'SP-2',
+            20 => 'S3',
+            21 => 'Non-Formal',
+            22 => 'Informal',
+            23 => 'Lainnya'
+        ];
+        $ortuData['ortu_a_pendidikan_string'] = $pendidikanOptions[$ortuData['ortu_a_pendidikan']] ?? '';
+        $ortuData['ortu_i_pendidikan_string'] = $pendidikanOptions[$ortuData['ortu_i_pendidikan']] ?? '';
+
+        $golonganDarahOptions = [
+            1 => 'A',
+            2 => 'B',
+            3 => 'AB',
+            4 => 'O',
+            5 => '-'
+        ];
+        $rkData['rk_golongandarah_string'] = $golonganDarahOptions[$rkData['rk_golongandarah']] ?? 'Tidak Diketahui';
+        
+        $perawatanOptions = [
+            1 => 'Iya',
+            2 => 'Tidak',
+            3 => 'Jalan',
+            4 => 'Inap'
+        ];
+        $rkData['rk_perawatan_string'] = $perawatanOptions[$rkData['rk_perawatan']] ?? 'Tidak Diketahui';
+
     
         return 
-        view('templates/header', $data) .
-        view('templates/navbar-admin', $data) .
-        view('admin/santri', [
-            'santri' => $santriData
-        ]) .
-        view('templates/footbar-admin') .
-        view('templates/footer');
+            view('templates/header', $data) .
+            view('templates/navbar-admin', $data) .
+            view('admin/santri-detail', [
+                'santri' => $santriData,
+                'ortu' => $ortuData,
+                'rk' => $rkData,
+                'lain' => $lainData,
+                'bp' => $bpData,
+                'tt' => $ttData,
+                'tw' => $twData
+            ]) .
+            view('templates/footbar-admin') .
+            view('templates/footer');
     }
+    
     
 }

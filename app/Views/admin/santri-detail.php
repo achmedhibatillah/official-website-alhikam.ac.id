@@ -1,10 +1,83 @@
-<section class="bg-clr5 bg-web position-relative text-clr1" style="padding-top:160px;padding-bottom:100px;min-height:100vh;background-image:url('<?= base_url('images/bg-main.png') ?>');">
+<div class="row m-0 p-0">
 
-<h1 class="text-center fw-800 ls-xs mb-3">RIWAYAT KESEHATAN DAN LAIN-LAIN</h1>
-<div class="text-clr1 row justify-content-center m-0 p-0">
-    <div class="col-md-8 m-0 p-0 px-3 px-md-3">
+<div class="col-md-9 m-0 p-0">
+    <div class="card m-1 m-md-4 p-3">
+        <h4 class="bg-clr1 text-clr5 rounded py-3 px-4 fw-bold ls-xs mb-4">I. IDENTITAS CALON SANTRI</h4>
+        <table>
+            <tr>
+                <td class="align-top ls-1 lh-1 pt-3" style="width:30%;">1. Nama Lengkap</td>
+                <td class="align-top ls-1 lh-1 pt-3" style="width:3%;">:</td>
+                <td class="align-top ls-1 lh-1 pt-3" style="width:67%;"><?= $santri['santri_nama'] ?></td>
+            </tr>
+            <tr>
+                <td class="align-top ls-1 lh-1 pt-3" style="width:30%;">2. Nama Panggilan</td>
+                <td class="align-top ls-1 lh-1 pt-3" style="width:3%;">:</td>
+                <td class="align-top ls-1 lh-1 pt-3" style="width:67%;"><?= $santri['santri_panggilan'] ?></td>
+            </tr>
+            <tr>
+                <td class="align-top ls-1 lh-1 pt-3" style="width:30%;">3. NIK</td>
+                <td class="align-top ls-1 lh-1 pt-3" style="width:3%;">:</td>
+                <td class="align-top ls-1 lh-1 pt-3" style="width:67%;"><?= $santri['santri_nik'] ?></td>
+            </tr>
+            <tr>
+                <td class="align-top ls-1 lh-1 pt-3" style="width:30%;">4. Tempat dan Tanggal Lahir</td>
+                <td class="align-top ls-1 lh-1 pt-3" style="width:3%;">:</td>
+                <td class="align-top ls-1 lh-1 pt-3" style="width:67%;"><?= $santri['santri_tempatlahir'] ?>, <?= date('d M Y', strtotime($santri['santri_tanggallahir'])) ?></td>
+            </tr>
+            <tr>
+                <td class="align-top ls-1 lh-1 pt-3" style="width:30%;">5. Alamat Asal</td>
+                <td class="align-top ls-1 lh-1 pt-3" style="width:3%;">:</td>
+                <td class="align-top ls-1 lh-1 pt-3" style="width:67%;"><?= $santri['santri_alamat'] ?></td>
+            </tr>
+            <tr>
+                <td class="align-top ls-1 lh-1 pt-3" style="width:30%;">6. Kedudukan dalam Keluarga</td>
+                <td class="align-top ls-1 lh-1 pt-3" style="width:3%;">:</td>
+                <td class="align-top ls-1 lh-1 pt-3" style="width:67%;">Anak ke <?= $santri['santri_anakke'] ?>, dari <?= $santri['santri_bersaudara'] ?> bersaudara</td>
+            </tr>
+            <tr>
+                <td class="align-top ls-1 lh-1 pt-3" style="width:30%;">7. Nomor HP/Whatsapp:</td>
+                <td class="align-top ls-1 lh-1 pt-3" style="width:3%;">:</td>
+                <td class="align-top ls-1 lh-1 pt-3" style="width:67%;">+<?= $santri['santri_hp'] ?></td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Ortu -->
+    <div class="card m-1 m-md-4 p-3">
+        <h4 class="bg-clr1 text-clr5 rounded py-3 px-4 fw-bold ls-xs mb-4">III. A. IDENTITAS AYAH</h4>
+        <?php if ($santri['ortu_saved'] == 1): ?>
+        <table>
+            <tr><td style="width:30%;">Nama</td><td style="width:3%;">:</td><td style="width:67%;"><?= $ortu['ortu_a_nama'] ?></td></tr>
+            <tr><td style="width:30%;">Pekerjaan</td><td style="width:3%;">:</td><td style="width:67%;"><?= $ortu['ortu_a_pekerjaan_string'] ?> <?= !empty($ortu['ortu_a_pekerjaan_lain']) ? '(' . $ortu['ortu_a_pekerjaan_lain'] . ')' : '' ?></td></tr>
+            <tr><td style="width:30%;">Agama</td><td style="width:3%;">:</td><td style="width:67%;"><?= $ortu['ortu_a_agama_string'] ?> <?= !empty($ortu['ortu_a_agama_lain']) ? '(' . $ortu['ortu_a_agama_lain'] . ')' : '' ?></td></tr>
+            <tr><td style="width:30%;">Pendidikan</td><td style="width:3%;">:</td><td style="width:67%;"><?= $ortu['ortu_a_pendidikan_string'] ?> <?= !empty($ortu['ortu_a_pendidikan_lain']) ? '(' . $ortu['ortu_a_pendidikan_lain'] . ')' : '' ?></td></tr>
+            <tr><td style="width:30%;">No. HP</td><td style="width:3%;">:</td><td style="width:67%;">+<?= $ortu['ortu_a_hp'] ?></td></tr>
+            <tr><td style="width:30%;">Pendapatan</td><td style="width:3%;">:</td><td style="width:67%;"><?= $ortu['ortu_a_pendapatan'] ?></td></tr>
+        </table>
+        <?php else: ?>
+            <div class="alert alert-danger text-center lh-1 ls-1">Data belum diisi.</div>
+        <?php endif; ?>
+    </div>
+    <div class="card m-1 m-md-4 p-3">
+        <h4 class="bg-clr1 text-clr5 rounded py-3 px-4 fw-bold ls-xs mb-4">III. B. IDENTITAS IBU</h4>
+        <?php if ($santri['ortu_saved'] == 1): ?>
+        <table>
+            <tr><td style="width:30%;">Nama</td><td style="width:3%;">:</td><td style="width:67%;"><?= $ortu['ortu_i_nama'] ?></td></tr>
+            <tr><td style="width:30%;">Pekerjaan</td><td style="width:3%;">:</td><td style="width:67%;"><?= $ortu['ortu_i_pekerjaan_string'] ?> <?= !empty($ortu['ortu_i_pekerjaan_lain']) ? '(' . $ortu['ortu_i_pekerjaan_lain'] . ')' : '' ?></td></tr>
+            <tr><td style="width:30%;">Agama</td><td style="width:3%;">:</td><td style="width:67%;"><?= $ortu['ortu_i_agama_string'] ?> <?= !empty($ortu['ortu_i_agama_lain']) ? '(' . $ortu['ortu_i_agama_lain'] . ')' : '' ?></td></tr>
+            <tr><td style="width:30%;">Pendidikan</td><td style="width:3%;">:</td><td style="width:67%;"><?= $ortu['ortu_i_pendidikan_string'] ?> <?= !empty($ortu['ortu_i_pendidikan_lain']) ? '(' . $ortu['ortu_i_pendidikan_lain'] . ')' : '' ?></td></tr>
+            <tr><td style="width:30%;">No. HP</td><td style="width:3%;">:</td><td style="width:67%;">+<?= $ortu['ortu_i_hp'] ?></td></tr>
+            <tr><td style="width:30%;">Pendapatan</td><td style="width:3%;">:</td><td style="width:67%;"><?= $ortu['ortu_i_pendapatan'] ?></td></tr>
+        </table>
+        <?php else: ?>
+            <div class="alert alert-danger text-center lh-1 ls-1">Data belum diisi.</div>
+        <?php endif; ?>
+    </div>
+
+    <!-- RK -->
     <div class="card m-1 m-md-4 p-3">
         <h4 class="bg-clr1 text-clr5 rounded py-3 px-4 fw-bold ls-xs mb-4">IV. RIWAYAT KESEHATAN</h4>
+        <?php if ($santri['rk_saved'] == 1): ?>
         <table>
             <tr>
                 <td class="align-top ls-1 lh-1 pt-3" style="width:30%;">A. Golongan Darah</td>
@@ -20,8 +93,7 @@
                             <?php foreach($rk['penyakit_pernah'] as $x) : ?>
                                 <li class="ls-1 lh-1"><?= $x['rk_pernah_penyakit'] ?></li>
                             <?php endforeach; ?>
-                        <?php else: ?>
-                            -
+                        <?php else: ?>-
                         <?php endif ?>
                     </ul>
                 </td>
@@ -35,8 +107,7 @@
                             <?php foreach($rk['penyakit_sedang'] as $x) : ?>
                                 <li class="ls-1 lh-1"><?= $x['rk_sedang_penyakit'] ?></li>
                             <?php endforeach; ?>
-                        <?php else: ?>
-                            -
+                        <?php else: ?>-
                         <?php endif ?>
                     </ul>
                 </td>
@@ -47,7 +118,7 @@
                 <td class="align-top ls-1 lh-1 pt-3" style="width:67%;"><?= $rk['rk_perawatan_string'] ?></td>
             </tr>
         </table>
-        <p class="ls-1 lh-1 mt-5 mb-1">Apabila terdapat hal-hal mendesak atas saya, yang dapat dihubungi segera adalah:</p>
+        <p class="ls-1 lh-1 mt-5 mb-1">Apabila terdapat hal-hal mendesak, yang dapat dihubungi segera adalah:</p>
         <table class="ms-3">
             <tr>
                 <td class="align-top ls-1 lh-1 pt-3" style="width:30%;">- Nama</td>
@@ -65,9 +136,13 @@
                 <td class="align-top ls-1 lh-1 pt-3" style="width:67%;"><?= $rk['rk_kontak_hp'] ?></td>
             </tr>
         </table>
+        <?php else: ?>
+            <div class="alert alert-danger text-center lh-1 ls-1">Data belum diisi.</div>
+        <?php endif; ?>
     </div>
     <div class="card m-1 m-md-4 p-3">
         <h4 class="bg-clr1 text-clr5 rounded py-3 px-4 fw-bold ls-xs mb-4">V. LAIN-LAIN</h4>
+        <?php if ($santri['rk_saved'] == 1): ?>
         <table>
             <tr>
                 <td class="align-top ls-1 lh-1 pt-3" style="width:30%;">A. Prestasi yang pernah dicapai:</td>
@@ -280,7 +355,11 @@
                 </td>
             </tr>
         </table>
+        <?php else: ?>
+            <div class="alert alert-danger text-center lh-1 ls-1">Data belum diisi.</div>
+        <?php endif; ?>
     </div>
-    </div>
+
 </div>
-</section>
+
+</div>

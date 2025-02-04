@@ -62,5 +62,6 @@ $routes->get('/hapus-bahasam/(:num)', 'RiwayatKesehatan::hapus_bahasam/$1', ['fi
 $routes->get('/admin', 'Auth::admin');
 $routes->post('/authentication-admin', 'Auth::admin_auth');
 
-$routes->get('/dashboard-admin', 'Admin::index');
-$routes->get('/daftar-calon-santri', 'Admin::santri');
+$routes->get('/dashboard-admin', 'Admin::index', ['filter' => 'admin-auth']);
+$routes->get('/daftar-calon-santri', 'Admin::santri', ['filter' => 'admin-auth']);
+$routes->get('/calon-santri/(:segment)', 'Admin::santri_d/$1', ['filter' => 'admin-auth']);

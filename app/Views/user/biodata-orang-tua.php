@@ -3,7 +3,7 @@
 <h1 class="text-center fw-800 ls-xs mb-3">BIODATA ORANG TUA CALON SANTRI</h1>
 <div class="text-clr1 row justify-content-center m-0 p-0">
     <div class="col-md-8 m-0 p-0 px-3 px-md-3">
-        <div class="card m-1 m-md-4 p-3">
+    <div class="card m-1 m-md-4 p-3">
         <h4 class="bg-clr1 text-clr5 rounded py-3 px-4 fw-bold ls-xs mb-4">III. A. IDENTITAS AYAH</h4>
         <table>
             <tr><td>Nama</td><td>:</td><td><?= $ortu['ortu_a_nama'] ?></td></tr>

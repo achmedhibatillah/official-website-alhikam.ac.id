@@ -17,25 +17,65 @@
         </div>
     </div>
     <div class="mt-4">
-        <div class="card m-0 py-2 text-clr1 lh-1 fsz-18 mb-2 he-35 d-flex justify-content-center px-3 cursor-pointer" style="border-radius:20px;" onclick="window.location.href = '<?= base_url('dashboard-admin'); ?>'">
-            <div class="row m-0 p-0">
-                <div class="col-11 m-0 p-0">Dashboard</div>
-                <div class="col-1 m-0 p-0 d-flex justify-content-center align-items-center"><?= ($page == 'admin-dashboard') ? '<i class="fas fa-circle"></i>' : '' ?></div>
+        <div class="btn m-0 py-1 border-clr5 btn-outline-light lh-1 fsz-12 mb-2 d-flex justify-content-center px-3 cursor-pointer" style="border-radius:5px;" onclick="window.location.href = '<?= base_url('dashboard-admin'); ?>'">
+            <div class="row m-0 p-0 w-100">
+                <div class="col-1 m-0 p-0"><i class="fas fa-tachometer-alt"></i></div>
+                <div class="col-10 m-0 p-0 d-flex justify-content-start ps-2">Dashboard</div>
+                <div class="col-1 m-0 p-0 d-flex align-items-center justify-content-end"><?= ($page == 'admin-dashboard') ? '<i class="fas fa-circle"></i>' : '' ?></div>
             </div>
         </div>
-        <div class="card m-0 py-2 text-clr1 lh-1 fsz-18 mb-2 he-35 d-flex justify-content-center px-3 cursor-pointer" style="border-radius:20px;" onclick="window.location.href = '<?= base_url('daftar-calon-santri'); ?>'">
-            <div class="row m-0 p-0">
-                <div class="col-11 m-0 p-0">Daftar Calon Santri</div>
-                <div class="col-1 m-0 p-0 d-flex justify-content-center align-items-center"><?= ($page == 'admin-santri') ? '<i class="fas fa-circle"></i>' : '' ?></div>
+        <div class="btn m-0 py-1 btn-outline-light text-clr5 lh-1 fsz-12 mb-2 d-flex justify-content-center px-3 cursor-pointer" style="border-radius:5px;" onclick="window.location.href = '<?= base_url('daftar-calon-santri'); ?>'">
+            <div class="row m-0 p-0 w-100">
+                <div class="col-1 m-0 p-0"><i class="fas fa-receipt"></i></div>
+                <div class="col-10 m-0 p-0 d-flex justify-content-start ps-2">Daftar Calon Santri</div>
+                <div class="col-1 m-0 p-0 d-flex align-items-center justify-content-end"><?= ($page == 'admin-santri') ? '<i class="fas fa-circle"></i>' : '' ?></div>
             </div>
         </div>
-        <div class="card m-0 py-2 text-clr1 lh-1 fsz-18 mb-2 he-35 d-flex justify-content-center px-3 cursor-pointer" style="border-radius:20px;" onclick="window.location.href = '<?= base_url('verifikasi-calon-santri'); ?>'">
-            <div class="row m-0 p-0">
-                <div class="col-11 m-0 p-0">Verifikasi Pembayaran</div>
-                <div class="col-1 m-0 p-0 d-flex justify-content-center align-items-center"><?= ($page == 'admin-verifikasi') ? '<i class="fas fa-circle"></i>' : '' ?></div>
+        <div class="m-0 py-1 btn btn-outline-light text-clr5 lh-1 fsz-12 mb-2 d-flex justify-content-center px-3 cursor-pointer" style="border-radius:5px;" onclick="window.location.href = '<?= base_url('verifikasi-calon-santri'); ?>'">
+            <div class="row m-0 p-0 w-100">
+                <div class="col-1 m-0 p-0"><i class="fas fa-users"></i></div>
+                <div class="col-10 m-0 p-0 d-flex justify-content-start ps-2">Verifikasi Pembayaran</div>
+                <div class="col-1 m-0 p-0 d-flex align-items-center justify-content-end"><?= ($page == 'admin-verifikasi') ? '<i class="fas fa-circle"></i>' : '' ?></div>
             </div>
         </div>
     </div>
 </div>
 
 <div class="col-md-9 m-0 p-0 bg-clr5">
+<div class="card bg-clr1 m-3 px-4 py-2">
+    <div class="row m-0 p-0">
+        <div class="col-10 m-0 p-0">
+            <h4 class="m-0 text-clr5 fw-800 ls-xxs lh-1"><?= $title ?></h4>
+        </div>
+        <div class="col-2 m-0 p-0 d-flex justify-content-end align-items-center">
+            <i class="fas fa-user-circle text-clr5 cursor-pointer" id="admin-login"></i>
+        </div>
+    </div>
+</div>
+
+<div id="fixed-card" class="fixed-card bg-clr4">
+    <p class="fw-bold ls-1 lh-1 mb-0 text-clr1"><i class="fas fa-user-circle lh-1 me-2"></i>Admin</p>
+    <a href="<?= base_url('d') ?>" class="btn btn-outline-danger fsz-14 py-0 mx-0 mt-4 mb-0" style="width:50%;">Logout</a>
+    <button id="close-card">x</button>
+</div>
+
+<style>
+.fixed-card { display: none; position: fixed; padding: 20px; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); border-radius: 8px; border: 2px solid var(--clr5); z-index: 1000; }
+#close-card { position: absolute; top: 10px; right: 10px; padding: 5px 10px; background: red; color: white; border: none; cursor: pointer; }
+@media screen and (max-width: 990px) {
+.fixed-card { top: 50%; left: 50%; transform: translate(-50%, -50%); width: 90%; }
+}
+@media screen and (min-width: 991px) {
+.fixed-card { top: 50px; right: 20px; transform: translate(0%, 0%); width: 300px; }
+}
+</style>
+
+<script>
+document.getElementById("admin-login").addEventListener("click", function() {
+    document.getElementById("fixed-card").style.display = "block";
+});
+
+document.getElementById("close-card").addEventListener("click", function() {
+    document.getElementById("fixed-card").style.display = "none";
+});
+</script>
