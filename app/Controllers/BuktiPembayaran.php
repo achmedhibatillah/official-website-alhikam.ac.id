@@ -3,14 +3,17 @@
 namespace App\Controllers;
 
 use \App\Models\BpModel;
+use \App\Models\MessageModel;
 
 class BuktiPembayaran extends BaseController
 {
     protected $bpModel;
+    protected $messageModel;
 
     public function __construct()
     {
         $this->bpModel = new BpModel();
+        $this->messageModel = new MessageModel();
     }
 
     public function update()
@@ -85,4 +88,34 @@ class BuktiPembayaran extends BaseController
         return $this->response->download($fullPath, null);
     }
     
+    public function pembayaran_ver()
+    {
+        $bpModel = $this->bpModel;
+        $update = [
+            'bp_konfirm' => $this->request->getPost('bp_konfirm')
+        ];
+
+        $bp_id = $this->request->getPost('bp_id');
+
+        $bpModel->update($bp_id, $update);
+
+        return redirect()->back();
+    }
+
+    public function pembayaran_unver()
+    {
+        $bpModel = $this->bpModel;
+        $messageModel = $this->messageModel;
+
+        $update_bp = [
+            'bp_saved' => $this->request->getPost('bp_saved')
+        ];
+
+        $bp_id = $this->request->getPost('bp_id');
+
+        $bpModel->update($bp_id, $update_bp);
+
+        $santri_nama = $this->request->getPost('santri_nama');
+        return redirect()->to('verifikasi-pembayaran')->with('unver-success', 'Anda berhasil menolak verifikasi pembayaran <b>' . $santri_nama . '</b>.');
+    }
 }

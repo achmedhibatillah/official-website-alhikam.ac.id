@@ -1,4 +1,9 @@
 <div class="m-3">
+    <?php if (session()->getFlashdata('unver-success')): ?>
+        <div class="mb-3 alert alert-success">
+            <?= session()->getFlashdata('unver-success') ?>
+        </div>
+    <?php endif; ?>
     <div class="card m-0 p-3 mb-3 bg-clr1 text-clr5">
         <div class="row m-0 p-0">
             <div class="col-md-3 m-0 p-0">

@@ -68,3 +68,6 @@ $routes->get('/calon-santri/(:segment)', 'Admin::santri_d/$1', ['filter' => 'adm
 $routes->get('/verifikasi-pembayaran', 'Admin::pembayaran', ['filter' => 'admin-auth']);
 $routes->get('/verifikasi-pembayaran-where-(:segment)', 'Admin::pembayaran/$1', ['filter' => 'admin-auth']);
 $routes->get('/verifikasi-pembayaran/(:num)', 'Admin::pembayaran_d/$1', ['filter' => 'admin-auth']);
+$routes->get('/admin-download-bukti-pembayaran/(:segment)', 'BuktiPembayaran::downloadBp/$1', ['filter' => 'admin-auth']);
+$routes->post('/verifikasi-bp', 'BuktiPembayaran::pembayaran_ver', ['filter' => 'admin-auth']);
+$routes->post('/tolak-verifikasi-bp', 'BuktiPembayaran::pembayaran_unver', ['filter' => 'admin-auth']);

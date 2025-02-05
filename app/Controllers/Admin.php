@@ -290,7 +290,6 @@ class Admin extends BaseController
         $santriModel = $this->santriModel;
         $bpModel = $this->bpModel;
     
-        // Ambil data santri
         $santriData = $santriModel->getSantriByPesertaId($peserta_id);
         $bpData = $bpModel->getBpByPesertaId($peserta_id);
     

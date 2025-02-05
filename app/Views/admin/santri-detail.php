@@ -20,7 +20,7 @@
                     <?php if($bp['bp_saved'] == 1 && $bp['bp_konfirm'] == 0): ?>
                         <div class="text-center bg-warning text-clr5 px-3 py-1 rounded lh-s ls-s fsz-12">Perlu diverifikasi</div>
                         <div class="d-flex justify-content-center">
-                            <a href="<?= base_url('verifikasi-pembayaran/' . $bp['bp_id']) ?>" class="fsz-11 ls-s lh-1 mt-1">verifikasi di sini</a>
+                            <a href="<?= base_url('verifikasi-pembayaran/' . $santri['peserta_id']) ?>" class="fsz-11 ls-s lh-1 mt-1">verifikasi di sini</a>
                         </div>
                     <?php elseif($bp['bp_saved'] == 1 && $bp['bp_konfirm'] == 1): ?>
                         <div class="text-center bg-clr1 text-clr5 px-3 py-1 rounded lh-s ls-s fsz-12">Terverifikasi</div>

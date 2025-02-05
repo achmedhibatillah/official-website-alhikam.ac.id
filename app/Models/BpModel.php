@@ -17,6 +17,7 @@ class BpModel extends Model
         'bp_foto',
         'bp_bp',
         'bp_saved',
+        'bp_konfirm',
         'peserta_id'
     ];
 
