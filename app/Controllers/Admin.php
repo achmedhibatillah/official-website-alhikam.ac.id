@@ -231,5 +231,77 @@ class Admin extends BaseController
             view('templates/footer');
     }
     
+    public function pembayaran($cond = ''): string
+    {
+        $data = [
+            'title' => 'Verifikasi Pembayaran',
+            'page' => 'admin-verifikasi',
+        ];
+        
+        $santriModel = $this->santriModel;
+
+        if ($cond == 'verified') {
+            $santriData = $santriModel
+            ->select('santri.*, bp.bp_saved, bp.bp_konfirm, bp.bp_foto, bp.bp_bp')
+            ->join('bp', 'bp.peserta_id = santri.peserta_id')
+            ->where('santri.santri_saved', '1')
+            ->where('bp.bp_saved', '1')
+            ->where('bp.bp_konfirm', '1')
+            ->orderBy('santri.created_at', 'DESC')
+            ->findAll();
+        } elseif ($cond == 'all') {
+            $santriData = $santriModel
+            ->select('santri.*, bp.bp_saved, bp.bp_konfirm, bp.bp_foto, bp.bp_bp')
+            ->join('bp', 'bp.peserta_id = santri.peserta_id')
+            ->where('santri.santri_saved', '1')
+            ->where('bp.bp_saved', '1')
+            ->orderBy('santri.created_at', 'DESC')
+            ->findAll();
+        } else {
+            $santriData = $santriModel
+            ->select('santri.*, bp.bp_saved, bp.bp_konfirm, bp.bp_foto, bp.bp_bp')
+            ->join('bp', 'bp.peserta_id = santri.peserta_id')
+            ->where('santri.santri_saved', '1')
+            ->where('bp.bp_saved', '1')
+            ->where('bp.bp_konfirm', '0')
+            ->orderBy('santri.created_at', 'DESC')
+            ->findAll();
+        }
+
+
+        return 
+        view('templates/header', $data) .
+        view('templates/navbar-admin', $data) .
+        view('admin/verifikasi-pembayaran', [
+            'cond' => $cond,
+            'santri' => $santriData
+        ]) .
+        view('templates/footbar-admin') .
+        view('templates/footer');
+    }
+
+    public function pembayaran_d($peserta_id): string
+    {
+        $data = [
+            'title' => 'Detail Pembayaran',
+            'page' => 'admin-verifikasi',
+        ];
+        
+        $santriModel = $this->santriModel;
+        $bpModel = $this->bpModel;
     
+        // Ambil data santri
+        $santriData = $santriModel->getSantriByPesertaId($peserta_id);
+        $bpData = $bpModel->getBpByPesertaId($peserta_id);
+    
+        return 
+            view('templates/header', $data) .
+            view('templates/navbar-admin', $data) .
+            view('admin/verifikasi-pembayaran-detail', [
+                'santri' => $santriData,
+                'bp' => $bpData
+            ]) .
+            view('templates/footbar-admin') .
+            view('templates/footer');
+    }
 }

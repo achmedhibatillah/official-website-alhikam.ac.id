@@ -16,16 +16,16 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav me-auto ms-md-5 mb-2 mb-lg-0 mt-3 mt-md-0">
         <li class="nav-item d-flex align-items-center mx-md-2">
-            <a class="nav-link fw-bold text-clr1 <?= ($page == 'beranda') ? 'active' : '' ?>" href="<?= base_url('') ?>">Beranda</a>
+            <a class="nav-link fw-bold text-clr1 fsz-18" href="<?= base_url('') ?>">Beranda</a>
         </li>
         <li class="nav-item d-flex align-items-center mx-md-2">
-            <a class="nav-link fw-bold text-clr1 <?= ($page == 'profil') ? 'active' : '' ?>" href="<?= base_url('/#profil-pondok') ?>">Profil Pondok</a>
+            <a class="nav-link fw-bold text-clr1 fsz-18" href="<?= base_url('/#profil-pondok') ?>">Profil Pondok</a>
         </li>
         <li class="nav-item d-flex align-items-center mx-md-2">
-            <a class="nav-link fw-bold text-clr1 <?= ($page == 'pendaftaran') ? 'active' : '' ?>" href="<?= base_url('/#pendaftaran') ?>">Pendaftaran</a>
+            <a class="nav-link fw-bold text-clr1 fsz-18" href="<?= base_url('/#pendaftaran') ?>">Pendaftaran</a>
         </li>
         <li class="nav-item d-flex align-items-center mx-md-2">
-            <a class="nav-link fw-bold text-clr1 <?= ($page == 'tanya-jawab') ? 'active' : '' ?>" href="<?= base_url('/#tanya-jawab') ?>">Tanya Jawab</a>
+            <a class="nav-link fw-bold text-clr1 fsz-18" href="<?= base_url('/#tanya-jawab') ?>">Tanya Jawab</a>
         </li>
     </ul>
     <?php if (!(session()->get('status') === 'login-user')): ?>

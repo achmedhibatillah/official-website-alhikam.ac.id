@@ -31,7 +31,7 @@
                 <div class="col-1 m-0 p-0 d-flex align-items-center justify-content-end"><?= ($page == 'admin-santri') ? '<i class="fas fa-circle"></i>' : '' ?></div>
             </div>
         </div>
-        <div class="m-0 py-1 btn btn-outline-light text-clr5 lh-1 fsz-12 mb-2 d-flex justify-content-center px-3 cursor-pointer" style="border-radius:5px;" onclick="window.location.href = '<?= base_url('verifikasi-calon-santri'); ?>'">
+        <div class="m-0 py-1 btn btn-outline-light text-clr5 lh-1 fsz-12 mb-2 d-flex justify-content-center px-3 cursor-pointer" style="border-radius:5px;" onclick="window.location.href = '<?= base_url('verifikasi-pembayaran'); ?>'">
             <div class="row m-0 p-0 w-100">
                 <div class="col-1 m-0 p-0"><i class="fas fa-users"></i></div>
                 <div class="col-10 m-0 p-0 d-flex justify-content-start ps-2">Verifikasi Pembayaran</div>

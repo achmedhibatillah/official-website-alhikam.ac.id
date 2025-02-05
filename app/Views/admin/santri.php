@@ -5,7 +5,7 @@
     <div class="row m-0 p-0">
         <?php foreach($santri as $x) : ?>
             <div class="col-md-6 m-0 p-0">
-                <div class="card border-clr1 m-0 mb-2 cursor-pointer ms-0 ms-md-1 d-flex justify-content-center align-items-center" onclick="window.location.href = '<?= base_url('calon-santri/' . $x['peserta_id']); ?>'" style="height:100px;">
+                <div class="card bg-clr4 border-clr1 m-0 mb-2 cursor-pointer ms-0 ms-md-1 d-flex justify-content-center align-items-center" onclick="window.location.href = '<?= base_url('calon-santri/' . $x['peserta_id']); ?>'" style="height:100px;">
                     <table class="w-100">
                         <tr>
                             <td style="width:20%;">

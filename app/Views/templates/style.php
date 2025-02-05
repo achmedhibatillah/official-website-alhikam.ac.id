@@ -26,7 +26,7 @@ img#kyai { width: 300px; margin-left: -90px; }
 #welcome h1 { font-size: 74px; }
 #welcome h5 { font-size: 17px; margin-top: -15px; }
 #welcome p { font-size: 15px; margin-top: -3px; }
-img#kyai { width: 350px; margin-left: -90px; margin-bottom: 190px; }
+img#kyai { width: 350px; margin-left: -90px; margin-bottom: 135px; }
 
 #navbar-admin { min-height: 100vh; }
 }

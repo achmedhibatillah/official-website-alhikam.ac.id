@@ -1,6 +1,66 @@
 <div class="row m-0 p-0">
 
-<div class="col-md-9 m-0 p-0">
+<div class="col-md-3 m-0 p-0 order-1 order-md-2">
+    <div class="card mt-1 m-1 m-md-0 mt-md-4 me-1 me-md-4 py-3">
+        <div class="d-flex justify-content-center">
+            <div class="d-flex justify-content-center rounded cursor-pointer" style="overflow:hidden;width:80px;height:100px;">
+                <?php if ($bp['bp_foto']): ?>
+                    <img src="<?= base_url('/' . $bp['bp_foto']) ?>" alt="Pas foto" class="img-death">
+                <?php else: ?>
+                    <img src="<?= base_url('images/blank.png') ?>" alt="Pas foto" class="img-death">
+                <?php endif; ?>
+            </div>
+        </div>
+        <table class="table mt-3 fsz-13 ls-1 lh-1">
+            <tr><td></td><td></td><td></td></tr>
+            <tr>
+                <td style="width:28%;">Pembayaran</td>
+                <td style="width:2%;">:</td>
+                <td style="width:70%;">
+                    <?php if($bp['bp_saved'] == 1 && $bp['bp_konfirm'] == 0): ?>
+                        <div class="text-center bg-warning text-clr5 px-3 py-1 rounded lh-s ls-s fsz-12">Perlu diverifikasi</div>
+                        <div class="d-flex justify-content-center">
+                            <a href="<?= base_url('verifikasi-pembayaran/' . $bp['bp_id']) ?>" class="fsz-11 ls-s lh-1 mt-1">verifikasi di sini</a>
+                        </div>
+                    <?php elseif($bp['bp_saved'] == 1 && $bp['bp_konfirm'] == 1): ?>
+                        <div class="text-center bg-clr1 text-clr5 px-3 py-1 rounded lh-s ls-s fsz-12">Terverifikasi</div>
+                    <?php else: ?>
+                        <div class="text-center bg-danger text-clr5 px-3 py-1 rounded lh-s ls-s fsz-12">Belum membayar</div>
+                    <?php endif; ?>
+                </td>
+            </tr>
+            <tr>
+                <td style="width:28%;">Tes tulis</td>
+                <td style="width:2%;">:</td>
+                <td style="width:70%;">
+                    <?php if($tt['testulis_konfirm'] == 1 && $bp['bp_konfirm'] == 1): ?>
+                        <div class="text-center bg-success text-clr5 px-3 py-1 rounded lh-s ls-s fsz-12">Selesai</div>
+                    <?php elseif($tt['testulis_konfirm'] == 0 && $bp['bp_konfirm'] == 1): ?>
+                        <div class="text-center bg-danger text-clr5 px-3 py-1 rounded lh-s ls-s fsz-12">Selesai</div>
+                        <div class="d-flex justify-content-center">
+                            <a href="<?= base_url('') ?>" class="fsz-11 ls-s lh-1 mt-1">verifikasi di sini</a>
+                        </div>
+                    <?php else: ?>
+                        <div class="text-center bg-danger text-clr5 px-3 py-1 rounded lh-s ls-s fsz-12">Belum</div>
+                    <?php endif; ?>
+                </td>
+            </tr>
+            <tr>
+                <td style="width:28%;">Tes wawancara</td>
+                <td style="width:2%;">:</td>
+                <td style="width:70%;">
+                    <?php if($tw['tw_status'] == 1): ?>
+                        <div class="text-center bg-warning text-clr5 px-3 py-1 rounded lh-s ls-s fsz-12">Selesai</div>
+                    <?php else: ?>
+                        <div class="text-center bg-danger text-clr5 px-3 py-1 rounded lh-s ls-s fsz-12">Belum</div>
+                    <?php endif; ?>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div class="col-md-9 m-0 p-0 order-2 order-md-1">
     <div class="card m-1 m-md-4 p-3">
         <h4 class="bg-clr1 text-clr5 rounded py-3 px-4 fw-bold ls-xs mb-4">I. IDENTITAS CALON SANTRI</h4>
         <table>

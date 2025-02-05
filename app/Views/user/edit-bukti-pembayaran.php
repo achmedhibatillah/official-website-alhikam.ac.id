@@ -35,6 +35,9 @@
                     </td>
                 </tr>
             </table>
+            <div class="d-flex justify-content-center align-items-center">
+                <a href="https://chat.whatsapp.com/Dg31q8T8YNeENGwem01bpi" class="btn btn-clr1 py-1 ls-s lh-1 fsz-14 mt-4" style="width:290px;">Grup Whatsapp calon santri Al-Hikam <i class="fab fa-whatsapp"></i></a>
+            </div>
         </div>
         <div class="w-100">
             <div class="card px-3 px-md-3 m-1 m-md-4 rounded mt-2">

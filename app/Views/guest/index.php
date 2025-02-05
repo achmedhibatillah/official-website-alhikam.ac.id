@@ -82,8 +82,20 @@
 <div class="bg-color5 w-100 m-0 p-0">
     <div class="">
         <h1 class="fw-bold text-clr1 text-center ls-xs" style="margin-top: 120px;">PROFIL SINGKAT PONDOK</h1>
-        <div class="px-1 px-md-5 mt-4">
-            <p class="text-clr1 mx-1 mx-md-5 text-justify fw-bold ls-1">Pesantren Mahasiswa Al-Hikam Malang didirikan pada tanggal 17 Ramadhan 1413 H / 21 Maret 1992 oleh almarhum Dr. KH. Ahmad Hasyim Muzadi.<br><br>Pesantren Mahasiswa Al-Hikam merupakan lembaga pendidikan Islam yang berikhtiar mengembangkan potensi intelektual mahasiswa dan penanaman kepribadian (moralitas) beragama. Keduanya harus dilakukan secara berkesinambungan sehingga memperoleh signifikasi metafisik dan spiritual dari ajaran agama. Begitu pula sebaliknya, ajaran agama akan mendapat signifikasi nilai-nilai ilmiah dalam ilmu pengetahuan dan teknologi.<br><br>Saat ini, Al-Hikam memiliki dua pondok pesantren mahasiswa. Pondok pertama berada di Malang dengan pengasuh KH. Muhammad Nafi', sedangkan pondok kedua berada di Depok dengan pengasuh KH. M. Yusron Shidqi, Lc., M.A. (Pengasuh Pondok Pesantren Al-Hikam Depok).</p>
+        <div class="row m-0 p-0 justify-content-center">
+            <div class="col-12 col-lg-9">
+                <div class="px-1 px-md-5 mt-4">
+                    <p class="text-clr1 mx-1 mx-md-5 text-justify fw-bold ls-1">
+                        Pesantren Mahasiswa Al Hikam Malang didirikan oleh Dr. (H.C.) K. H. Ahmad Hasyim Muzadi pada tanggal 17 Ramadan 1413 Hijriah yang bertepatan dengan tanggal 21 Maret 1992 Masehi. Sebagai seorang ulama, Dr. (H.C.) K. H. Ahmad Hasyim Muzadi merasa memiliki tanggung jawab untuk berkhidmat kepada umat, seperti yang dipesankan oleh guru-gurunya, salah satunya oleh Kiai Anwar, Pesantren An-Nur, Bululawang Malang.
+                        <br><br>
+                        Sebagai langkah awal dalam mendirikan Pesantren Mahasiswa Al-Hikam Malang, Dr. (H.C.) K. H. Ahmad Hasyim Muzadi bersama panitia membentuk Yayasan Al-Hikam pada tanggal 3 Juli 1989. Awalnya, Yayasan Al-Hikam bergerak di tiga bidang garapan yang meliputi Majelis Ta’lim dan Dakwah, Pengembangan Sumber Daya Manusia, dan Pesantren Mahasiswa Al-Hikam Malang.
+                        <br><br>
+                        Pesantren Mahasiswa Al-Hikam Malang sebagai pelopor pesantren khusus mahasiswa memiliki tujuan memadukan dimensi positif perguruan tinggi yang menekankan pada ilmu pengetahuan dan teknologi dengan dimensi positif pesantren yang akan menjadi tempat penempaan kepribadian dan moral yang benar. Dengan model pendidikan tersebut, Pesantren Mahasiswa Al-Hikam Malang ingin mewujudkan  kesatupaduan antara ilmu pengetahuan dan ilmu agama secara utuh, tanpa ada perbedaan. Dengan demikian, keyakinan agama akan memiliki pijakan ilmiah-rasional, sedangkan ilmu pengetahuan akan senantiasa dinaungi oleh nilai-nilai agama.
+                        <br><br>
+                        Pada awal berdiri, Pesantren Mahasiswa Al-Hikam Malang hanya menerima santri dari kalangan mahasiswa perguruan tinggi di Malang dengan jurusan nonagama. Namun, sejak tahun 2003, Pesantren Mahasiswa Al Hikam Malang juga menerima santri lulusan pesantren salaf tradisional dari seluruh pelosok negeri untuk kuliah di Sekolah Tinggi Agama Islam Al Hikam atau Ma’had Aly Al-Hikam (STAIMA). Adanya perbedaan latar belakang santri tersebut, kemudian dikenal istilah santri “Pesma” untuk santri yang mukim di pondok, tetapi kuliah di luar pesantren dan santri “Ma’had Aly” untuk santri yang mukim dan kuliah di STAIMA. Pada tahun 2023, kedua istilah tersebut dilebur menjadi satu, yaitu “Pesma”. Dengan ikhtiar tersebut, diharapkan akan terwujud integrasi antara ilmu pengetahuan dan ilmu agama yang akan membentuk “Learning Society” yang akan tercipta di tengah-tengah kehidupan pesantren dan masyarakat.
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
 </div>
