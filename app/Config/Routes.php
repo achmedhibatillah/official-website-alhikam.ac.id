@@ -64,6 +64,7 @@ $routes->post('/authentication-admin', 'Auth::admin_auth');
 
 $routes->get('/dashboard-admin', 'Admin::index', ['filter' => 'admin-auth']);
 $routes->get('/daftar-calon-santri', 'Admin::santri', ['filter' => 'admin-auth']);
+$routes->get('/daftar-calon-santri-where-(:segment)', 'Admin::santri/$1', ['filter' => 'admin-auth']);
 $routes->get('/calon-santri/(:segment)', 'Admin::santri_d/$1', ['filter' => 'admin-auth']);
 $routes->get('/verifikasi-pembayaran', 'Admin::pembayaran', ['filter' => 'admin-auth']);
 $routes->get('/verifikasi-pembayaran-where-(:segment)', 'Admin::pembayaran/$1', ['filter' => 'admin-auth']);

@@ -3,7 +3,7 @@
 <div class="col-md-3 m-0 p-0 order-1 order-md-2">
     <div class="card mt-1 m-1 m-md-0 mt-md-4 me-1 me-md-4 py-3">
         <div class="d-flex justify-content-center">
-            <div class="d-flex justify-content-center rounded cursor-pointer" style="overflow:hidden;width:80px;height:100px;">
+            <div class="d-flex justify-content-center rounded bg-clr4 cursor-pointer" style="overflow:hidden;width:80px;height:100px;">
                 <?php if ($bp['bp_foto']): ?>
                     <img src="<?= base_url('/' . $bp['bp_foto']) ?>" alt="Pas foto" class="img-death">
                 <?php else: ?>

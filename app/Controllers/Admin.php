@@ -73,7 +73,7 @@ class Admin extends BaseController
         view('templates/footer');
     }
 
-    public function santri(): string
+    public function santri($cond = ''): string
     {
         $data = [
             'title' => 'Daftar Calon Santri',
@@ -81,7 +81,16 @@ class Admin extends BaseController
         ];
         
         $santriModel = $this->santriModel;
-        $santriData = $santriModel->orderBy('created_at', 'DESC')->where('santri_saved', '1')->findAll();
+
+        $keyword = $this->request->getGet('keyword') ?? '';
+    
+        $santriQuery = $santriModel->orderBy('created_at', 'DESC')->where('santri_saved', '1');
+        
+        if (!empty($keyword)) {
+            $santriQuery->groupStart()->like('santri_nama', $keyword)->orLike('santri_nik', $keyword)->groupEnd();
+        }
+        
+        $santriData = $santriQuery->findAll();
     
         $ortuModel = $this->ortuModel;
         $rkModel = $this->riwayatKesehatanModel;
@@ -93,15 +102,40 @@ class Admin extends BaseController
             $santriData[$key]['ortu_saved'] = $ortuModel->getOrtuByPesertaId($x['peserta_id'])['ortu_saved'] ?? 0;
             $santriData[$key]['rk_saved'] = $rkModel->getRiwayatKesehatanByIdPeserta($x['peserta_id'])['rk_saved'] ?? 0;
             $santriData[$key]['bp_saved'] = $bpModel->getBpByPesertaId($x['peserta_id'])['bp_saved'] ?? 0;
-            $santriData[$key]['tt_konfirm'] = $ttModel->getTtByPesertaId($x['peserta_id'])['tt_konfirm'] ?? 0;
+            $santriData[$key]['testulis_konfirm'] = $ttModel->getTtByPesertaId($x['peserta_id'])['testulis_konfirm'] ?? 0;
             $santriData[$key]['tw_status'] = $twModel->getTwByPesertaId($x['peserta_id'])['tw_status'] ?? 0;
             $santriData[$key]['bp_foto'] = $bpModel->getBpByPesertaId($x['peserta_id'])['bp_foto'] ?? 0;
         }
+
+        if ($cond == 'bo') {
+            $santriData = array_filter($santriData, function ($santri) {
+                return $santri['ortu_saved'] == 1;
+            });
+        } elseif ($cond == 'rk') {
+            $santriData = array_filter($santriData, function ($santri) {
+                return $santri['rk_saved'] == 1;
+            });
+        } elseif ($cond == 'bp') {
+            $santriData = array_filter($santriData, function ($santri) {
+                return $santri['bp_saved'] == 1;
+            });
+        } elseif ($cond == 'tt') {
+            $santriData = array_filter($santriData, function ($santri) {
+                return $santri['testulis_konfirm'] == 1;
+            });
+        } elseif ($cond == 'tw') {
+            $santriData = array_filter($santriData, function ($santri) {
+                return $santri['tw_status'] == 1;
+            });
+        }
+        
+        $santriData = array_values($santriData);
     
         return 
         view('templates/header', $data) .
         view('templates/navbar-admin', $data) .
         view('admin/santri', [
+            'keyword' => $keyword,
             'santri' => $santriData
         ]) .
         view('templates/footbar-admin') .

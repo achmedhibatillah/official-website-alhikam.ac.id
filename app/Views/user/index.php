@@ -123,6 +123,27 @@
                 <div class="position-absolute he-30 we-30 bg-clr5 text-danger rounded-circle d-flex justify-content-center align-items-center" style="right:0px;top:50%;transform:translate(-50%,-50%);"><i class="fas fa-check text-success"></i></div>
             <?php endif; ?>
         </div>
+        <!-- Pengumuman -->
+        <div class="card m-0 mt-2 mt-md-3 py-3 border-none cursor-pointer position-relative <?= ($tw['tw_status'] == 1) ? 'btn-isi' : 'btn-bisi' ?>" onclick="window.location.href = '<?= base_url('tes-wawancara'); ?>'">
+            <div class="row m-0 p-0">
+                <div class="col-3 col-md-2 col-lg-1 m-0 p-0 d-flex justify-content-center align-items-center">
+                    <i class="fas fa-id-card text-clr1 fsz-24 m-0"></i>
+                </div>
+                <div class="col-9 col-md-10 col-lg-11 m-0 p-0">
+                    <h5 class="fw-bold text-clr1 ls-s ls-1 mb-0">Pengumuman</h5>
+                    <?php if($tw['tw_status'] == 1): ?>
+                        <p class="text-clr1 m-0 ls-s">Sudah mengisi</p>
+                    <?php else: ?>
+                        <p class="text-danger m-0 ls-s">Belum mengisi</p>
+                    <?php endif; ?>
+                </div>
+            </div>
+            <?php if($tw['tw_status'] == 0): ?>
+                <div class="position-absolute he-30 we-30 bg-clr5 text-danger rounded-circle d-flex justify-content-center align-items-center" style="right:0px;top:50%;transform:translate(-50%,-50%);"><i class="fas fa-exclamation text-danger"></i></div>
+            <?php else: ?>
+                <div class="position-absolute he-30 we-30 bg-clr5 text-danger rounded-circle d-flex justify-content-center align-items-center" style="right:0px;top:50%;transform:translate(-50%,-50%);"><i class="fas fa-check text-success"></i></div>
+            <?php endif; ?>
+        </div>
     </div>
 </div>
 <div style="margin-top:120px;">
