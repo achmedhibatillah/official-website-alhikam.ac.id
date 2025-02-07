@@ -10,6 +10,8 @@ use \App\Models\LainModel;
 use \App\Models\BpModel;
 use \App\Models\TesTulisModel;
 use \App\Models\TeswawancaraModel;
+use \App\Models\MessageModel;
+use \App\Models\PengumumanModel;
 
 class User extends BaseController
 {
@@ -21,6 +23,8 @@ class User extends BaseController
     protected $bpModel;
     protected $ttModel;
     protected $twModel;
+    protected $messageModel;
+    protected $pengumumanModel;
 
     public function __construct()
     {
@@ -32,6 +36,8 @@ class User extends BaseController
         $this->bpModel = new BpModel();
         $this->ttModel = new TesTulisModel();
         $this->twModel = new TeswawancaraModel();
+        $this->messageModel = new MessageModel();
+        $this->pengumumanModel = new PengumumanModel();
     }
 
     public function index(): string
@@ -51,6 +57,8 @@ class User extends BaseController
         $bpModel = $this->bpModel;
         $ttModel = $this->ttModel;
         $twModel = $this->twModel;
+        $messageModel = $this->messageModel;
+        $pengumumanModel = $this->pengumumanModel;
 
         $santriData = $santriModel->getSantriByPesertaId($session_id);
         $ortuData = $ortuModel->getOrtuByPesertaId($session_id);
@@ -58,6 +66,8 @@ class User extends BaseController
         $bpData = $bpModel->getBpByPesertaId($session_id);
         $ttData = $ttModel->getTtByPesertaId($session_id);
         $twData = $twModel->getTwByPesertaId($session_id);
+        $messageData = $messageModel->getMessageByPesertaId($session_id);
+        $pengumumanData = $pengumumanModel->getPengumumanByPesertaId($session_id);
 
         return 
         view('templates/header', $data) .
@@ -68,7 +78,9 @@ class User extends BaseController
             'rk' => $rkData,
             'bp' => $bpData,
             'tt' => $ttData,
-            'tw' => $twData
+            'tw' => $twData,
+            'message' => $messageData,
+            'pengumuman' => $pengumumanData
         ]) .
         view('templates/footbar') .
         view('templates/footer');
@@ -335,6 +347,34 @@ class User extends BaseController
         view('user/tes-wawancara', [
             'santri' => $santriData,
             'tw' => $twData
+        ]) .
+        view('templates/footbar') .
+        view('templates/footer');
+    }
+
+    public function pengumuman(): string
+    {
+        $session_id = session()->get('peserta_id');
+        $user = $this->pesertaModel->where('peserta_id', $session_id)->first();
+
+        $data = [
+            'title' => 'Pengumuman Kelulusan',
+            'page' => 'user',
+            'user' => $user
+        ];
+
+        $santriModel = $this->santriModel;
+        $pengumumanModel = $this->pengumumanModel;
+
+        $santriData = $santriModel->getSantriByPesertaId($session_id);
+        $pengumumanData = $pengumumanModel->getPengumumanByPesertaId($session_id);
+        
+        return 
+        view('templates/header', $data) .
+        view('templates/navbar', $data) .
+        view('user/pengumuman', [
+            'santri' => $santriData,
+            'pengumuman' => $pengumumanData
         ]) .
         view('templates/footbar') .
         view('templates/footer');

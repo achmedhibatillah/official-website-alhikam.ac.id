@@ -132,7 +132,7 @@
         <!-- Pendapatan Ayah -->
         <div class="mt-3">
             <label for="ortu_a_pendapatan" class="form-label mb-0 fsz-14 ls-1 fw-bold">6. Pendapatan Per-Bulan:</label>
-            <input name="ortu_a_pendapatan" type="number" class="form-control input-clr1-out ps-3 py-2 mt--1 fsz-13 <?= session()->getFlashdata('errors-ortu') && isset(session()->getFlashdata('errors-ortu')['ortu_a_pendapatan']) ? 'is-invalid' : '' ?>" id="ortu_a_pendapatan" autocomplete="off" placeholder="Rp. ..." 
+            <input name="ortu_a_pendapatan" type="text" class="form-control input-clr1-out ps-3 py-2 mt--1 fsz-13 <?= session()->getFlashdata('errors-ortu') && isset(session()->getFlashdata('errors-ortu')['ortu_a_pendapatan']) ? 'is-invalid' : '' ?>" id="ortu_a_pendapatan" autocomplete="off" placeholder="ex. 500 ribu - 1 juta" 
             value="<?= old('ortu_a_pendapatan') ? old('ortu_a_pendapatan') : (isset($ortu['ortu_a_pendapatan']) ? $ortu['ortu_a_pendapatan'] : '') ?>">
             <?php if (isset(session()->getFlashdata('errors-ortu')['ortu_a_pendapatan'])): ?>
                 <div class="text-danger mt-0 mb-1 lh-s ms-2" style="font-size:13px;">
@@ -269,7 +269,7 @@
         <!-- Pendapatan Ibu -->
         <div class="mt-3">
             <label for="ortu_i_pendapatan" class="form-label mb-0 fsz-14 ls-1 fw-bold">6. Pendapatan Per-Bulan:</label>
-            <input name="ortu_i_pendapatan" type="number" class="form-control input-clr1-out ps-3 py-2 mt--1 fsz-13 <?= session()->getFlashdata('errors-ortu') && isset(session()->getFlashdata('errors-ortu')['ortu_i_pendapatan']) ? 'is-invalid' : '' ?>" id="ortu_i_pendapatan" autocomplete="off" placeholder="Rp. ..." 
+            <input name="ortu_i_pendapatan" type="text" class="form-control input-clr1-out ps-3 py-2 mt--1 fsz-13 <?= session()->getFlashdata('errors-ortu') && isset(session()->getFlashdata('errors-ortu')['ortu_i_pendapatan']) ? 'is-invalid' : '' ?>" id="ortu_i_pendapatan" autocomplete="off" placeholder="ex. 500 ribu - 1 juta" 
             value="<?= old('ortu_i_pendapatan') ? old('ortu_i_pendapatan') : (isset($ortu['ortu_i_pendapatan']) ? $ortu['ortu_i_pendapatan'] : '') ?>">
             <?php if (isset(session()->getFlashdata('errors-ortu')['ortu_i_pendapatan'])): ?>
                 <div class="text-danger mt-0 mb-1 lh-s ms-2" style="font-size:13px;">

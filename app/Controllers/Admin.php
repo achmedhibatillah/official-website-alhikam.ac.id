@@ -10,6 +10,8 @@ use \App\Models\LainModel;
 use \App\Models\BpModel;
 use \App\Models\TesTulisModel;
 use \App\Models\TeswawancaraModel;
+use \App\Models\MessageModel;
+use \App\Models\PengumumanModel;
 
 class Admin extends BaseController
 {
@@ -21,6 +23,8 @@ class Admin extends BaseController
     protected $bpModel;
     protected $ttModel;
     protected $twModel;
+    protected $messageModel;
+    protected $pengumumanModel;
 
     public function __construct()
     {
@@ -32,6 +36,8 @@ class Admin extends BaseController
         $this->bpModel = new BpModel();
         $this->ttModel = new TesTulisModel();
         $this->twModel = new TeswawancaraModel();
+        $this->messageModel = new MessageModel();
+        $this->pengumumanModel = new PengumumanModel();
     }
 
     public function index(): string
@@ -333,6 +339,64 @@ class Admin extends BaseController
             view('admin/verifikasi-pembayaran-detail', [
                 'santri' => $santriData,
                 'bp' => $bpData
+            ]) .
+            view('templates/footbar-admin') .
+            view('templates/footer');
+    }
+
+    public function pengumuman($cond = ''): string
+    {
+        $data = [
+            'title' => 'Pengumuman Kelulusan',
+            'page' => 'admin-pengumuman',
+        ];
+        
+        $santriModel = $this->santriModel;
+        $pengumumanModel = $this->pengumumanModel;
+
+        $santriData = $santriModel
+        ->select('santri.*, bp.bp_saved, bp.bp_konfirm, bp.bp_foto, bp.bp_bp')
+        ->join('bp', 'bp.peserta_id = santri.peserta_id')
+        ->where('santri.santri_saved', '1')
+        // ->where('bp.bp_konfirm', '1')
+        ->orderBy('santri.created_at', 'DESC')
+        ->findAll();
+        $pengumumanData = $pengumumanModel->findAll();
+
+        return 
+        view('templates/header', $data) .
+        view('templates/navbar-admin', $data) .
+        view('admin/pengumuman', [
+            'cond' => $cond,
+            'santri' => $santriData,
+            'pengumuman' => $pengumumanData
+        ]) .
+        view('templates/footbar-admin') .
+        view('templates/footer');
+    }
+
+    public function pengumuman_d($peserta_id): string
+    {
+        $data = [
+            'title' => 'Detail Pengumuman',
+            'page' => 'admin-pengumuman',
+        ];
+        
+        $santriModel = $this->santriModel;
+        $bpModel = $this->bpModel;
+        $pengumumanModel = $this->pengumumanModel;
+    
+        $santriData = $santriModel->getSantriByPesertaId($peserta_id);
+        $bpData = $bpModel->getBpByPesertaId($peserta_id);
+        $pengumumanData = $pengumumanModel->getPengumumanByPesertaId($peserta_id);
+        
+        return 
+            view('templates/header', $data) .
+            view('templates/navbar-admin', $data) .
+            view('admin/pengumuman-detail', [
+                'santri' => $santriData,
+                'bp' => $bpData,
+                'pengumuman' => $pengumumanData
             ]) .
             view('templates/footbar-admin') .
             view('templates/footer');

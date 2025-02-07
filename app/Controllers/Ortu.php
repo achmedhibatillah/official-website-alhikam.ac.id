@@ -30,7 +30,7 @@ class Ortu extends BaseController
             'ortu_a_pendidikan' => 'required',
             'ortu_a_pendidikan_lain' => 'max_length[225]' . (($this->request->getPost('ortu_a_pendidikan') == 23) ? '|required' : ''),
             'ortu_a_hp' => 'required|numeric|min_length[9]|max_length[16]',
-            'ortu_a_pendapatan' => 'required',
+            'ortu_a_pendapatan' => 'required|max_length[255]',
             'ortu_i_nama' => 'required|max_length[225]|alpha_space',
             'ortu_i_pekerjaan' => 'required',
             'ortu_i_pekerjaan_lain' => 'max_length[225]' . (($this->request->getPost('ortu_i_pekerjaan') == 13) ? '|required' : ''),
@@ -39,7 +39,7 @@ class Ortu extends BaseController
             'ortu_i_pendidikan' => 'required',
             'ortu_i_pendidikan_lain' => 'max_length[225]' . (($this->request->getPost('ortu_i_pendidikan') == 23) ? '|required' : ''),
             'ortu_i_hp' => 'required|numeric|min_length[9]|max_length[16]',
-            'ortu_i_pendapatan' => 'required',
+            'ortu_i_pendapatan' => 'required|max_length[255]',
             'ortu_saved' => 'required',
         ];
         
@@ -77,7 +77,8 @@ class Ortu extends BaseController
                 'max_length' => 'Nomor HP harus maksimal 16 angka.'
             ],
             'ortu_a_pendapatan' => [
-                'required' => 'Pendapatan ayah harus diisi.'
+                'required' => 'Pendapatan ayah harus diisi.',
+                'max_length' => 'Maksimal pendapatan 255 karakter.'
             ],
             'ortu_i_nama' => [
                 'required' => 'Nama ibu harus diisi.',
@@ -112,7 +113,8 @@ class Ortu extends BaseController
                 'max_length' => 'Nomor HP harus maksimal 16 angka.'
             ],
             'ortu_i_pendapatan' => [
-                'required' => 'Pendapatan ibu harus diisi.'
+                'required' => 'Pendapatan ibu harus diisi.',
+                'max_length' => 'Maksimal pendapatan 255 karakter.'
             ],
             'ortu_saved' => [
                 'required' => 'Klik checkbox ini sebelum menyimpan.',
@@ -156,5 +158,19 @@ class Ortu extends BaseController
         $ortuModel->update($ortu_id, $update);
     
         return redirect()->to('berkas-pendaftaran');
+    }
+
+    public function request_edit()
+    {
+        $update = [
+            'ortu_saved' => $this->request->getPost('ortu_saved')
+        ];
+
+        $ortu_id = $this->request->getPost('ortu_id');
+
+        $ortuModel = $this->ortuModel;
+        $ortuModel->update($ortu_id, $update);
+
+        return redirect()->back();
     }
 }

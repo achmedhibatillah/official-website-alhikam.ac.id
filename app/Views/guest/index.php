@@ -28,7 +28,7 @@
             <div class="col-4 col-md-2 m-0 p-0 d-flex justify-content-center align-items-start mb-2">
                 <div class="">
                     <div class="d-flex justify-content-center">
-                        <div class="card p-0 d-flex justify-content-center align-items-center bg-clr2 border-clr1" style="height:80px;width:80px;">
+                        <div class="card p-0 d-flex justify-content-center align-items-center bg-clr2 border-clr1" style="height:80px;width:80px;border-radius:15px;">
                             <img src="<?= base_url('images/program/1.png') ?>" class="he-40">
                         </div>
                     </div>
@@ -38,7 +38,7 @@
             <div class="col-4 col-md-2 m-0 p-0 d-flex justify-content-center align-items-start mb-2">
                 <div class="">
                     <div class="d-flex justify-content-center">
-                        <div class="card p-0 d-flex justify-content-center align-items-center bg-clr2 border-clr1" style="height:80px;width:80px;">
+                        <div class="card p-0 d-flex justify-content-center align-items-center bg-clr2 border-clr1" style="height:80px;width:80px;border-radius:15px;">
                             <img src="<?= base_url('images/program/2.png') ?>" class="he-40">
                         </div>
                     </div>
@@ -48,7 +48,7 @@
             <div class="col-4 col-md-2 m-0 p-0 d-flex justify-content-center align-items-start mb-2">
                 <div class="">
                     <div class="d-flex justify-content-center">
-                        <div class="card p-0 d-flex justify-content-center align-items-center bg-clr2 border-clr1" style="height:80px;width:80px;">
+                        <div class="card p-0 d-flex justify-content-center align-items-center bg-clr2 border-clr1" style="height:80px;width:80px;border-radius:15px;">
                             <img src="<?= base_url('images/program/3.png') ?>" class="he-40">
                         </div>
                     </div>
@@ -58,7 +58,7 @@
             <div class="col-4 col-md-2 m-0 p-0 d-flex justify-content-center align-items-start mb-2">
                 <div class="">
                     <div class="d-flex justify-content-center">
-                        <div class="card p-0 d-flex justify-content-center align-items-center bg-clr2 border-clr1" style="height:80px;width:80px;">
+                        <div class="card p-0 d-flex justify-content-center align-items-center bg-clr2 border-clr1" style="height:80px;width:80px;border-radius:15px;">
                             <img src="<?= base_url('images/program/4.png') ?>" class="he-40">
                         </div>
                     </div>
@@ -68,7 +68,7 @@
             <div class="col-4 col-md-2 m-0 p-0 d-flex justify-content-center align-items-start mb-2">
                 <div class="">
                     <div class="d-flex justify-content-center">
-                        <div class="card p-0 d-flex justify-content-center align-items-center bg-clr2 border-clr1" style="height:80px;width:80px;">
+                        <div class="card p-0 d-flex justify-content-center align-items-center bg-clr2 border-clr1" style="height:80px;width:80px;border-radius:15px;">
                             <img src="<?= base_url('images/program/5.png') ?>" class="he-40">
                         </div>
                     </div>
@@ -101,7 +101,7 @@
 </div>
 <div class="d-flex justify-content-center align-items-center mt-5">
     <div class="row m-0 p-0 justify-content-center">
-        <div class="col-md-6 d-flex justify-content-center align-items-center"><img src="<?= base_url('images/lp-profil.png') ?>" style="width:70%;"></div>
+        <div id="lp-profil" class="col-md-6 d-flex justify-content-center align-items-center"><img src="<?= base_url('images/lp-profil.png') ?>"></div>
     </div>
 </div>
 <div class="" style="margin-top:130px;">.</div>
@@ -151,7 +151,7 @@
                 </div>
                 <p class="text-clr5 mt-4 me-5 lh-m text-justify">Silakan <b>scan QR</b> di samping atau <b>kunjungi halaman</b> di bawah ini.</p>
                 <div class="">
-                    <a href="<?= base_url('psb/formulir') ?>" class="btn btn-sm btn-clr5-out fw-bold px-3">Formulir Pendaftaran <i class="fas fa-file-alt ms-2"></i></a>
+                    <a href="<?= base_url('daftar') ?>" class="btn btn-sm btn-clr5-out fw-bold px-3">Formulir Pendaftaran <i class="fas fa-file-alt ms-2"></i></a>
                 </div>
             </div>
             <div class="col-3 m-0 p-0">
@@ -171,7 +171,7 @@
                 </tr>
                 <tr>
                     <td class="align-top">2.</td>
-                    <td class="ls-m">Membuka website <a href="https://alhikam.ac.id" target="_blank" class="text-clr5">alhikam.ac.id</a></td>
+                    <td class="ls-m">Membuka website <a href="<?= base_url() ?>" target="_blank" class="text-clr5">psbalhikam.ac.id</a></td>
                 </tr>
                 <tr>
                     <td class="align-top">3.</td>
@@ -179,7 +179,7 @@
                 </tr>
                 <tr>
                     <td class="align-top">4.</td>
-                    <td class="ls-m">Mengisi formulir pendaftaran <a href="https://dirosah.alhikam.ac.id/psb/formulir" target="_blank" class="text-clr5">dirosah.alhikam.ac.id/psb/formulir</a></td>
+                    <td class="ls-m">Mengisi formulir pendaftaran <a href="<?= base_url('daftar') ?>" class="text-clr5">dirosah.alhikam.ac.id/psb/formulir</a></td>
                 </tr>
                 <tr>
                     <td class="align-top">5.</td>

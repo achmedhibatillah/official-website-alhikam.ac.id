@@ -5,7 +5,7 @@
                 <?= session()->getFlashdata('success-daftar') ?>
             </div>
         <?php endif; ?>
-        <div class="card m-0 p-0 border-clr1-3 mx-2 position-relative" style="border-radius:40px;">
+        <div class="card m-0 p-0 border-clr1-3 mx-2 position-relative" style="border-radius:20px;">
             <a href="<?= base_url() ?>" class="position-absolute td-none text-clr1 ls-xs" style="top:20px;left:20px;"><img src="<?= base_url('images/icon/back.png') ?>" class="he-15 mb-2"></a>
             <div class="card-body p-0 text-clr1" style="margin:38px;">
                 <div class="d-flex justify-content-center">
@@ -18,8 +18,8 @@
                 <?php endif; ?>
                 <form action="<?= base_url('authentication') ?>" method="post">
                     <div class="mb-3">
-                        <label for="username" class="form-label mb-0 fsz-14 ls-1 fw-bold">Username</label>
-                        <input name="username" type="number" class="form-control input-clr3 ps-3 py-2 mt--1 fsz-13 <?= session()->getFlashdata('errors-masuk') && isset(session()->getFlashdata('errors-masuk')['username']) ? 'is-invalid' : '' ?>" id="username" placeholder="Username" value="<?= old('username') ?>">
+                        <label for="username" class="form-label mb-0 fsz-14 ls-1 fw-bold">Username (No Telp/WA)</label>
+                        <input name="username" type="number" class="form-control input-clr3 ps-3 py-2 mt--1 fsz-13 <?= session()->getFlashdata('errors-masuk') && isset(session()->getFlashdata('errors-masuk')['username']) ? 'is-invalid' : '' ?>" id="username" placeholder="No Telp/WA" value="<?= old('username') ?>">
                         <?php if (session()->getFlashdata('errors-masuk') && isset(session()->getFlashdata('errors-masuk')['username'])): ?>
                             <div class="text-danger mt-1 mb-1 lh-s ms-2" style="font-size:13px;"><?= session()->getFlashdata('errors-masuk')['username'] ?></div>
                         <?php endif; ?>

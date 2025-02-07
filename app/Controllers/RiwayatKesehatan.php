@@ -547,4 +547,18 @@ class RiwayatKesehatan extends BaseController
         $lainBahasamModel->delete($id);
         return redirect()->back();
     }
+
+    public function request_edit()
+    {
+        $update = [
+            'rk_saved' => $this->request->getPost('rk_saved')
+        ];
+
+        $rk_id = $this->request->getPost('rk_id');
+
+        $rkModel = $this->riwayatKesehatanModel;
+        $rkModel->update($rk_id, $update);
+
+        return redirect()->back();
+    }
 }

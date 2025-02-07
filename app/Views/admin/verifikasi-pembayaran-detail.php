@@ -33,11 +33,11 @@
                                             <div class="d-flex justify-content-center">
                                                 <div id="bp-konfirmasi" class="btn btn-light text-clr1 p-1 ls-s lh-1 fsz-12 cursor-pointer" data-bs-toggle="modal" data-bs-target="#modal-bp-konfirm"><i class="fas fa-check me-2"></i>verifikasi</div>
                                             </div>
-                                            <div class="d-flex justify-content-center mt-2">
-                                                <div id="bp-batal-konfirmasi" class="btn btn-danger text-clr5 p-1 ls-s lh-1 fsz-12 cursor-pointer" data-bs-toggle="modal" data-bs-target="#modal-bp-tolak-konfirm"><i class="fas fa-xmark me-2"></i>tolak verifikasi</div>
-                                            </div>
                                         </div>
                                     <?php endif; ?>
+                                    <div class="d-flex justify-content-center mt-2">
+                                        <div id="bp-batal-konfirmasi" class="btn btn-danger text-clr5 p-1 ls-s lh-1 fsz-12 cursor-pointer" data-bs-toggle="modal" data-bs-target="#modal-bp-tolak-konfirm"><i class="fas fa-xmark me-2"></i>tolak verifikasi</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

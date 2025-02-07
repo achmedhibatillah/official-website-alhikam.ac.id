@@ -24,12 +24,16 @@ $routes->get('/riwayat-kesehatan-dan-lain-lain', 'User::riwayat_kesehatan_dan_la
 $routes->get('/bukti-pembayaran', 'User::bukti_pembayaran', ['filter' => 'user-auth']);
 $routes->get('/tes-tulis', 'User::tes_tulis', ['filter' => 'user-auth']);
 $routes->get('/tes-wawancara', 'User::tes_wawancara', ['filter' => 'user-auth']);
+$routes->get('/pengumuman-kelulusan', 'User::pengumuman', ['filter' => 'user-auth']);
 
 $routes->post('/simpan-santri', 'Santri::update', ['filter' => 'user-auth']);
+$routes->post('/santri-request-edit', 'Santri::request_edit', ['filter' => 'user-auth']);
 
 $routes->post('/simpan-ortu', 'Ortu::update', ['filter' => 'user-auth']);
+$routes->post('/ortu-request-edit', 'Ortu::request_edit', ['filter' => 'user-auth']);
 
 $routes->post('/simpan-riwayat-kesehatan-dan-lain-lain', 'RiwayatKesehatan::update', ['filter' => 'user-auth']);
+$routes->post('/riwayat-kesehatan-dan-lain-lain-request-edit', 'RiwayatKesehatan::request_edit', ['filter' => 'user-auth']);
 
 $routes->post('/simpan-bukti-pembayaran', 'BuktiPembayaran::update', ['filter' => 'user-auth']);
 $routes->get('/download-bukti-pembayaran/(:segment)', 'BuktiPembayaran::downloadBp/$1', ['filter' => 'user-auth']);
@@ -69,6 +73,11 @@ $routes->get('/calon-santri/(:segment)', 'Admin::santri_d/$1', ['filter' => 'adm
 $routes->get('/verifikasi-pembayaran', 'Admin::pembayaran', ['filter' => 'admin-auth']);
 $routes->get('/verifikasi-pembayaran-where-(:segment)', 'Admin::pembayaran/$1', ['filter' => 'admin-auth']);
 $routes->get('/verifikasi-pembayaran/(:num)', 'Admin::pembayaran_d/$1', ['filter' => 'admin-auth']);
+$routes->get('/atur-pengumuman', 'Admin::pengumuman', ['filter' => 'admin-auth']);
+$routes->get('/atur-pengumuman/(:num)', 'Admin::pengumuman_d/$1', ['filter' => 'admin-auth']);
+
 $routes->get('/admin-download-bukti-pembayaran/(:segment)', 'BuktiPembayaran::downloadBp/$1', ['filter' => 'admin-auth']);
 $routes->post('/verifikasi-bp', 'BuktiPembayaran::pembayaran_ver', ['filter' => 'admin-auth']);
 $routes->post('/tolak-verifikasi-bp', 'BuktiPembayaran::pembayaran_unver', ['filter' => 'admin-auth']);
+
+$routes->post('/simpan-pengumuman', 'Pengumuman::update', ['filter' => 'admin-auth']);

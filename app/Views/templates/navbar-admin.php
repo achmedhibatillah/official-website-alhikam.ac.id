@@ -38,6 +38,13 @@
                 <div class="col-1 m-0 p-0 d-flex align-items-center justify-content-end"><?= ($page == 'admin-verifikasi') ? '<i class="fas fa-circle"></i>' : '' ?></div>
             </div>
         </div>
+        <div class="m-0 py-1 btn btn-outline-light text-clr5 lh-1 fsz-12 mb-2 d-flex justify-content-center px-3 cursor-pointer" style="border-radius:5px;" onclick="window.location.href = '<?= base_url('atur-pengumuman'); ?>'">
+            <div class="row m-0 p-0 w-100">
+                <div class="col-1 m-0 p-0"><i class="fas fa-bullhorn"></i></div>
+                <div class="col-10 m-0 p-0 d-flex justify-content-start ps-2">Pengumuman Kelulusan</div>
+                <div class="col-1 m-0 p-0 d-flex align-items-center justify-content-end"><?= ($page == 'admin-pengumuman') ? '<i class="fas fa-circle"></i>' : '' ?></div>
+            </div>
+        </div>
     </div>
 </div>
 

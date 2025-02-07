@@ -11,6 +11,7 @@ use \App\Models\BpModel;
 use \App\Models\TesTulisModel;
 use \App\Models\TeswawancaraModel;
 use \App\Models\MessageModel;
+use \App\Models\PengumumanModel;
 
 class Auth extends BaseController
 {
@@ -23,6 +24,7 @@ class Auth extends BaseController
     protected $ttModel;
     protected $twModel;
     protected $messageModel;
+    protected $pengumumanModel;
 
     public function __construct()
     {
@@ -35,6 +37,7 @@ class Auth extends BaseController
         $this->ttModel = new TesTulisModel();
         $this->twModel = new TeswawancaraModel();
         $this->messageModel = new MessageModel();
+        $this->pengumumanModel = new PengumumanModel();
     }
 
     public function masuk(): mixed
@@ -207,6 +210,7 @@ class Auth extends BaseController
         $ttModel = $this->ttModel;
         $twModel = $this->twModel;
         $messageModel = $this->messageModel;
+        $pengumumanModel = $this->pengumumanModel;
 
         $santriModel->insert($santriData);
         $ortuModel->insert($santriData);
@@ -216,6 +220,7 @@ class Auth extends BaseController
         $ttModel->insert($santriData);
         $twModel->insert($santriData);
         $messageModel->insert($santriData);
+        $pengumumanModel->insert($santriData);
     
         return redirect()->to('masuk')->with('success-daftar', 'Anda berhasil melakukan pendaftaran. Silakan login dengan akun yang baru Anda buat.');
     }

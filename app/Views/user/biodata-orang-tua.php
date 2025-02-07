@@ -26,5 +26,13 @@
             <tr><td>Pendapatan</td><td>:</td><td><?= $ortu['ortu_i_pendapatan'] ?></td></tr>
         </table>
     </div>
+
+    <div class="card m-1 m-md-4 p-3">
+        <form action="<?= base_url('ortu-request-edit') ?>" method="post">
+            <input type="hidden" name="ortu_id" value="<?= $ortu['ortu_id'] ?>">
+            <input type="hidden" name="ortu_saved" value="0">
+            <button type="submit" class="btn btn-outline-clr1">Edit</button>
+        </form>
+    </div>
 </div>
 </section>

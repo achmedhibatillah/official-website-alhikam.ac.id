@@ -1,1 +1,3 @@
-<h1>INDEX</h1>
+<div class="m-3">
+    <h4>Total Pendaftar: 4</h4>
+</div>

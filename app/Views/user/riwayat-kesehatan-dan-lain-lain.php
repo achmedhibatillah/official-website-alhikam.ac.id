@@ -281,6 +281,13 @@
             </tr>
         </table>
     </div>
+    <div class="card m-1 m-md-4 p-3">
+        <form action="<?= base_url('riwayat-kesehatan-dan-lain-lain-request-edit') ?>" method="post">
+            <input type="hidden" name="rk_id" value="<?= $rk['rk_id'] ?>">
+            <input type="hidden" name="rk_saved" value="0">
+            <button type="submit" class="btn btn-outline-clr1">Edit</button>
+        </form>
+    </div>
     </div>
 </div>
 </section>

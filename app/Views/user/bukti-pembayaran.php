@@ -30,7 +30,7 @@
                 <a href="<?= base_url('download-bukti-pembayaran/') . $file_bp ?>" class="btn btn-sm btn-outline-clr1 px-4 lh-1 ls-s"><i class="fas fa-download me-2"></i>Unduh bukti pembayaran Anda di sini</a>
             </div>
             <div class="d-flex justify-content-center align-items-center">
-                <a href="https://chat.whatsapp.com/Dg31q8T8YNeENGwem01bpi" class="btn btn-clr1 py-1 ls-s lh-1 fsz-14 mt-4" style="width:290px;">Grup Whatsapp calon santri Al-Hikam <i class="fab fa-whatsapp"></i></a>
+                <a target="_blank" href="https://chat.whatsapp.com/Dg31q8T8YNeENGwem01bpi" class="btn btn-clr1 py-1 ls-s lh-1 fsz-14 mt-4" style="width:290px;">Grup Whatsapp calon santri Al-Hikam <i class="fab fa-whatsapp"></i></a>
             </div>
         </div>
     </div>

@@ -214,4 +214,18 @@ class Santri extends BaseController
     
         return redirect()->to('berkas-pendaftaran');
     }
+
+    public function request_edit()
+    {
+        $update = [
+            'santri_saved' => $this->request->getPost('santri_saved')
+        ];
+
+        $santri_id = $this->request->getPost('santri_id');
+
+        $santriModel = $this->santriModel;
+        $santriModel->update($santri_id, $update);
+
+        return redirect()->back();
+    }
 }

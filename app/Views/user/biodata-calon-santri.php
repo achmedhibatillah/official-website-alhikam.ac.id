@@ -115,5 +115,13 @@
             </tr>
         </table>
     </div>
+
+    <div class="card m-1 m-md-4 p-3">
+        <form action="<?= base_url('santri-request-edit') ?>" method="post">
+            <input type="hidden" name="santri_id" value="<?= $santri['santri_id'] ?>">
+            <input type="hidden" name="santri_saved" value="0">
+            <button type="submit" class="btn btn-outline-clr1">Edit</button>
+        </form>
+    </div>
 </div>
 </section>

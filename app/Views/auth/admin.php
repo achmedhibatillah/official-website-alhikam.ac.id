@@ -5,7 +5,7 @@
                 <?= session()->getFlashdata('success-daftar') ?>
             </div>
         <?php endif; ?>
-        <div class="card m-0 p-0 border-clr1-3 bg-clr4 mx-2 position-relative" style="border-radius:40px;">
+        <div class="card m-0 p-0 border-clr1-3 bg-clr4 mx-2 position-relative" style="border-radius:20px;">
             <a href="<?= base_url() ?>" class="position-absolute td-none text-clr1 ls-xs" style="top:20px;left:20px;"><img src="<?= base_url('images/icon/back.png') ?>" class="he-15 mb-2"></a>
             <div class="card-body p-0 text-clr1" style="margin:38px;">
                 <div class="d-flex justify-content-center">
