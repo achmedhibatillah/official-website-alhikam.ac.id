@@ -389,11 +389,17 @@ class Admin extends BaseController
         $santriData = $santriModel->getSantriByPesertaId($peserta_id);
         $bpData = $bpModel->getBpByPesertaId($peserta_id);
         $pengumumanData = $pengumumanModel->getPengumumanByPesertaId($peserta_id);
+
+        if ($pengumumanData['pengumuman_saved'] == 0) {
+            $view = 'admin/pengumuman-detail-edit';
+        } else {
+            $view = 'admin/pengumuman-detail';
+        }
         
         return 
             view('templates/header', $data) .
             view('templates/navbar-admin', $data) .
-            view('admin/pengumuman-detail', [
+            view($view, [
                 'santri' => $santriData,
                 'bp' => $bpData,
                 'pengumuman' => $pengumumanData

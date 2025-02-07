@@ -25,6 +25,7 @@ class PengumumanModel extends Model
         'pengumuman_kopiah',
         'pengumuman_bukukitab',
         'pengumuman_bukubio',
+        'pengumuman_saved',
         'peserta_id',
         'created_at',
         'updated_at',

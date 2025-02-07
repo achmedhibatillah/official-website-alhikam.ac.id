@@ -81,3 +81,4 @@ $routes->post('/verifikasi-bp', 'BuktiPembayaran::pembayaran_ver', ['filter' => 
 $routes->post('/tolak-verifikasi-bp', 'BuktiPembayaran::pembayaran_unver', ['filter' => 'admin-auth']);
 
 $routes->post('/simpan-pengumuman', 'Pengumuman::update', ['filter' => 'admin-auth']);
+$routes->post('/request-edit-pengumuman', 'Pengumuman::request_update', ['filter' => 'admin-auth']);

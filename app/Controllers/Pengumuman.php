@@ -54,7 +54,8 @@ class Pengumuman extends BaseController
             'pengumuman_sarung' => $this->request->getPost('pengumuman_sarung'),
             'pengumuman_kopiah' => $this->request->getPost('pengumuman_kopiah'),
             'pengumuman_bukukitab' => $this->request->getPost('pengumuman_bukukitab'),
-            'pengumuman_bukubio' => $this->request->getPost('pengumuman_bukubio')
+            'pengumuman_bukubio' => $this->request->getPost('pengumuman_bukubio'),
+            'pengumuman_saved' => 1
         ];
 
         $pengumumanModel = $this->pengumumanModel;
@@ -65,4 +66,17 @@ class Pengumuman extends BaseController
         return redirect()->to('atur-pengumuman')->with('success-pengumuman', 'Anda berhasil memperbarui data!');
     }
 
+    public function request_update()
+    {
+        $update = [
+            'pengumuman_saved' => $this->request->getPost('pengumuman_saved')
+        ];
+
+        $pengumumanModel = $this->pengumumanModel;
+
+        $pengumuman_id = $this->request->getPost('pengumuman_id');
+        $pengumumanModel->update($pengumuman_id, $update);
+
+        return redirect()->back();
+    }
 }

@@ -27,63 +27,109 @@
     <div class="row m-0 p-0">
         <div class="col-md-8 m-0 p-0">
             <div class="card m-0 p-3 mb-3 bg-clr5 text-clr1">
-                <form action="<?= base_url('simpan-pengumuman') ?>" method="post" enctype="multipart/form-data">
+                <div class="row m-0 p-0">
+                    <?php if($pengumuman['pengumuman_pdf']): ?>
+                            <a href="<?= base_url('lihat-pengumuman') ?>" class="btn btn-clr1"><i class="fas fa-download"></i> Lihat pengumuman</a>
+                    <?php endif; ?>
+                </div>
+                <div class="row m-0 p-0 mt-3">
+                    <div class="col-1 p-0 m-0 d-flex justify-content-end">
+                        <?= ($pengumuman['pengumuman_kasur'] == 1) ? '<i class="fas fa-check-circle"></i>' : '<i class="fas fa-circle-minus text-secondary"></i>' ?>
+                    </div>
+                    <div class="col-11 m-0 p-0">
+                        <p class="m-0 text-clr1 ms-2">Kasur</p>
+                    </div>
+                </div>
+                <div class="row m-0 p-0 mt-1">
+                    <div class="col-1 p-0 m-0 d-flex justify-content-end">
+                        <?= ($pengumuman['pengumuman_ranjang'] == 1) ? '<i class="fas fa-check-circle"></i>' : '<i class="fas fa-circle-minus text-secondary"></i>' ?>
+                    </div>
+                    <div class="col-11 m-0 p-0">
+                        <p class="m-0 text-clr1 ms-2">Ranjang tidur</p>
+                    </div>
+                </div>
+                <div class="row m-0 p-0 mt-1">
+                    <div class="col-1 p-0 m-0 d-flex justify-content-end">
+                        <?= ($pengumuman['pengumuman_lemari'] == 1) ? '<i class="fas fa-check-circle"></i>' : '<i class="fas fa-circle-minus text-secondary"></i>' ?>
+                    </div>
+                    <div class="col-11 m-0 p-0">
+                        <p class="m-0 text-clr1 ms-2">Lemari</p>
+                    </div>
+                </div>
+                <div class="row m-0 p-0 mt-1">
+                    <div class="col-1 p-0 m-0 d-flex justify-content-end">
+                        <?= ($pengumuman['pengumuman_tas'] == 1) ? '<i class="fas fa-check-circle"></i>' : '<i class="fas fa-circle-minus text-secondary"></i>' ?>
+                    </div>
+                    <div class="col-11 m-0 p-0">
+                        <p class="m-0 text-clr1 ms-2">Tas ransel</p>
+                    </div>
+                </div>
+                <div class="row m-0 p-0 mt-1">
+                    <div class="col-1 p-0 m-0 d-flex justify-content-end">
+                        <?= ($pengumuman['pengumuman_jas'] == 1) ? '<i class="fas fa-check-circle"></i>' : '<i class="fas fa-circle-minus text-secondary"></i>' ?>
+                    </div>
+                    <div class="col-11 m-0 p-0">
+                        <p class="m-0 text-clr1 ms-2">Jas almamater</p>
+                    </div>
+                </div>
+                <div class="row m-0 p-0 mt-1">
+                    <div class="col-1 p-0 m-0 d-flex justify-content-end">
+                        <?= ($pengumuman['pengumuman_olahraga'] == 1) ? '<i class="fas fa-check-circle"></i>' : '<i class="fas fa-circle-minus text-secondary"></i>' ?>
+                    </div>
+                    <div class="col-11 m-0 p-0">
+                        <p class="m-0 text-clr1 ms-2">Seragam olahraga</p>
+                    </div>
+                </div>
+                <div class="row m-0 p-0 mt-1">
+                    <div class="col-1 p-0 m-0 d-flex justify-content-end">
+                        <?= ($pengumuman['pengumuman_koko'] == 1) ? '<i class="fas fa-check-circle"></i>' : '<i class="fas fa-circle-minus text-secondary"></i>' ?>
+                    </div>
+                    <div class="col-11 m-0 p-0">
+                        <p class="m-0 text-clr1 ms-2">Baju taqwa</p>
+                    </div>
+                </div>
+                <div class="row m-0 p-0 mt-1">
+                    <div class="col-1 p-0 m-0 d-flex justify-content-end">
+                        <?= ($pengumuman['pengumuman_sarung'] == 1) ? '<i class="fas fa-check-circle"></i>' : '<i class="fas fa-circle-minus text-secondary"></i>' ?>
+                    </div>
+                    <div class="col-11 m-0 p-0">
+                        <p class="m-0 text-clr1 ms-2">Sarung</p>
+                    </div>
+                </div>
+                <div class="row m-0 p-0 mt-1">
+                    <div class="col-1 p-0 m-0 d-flex justify-content-end">
+                        <?= ($pengumuman['pengumuman_kopiah'] == 1) ? '<i class="fas fa-check-circle"></i>' : '<i class="fas fa-circle-minus text-secondary"></i>' ?>
+                    </div>
+                    <div class="col-11 m-0 p-0">
+                        <p class="m-0 text-clr1 ms-2">Kopyah</p>
+                    </div>
+                </div>
+                <div class="row m-0 p-0 mt-1">
+                    <div class="col-1 p-0 m-0 d-flex justify-content-end">
+                        <?= ($pengumuman['pengumuman_bukukitab'] == 1) ? '<i class="fas fa-check-circle"></i>' : '<i class="fas fa-circle-minus text-secondary"></i>' ?>
+                    </div>
+                    <div class="col-11 m-0 p-0">
+                        <p class="m-0 text-clr1 ms-2">Buku pembelajaran dan kitab-kitab</p>
+                    </div>
+                </div>
+                <div class="row m-0 p-0 mt-1">
+                    <div class="col-1 p-0 m-0 d-flex justify-content-end">
+                        <?= ($pengumuman['pengumuman_bukubio'] == 1) ? '<i class="fas fa-check-circle"></i>' : '<i class="fas fa-circle-minus text-secondary"></i>' ?>
+                    </div>
+                    <div class="col-11 m-0 p-0">
+                        <p class="m-0 text-clr1 ms-2">Buku biografi KH. Hasyim Muzadi</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row m-0 p-0">
+        <div class="col-md-8 m-0 p-0">
+            <div class="card m-0 p-3 mb-3 bg-clr5 text-clr1">
+                <form action="<?= base_url('request-edit-pengumuman') ?>" method="post">
                     <input type="hidden" name="pengumuman_id" value="<?= $pengumuman['pengumuman_id'] ?>">
-                    <div class="mb-3">
-                        <label for="pengumuman_pdf" class="fw-bold ls-1 lh-1 mb-2">Unggah surat kelulusan santri:</label>
-                        <?php if(session()->getFlashdata('errors-pengumuman')): ?>
-                            <p class="d-block text-danger fsz-12 ls-1 lh-1 mb-2"><?= session()->getFlashdata('errors-pengumuman')['pengumuman_pdf'] ?></p>
-                        <?php endif; ?>
-                        <input class="d-block" type="file" name="pengumuman_pdf" id="pengumuman_pdf" accept=".pdf" enctype="multipart/form-data">
-                    </div>
-                    <div class="mb-3">
-                        <p class="ls-1 lh-1 fw-bold mb-2">Kartu fasilitas santri baru:</p>
-                        <div class="">
-                            <input <?= (old('pengumuman_kasur')) ? 'checked' : '' ?> value="1" type="checkbox" name="pengumuman_kasur" id="pengumuman_kasur" class="border-clr1 me-1">
-                            <label for="pengumuman_kasur">Kasur</label>
-                        </div>
-                        <div class="">
-                            <input <?= (old('pengumuman_ranjang')) ? 'checked' : '' ?> value="1"  type="checkbox" name="pengumuman_ranjang" id="pengumuman_ranjang" class="border-clr1 me-1">
-                            <label for="pengumuman_ranjang">Ranjang tidur</label>
-                        </div>
-                        <div class="">
-                            <input <?= (old('pengumuman_lemari')) ? 'checked' : '' ?> value="1"  type="checkbox" name="pengumuman_lemari" id="pengumuman_lemari" class="border-clr1 me-1">
-                            <label for="pengumuman_lemari">Lemari</label>
-                        </div>
-                        <div class="">
-                            <input <?= (old('pengumuman_tas')) ? 'checked' : '' ?> value="1"  type="checkbox" name="pengumuman_tas" id="pengumuman_tas" class="border-clr1 me-1">
-                            <label for="pengumuman_tas">Tas ransel</label>
-                        </div>
-                        <div class="">
-                            <input <?= (old('pengumuman_jas')) ? 'checked' : '' ?> value="1"  type="checkbox" name="pengumuman_jas" id="pengumuman_jas" class="border-clr1 me-1">
-                            <label for="pengumuman_jas">Jas almamater</label>
-                        </div>
-                        <div class="">
-                            <input <?= (old('pengumuman_olahraga')) ? 'checked' : '' ?> value="1"  type="checkbox" name="pengumuman_olahraga" id="pengumuman_olahraga" class="border-clr1 me-1">
-                            <label for="pengumuman_olahraga">Seragam olahraga</label>
-                        </div>
-                        <div class="">
-                            <input <?= (old('pengumuman_koko')) ? 'checked' : '' ?> value="1"  type="checkbox" name="pengumuman_koko" id="pengumuman_koko" class="border-clr1 me-1">
-                            <label for="pengumuman_koko">Baju taqwa</label>
-                        </div>
-                        <div class="">
-                            <input <?= (old('pengumuman_sarung')) ? 'checked' : '' ?> value="1"  type="checkbox" name="pengumuman_sarung" id="pengumuman_sarung" class="border-clr1 me-1">
-                            <label for="pengumuman_sarung">Sarung</label>
-                        </div>
-                        <div class="">
-                            <input <?= (old('pengumuman_kopiah')) ? 'checked' : '' ?> value="1"  type="checkbox" name="pengumuman_kopiah" id="pengumuman_kopiah" class="border-clr1 me-1">
-                            <label for="pengumuman_kopiah">Kopyah</label>
-                        </div>
-                        <div class="">
-                            <input <?= (old('pengumuman_bukukitab')) ? 'checked' : '' ?> value="1"  type="checkbox" name="pengumuman_bukukitab" id="pengumuman_bukukitab" class="border-clr1 me-1">
-                            <label for="pengumuman_bukukitab">Buku pembelajaran dan kitab-kitab</label>
-                        </div>
-                        <div class="">
-                            <input <?= (old('pengumuman_bukubio')) ? 'checked' : '' ?> value="1"  type="checkbox" name="pengumuman_bukubio" id="pengumuman_bukubio" class="border-clr1 me-1">
-                            <label for="pengumuman_bukubio">Buku biografi KH. Hasyim Muzadi</label>
-                        </div>
-                        <button type="submit" class="btn btn-clr1 p-0 px-3 mt-2">Simpan</button>
-                    </div>
+                    <input type="hidden" name="pengumuman_saved" value="0">
+                    <button type="submit" class="btn btn-outline-clr1">Edit pengumuman</button>
                 </form>
             </div>
         </div>
