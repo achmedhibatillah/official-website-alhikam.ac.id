@@ -29,10 +29,16 @@
             <div class="card m-0 p-3 mb-3 bg-clr5 text-clr1">
                 <div class="row m-0 p-0">
                     <?php if($pengumuman['pengumuman_pdf']): ?>
-                            <a href="<?= base_url('lihat-pengumuman') ?>" class="btn btn-clr1"><i class="fas fa-download"></i> Lihat pengumuman</a>
+                        <p class="ls-1 fw-bold mb-1 text-center">Lihat surat kelulusan santri:</p>
+                        <div class="d-flex justify-content-center">
+                            <?php $file_pengumuman = str_replace('uploads/pengumuman/', '', $pengumuman['pengumuman_pdf']); ?>
+                            <a href="<?= base_url('admin-download-surat-kelulusan/') . $file_pengumuman  ?>" class="btn btn-clr1" style="width:220px;"><i class="fas fa-download"></i> Lihat pengumuman</a>
+                        </div>
                     <?php endif; ?>
                 </div>
-                <div class="row m-0 p-0 mt-3">
+                <hr class="my-4">
+                <p class="fw-bold ls-1">Kartu fasilitas santri baru:</p>
+                <div class="row m-0 p-0">
                     <div class="col-1 p-0 m-0 d-flex justify-content-end">
                         <?= ($pengumuman['pengumuman_kasur'] == 1) ? '<i class="fas fa-check-circle"></i>' : '<i class="fas fa-circle-minus text-secondary"></i>' ?>
                     </div>

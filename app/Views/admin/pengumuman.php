@@ -7,6 +7,19 @@
                 </div>
             <?php endif; ?>
         </div>
+    </div> 
+    <div class="card m-0 p-3 mb-3 bg-clr1 text-clr5">
+        <div class="row m-0 p-0">
+            <div class="col-md-3 m-0 p-0">
+                <a href="<?= base_url('atur-pengumuman') ?>" class="btn btn-light fsz-13 p-1 ls-1 lh-1 text-clr1 <?= ($cond == '') ? 'bg-clr4' : '' ?>" style="width:95%;"><i class="fas fa-search me-2"></i>Menunggu dilampirkan</a>
+            </div>
+            <div class="col-md-3 m-0 p-0">
+                <a href="<?= base_url('atur-pengumuman-where-terlampir') ?>" class="btn btn-light fsz-13 p-1 ls-1 lh-1 text-clr1 mt-2 mt-md-0 <?= ($cond == 'terlampir') ? 'bg-clr4' : '' ?>" style="width:95%;"><i class="fas fa-search me-2"></i>Telah terlampir</a>
+            </div>
+            <div class="col-md-3 m-0 p-0">
+                <a href="<?= base_url('atur-pengumuman-where-all') ?>" class="btn btn-light fsz-13 p-1 ls-1 lh-1 text-clr1 mt-2 mt-md-0 <?= ($cond == 'all') ? 'bg-clr4' : '' ?>" style="width:95%;"><i class="fas fa-search me-2"></i>Semuanya</a>
+            </div>
+        </div>
     </div>
     <div class="row m-0 p-0">
         <?php foreach($santri as $x) : ?>

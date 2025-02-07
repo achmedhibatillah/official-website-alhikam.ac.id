@@ -29,7 +29,7 @@
                                 </div>
                                 <div class="d-flex justify-content-center">
                                     <?php if ($bp['bp_konfirm'] == 0): ?>
-                                        <div class="mt-3">
+                                        <div class="mt-2">
                                             <div class="d-flex justify-content-center">
                                                 <div id="bp-konfirmasi" class="btn btn-light text-clr1 p-1 ls-s lh-1 fsz-12 cursor-pointer" data-bs-toggle="modal" data-bs-target="#modal-bp-konfirm"><i class="fas fa-check me-2"></i>verifikasi</div>
                                             </div>

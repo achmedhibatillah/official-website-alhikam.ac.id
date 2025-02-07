@@ -39,47 +39,47 @@
                     <div class="mb-3">
                         <p class="ls-1 lh-1 fw-bold mb-2">Kartu fasilitas santri baru:</p>
                         <div class="">
-                            <input <?= (old('pengumuman_kasur')) ? 'checked' : '' ?> value="1" type="checkbox" name="pengumuman_kasur" id="pengumuman_kasur" class="border-clr1 me-1">
+                            <input <?= (old('pengumuman_kasur', $pengumuman['pengumuman_kasur'] ?? '') ? 'checked' : '') ?> value="1" type="checkbox" name="pengumuman_kasur" id="pengumuman_kasur" class="border-clr1 me-1">
                             <label for="pengumuman_kasur">Kasur</label>
                         </div>
                         <div class="">
-                            <input <?= (old('pengumuman_ranjang')) ? 'checked' : '' ?> value="1"  type="checkbox" name="pengumuman_ranjang" id="pengumuman_ranjang" class="border-clr1 me-1">
+                            <input <?= (old('pengumuman_ranjang', $pengumuman['pengumuman_ranjang'] ?? '') ? 'checked' : '') ?> value="1"  type="checkbox" name="pengumuman_ranjang" id="pengumuman_ranjang" class="border-clr1 me-1">
                             <label for="pengumuman_ranjang">Ranjang tidur</label>
                         </div>
                         <div class="">
-                            <input <?= (old('pengumuman_lemari')) ? 'checked' : '' ?> value="1"  type="checkbox" name="pengumuman_lemari" id="pengumuman_lemari" class="border-clr1 me-1">
+                            <input <?= (old('pengumuman_lemari', $pengumuman['pengumuman_lemari'] ?? '') ? 'checked' : '') ?> value="1"  type="checkbox" name="pengumuman_lemari" id="pengumuman_lemari" class="border-clr1 me-1">
                             <label for="pengumuman_lemari">Lemari</label>
                         </div>
                         <div class="">
-                            <input <?= (old('pengumuman_tas')) ? 'checked' : '' ?> value="1"  type="checkbox" name="pengumuman_tas" id="pengumuman_tas" class="border-clr1 me-1">
+                            <input <?= (old('pengumuman_tas', $pengumuman['pengumuman_tas'] ?? '') ? 'checked' : '') ?> value="1"  type="checkbox" name="pengumuman_tas" id="pengumuman_tas" class="border-clr1 me-1">
                             <label for="pengumuman_tas">Tas ransel</label>
                         </div>
                         <div class="">
-                            <input <?= (old('pengumuman_jas')) ? 'checked' : '' ?> value="1"  type="checkbox" name="pengumuman_jas" id="pengumuman_jas" class="border-clr1 me-1">
+                            <input <?= (old('pengumuman_jas', $pengumuman['pengumuman_jas'] ?? '') ? 'checked' : '') ?> value="1"  type="checkbox" name="pengumuman_jas" id="pengumuman_jas" class="border-clr1 me-1">
                             <label for="pengumuman_jas">Jas almamater</label>
                         </div>
                         <div class="">
-                            <input <?= (old('pengumuman_olahraga')) ? 'checked' : '' ?> value="1"  type="checkbox" name="pengumuman_olahraga" id="pengumuman_olahraga" class="border-clr1 me-1">
+                            <input <?= (old('pengumuman_olahraga', $pengumuman['pengumuman_olahraga'] ?? '') ? 'checked' : '') ?> value="1"  type="checkbox" name="pengumuman_olahraga" id="pengumuman_olahraga" class="border-clr1 me-1">
                             <label for="pengumuman_olahraga">Seragam olahraga</label>
                         </div>
                         <div class="">
-                            <input <?= (old('pengumuman_koko')) ? 'checked' : '' ?> value="1"  type="checkbox" name="pengumuman_koko" id="pengumuman_koko" class="border-clr1 me-1">
+                            <input <?= (old('pengumuman_koko', $pengumuman['pengumuman_koko'] ?? '') ? 'checked' : '') ?> value="1"  type="checkbox" name="pengumuman_koko" id="pengumuman_koko" class="border-clr1 me-1">
                             <label for="pengumuman_koko">Baju taqwa</label>
                         </div>
                         <div class="">
-                            <input <?= (old('pengumuman_sarung')) ? 'checked' : '' ?> value="1"  type="checkbox" name="pengumuman_sarung" id="pengumuman_sarung" class="border-clr1 me-1">
+                            <input <?= (old('pengumuman_sarung', $pengumuman['pengumuman_sarung'] ?? '') ? 'checked' : '') ?> value="1"  type="checkbox" name="pengumuman_sarung" id="pengumuman_sarung" class="border-clr1 me-1">
                             <label for="pengumuman_sarung">Sarung</label>
                         </div>
                         <div class="">
-                            <input <?= (old('pengumuman_kopiah')) ? 'checked' : '' ?> value="1"  type="checkbox" name="pengumuman_kopiah" id="pengumuman_kopiah" class="border-clr1 me-1">
+                            <input <?= (old('pengumuman_kopiah', $pengumuman['pengumuman_kopiah'] ?? '') ? 'checked' : '') ?> value="1"  type="checkbox" name="pengumuman_kopiah" id="pengumuman_kopiah" class="border-clr1 me-1">
                             <label for="pengumuman_kopiah">Kopyah</label>
                         </div>
                         <div class="">
-                            <input <?= (old('pengumuman_bukukitab')) ? 'checked' : '' ?> value="1"  type="checkbox" name="pengumuman_bukukitab" id="pengumuman_bukukitab" class="border-clr1 me-1">
+                            <input <?= (old('pengumuman_bukukitab', $pengumuman['pengumuman_bukukitab'] ?? '') ? 'checked' : '') ?> value="1"  type="checkbox" name="pengumuman_bukukitab" id="pengumuman_bukukitab" class="border-clr1 me-1">
                             <label for="pengumuman_bukukitab">Buku pembelajaran dan kitab-kitab</label>
                         </div>
                         <div class="">
-                            <input <?= (old('pengumuman_bukubio')) ? 'checked' : '' ?> value="1"  type="checkbox" name="pengumuman_bukubio" id="pengumuman_bukubio" class="border-clr1 me-1">
+                            <input <?= (old('pengumuman_bukubio', $pengumuman['pengumuman_bukubio'] ?? '') ? 'checked' : '') ?> value="1"  type="checkbox" name="pengumuman_bukubio" id="pengumuman_bukubio" class="border-clr1 me-1">
                             <label for="pengumuman_bukubio">Buku biografi KH. Hasyim Muzadi</label>
                         </div>
                         <button type="submit" class="btn btn-clr1 p-0 px-3 mt-2">Simpan</button>

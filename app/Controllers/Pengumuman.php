@@ -79,4 +79,16 @@ class Pengumuman extends BaseController
 
         return redirect()->back();
     }
+
+    public function downloadPengumuman($filePath)
+    {
+        $filePath = urldecode($filePath);
+        $fullPath = FCPATH . 'uploads/pengumuman/' . $filePath;
+    
+        if (!file_exists($fullPath)) {
+            return redirect()->back()->with('error', 'File tidak ditemukan.');
+        }
+    
+        return $this->response->download($fullPath, null);
+    }
 }

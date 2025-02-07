@@ -354,13 +354,37 @@ class Admin extends BaseController
         $santriModel = $this->santriModel;
         $pengumumanModel = $this->pengumumanModel;
 
-        $santriData = $santriModel
-        ->select('santri.*, bp.bp_saved, bp.bp_konfirm, bp.bp_foto, bp.bp_bp')
-        ->join('bp', 'bp.peserta_id = santri.peserta_id')
-        ->where('santri.santri_saved', '1')
-        // ->where('bp.bp_konfirm', '1')
-        ->orderBy('santri.created_at', 'DESC')
-        ->findAll();
+        if ($cond == 'terlampir') {
+            $santriData = $santriModel
+            ->select('santri.*, bp.bp_saved, bp.bp_konfirm, bp.bp_foto, bp.bp_bp')
+            ->join('bp', 'bp.peserta_id = santri.peserta_id')
+            ->join('pengumuman', 'pengumuman.peserta_id = santri.peserta_id')
+            ->where('santri.santri_saved', '1')
+            ->where('bp.bp_konfirm', '1') //
+            ->where('pengumuman_saved', '1')
+            ->orderBy('santri.created_at', 'DESC')
+            ->findAll();
+        } elseif ($cond == 'all'){
+            $santriData = $santriModel
+            ->select('santri.*, bp.bp_saved, bp.bp_konfirm, bp.bp_foto, bp.bp_bp')
+            ->join('bp', 'bp.peserta_id = santri.peserta_id')
+            ->join('pengumuman', 'pengumuman.peserta_id = santri.peserta_id')
+            ->where('santri.santri_saved', '1')
+            ->where('bp.bp_konfirm', '1') //
+            ->orderBy('santri.created_at', 'DESC')
+            ->findAll();     
+        } else {
+            $santriData = $santriModel
+            ->select('santri.*, bp.bp_saved, bp.bp_konfirm, bp.bp_foto, bp.bp_bp')
+            ->join('bp', 'bp.peserta_id = santri.peserta_id')
+            ->join('pengumuman', 'pengumuman.peserta_id = santri.peserta_id')
+            ->where('santri.santri_saved', '1')
+            ->where('bp.bp_konfirm', '1')
+            ->where('pengumuman.pengumuman_saved', '0')
+            ->orderBy('santri.created_at', 'DESC')
+            ->findAll();
+        }
+
         $pengumumanData = $pengumumanModel->findAll();
 
         return 

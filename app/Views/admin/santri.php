@@ -35,9 +35,9 @@
                 </div>
             </form>
         </div>
-        <div class="col-md-6 m-0 p-0 order-1 order-md-2 px-2">
-            <p class="fsz-14 mb-0 ls-1">Keterangan telah mengisi:</p>
-            <p class="fsz-14 mb-0 ls-1" style="line-height:1.2;"><i class="text-index">BS</i> : Biodata calon santri | <i class="text-index">BO</i> : Biodata orang tua | <i class="text-index">RK</i> : Riwayat kesehatan & lain-lain | <i class="text-index">BP</i> : Bukti pembayaran | <i class="text-index">TT</i> : Tes tulis | <i class="text-index">TW</i> : Tes wawancara</p>
+        <div class="col-md-6 m-0 p-0 order-1 order-md-2 px-2 mb-3 mb-md-0">
+            <p class="fsz-14 mb-1 ls-s">Keterangan telah mengisi:</p>
+            <p class="fsz-14 mb-0 ls-s" style="line-height:1.2;"><i class="text-index">BS</i> : Biodata calon santri | <i class="text-index">BO</i> : Biodata orang tua | <i class="text-index">RK</i> : Riwayat kesehatan & lain-lain | <i class="text-index">BP</i> : Bukti pembayaran | <i class="text-index">TT</i> : Tes tulis | <i class="text-index">TW</i> : Tes wawancara</p>
         </div>
     </div>
     <hr>

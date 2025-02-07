@@ -7,6 +7,9 @@ use \App\Models\MessageModel;
 
 class BuktiPembayaran extends BaseController
 {
+    // Bukti pembayaran harus tervalidasi di server
+    // Admin bank mengecek transaksi yang masuk berdasarkan slip transaksi
+
     protected $bpModel;
     protected $messageModel;
 
@@ -107,11 +110,12 @@ class BuktiPembayaran extends BaseController
         $bpModel = $this->bpModel;
         $messageModel = $this->messageModel;
 
-        $update_bp = [
-            'bp_saved' => $this->request->getPost('bp_saved')
-        ];
-
         $bp_id = $this->request->getPost('bp_id');
+
+        $update_bp = [
+            'bp_saved' => $this->request->getPost('bp_saved'),
+            'bp_konfirm' => 0
+        ];
 
         $bpModel->update($bp_id, $update_bp);
 

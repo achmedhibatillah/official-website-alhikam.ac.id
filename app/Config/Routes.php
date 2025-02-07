@@ -75,10 +75,12 @@ $routes->get('/verifikasi-pembayaran-where-(:segment)', 'Admin::pembayaran/$1', 
 $routes->get('/verifikasi-pembayaran/(:num)', 'Admin::pembayaran_d/$1', ['filter' => 'admin-auth']);
 $routes->get('/atur-pengumuman', 'Admin::pengumuman', ['filter' => 'admin-auth']);
 $routes->get('/atur-pengumuman/(:num)', 'Admin::pengumuman_d/$1', ['filter' => 'admin-auth']);
+$routes->get('/atur-pengumuman-where-(:segment)', 'Admin::pengumuman/$1', ['filter' => 'admin-auth']);
 
 $routes->get('/admin-download-bukti-pembayaran/(:segment)', 'BuktiPembayaran::downloadBp/$1', ['filter' => 'admin-auth']);
 $routes->post('/verifikasi-bp', 'BuktiPembayaran::pembayaran_ver', ['filter' => 'admin-auth']);
 $routes->post('/tolak-verifikasi-bp', 'BuktiPembayaran::pembayaran_unver', ['filter' => 'admin-auth']);
 
+$routes->get('/admin-download-surat-kelulusan/(:segment)', 'Pengumuman::downloadPengumuman/$1', ['filter' => 'admin-auth']);
 $routes->post('/simpan-pengumuman', 'Pengumuman::update', ['filter' => 'admin-auth']);
 $routes->post('/request-edit-pengumuman', 'Pengumuman::request_update', ['filter' => 'admin-auth']);
