@@ -1,43 +1,48 @@
 <div class="m-3">
     <div class="row m-0 p-0">
-        <div class="col-md-6 m-0 p-0 order-2 order-md-1">
-            <div class="">
-                <p class="mb-0 text-center ls-s lh-s fsz-13">Filter berdasarkan:</p>
-                <div class="row m-0 p-0 mb-2">
-                    <div class="col-2 m-0 p-0 pe-1">
-                        <a href="<?= base_url('daftar-calon-santri') ?>" class="btn btn-secondary p-0 fsz-13 w-100">BS</a>
-                    </div>
-                    <div class="col-2 m-0 p-0 pe-1">
-                        <a href="<?= base_url('daftar-calon-santri-where-bo') ?>" class="btn btn-secondary p-0 fsz-13 w-100">BO</a>
-                    </div>
-                    <div class="col-2 m-0 p-0 pe-1">
-                        <a href="<?= base_url('daftar-calon-santri-where-rk') ?>" class="btn btn-secondary p-0 fsz-13 w-100">RK</a>
-                    </div>
-                    <div class="col-2 m-0 p-0 pe-1">
-                        <a href="<?= base_url('daftar-calon-santri-where-bp') ?>" class="btn btn-secondary p-0 fsz-13 w-100">BP</a>
-                    </div>
-                    <div class="col-2 m-0 p-0 pe-1">
-                        <a href="<?= base_url('daftar-calon-santri-where-tt') ?>" class="btn btn-secondary p-0 fsz-13 w-100">TT</a>
-                    </div>
-                    <div class="col-2 m-0 p-0 pe-1">
-                        <a href="<?= base_url('daftar-calon-santri-where-tw') ?>" class="btn btn-secondary p-0 fsz-13 w-100">TW</a>
+        <div class="col-md-6 m-0 p-0 order-2 order-md-1 d-flex align-items-center">
+            <div class="w-100">
+                <div class="">
+                    <p class="mb-0 text-center ls-s lh-s fsz-13">Filter berdasarkan:</p>
+                    <div class="row m-0 p-0 mb-2">
+                        <div class="col-2 m-0 p-0 pe-1">
+                            <a href="<?= base_url('daftar-calon-santri') ?>" class="btn btn-secondary p-0 fsz-13 w-100">BS</a>
+                        </div>
+                        <div class="col-2 m-0 p-0 pe-1">
+                            <a href="<?= base_url('daftar-calon-santri-where-bo') ?>" class="btn btn-secondary p-0 fsz-13 w-100">BO</a>
+                        </div>
+                        <div class="col-2 m-0 p-0 pe-1">
+                            <a href="<?= base_url('daftar-calon-santri-where-rk') ?>" class="btn btn-secondary p-0 fsz-13 w-100">RK</a>
+                        </div>
+                        <div class="col-2 m-0 p-0 pe-1">
+                            <a href="<?= base_url('daftar-calon-santri-where-bp') ?>" class="btn btn-secondary p-0 fsz-13 w-100">BP</a>
+                        </div>
+                        <div class="col-2 m-0 p-0 pe-1">
+                            <a href="<?= base_url('daftar-calon-santri-where-tt') ?>" class="btn btn-secondary p-0 fsz-13 w-100">TT</a>
+                        </div>
+                        <div class="col-2 m-0 p-0 pe-1">
+                            <a href="<?= base_url('daftar-calon-santri-where-tw') ?>" class="btn btn-secondary p-0 fsz-13 w-100">TW</a>
+                        </div>
                     </div>
                 </div>
+                <form action="<?= base_url('daftar-calon-santri') ?>" class="mt-2 mt-md-0">
+                    <div class="row m-0 p-0">
+                        <div class="col-10 m-0 p-0 pe-1">
+                            <input type="text" name="keyword" id="" class="form-control he-33 fsz-14 ls-1 border-clr4" placeholder="Cari berdasarkan nama atau NIK ..." value="<?= $keyword ?>" autocomplete="off">
+                        </div>
+                        <div class="col-2 m-0 p-0 pe-2">
+                            <button type="submit" class="he-33 rounded text-clr5 bg-clr4 border-clr3 w-100"><i class="fas fa-search"></i></button>
+                        </div>
+                    </div>
+                </form>
             </div>
-            <form action="<?= base_url('daftar-calon-santri') ?>" class="mt-2 mt-md-0">
-                <div class="row m-0 p-0">
-                    <div class="col-10 m-0 p-0 pe-1">
-                        <input type="text" name="keyword" id="" class="form-control he-33 fsz-14 ls-1 border-clr4" placeholder="Cari berdasarkan nama atau NIK ..." value="<?= $keyword ?>" autocomplete="off">
-                    </div>
-                    <div class="col-2 m-0 p-0 pe-2">
-                        <button type="submit" class="he-33 rounded text-clr5 bg-clr4 border-clr3 w-100"><i class="fas fa-search"></i></button>
-                    </div>
-                </div>
-            </form>
         </div>
-        <div class="col-md-6 m-0 p-0 order-1 order-md-2 px-2 mb-3 mb-md-0">
-            <p class="fsz-14 mb-1 ls-s">Keterangan telah mengisi:</p>
-            <p class="fsz-14 mb-0 ls-s" style="line-height:1.2;"><i class="text-index">BS</i> : Biodata calon santri | <i class="text-index">BO</i> : Biodata orang tua | <i class="text-index">RK</i> : Riwayat kesehatan & lain-lain | <i class="text-index">BP</i> : Bukti pembayaran | <i class="text-index">TT</i> : Tes tulis | <i class="text-index">TW</i> : Tes wawancara</p>
+        <div class="col-md-6 m-0 p-0 order-1 order-md-2 px-2 mb-3 mb-md-0 d-flex align-items-center">
+            <div class="card m-0 p-2 bg-clr4 text-clr1">
+                <p class="fsz-14 mb--1 ls-s fw-bold">Keterangan telah mengisi:</p>
+                <hr>
+                <p class="fsz-14 mt--1 mb-0 ls-s" style="line-height:1.2;"><i class="text-index">BS</i> : Biodata calon santri | <i class="text-index">BO</i> : Biodata orang tua | <i class="text-index">RK</i> : Riwayat kesehatan & lain-lain | <i class="text-index">BP</i> : Bukti pembayaran | <i class="text-index">TT</i> : Tes tulis | <i class="text-index">TW</i> : Tes wawancara</p>
+            </div>
         </div>
     </div>
     <hr>

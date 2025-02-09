@@ -1,7 +1,7 @@
 <section class="bg-clr5 bg-web position-relative text-clr1" style="padding-top:160px;padding-bottom:100px;min-height:100vh;background-image:url('<?= base_url('images/bg-main.png') ?>');">
 
 <h1 class="text-center fw-800 ls-xs mb-5">RIWAYAT KESEHATAN DAN LAIN-LAIN</h1>
-<form action="<?= base_url('simpan-riwayat-kesehatan-dan-lain-lain') ?>" method="post" class="mt-4">
+<form action="<?= base_url('simpan-riwayat-kesehatan-dan-lain-lain') ?>" id="formRK" method="post" class="mt-4">
 <input type="hidden" name="rk_id" value="<?= $rk['rk_id'] ?>">
 <input type="hidden" name="lain_id" value="<?= $lain['lain_id'] ?>">
 <div class="text-clr1 row m-0 p-0 justify-content-center">
@@ -29,7 +29,7 @@
         <!-- Penyakit yang Pernah Dialami -->
         <div class="mt-3">
             <label for="rk_pernah_penyakit" class="form-label mb-0 fsz-14 ls-1 fw-bold">B. Penyakit yang Pernah Dialami:</label>
-            <button type="button" class="btn btn-clr1 p-0 px-3 ms-1 ls-s fsz-12" data-bs-toggle="modal" data-bs-target="#modalTambahPenyakitPernah">Tambah</button>
+            <button type="button" class="save-before-show buttonModal btn btn-clr1 p-0 px-3 ms-1 ls-s fsz-12" data-bs-toggle="modal" data-bs-target="#modalTambahPenyakitPernah">Tambah</button>
             <?php if (session()->getFlashdata('errors-rk') && isset(session()->getFlashdata('errors-rk')['rk_pernah_penyakit'])): ?>
                 <div class="ls-s fsz-12 text-danger mt--1">
                     <?= session()->getFlashdata('errors-rk')['rk_pernah_penyakit'] ?>
@@ -39,7 +39,7 @@
                 <div class="card bg-clr4 border-clr1 mt-1 ls-s fsz-14 p-0 ps-3 py-1">
                     <div class="row m-0 p-0">
                         <div class="col-9 m-0 p-0"><?= $x['rk_pernah_penyakit'] ?></div>
-                        <div class="col-3 m-0 p-0 pe-2 d-flex justify-content-end"><a href="<?= base_url('hapus-penyakit-pernah-dialami/') . $x['rk_pernah_id'] ?>" class="btn btn-sm btn-outline-danger p-0 fsz-10  px-2 pt-1"><i class="fas fa-trash"></i></a></div>
+                        <div class="col-3 m-0 p-0 pe-2 d-flex justify-content-end"><a href="<?= base_url('hapus-penyakit-pernah-dialami/') . $x['rk_pernah_id'] ?>" class="save-before-show btn btn-sm btn-outline-danger p-0 fsz-10  px-2 pt-1"><i class="fas fa-trash"></i></a></div>
                     </div>
                 </div>
             <?php endforeach; ?>
@@ -47,7 +47,7 @@
         <!-- Penyakit yang Sedang Dialami -->
         <div class="mt-3">
             <label for="rk_sedang_penyakit" class="form-label mb-0 fsz-14 ls-1 fw-bold">C. Penyakit yang Sedang Dialami:</label>
-            <button type="button" class="btn btn-clr1 p-0 px-3 ms-1 ls-s fsz-12" data-bs-toggle="modal" data-bs-target="#modalTambahPenyakitSedang">Tambah</button>
+            <button type="button" class="save-before-show btn btn-clr1 p-0 px-3 ms-1 ls-s fsz-12" data-bs-toggle="modal" data-bs-target="#modalTambahPenyakitSedang">Tambah</button>
             <?php if (session()->getFlashdata('errors-rk') && isset(session()->getFlashdata('errors-rk')['rk_sedang_penyakit'])): ?>
                 <div class="ls-s fsz-12 text-danger mt--1">
                     <?= session()->getFlashdata('errors-rk')['rk_sedang_penyakit'] ?>
@@ -57,7 +57,7 @@
                 <div class="card bg-clr4 border-clr1 mt-1 ls-s fsz-14 p-0 ps-3 py-1">
                     <div class="row m-0 p-0">
                         <div class="col-9 m-0 p-0"><?= $x['rk_sedang_penyakit'] ?></div>
-                        <div class="col-3 m-0 p-0 pe-2 d-flex justify-content-end"><a href="<?= base_url('hapus-penyakit-sedang-dialami/') . $x['rk_sedang_id'] ?>" class="btn btn-sm btn-outline-danger p-0 fsz-10  px-2 pt-1"><i class="fas fa-trash"></i></a></div>
+                        <div class="col-3 m-0 p-0 pe-2 d-flex justify-content-end"><a href="<?= base_url('hapus-penyakit-sedang-dialami/') . $x['rk_sedang_id'] ?>" class="save-before-show btn btn-sm btn-outline-danger p-0 fsz-10  px-2 pt-1"><i class="fas fa-trash"></i></a></div>
                     </div>
                 </div>
             <?php endforeach; ?>
@@ -130,7 +130,7 @@
         <!-- Prestasi -->
         <div class="mt-3">
             <label for="lain_prestasi_prestasi" class="form-label mb-0 fsz-14 ls-1 fw-bold">A. Prestasi:</label>
-            <button type="button" class="btn btn-clr1 p-0 px-3 ms-1 ls-s fsz-12" data-bs-toggle="modal" data-bs-target="#modalprestasi">Tambah</button>
+            <button type="button" class="save-before-show btn btn-clr1 p-0 px-3 ms-1 ls-s fsz-12" data-bs-toggle="modal" data-bs-target="#modalprestasi">Tambah</button>
             <?php if (session()->getFlashdata('errors-lain') && isset(session()->getFlashdata('errors-lain')['lain_prestasi_prestasi'])): ?>
                 <div class="ls-s fsz-12 text-danger mt--1">
                     <?= session()->getFlashdata('errors-lain')['lain_prestasi_prestasi'] ?>
@@ -148,7 +148,7 @@
         <!-- Organisasi -->
         <div class="mt-3">
             <label for="lain_organisasi_organisasi" class="form-label mb-0 fsz-14 ls-1 fw-bold">B. Organisasi:</label>
-            <button type="button" class="btn btn-clr1 p-0 px-3 ms-1 ls-s fsz-12" data-bs-toggle="modal" data-bs-target="#modalOrganisasi">Tambah</button>
+            <button type="button" class="save-before-show btn btn-clr1 p-0 px-3 ms-1 ls-s fsz-12" data-bs-toggle="modal" data-bs-target="#modalOrganisasi">Tambah</button>
             <?php if (session()->getFlashdata('errors-lain') && isset(session()->getFlashdata('errors-lain')['lain_organisasi_organisasi'])): ?>
                 <div class="ls-s fsz-12 text-danger mt--1">
                     <?= session()->getFlashdata('errors-lain')['lain_organisasi_organisasi'] ?>
@@ -260,7 +260,7 @@
                         <td style="width:3%" class="fsz-13 fw-bold"></td>
                         <td style="width:32%" class="fsz-13 fw-bold lh-s"></td>
                         <td style="width:65%" class="fsz-13 fw-bold lh-s">
-                            <button type="button" class="btn btn-clr1 p-0 px-3 ms-1 ls-s fsz-12" data-bs-toggle="modal" data-bs-target="#modalBahasa">Tambah Bahasa Lain</button>
+                            <button type="button" class="save-before-show btn btn-clr1 p-0 px-3 ms-1 ls-s fsz-12" data-bs-toggle="modal" data-bs-target="#modalBahasa">Tambah Bahasa Lain</button>
                             <ul>
                             <?php foreach($lain['lain_bahasa'] as $x) : ?>
                                 <li class="mt-2 ls-s fsz-14 p-0 ps-1 py-0" style="border-bottom:0.5px solid var(--clr1);">
@@ -310,7 +310,7 @@
                         <td style="width:3%" class="fsz-13 fw-bold"></td>
                         <td style="width:32%" class="fsz-13 fw-bold lh-s"></td>
                         <td style="width:65%" class="fsz-13 fw-bold lh-s">
-                            <button type="button" class="btn btn-clr1 p-0 px-3 ms-1 ls-s fsz-12" data-bs-toggle="modal" data-bs-target="#modalKeahlian">Tambah Keahlian Lain</button>
+                            <button type="button" class="save-before-show btn btn-clr1 p-0 px-3 ms-1 ls-s fsz-12" data-bs-toggle="modal" data-bs-target="#modalKeahlian">Tambah Keahlian Lain</button>
                             <ul>
                             <?php foreach($lain['lain_keahlian'] as $x) : ?>
                                 <li class="mt-2 ls-s fsz-14 p-0 ps-1 py-0" style="border-bottom:0.5px solid var(--clr1);">
@@ -368,7 +368,7 @@
                         <td style="width:3%" class="fsz-13 fw-bold"></td>
                         <td style="width:32%" class="fsz-13 fw-bold lh-s"></td>
                         <td style="width:65%" class="fsz-13 fw-bold lh-s">
-                            <button type="button" class="btn btn-clr1 p-0 px-3 ms-1 ls-s fsz-12" data-bs-toggle="modal" data-bs-target="#modalOlahraga">Tambah Bidang Olahraga Lain</button>
+                            <button type="button" class="save-before-show btn btn-clr1 p-0 px-3 ms-1 ls-s fsz-12" data-bs-toggle="modal" data-bs-target="#modalOlahraga">Tambah Bidang Olahraga Lain</button>
                             <ul>
                             <?php foreach($lain['lain_olahraga'] as $x) : ?>
                                 <li class="mt-2 ls-s fsz-14 p-0 ps-1 py-0" style="border-bottom:0.5px solid var(--clr1);">
@@ -418,7 +418,7 @@
                         <td style="width:3%" class="fsz-13 fw-bold"></td>
                         <td style="width:32%" class="fsz-13 fw-bold lh-s"></td>
                         <td style="width:65%" class="fsz-13 fw-bold lh-s">
-                            <button type="button" class="btn btn-clr1 p-0 px-3 ms-1 ls-s fsz-12" data-bs-toggle="modal" data-bs-target="#modalSenbud">Tambah Bidang Seni dan Budaya Lain</button>
+                            <button type="button" class="save-before-show btn btn-clr1 p-0 px-3 ms-1 ls-s fsz-12" data-bs-toggle="modal" data-bs-target="#modalSenbud">Tambah Bidang Seni dan Budaya Lain</button>
                             <ul>
                             <?php foreach($lain['lain_senbud'] as $x) : ?>
                                 <li class="mt-2 ls-s fsz-14 p-0 ps-1 py-0" style="border-bottom:0.5px solid var(--clr1);">
@@ -468,7 +468,7 @@
                         <td style="width:3%" class="fsz-13 fw-bold"></td>
                         <td style="width:32%" class="fsz-13 fw-bold lh-s"></td>
                         <td style="width:65%" class="fsz-13 fw-bold lh-s">
-                            <button type="button" class="btn btn-clr1 p-0 px-3 ms-1 ls-s fsz-12" data-bs-toggle="modal" data-bs-target="#modalPenalaran">Tambah Bidang Penalaran Lain</button>
+                            <button type="button" class="save-before-show btn btn-clr1 p-0 px-3 ms-1 ls-s fsz-12" data-bs-toggle="modal" data-bs-target="#modalPenalaran">Tambah Bidang Penalaran Lain</button>
                             <ul>
                             <?php foreach($lain['lain_penalaran'] as $x) : ?>
                                 <li class="mt-2 ls-s fsz-14 p-0 ps-1 py-0" style="border-bottom:0.5px solid var(--clr1);">
@@ -518,7 +518,7 @@
                         <td style="width:3%" class="fsz-13 fw-bold"></td>
                         <td style="width:32%" class="fsz-13 fw-bold lh-s"></td>
                         <td style="width:65%" class="fsz-13 fw-bold lh-s">
-                            <button type="button" class="btn btn-clr1 p-0 px-3 ms-1 ls-s fsz-12" data-bs-toggle="modal" data-bs-target="#modalAgama">Tambah Bidang Keagamaan Lain</button>
+                            <button type="button" class="save-before-show btn btn-clr1 p-0 px-3 ms-1 ls-s fsz-12" data-bs-toggle="modal" data-bs-target="#modalAgama">Tambah Bidang Keagamaan Lain</button>
                             <ul>
                             <?php foreach($lain['lain_agama'] as $x) : ?>
                                 <li class="mt-2 ls-s fsz-14 p-0 ps-1 py-0" style="border-bottom:0.5px solid var(--clr1);">
@@ -568,7 +568,7 @@
                         <td style="width:3%" class="fsz-13 fw-bold"></td>
                         <td style="width:32%" class="fsz-13 fw-bold lh-s"></td>
                         <td style="width:65%" class="fsz-13 fw-bold lh-s">
-                            <button type="button" class="btn btn-clr1 p-0 px-3 ms-1 ls-s fsz-12" data-bs-toggle="modal" data-bs-target="#modalBahasam">Tambah Bidang Bahasa Lain</button>
+                            <button type="button" class="save-before-show btn btn-clr1 p-0 px-3 ms-1 ls-s fsz-12" data-bs-toggle="modal" data-bs-target="#modalBahasam">Tambah Bidang Bahasa Lain</button>
                             <ul>
                             <?php foreach($lain['lain_bahasam'] as $x) : ?>
                                 <li class="mt-2 ls-s fsz-14 p-0 ps-1 py-0" style="border-bottom:0.5px solid var(--clr1);">

@@ -287,7 +287,7 @@ class Admin extends BaseController
             ->where('santri.santri_saved', '1')
             ->where('bp.bp_saved', '1')
             ->where('bp.bp_konfirm', '1')
-            ->orderBy('santri.created_at', 'DESC')
+            ->orderBy('santri.updated_at', 'DESC')
             ->findAll();
         } elseif ($cond == 'all') {
             $santriData = $santriModel
@@ -342,6 +342,71 @@ class Admin extends BaseController
             ]) .
             view('templates/footbar-admin') .
             view('templates/footer');
+    }
+
+    public function wawancara($cond = ''): string
+    {
+        $data = [
+            'title' => 'Atur Wawancara',
+            'page' => 'admin-wawancara',
+        ];
+        
+        $santriModel = $this->santriModel;
+
+        if ($cond == 'verified') {
+            $santriData = $santriModel
+            ->select('santri.*, testulis.*, teswawancara.*, bp.bp_saved, bp.bp_konfirm, bp.bp_foto, bp.bp_bp')
+            ->join('bp', 'bp.peserta_id = santri.peserta_id')
+            ->join('teswawancara', 'teswawancara.peserta_id = santri.peserta_id')
+            ->join('testulis', 'testulis.peserta_id = santri.peserta_id')
+            ->where('santri.santri_saved', '1')
+            // ->where('testulis.testulis_konfirm', '1')
+            ->where('teswawancara.tw_status', '1')
+            ->orderBy('santri.created_at', 'DESC')
+            ->findAll();
+        } elseif ($cond == 'queue') {
+            $santriData = $santriModel
+            ->select('santri.*, testulis.*, teswawancara.*, bp.bp_saved, bp.bp_konfirm, bp.bp_foto, bp.bp_bp')
+            ->join('bp', 'bp.peserta_id = santri.peserta_id')
+            ->join('teswawancara', 'teswawancara.peserta_id = santri.peserta_id')
+            ->join('testulis', 'testulis.peserta_id = santri.peserta_id')
+            ->where('santri.santri_saved', '1')
+            // ->where('testulis.testulis_konfirm', '1')
+            ->where('teswawancara.tw_pewawancara IS NOT NULL')
+            ->orderBy('santri.created_at', 'DESC')
+            ->findAll();
+        } elseif ($cond == 'all') {
+            $santriData = $santriModel
+            ->select('santri.*, testulis.*, teswawancara.*, bp.bp_saved, bp.bp_konfirm, bp.bp_foto, bp.bp_bp')
+            ->join('bp', 'bp.peserta_id = santri.peserta_id')
+            ->join('teswawancara', 'teswawancara.peserta_id = santri.peserta_id')
+            ->join('testulis', 'testulis.peserta_id = santri.peserta_id')
+            ->where('santri.santri_saved', '1')
+            // ->where('testulis.testulis_konfirm', '1')
+            ->orderBy('santri.created_at', 'DESC')
+            ->findAll();
+        } else {
+            $santriData = $santriModel
+            ->select('santri.*, testulis.*, teswawancara.*, bp.bp_saved, bp.bp_konfirm, bp.bp_foto, bp.bp_bp')
+            ->join('bp', 'bp.peserta_id = santri.peserta_id')
+            ->join('teswawancara', 'teswawancara.peserta_id = santri.peserta_id')
+            ->join('testulis', 'testulis.peserta_id = santri.peserta_id')
+            ->where('santri.santri_saved', '1')
+            // ->where('testulis.testulis_konfirm', '1')
+            ->where('teswawancara.tw_status', '0')
+            ->orderBy('santri.created_at', 'DESC')
+            ->findAll();
+        }
+
+        return 
+        view('templates/header', $data) .
+        view('templates/navbar-admin', $data) .
+        view('admin/atur-wawancara', [
+            'cond' => $cond,
+            'santri' => $santriData
+        ]) .
+        view('templates/footbar-admin') .
+        view('templates/footer');
     }
 
     public function pengumuman($cond = ''): string

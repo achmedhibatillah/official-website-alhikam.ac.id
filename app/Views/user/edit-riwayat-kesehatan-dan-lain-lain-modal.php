@@ -305,3 +305,30 @@
         </div>
     </div>
 </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("formRK");
+
+    document.querySelectorAll(".save-before-show").forEach(button => {
+        button.addEventListener("click", function (event) {
+            event.preventDefault();
+
+            const formData = new FormData(form);
+            const modalId = button.getAttribute("data-bs-target"); // Ambil ID modal dari tombol
+
+            fetch("<?= base_url('simpan-riwayat-kesehatan-dan-lain-lain-temp') ?>", {
+                method: "POST",
+                body: formData
+            }).then(response => response.json())
+            .then(data => {
+                console.log("Data sementara disimpan:", data);
+                const modal = new bootstrap.Modal(document.querySelector(modalId)); // Ambil modal sesuai target
+                modal.show();
+            }).catch(error => {
+                console.error("Gagal menyimpan data sementara:", error);
+            });
+        });
+    });
+});
+</script>

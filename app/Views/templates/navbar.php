@@ -27,6 +27,11 @@
         <li class="nav-item d-flex align-items-center mx-md-2">
             <a class="nav-link fw-bold text-clr1 fsz-18" href="<?= base_url('/#tanya-jawab') ?>">Tanya Jawab</a>
         </li>
+        <?php if (session()->get('status') === 'login-user'): ?>
+            <li class="nav-item d-flex align-items-center mx-md-2">
+                <a class="nav-link fw-bold text-clr1 fsz-18" href="<?= base_url('/berkas-pendaftaran') ?>">Berkas Pendaftaran</a>
+            </li>
+        <?php endif; ?>
     </ul>
     <?php if (!(session()->get('status') === 'login-user')): ?>
         <div class="me-md-4 mt-2 mt-md-0">

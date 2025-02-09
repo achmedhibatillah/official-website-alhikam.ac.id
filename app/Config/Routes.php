@@ -34,6 +34,7 @@ $routes->post('/simpan-ortu', 'Ortu::update', ['filter' => 'user-auth']);
 $routes->post('/ortu-request-edit', 'Ortu::request_edit', ['filter' => 'user-auth']);
 
 $routes->post('/simpan-riwayat-kesehatan-dan-lain-lain', 'RiwayatKesehatan::update', ['filter' => 'user-auth']);
+$routes->post('/simpan-riwayat-kesehatan-dan-lain-lain-temp', 'RiwayatKesehatan::update_temp', ['filter' => 'user-auth']);
 $routes->post('/riwayat-kesehatan-dan-lain-lain-request-edit', 'RiwayatKesehatan::request_edit', ['filter' => 'user-auth']);
 
 $routes->post('/simpan-bukti-pembayaran', 'BuktiPembayaran::update', ['filter' => 'user-auth']);
@@ -74,6 +75,8 @@ $routes->get('/calon-santri/(:segment)', 'Admin::santri_d/$1', ['filter' => 'adm
 $routes->get('/verifikasi-pembayaran', 'Admin::pembayaran', ['filter' => 'admin-auth']);
 $routes->get('/verifikasi-pembayaran-where-(:segment)', 'Admin::pembayaran/$1', ['filter' => 'admin-auth']);
 $routes->get('/verifikasi-pembayaran/(:num)', 'Admin::pembayaran_d/$1', ['filter' => 'admin-auth']);
+$routes->get('/atur-wawancara', 'Admin::wawancara', ['filter' => 'admin-auth']);
+$routes->get('/atur-wawancara-where-(:segment)', 'Admin::wawancara/$1', ['filter' => 'admin-auth']);
 $routes->get('/atur-pengumuman', 'Admin::pengumuman', ['filter' => 'admin-auth']);
 $routes->get('/atur-pengumuman/(:num)', 'Admin::pengumuman_d/$1', ['filter' => 'admin-auth']);
 $routes->get('/atur-pengumuman-where-(:segment)', 'Admin::pengumuman/$1', ['filter' => 'admin-auth']);

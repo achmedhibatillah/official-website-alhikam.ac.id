@@ -149,6 +149,64 @@ class RiwayatKesehatan extends BaseController
         return redirect()->to('berkas-pendaftaran');
     }
 
+    public function update_temp()
+    {
+        $telp = $this->request->getPost('rk_kontak_hp');
+        if (strpos($telp, '08') === 0) {  $telp = '628' . substr($telp, 2); }
+    
+        $update_rk = [
+            'rk_golongandarah' => $this->request->getPost('rk_golongandarah'),
+            'rk_perawatan' => $this->request->getPost('rk_perawatan'),
+            'rk_kontak_nama' => $this->request->getPost('rk_kontak_nama'),
+            'rk_kontak_alamat' => $this->request->getPost('rk_kontak_alamat'),
+            'rk_kontak_hp' => $telp,
+            'rk_saved' => $this->request->getPost('rk_saved'),
+        ];
+        $update_lain = [
+            'lain_btq_membaca' => $this->request->getPost('lain_btq_membaca'),
+            'lain_btq_menulis' => $this->request->getPost('lain_btq_menulis'),
+            'lain_btq_terjemah' => $this->request->getPost('lain_btq_terjemah'),
+            'lain_khatam' => $this->request->getPost('lain_khatam'),
+            'lain_juz' => $this->request->getPost('lain_juz'),
+            'lain_bahasa_arab' => $this->request->getPost('lain_bahasa_arab'),
+            'lain_bahasa_inggris' => $this->request->getPost('lain_bahasa_inggris'),
+            'lain_bahasa_jepang' => $this->request->getPost('lain_bahasa_jepang'),
+
+            'lain_keahlian_komputer' => $this->request->getPost('lain_keahlian_komputer'),
+            'lain_keahlian_elektro' => $this->request->getPost('lain_keahlian_elektro'),
+            'lain_keahlian_desain' => $this->request->getPost('lain_keahlian_desain'),
+
+            'lain_olahraga_footbal' => $this->request->getPost('lain_olahraga_footbal'),
+            'lain_olahraga_basket' => $this->request->getPost('lain_olahraga_basket'),
+            'lain_olahraga_badminton' => $this->request->getPost('lain_olahraga_badminton'),
+
+            'lain_senbud_musik' => $this->request->getPost('lain_senbud_musik'),
+            'lain_senbud_senisuara' => $this->request->getPost('lain_senbud_senisuara'),
+            'lain_senbud_senilukis' => $this->request->getPost('lain_senbud_senilukis'),
+
+            'lain_penalaran_seminar' => $this->request->getPost('lain_penalaran_seminar'),
+            'lain_penalaran_jurnalistik' => $this->request->getPost('lain_penalaran_jurnalistik'),
+            'lain_penalaran_karyatulis' => $this->request->getPost('lain_penalaran_karyatulis'),
+
+            'lain_agama_qiroah' => $this->request->getPost('lain_agama_qiroah'),
+            'lain_agama_sholawat' => $this->request->getPost('lain_agama_sholawat'),
+            'lain_agama_ptq' => $this->request->getPost('lain_agama_ptq'),
+
+            'lain_bahasam_arab' => $this->request->getPost('lain_bahasam_arab'),
+            'lain_bahasam_inggris' => $this->request->getPost('lain_bahasam_inggris'),
+            'lain_bahasam_jepang' => $this->request->getPost('lain_bahasam_jepang'),
+        ];
+        
+        $rk_id = $this->request->getPost('rk_id');
+        $lain_id = $this->request->getPost('lain_id');
+
+        $riwayatKesehatanModel = $this->riwayatKesehatanModel;
+        $lainModel = $this->lainModel;
+
+        $riwayatKesehatanModel->update($rk_id, $update_rk);
+        $lainModel->update($lain_id, $update_lain);
+    }
+
     public function update_penyakit_pernah()
     {
         $rules = [
@@ -467,9 +525,6 @@ class RiwayatKesehatan extends BaseController
 
         return redirect()->to('riwayat-kesehatan-dan-lain-lain');
     }
-
-
-
 
     public function hapus_penyakit_pernah($id)
     {
