@@ -90,7 +90,7 @@ class Admin extends BaseController
 
         $keyword = $this->request->getGet('keyword') ?? '';
     
-        $santriQuery = $santriModel->orderBy('created_at', 'DESC')->where('santri_saved', '1');
+        $santriQuery = $santriModel->orderBy('created_at', 'DESC');
         
         if (!empty($keyword)) {
             $santriQuery->groupStart()->like('santri_nama', $keyword)->orLike('santri_nik', $keyword)->groupEnd();
@@ -98,6 +98,7 @@ class Admin extends BaseController
         
         $santriData = $santriQuery->findAll();
     
+        $pesertaModel = $this->pesertaModel;
         $ortuModel = $this->ortuModel;
         $rkModel = $this->riwayatKesehatanModel;
         $bpModel = $this->bpModel;
@@ -106,6 +107,8 @@ class Admin extends BaseController
         $pengumumanModel = $this->pengumumanModel;
     
         foreach ($santriData as $key => $x) {
+            $santriData[$key]['peserta_nama'] = $pesertaModel->find($x['peserta_id'])['peserta_nama'] ?? 0;
+            $santriData[$key]['peserta_created_at'] = $pesertaModel->find($x['peserta_id'])['created_at'] ?? 0;
             $santriData[$key]['ortu_saved'] = $ortuModel->getOrtuByPesertaId($x['peserta_id'])['ortu_saved'] ?? 0;
             $santriData[$key]['rk_saved'] = $rkModel->getRiwayatKesehatanByIdPeserta($x['peserta_id'])['rk_saved'] ?? 0;
             $santriData[$key]['bp_saved'] = $bpModel->getBpByPesertaId($x['peserta_id'])['bp_saved'] ?? 0;
@@ -116,19 +119,19 @@ class Admin extends BaseController
             $santriData[$key]['pengumuman_pdf'] = $pengumumanModel->getPengumumanByPesertaId($x['peserta_id'])['pengumuman_pdf'] ?? 0;
         }
 
-        if ($cond == 'bo') {
+        if ($cond == 'biodata-telah-lengkap') {
             $santriData = array_filter($santriData, function ($santri) {
-                return $santri['ortu_saved'] == 1;
+                return $santri['santri_saved'] == 1 && $santri['ortu_saved'] == 1 && $santri['rk_saved'] == 1;
             });
-        } elseif ($cond == 'rk') {
+        } elseif ($cond == 'bukti-pembayaran-tersimpan') {
             $santriData = array_filter($santriData, function ($santri) {
-                return $santri['rk_saved'] == 1;
+                return $santri['bp_saved'] == 1 && ($santri['bp_konfirm'] == 0 || $santri['bp_konfirm'] = null );
             });
-        } elseif ($cond == 'bp') {
+        } elseif ($cond == 'bukti-pembayaran-terverifikasi') {
             $santriData = array_filter($santriData, function ($santri) {
-                return $santri['bp_saved'] == 1;
+                return $santri['bp_saved'] == 1 && $santri['bp_konfirm'] == 1;
             });
-        } elseif ($cond == 'tt') {
+        } elseif ($cond == 'telah-mengikuti-tes-tulis') {
             $santriData = array_filter($santriData, function ($santri) {
                 return $santri['testulis_konfirm'] == 1;
             });
@@ -158,6 +161,7 @@ class Admin extends BaseController
             'page' => 'admin-santri',
         ];
         
+        $pesertaModel = $this->pesertaModel;
         $santriModel = $this->santriModel;
         $ortuModel = $this->ortuModel;
         $rkModel = $this->riwayatKesehatanModel;
@@ -169,6 +173,7 @@ class Admin extends BaseController
         // Ambil data santri
         $santriData = $santriModel->getSantriByPesertaId($peserta_id);
     
+        $pesertaData = $pesertaModel->find($peserta_id);
         $ortuData = $ortuModel->getOrtuByPesertaId($peserta_id);
         $rkData = $rkModel->getRiwayatKesehatanByIdPeserta($peserta_id);
         $lainData = $lainModel->getLainByIdPeserta($peserta_id);
@@ -262,6 +267,7 @@ class Admin extends BaseController
             view('templates/header', $data) .
             view('templates/navbar-admin', $data) .
             view('admin/santri-detail', [
+                'peserta' => $pesertaData,
                 'santri' => $santriData,
                 'ortu' => $ortuData,
                 'rk' => $rkData,

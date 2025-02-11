@@ -67,37 +67,37 @@
             <tr>
                 <td class="align-top ls-1 lh-1 pt-3" style="width:30%;">1. Nama Lengkap</td>
                 <td class="align-top ls-1 lh-1 pt-3" style="width:3%;">:</td>
-                <td class="align-top ls-1 lh-1 pt-3" style="width:67%;"><?= $santri['santri_nama'] ?></td>
+                <td class="align-top ls-1 lh-1 pt-3" style="width:67%;"><?= ($santri['santri_nama']) ? $santri['santri_nama'] : $peserta['peserta_nama'] ?></td>
             </tr>
             <tr>
                 <td class="align-top ls-1 lh-1 pt-3" style="width:30%;">2. Nama Panggilan</td>
                 <td class="align-top ls-1 lh-1 pt-3" style="width:3%;">:</td>
-                <td class="align-top ls-1 lh-1 pt-3" style="width:67%;"><?= $santri['santri_panggilan'] ?></td>
+                <td class="align-top ls-1 lh-1 pt-3" style="width:67%;"><?= ($santri['santri_panggilan']) ? $santri['santri_panggilan'] : '<div class="text-secondary fst-italic">Belum diisi</div>' ?></td>
             </tr>
             <tr>
                 <td class="align-top ls-1 lh-1 pt-3" style="width:30%;">3. NIK</td>
                 <td class="align-top ls-1 lh-1 pt-3" style="width:3%;">:</td>
-                <td class="align-top ls-1 lh-1 pt-3" style="width:67%;"><?= $santri['santri_nik'] ?></td>
+                <td class="align-top ls-1 lh-1 pt-3" style="width:67%;"><?= ($santri['santri_nik']) ? $santri['santri_nik'] : $peserta['peserta_ktp'] ?></td>
             </tr>
             <tr>
                 <td class="align-top ls-1 lh-1 pt-3" style="width:30%;">4. Tempat dan Tanggal Lahir</td>
                 <td class="align-top ls-1 lh-1 pt-3" style="width:3%;">:</td>
-                <td class="align-top ls-1 lh-1 pt-3" style="width:67%;"><?= $santri['santri_tempatlahir'] ?>, <?= date('d M Y', strtotime($santri['santri_tanggallahir'])) ?></td>
+                <td class="align-top ls-1 lh-1 pt-3" style="width:67%;"><?= ($santri['santri_tempatlahir']) ? $santri['santri_tempatlahir'] . ', ' . date('d M Y', strtotime($santri['santri_tanggallahir'])) : '<div class="text-secondary fst-italic">Belum diisi</div>' ?></td>
             </tr>
             <tr>
                 <td class="align-top ls-1 lh-1 pt-3" style="width:30%;">5. Alamat Asal</td>
                 <td class="align-top ls-1 lh-1 pt-3" style="width:3%;">:</td>
-                <td class="align-top ls-1 lh-1 pt-3" style="width:67%;"><?= $santri['santri_alamat'] ?></td>
+                <td class="align-top ls-1 lh-1 pt-3" style="width:67%;"><?= ($santri['santri_alamat']) ? $santri['santri_alamat'] : '<div class="text-secondary fst-italic">Belum diisi</div>' ?></td>
             </tr>
             <tr>
                 <td class="align-top ls-1 lh-1 pt-3" style="width:30%;">6. Kedudukan dalam Keluarga</td>
                 <td class="align-top ls-1 lh-1 pt-3" style="width:3%;">:</td>
-                <td class="align-top ls-1 lh-1 pt-3" style="width:67%;">Anak ke <?= $santri['santri_anakke'] ?>, dari <?= $santri['santri_bersaudara'] ?> bersaudara</td>
+                <td class="align-top ls-1 lh-1 pt-3" style="width:67%;"> <?= ($santri['santri_anakke']) ? 'Anak ke ' . $santri['santri_anakke'] . ', dari ' . $santri['santri_bersaudara']. ' bersaudara' : '<div class="text-secondary fst-italic">Belum diisi</div>' ?></td>
             </tr>
             <tr>
                 <td class="align-top ls-1 lh-1 pt-3" style="width:30%;">7. Nomor HP/Whatsapp:</td>
                 <td class="align-top ls-1 lh-1 pt-3" style="width:3%;">:</td>
-                <td class="align-top ls-1 lh-1 pt-3" style="width:67%;">+<?= $santri['santri_hp'] ?></td>
+                <td class="align-top ls-1 lh-1 pt-3" style="width:67%;"><?= $santri['santri_hp'] ? '+' . $santri['santri_hp'] : '<div class="text-secondary fst-italic">Belum diisi</div>' ?></td>
             </tr>
         </table>
     </div>
@@ -115,7 +115,7 @@
             <tr><td style="width:30%;">Pendapatan</td><td style="width:3%;">:</td><td style="width:67%;"><?= $ortu['ortu_a_pendapatan'] ?></td></tr>
         </table>
         <?php else: ?>
-            <div class="alert alert-danger text-center lh-1 ls-1">Data belum diisi.</div>
+            <div class="alert alert-danger text-center lh-1 ls-1">data belum diisi</div>
         <?php endif; ?>
     </div>
     <div class="card m-1 m-md-4 p-3">
@@ -130,7 +130,7 @@
             <tr><td style="width:30%;">Pendapatan</td><td style="width:3%;">:</td><td style="width:67%;"><?= $ortu['ortu_i_pendapatan'] ?></td></tr>
         </table>
         <?php else: ?>
-            <div class="alert alert-danger text-center lh-1 ls-1">Data belum diisi.</div>
+            <div class="alert alert-danger text-center lh-1 ls-1">data belum diisi</div>
         <?php endif; ?>
     </div>
 
@@ -197,7 +197,7 @@
             </tr>
         </table>
         <?php else: ?>
-            <div class="alert alert-danger text-center lh-1 ls-1">Data belum diisi.</div>
+            <div class="alert alert-danger text-center lh-1 ls-1">data belum diisi</div>
         <?php endif; ?>
     </div>
     <div class="card m-1 m-md-4 p-3">
@@ -416,7 +416,7 @@
             </tr>
         </table>
         <?php else: ?>
-            <div class="alert alert-danger text-center lh-1 ls-1">Data belum diisi.</div>
+            <div class="alert alert-danger text-center lh-1 ls-1">data belum diisi</div>
         <?php endif; ?>
     </div>
 
