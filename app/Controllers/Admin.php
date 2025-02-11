@@ -103,14 +103,17 @@ class Admin extends BaseController
         $bpModel = $this->bpModel;
         $ttModel = $this->ttModel;
         $twModel = $this->twModel;
+        $pengumumanModel = $this->pengumumanModel;
     
         foreach ($santriData as $key => $x) {
             $santriData[$key]['ortu_saved'] = $ortuModel->getOrtuByPesertaId($x['peserta_id'])['ortu_saved'] ?? 0;
             $santriData[$key]['rk_saved'] = $rkModel->getRiwayatKesehatanByIdPeserta($x['peserta_id'])['rk_saved'] ?? 0;
             $santriData[$key]['bp_saved'] = $bpModel->getBpByPesertaId($x['peserta_id'])['bp_saved'] ?? 0;
+            $santriData[$key]['bp_konfirm'] = $bpModel->getBpByPesertaId($x['peserta_id'])['bp_saved'] ?? 0;
             $santriData[$key]['testulis_konfirm'] = $ttModel->getTtByPesertaId($x['peserta_id'])['testulis_konfirm'] ?? 0;
             $santriData[$key]['tw_status'] = $twModel->getTwByPesertaId($x['peserta_id'])['tw_status'] ?? 0;
             $santriData[$key]['bp_foto'] = $bpModel->getBpByPesertaId($x['peserta_id'])['bp_foto'] ?? 0;
+            $santriData[$key]['pengumuman_pdf'] = $pengumumanModel->getPengumumanByPesertaId($x['peserta_id'])['pengumuman_pdf'] ?? 0;
         }
 
         if ($cond == 'bo') {
@@ -373,6 +376,7 @@ class Admin extends BaseController
             ->where('santri.santri_saved', '1')
             // ->where('testulis.testulis_konfirm', '1')
             ->where('teswawancara.tw_pewawancara IS NOT NULL')
+            ->where('teswawancara.tw_status', '0')
             ->orderBy('santri.created_at', 'DESC')
             ->findAll();
         } elseif ($cond == 'all') {
@@ -393,6 +397,7 @@ class Admin extends BaseController
             ->join('testulis', 'testulis.peserta_id = santri.peserta_id')
             ->where('santri.santri_saved', '1')
             // ->where('testulis.testulis_konfirm', '1')
+            ->where('teswawancara.tw_pewawancara IS NULL')
             ->where('teswawancara.tw_status', '0')
             ->orderBy('santri.created_at', 'DESC')
             ->findAll();
@@ -409,6 +414,33 @@ class Admin extends BaseController
         view('templates/footer');
     }
 
+    public function wawancara_d($peserta_id): string
+    {
+        $data = [
+            'title' => 'Atur Wawancara',
+            'page' => 'admin-wawancara',
+        ];
+        
+        $santriModel = $this->santriModel;
+        $bpModel = $this->bpModel;
+        $twModel = $this->twModel;
+    
+        $santriData = $santriModel->getSantriByPesertaId($peserta_id);
+        $bpData = $bpModel->getBpByPesertaId($peserta_id);
+        $twData = $twModel->getTwByPesertaId($peserta_id);
+    
+        return 
+            view('templates/header', $data) .
+            view('templates/navbar-admin', $data) .
+            view('admin/atur-wawancara-detail-edit', [
+                'santri' => $santriData,
+                'bp' => $bpData,
+                'tw' => $twData
+            ]) .
+            view('templates/footbar-admin') .
+            view('templates/footer');
+    }
+
     public function pengumuman($cond = ''): string
     {
         $data = [
@@ -421,31 +453,35 @@ class Admin extends BaseController
 
         if ($cond == 'terlampir') {
             $santriData = $santriModel
-            ->select('santri.*, bp.bp_saved, bp.bp_konfirm, bp.bp_foto, bp.bp_bp')
+            ->select('santri.*, teswawancara.*, pengumuman.*, bp.bp_saved, bp.bp_konfirm, bp.bp_foto, bp.bp_bp')
             ->join('bp', 'bp.peserta_id = santri.peserta_id')
+            ->join('teswawancara', 'teswawancara.peserta_id = santri.peserta_id')
             ->join('pengumuman', 'pengumuman.peserta_id = santri.peserta_id')
             ->where('santri.santri_saved', '1')
-            ->where('bp.bp_konfirm', '1') //
-            ->where('pengumuman_saved', '1')
+            ->where('teswawancara.tw_status', '1') //
+            ->where('pengumuman.pengumuman_saved', '1')
             ->orderBy('santri.created_at', 'DESC')
             ->findAll();
         } elseif ($cond == 'all'){
             $santriData = $santriModel
-            ->select('santri.*, bp.bp_saved, bp.bp_konfirm, bp.bp_foto, bp.bp_bp')
+            ->select('santri.*, teswawancara.*, bp.bp_saved, bp.bp_konfirm, bp.bp_foto, bp.bp_bp')
             ->join('bp', 'bp.peserta_id = santri.peserta_id')
+            ->join('teswawancara', 'teswawancara.peserta_id = santri.peserta_id')
             ->join('pengumuman', 'pengumuman.peserta_id = santri.peserta_id')
             ->where('santri.santri_saved', '1')
-            ->where('bp.bp_konfirm', '1') //
+            ->where('teswawancara.tw_status', '1') //
             ->orderBy('santri.created_at', 'DESC')
             ->findAll();     
         } else {
             $santriData = $santriModel
-            ->select('santri.*, bp.bp_saved, bp.bp_konfirm, bp.bp_foto, bp.bp_bp')
+            ->select('santri.*, teswawancara.*, bp.bp_saved, bp.bp_konfirm, bp.bp_foto, bp.bp_bp')
             ->join('bp', 'bp.peserta_id = santri.peserta_id')
+            ->join('teswawancara', 'teswawancara.peserta_id = santri.peserta_id')
             ->join('pengumuman', 'pengumuman.peserta_id = santri.peserta_id')
             ->where('santri.santri_saved', '1')
-            ->where('bp.bp_konfirm', '1')
-            ->where('pengumuman.pengumuman_saved', '0')
+            ->where('teswawancara.tw_status', '1') //
+            ->where('pengumuman.pengumuman_saved IS NULL')
+            ->orWhere('pengumuman.pengumuman_saved', '0')
             ->orderBy('santri.created_at', 'DESC')
             ->findAll();
         }

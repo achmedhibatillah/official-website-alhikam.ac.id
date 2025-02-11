@@ -112,6 +112,8 @@
                     <h5 class="fw-bold text-clr1 ls-s ls-1 mb-0">Tes Wawancara</h5>
                     <?php if($tw['tw_status'] == 1): ?>
                         <p class="text-clr1 m-0 ls-s">Sudah mengisi</p>
+                    <?php elseif($tw['tw_tgl']): ?>
+                        <p class="text-clr1 m-0 ls-s me-5 lh-1">Dilaksanakan pada: <i class="fst-normal bg-warning rounded fsz-13 px-2 fw-bold ls-s"><?= date('d F Y', strtotime($tw['tw_tgl'])) ?></i> <i class="fsz-14 ls-s">(<?= (date('d m y') < date('d m y', strtotime($tw['tw_tgl']))) ? 'beberapa hari lagi' : ((date('d m y') == date('d m y', strtotime($tw['tw_tgl']))) ? 'hari ini' : 'terlewat') ?>)</i></p>
                     <?php else: ?>
                         <p class="text-danger m-0 ls-s">Belum mengisi</p>
                     <?php endif; ?>
@@ -124,6 +126,7 @@
             <?php endif; ?>
         </div>
         <!-- Pengumuman -->
+         <?php // dd($pengumuman) ?>
         <div class="card m-0 mt-2 mt-md-3 py-3 border-none cursor-pointer position-relative <?= ($pengumuman['pengumuman_pdf']) ? 'btn-isi' : 'btn-bisi' ?>" onclick="window.location.href = '<?= base_url('pengumuman-kelulusan'); ?>'">
             <div class="row m-0 p-0">
                 <div class="col-3 col-md-2 col-lg-1 m-0 p-0 d-flex justify-content-center align-items-center">
@@ -131,7 +134,7 @@
                 </div>
                 <div class="col-9 col-md-10 col-lg-11 m-0 p-0">
                     <h5 class="fw-bold text-clr1 ls-s ls-1 mb-0">Pengumuman</h5>
-                    <?php if($pengumuman['pengumuman_pdf']): ?>
+                    <?php if($pengumuman['pengumuman_saved'] == 1): ?>
                         <p class="text-clr1 m-0 ls-s">Lihat di sini</p>
                     <?php else: ?>
                         <p class="text-danger m-0 ls-s">Harap menunggu</p>

@@ -11,7 +11,7 @@
         <!-- Nama Ayah -->
         <div class="">
             <label for="ortu_a_nama" class="form-label mb-0 fsz-14 ls-1 fw-bold">1. Nama Lengkap Ayah:</label>
-            <input name="ortu_a_nama" type="text" class="form-control input-clr1-out ps-3 py-2 mt--1 fsz-13 <?= session()->getFlashdata('errors-ortu') && isset(session()->getFlashdata('errors-ortu')['ortu_a_nama']) ? 'is-invalid' : '' ?>" id="ortu_a_nama" autocomplete="off" placeholder="Nama Lengkap Ayah" 
+            <input name="ortu_a_nama" type="text" class="form-control input-clr1-out ps-3 py-2 mt-0 fsz-13 <?= session()->getFlashdata('errors-ortu') && isset(session()->getFlashdata('errors-ortu')['ortu_a_nama']) ? 'is-invalid' : '' ?>" id="ortu_a_nama" autocomplete="off" placeholder="Nama Lengkap Ayah" 
             value="<?= old('ortu_a_nama') ? old('ortu_a_nama') : (isset($ortu['ortu_a_nama']) ? $ortu['ortu_a_nama'] : '') ?>">
             <?php if (session()->getFlashdata('errors-ortu') && isset(session()->getFlashdata('errors-ortu')['ortu_a_nama'])): ?>
                 <div class="text-danger mt-0 mb-1 lh-s ms-2" style="font-size:13px;"><?= session()->getFlashdata('errors-ortu')['ortu_a_nama'] ?></div>
@@ -20,7 +20,7 @@
         <!-- Pekerjaan Ayah -->
         <div class="mt-3">
             <label for="ortu_a_pekerjaan" class="form-label mb-0 fsz-14 ls-1 fw-bold">2. Pekerjaan Ayah:</label>
-            <select name="ortu_a_pekerjaan" class="form-select input-clr1-out ps-3 py-2 mt--1 fsz-13 <?= isset(session()->getFlashdata('errors-ortu')['ortu_a_pekerjaan']) ? 'is-invalid' : '' ?>" id="ortu_a_pekerjaan" onchange="toggle_a_pekerjaan(this)">
+            <select name="ortu_a_pekerjaan" class="form-select input-clr1-out ps-3 py-2 mt-0 fsz-13 <?= isset(session()->getFlashdata('errors-ortu')['ortu_a_pekerjaan']) ? 'is-invalid' : '' ?>" id="ortu_a_pekerjaan" onchange="toggle_a_pekerjaan(this)">
                 <option value="" disabled <?= old('ortu_a_pekerjaan') || (isset($ortu['ortu_a_pekerjaan']) && $ortu['ortu_a_pekerjaan'] !== '') ? '' : 'selected' ?>>Pilih Pekerjaan Ayah</option>
                 <option value="1" <?= old('ortu_a_pekerjaan') == '1' || (isset($ortu['ortu_a_pekerjaan']) && $ortu['ortu_a_pekerjaan'] == '1') ? 'selected' : '' ?>>Tidak bekerja</option>
                 <option value="2" <?= old('ortu_a_pekerjaan') == '2' || (isset($ortu['ortu_a_pekerjaan']) && $ortu['ortu_a_pekerjaan'] == '2') ? 'selected' : '' ?>>Nelayan</option>
@@ -53,7 +53,7 @@
         <!-- Agama Ayah -->
         <div class="mt-3">
             <label for="ortu_a_agama" class="form-label mb-0 fsz-14 ls-1 fw-bold">3. Agama Ayah:</label>
-            <select name="ortu_a_agama" class="form-select input-clr1-out ps-3 py-2 mt--1 fsz-13 <?= isset(session()->getFlashdata('errors-ortu')['ortu_a_agama']) ? 'is-invalid' : '' ?>" id="ortu_a_agama" onchange="toggle_a_agama(this)">
+            <select name="ortu_a_agama" class="form-select input-clr1-out ps-3 py-2 mt-0 fsz-13 <?= isset(session()->getFlashdata('errors-ortu')['ortu_a_agama']) ? 'is-invalid' : '' ?>" id="ortu_a_agama" onchange="toggle_a_agama(this)">
                 <option value="" disabled <?= old('ortu_a_agama') || (isset($ortu['ortu_a_agama']) && $ortu['ortu_a_agama'] !== '') ? '' : 'selected' ?>>Pilih Agama Ayah</option>
                 <option value="1" <?= old('ortu_a_agama') == '1' || (isset($ortu['ortu_a_agama']) && $ortu['ortu_a_agama'] == '1') ? 'selected' : '' ?>>Islam</option>
                 <option value="2" <?= old('ortu_a_agama') == '2' || (isset($ortu['ortu_a_agama']) && $ortu['ortu_a_agama'] == '2') ? 'selected' : '' ?>>Protestan</option>
@@ -80,7 +80,7 @@
         <!-- Pendidikan Ayah -->
         <div class="mt-3">
             <label for="ortu_a_pendidikan" class="form-label mb-0 fsz-14 ls-1 fw-bold">4. Pendidikan Ayah:</label>
-            <select name="ortu_a_pendidikan" class="form-select input-clr1-out ps-3 py-2 mt--1 fsz-13 <?= isset(session()->getFlashdata('errors-ortu')['ortu_a_pendidikan']) ? 'is-invalid' : '' ?>" id="ortu_a_pendidikan" onchange="toggle_a_pendidikan(this)">
+            <select name="ortu_a_pendidikan" class="form-select input-clr1-out ps-3 py-2 mt-0 fsz-13 <?= isset(session()->getFlashdata('errors-ortu')['ortu_a_pendidikan']) ? 'is-invalid' : '' ?>" id="ortu_a_pendidikan" onchange="toggle_a_pendidikan(this)">
                 <option value="" disabled <?= old('ortu_a_pendidikan') || (isset($ortu['ortu_a_pendidikan']) && $ortu['ortu_a_pendidikan'] !== '') ? '' : 'selected' ?>>Pilih Pendidikan Ayah</option>
                 <option value="1" <?= old('ortu_a_pendidikan') == '1' || (isset($ortu['ortu_a_pendidikan']) && $ortu['ortu_a_pendidikan'] == '1') ? 'selected' : '' ?>>Tidak sekolah</option>
                 <option value="2" <?= old('ortu_a_pendidikan') == '2' || (isset($ortu['ortu_a_pendidikan']) && $ortu['ortu_a_pendidikan'] == '2') ? 'selected' : '' ?>>PAUD</option>
@@ -123,7 +123,7 @@
         <!-- No Telp Ayah -->
         <div class="mt-3">
             <label for="ortu_a_hp" class="form-label mb-0 fsz-14 ls-1 fw-bold">5. No Telp/WA Ayah:</label>
-            <input name="ortu_a_hp" type="number" class="form-control input-clr1-out ps-3 py-2 mt--1 fsz-13 <?= session()->getFlashdata('errors-ortu') && isset(session()->getFlashdata('errors-ortu')['ortu_a_hp']) ? 'is-invalid' : '' ?>" id="ortu_a_hp" autocomplete="off" placeholder="08.. / 62.." 
+            <input name="ortu_a_hp" type="number" class="form-control input-clr1-out ps-3 py-2 mt-0 fsz-13 <?= session()->getFlashdata('errors-ortu') && isset(session()->getFlashdata('errors-ortu')['ortu_a_hp']) ? 'is-invalid' : '' ?>" id="ortu_a_hp" autocomplete="off" placeholder="08.. / 62.." 
             value="<?= old('ortu_a_hp') ? old('ortu_a_hp') : (isset($ortu['ortu_a_hp']) ? $ortu['ortu_a_hp'] : '') ?>">
             <?php if (session()->getFlashdata('errors-ortu') && isset(session()->getFlashdata('errors-ortu')['ortu_a_hp'])): ?>
                 <div class="text-danger mt-0 mb-1 lh-s ms-2" style="font-size:13px;"><?= session()->getFlashdata('errors-ortu')['ortu_a_hp'] ?></div>
@@ -132,7 +132,7 @@
         <!-- Pendapatan Ayah -->
         <div class="mt-3">
             <label for="ortu_a_pendapatan" class="form-label mb-0 fsz-14 ls-1 fw-bold">6. Pendapatan Per-Bulan:</label>
-            <input name="ortu_a_pendapatan" type="text" class="form-control input-clr1-out ps-3 py-2 mt--1 fsz-13 <?= session()->getFlashdata('errors-ortu') && isset(session()->getFlashdata('errors-ortu')['ortu_a_pendapatan']) ? 'is-invalid' : '' ?>" id="ortu_a_pendapatan" autocomplete="off" placeholder="ex. 500 ribu - 1 juta" 
+            <input name="ortu_a_pendapatan" type="text" class="form-control input-clr1-out ps-3 py-2 mt-0 fsz-13 <?= session()->getFlashdata('errors-ortu') && isset(session()->getFlashdata('errors-ortu')['ortu_a_pendapatan']) ? 'is-invalid' : '' ?>" id="ortu_a_pendapatan" autocomplete="off" placeholder="ex. 500 ribu - 1 juta" 
             value="<?= old('ortu_a_pendapatan') ? old('ortu_a_pendapatan') : (isset($ortu['ortu_a_pendapatan']) ? $ortu['ortu_a_pendapatan'] : '') ?>">
             <?php if (isset(session()->getFlashdata('errors-ortu')['ortu_a_pendapatan'])): ?>
                 <div class="text-danger mt-0 mb-1 lh-s ms-2" style="font-size:13px;">
@@ -148,7 +148,7 @@
         <!-- Nama Ibu -->
         <div class="">
             <label for="ortu_i_nama" class="form-label mb-0 fsz-14 ls-1 fw-bold">1. Nama Lengkap Ibu:</label>
-            <input name="ortu_i_nama" type="text" class="form-control input-clr1-out ps-3 py-2 mt--1 fsz-13 <?= session()->getFlashdata('errors-ortu') && isset(session()->getFlashdata('errors-ortu')['ortu_i_nama']) ? 'is-invalid' : '' ?>" id="ortu_i_nama" autocomplete="off" placeholder="Nama Lengkap Ibu" 
+            <input name="ortu_i_nama" type="text" class="form-control input-clr1-out ps-3 py-2 mt-0 fsz-13 <?= session()->getFlashdata('errors-ortu') && isset(session()->getFlashdata('errors-ortu')['ortu_i_nama']) ? 'is-invalid' : '' ?>" id="ortu_i_nama" autocomplete="off" placeholder="Nama Lengkap Ibu" 
             value="<?= old('ortu_i_nama') ? old('ortu_i_nama') : (isset($ortu['ortu_i_nama']) ? $ortu['ortu_i_nama'] : '') ?>">
             <?php if (session()->getFlashdata('errors-ortu') && isset(session()->getFlashdata('errors-ortu')['ortu_i_nama'])): ?>
                 <div class="text-danger mt-0 mb-1 lh-s ms-2" style="font-size:13px;"><?= session()->getFlashdata('errors-ortu')['ortu_i_nama'] ?></div>
@@ -157,7 +157,7 @@
         <!-- Pekerjaan Ibu -->
         <div class="mt-3">
             <label for="ortu_i_pekerjaan" class="form-label mb-0 fsz-14 ls-1 fw-bold">2. Pekerjaan Ibu:</label>
-            <select name="ortu_i_pekerjaan" class="form-select input-clr1-out ps-3 py-2 mt--1 fsz-13 <?= isset(session()->getFlashdata('errors-ortu')['ortu_i_pekerjaan']) ? 'is-invalid' : '' ?>" id="ortu_i_pekerjaan" onchange="toggle_i_pekerjaan(this)">
+            <select name="ortu_i_pekerjaan" class="form-select input-clr1-out ps-3 py-2 mt-0 fsz-13 <?= isset(session()->getFlashdata('errors-ortu')['ortu_i_pekerjaan']) ? 'is-invalid' : '' ?>" id="ortu_i_pekerjaan" onchange="toggle_i_pekerjaan(this)">
                 <option value="" disabled <?= old('ortu_i_pekerjaan') || (isset($ortu['ortu_i_pekerjaan']) && $ortu['ortu_i_pekerjaan'] !== '') ? '' : 'selected' ?>>Pilih Pekerjaan Ibu</option>
                 <option value="1" <?= old('ortu_i_pekerjaan') == '1' || (isset($ortu['ortu_i_pekerjaan']) && $ortu['ortu_i_pekerjaan'] == '1') ? 'selected' : '' ?>>Tidak bekerja</option>
                 <option value="2" <?= old('ortu_i_pekerjaan') == '2' || (isset($ortu['ortu_i_pekerjaan']) && $ortu['ortu_i_pekerjaan'] == '2') ? 'selected' : '' ?>>Nelayan</option>
@@ -190,7 +190,7 @@
         <!-- Agama Ibu -->
         <div class="mt-3">
             <label for="ortu_i_agama" class="form-label mb-0 fsz-14 ls-1 fw-bold">3. Agama Ibu:</label>
-            <select name="ortu_i_agama" class="form-select input-clr1-out ps-3 py-2 mt--1 fsz-13 <?= isset(session()->getFlashdata('errors-ortu')['ortu_i_agama']) ? 'is-invalid' : '' ?>" id="ortu_i_agama" onchange="toggle_i_agama(this)">
+            <select name="ortu_i_agama" class="form-select input-clr1-out ps-3 py-2 mt-0 fsz-13 <?= isset(session()->getFlashdata('errors-ortu')['ortu_i_agama']) ? 'is-invalid' : '' ?>" id="ortu_i_agama" onchange="toggle_i_agama(this)">
                 <option value="" disabled <?= old('ortu_i_agama') || (isset($ortu['ortu_i_agama']) && $ortu['ortu_i_agama'] !== '') ? '' : 'selected' ?>>Pilih Agama Ibu</option>
                 <option value="1" <?= old('ortu_i_agama') == '1' || (isset($ortu['ortu_i_agama']) && $ortu['ortu_i_agama'] == '1') ? 'selected' : '' ?>>Islam</option>
                 <option value="2" <?= old('ortu_i_agama') == '2' || (isset($ortu['ortu_i_agama']) && $ortu['ortu_i_agama'] == '2') ? 'selected' : '' ?>>Protestan</option>
@@ -217,7 +217,7 @@
         <!-- Pendidikan Ibu -->
         <div class="mt-3">
             <label for="ortu_i_pendidikan" class="form-label mb-0 fsz-14 ls-1 fw-bold">4. Pendidikan Ibu:</label>
-            <select name="ortu_i_pendidikan" class="form-select input-clr1-out ps-3 py-2 mt--1 fsz-13 <?= isset(session()->getFlashdata('errors-ortu')['ortu_i_pendidikan']) ? 'is-invalid' : '' ?>" id="ortu_i_pendidikan" onchange="toggle_i_pendidikan(this)">
+            <select name="ortu_i_pendidikan" class="form-select input-clr1-out ps-3 py-2 mt-0 fsz-13 <?= isset(session()->getFlashdata('errors-ortu')['ortu_i_pendidikan']) ? 'is-invalid' : '' ?>" id="ortu_i_pendidikan" onchange="toggle_i_pendidikan(this)">
                 <option value="" disabled <?= old('ortu_i_pendidikan') || (isset($ortu['ortu_i_pendidikan']) && $ortu['ortu_i_pendidikan'] !== '') ? '' : 'selected' ?>>Pilih Pendidikan Ibu</option>
                 <option value="1" <?= old('ortu_i_pendidikan') == '1' || (isset($ortu['ortu_i_pendidikan']) && $ortu['ortu_i_pendidikan'] == '1') ? 'selected' : '' ?>>Tidak sekolah</option>
                 <option value="2" <?= old('ortu_i_pendidikan') == '2' || (isset($ortu['ortu_i_pendidikan']) && $ortu['ortu_i_pendidikan'] == '2') ? 'selected' : '' ?>>PAUD</option>
@@ -260,7 +260,7 @@
         <!-- No Telp Ibu -->
         <div class="mt-3">
             <label for="ortu_i_hp" class="form-label mb-0 fsz-14 ls-1 fw-bold">5. No Telp/WA Ibu:</label>
-            <input name="ortu_i_hp" type="number" class="form-control input-clr1-out ps-3 py-2 mt--1 fsz-13 <?= session()->getFlashdata('errors-ortu') && isset(session()->getFlashdata('errors-ortu')['ortu_i_hp']) ? 'is-invalid' : '' ?>" id="ortu_i_hp" autocomplete="off" placeholder="08.. / 62.." 
+            <input name="ortu_i_hp" type="number" class="form-control input-clr1-out ps-3 py-2 mt-0 fsz-13 <?= session()->getFlashdata('errors-ortu') && isset(session()->getFlashdata('errors-ortu')['ortu_i_hp']) ? 'is-invalid' : '' ?>" id="ortu_i_hp" autocomplete="off" placeholder="08.. / 62.." 
             value="<?= old('ortu_i_hp') ? old('ortu_i_hp') : (isset($ortu['ortu_i_hp']) ? $ortu['ortu_i_hp'] : '') ?>">
             <?php if (session()->getFlashdata('errors-ortu') && isset(session()->getFlashdata('errors-ortu')['ortu_i_hp'])): ?>
                 <div class="text-danger mt-0 mb-1 lh-s ms-2" style="font-size:13px;"><?= session()->getFlashdata('errors-ortu')['ortu_i_hp'] ?></div>
@@ -269,7 +269,7 @@
         <!-- Pendapatan Ibu -->
         <div class="mt-3">
             <label for="ortu_i_pendapatan" class="form-label mb-0 fsz-14 ls-1 fw-bold">6. Pendapatan Per-Bulan:</label>
-            <input name="ortu_i_pendapatan" type="text" class="form-control input-clr1-out ps-3 py-2 mt--1 fsz-13 <?= session()->getFlashdata('errors-ortu') && isset(session()->getFlashdata('errors-ortu')['ortu_i_pendapatan']) ? 'is-invalid' : '' ?>" id="ortu_i_pendapatan" autocomplete="off" placeholder="ex. 500 ribu - 1 juta" 
+            <input name="ortu_i_pendapatan" type="text" class="form-control input-clr1-out ps-3 py-2 mt-0 fsz-13 <?= session()->getFlashdata('errors-ortu') && isset(session()->getFlashdata('errors-ortu')['ortu_i_pendapatan']) ? 'is-invalid' : '' ?>" id="ortu_i_pendapatan" autocomplete="off" placeholder="ex. 500 ribu - 1 juta" 
             value="<?= old('ortu_i_pendapatan') ? old('ortu_i_pendapatan') : (isset($ortu['ortu_i_pendapatan']) ? $ortu['ortu_i_pendapatan'] : '') ?>">
             <?php if (isset(session()->getFlashdata('errors-ortu')['ortu_i_pendapatan'])): ?>
                 <div class="text-danger mt-0 mb-1 lh-s ms-2" style="font-size:13px;">

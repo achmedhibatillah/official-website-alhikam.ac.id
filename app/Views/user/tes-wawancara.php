@@ -15,8 +15,8 @@
             </tr>
             <tr>
                 <td class="align-top lh-1 pt-3" style="width:30%;">Tanggal Wawancara</td>
-                <td class="align-top lh-1 pt-3" style="width:70%;">: 
-                    <?= ($tw['tw_tgl']) ? $tw['tw_tgl'] : '<div class="d-inline text-secondary">Tanggal wawancara belum ditentukan.</div>' ?>
+                <td class="align-top lh-1 pt-3" style="width:70%;">:
+                    <?= ($tw['tw_tgl']) ? strftime("%d %B %Y", strtotime($tw['tw_tgl'])) : '<div class="d-inline text-secondary">Tanggal wawancara belum ditentukan.</div>' ?>
                 </td>
             </tr>
             <tr>

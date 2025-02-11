@@ -50,7 +50,7 @@
                 <td style="width:2%;">:</td>
                 <td style="width:70%;">
                     <?php if($tw['tw_status'] == 1): ?>
-                        <div class="text-center bg-warning text-clr5 px-3 py-1 rounded lh-s ls-s fsz-12">Selesai</div>
+                        <div class="text-center bg-clr1 text-clr5 px-3 py-1 rounded lh-s ls-s fsz-12">Selesai</div>
                     <?php else: ?>
                         <div class="text-center bg-danger text-clr5 px-3 py-1 rounded lh-s ls-s fsz-12">Belum</div>
                     <?php endif; ?>

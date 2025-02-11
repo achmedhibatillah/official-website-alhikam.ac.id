@@ -19,7 +19,7 @@
                 <form action="<?= base_url('authentication-admin') ?>" method="post">
                     <div class="mb-3">
                         <label for="username" class="form-label mb-0 fsz-14 ls-1 fw-bold">Username</label>
-                        <input name="username" type="text" autocomplete="off" class="form-control ps-3 py-2 mt--1 fsz-13 <?= session()->getFlashdata('errors-masuk') && isset(session()->getFlashdata('errors-masuk')['username']) ? 'is-invalid' : '' ?>" id="username" placeholder="Username" value="<?= old('username') ?>">
+                        <input name="username" type="text" autocomplete="off" class="form-control ps-3 py-2 mt-0 fsz-13 <?= session()->getFlashdata('errors-masuk') && isset(session()->getFlashdata('errors-masuk')['username']) ? 'is-invalid' : '' ?>" id="username" placeholder="Username" value="<?= old('username') ?>">
                         <?php if (session()->getFlashdata('errors-masuk') && isset(session()->getFlashdata('errors-masuk')['username'])): ?>
                             <div class="text-danger mt-1 mb-1 lh-s ms-2" style="font-size:13px;"><?= session()->getFlashdata('errors-masuk')['username'] ?></div>
                         <?php endif; ?>
@@ -27,7 +27,7 @@
                     <div class="mb-3 position-relative">
                         <label for="pass" class="form-label mb-0 fsz-14 ls-1 fw-bold">Password</label>
                         <div class="input-group">
-                            <input name="pass" type="password" class="form-control ps-3 py-2 mt--1 fsz-13 me-5 <?= session()->getFlashdata('errors-masuk') && isset(session()->getFlashdata('errors-masuk')['pass']) ? 'is-invalid' : '' ?>" id="pass" placeholder="Password" value="<?= old('pass') ?>">
+                            <input name="pass" type="password" class="form-control ps-3 py-2 mt-0 fsz-13 me-5 <?= session()->getFlashdata('errors-masuk') && isset(session()->getFlashdata('errors-masuk')['pass']) ? 'is-invalid' : '' ?>" id="pass" placeholder="Password" value="<?= old('pass') ?>">
                         </div>
                         <?php if (session()->getFlashdata('errors-masuk') && isset(session()->getFlashdata('errors-masuk')['pass'])): ?>
                             <div class="text-danger mt-1 mb-1 lh-s ms-2" style="font-size:13px;"><?= session()->getFlashdata('errors-masuk')['pass'] ?></div>

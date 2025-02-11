@@ -77,6 +77,7 @@ $routes->get('/verifikasi-pembayaran-where-(:segment)', 'Admin::pembayaran/$1', 
 $routes->get('/verifikasi-pembayaran/(:num)', 'Admin::pembayaran_d/$1', ['filter' => 'admin-auth']);
 $routes->get('/atur-wawancara', 'Admin::wawancara', ['filter' => 'admin-auth']);
 $routes->get('/atur-wawancara-where-(:segment)', 'Admin::wawancara/$1', ['filter' => 'admin-auth']);
+$routes->get('/atur-wawancara/(:num)', 'Admin::wawancara_d/$1', ['filter' => 'admin-auth']);
 $routes->get('/atur-pengumuman', 'Admin::pengumuman', ['filter' => 'admin-auth']);
 $routes->get('/atur-pengumuman/(:num)', 'Admin::pengumuman_d/$1', ['filter' => 'admin-auth']);
 $routes->get('/atur-pengumuman-where-(:segment)', 'Admin::pengumuman/$1', ['filter' => 'admin-auth']);
@@ -88,3 +89,6 @@ $routes->post('/tolak-verifikasi-bp', 'BuktiPembayaran::pembayaran_unver', ['fil
 $routes->get('/admin-download-surat-kelulusan/(:segment)', 'Pengumuman::downloadPengumuman/$1', ['filter' => 'admin-auth']);
 $routes->post('/simpan-pengumuman', 'Pengumuman::update', ['filter' => 'admin-auth']);
 $routes->post('/request-edit-pengumuman', 'Pengumuman::request_update', ['filter' => 'admin-auth']);
+
+$routes->post('/simpan-wawancara', 'Wawancara::update', ['filter' => 'admin-auth']);
+$routes->post('/verifikasi-tw', 'Wawancara::wawancara_ver', ['filter' => 'admin-auth']);

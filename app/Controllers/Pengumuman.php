@@ -56,7 +56,7 @@ class Pengumuman extends BaseController
             'pengumuman_bukukitab' => $this->request->getPost('pengumuman_bukukitab'),
             'pengumuman_bukubio' => $this->request->getPost('pengumuman_bukubio'),
             'pengumuman_saved' => 1
-        ];
+        ]; 
 
         $pengumumanModel = $this->pengumumanModel;
 

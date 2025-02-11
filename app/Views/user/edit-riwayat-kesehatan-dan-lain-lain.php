@@ -12,7 +12,7 @@
         <!-- Gplongan Darah -->
         <div class="mt-3">
             <label for="rk_golongandarah" class="form-label mb-0 fsz-14 ls-1 fw-bold">A. Golongan Darah:</label>
-            <select name="rk_golongandarah" class="form-select input-clr1-out ps-3 py-2 mt--1 fsz-13 <?= isset(session()->getFlashdata('errors-rk')['rk_golongandarah']) ? 'is-invalid' : '' ?>" id="rk_golongandarah">
+            <select name="rk_golongandarah" class="form-select input-clr1-out ps-3 py-2 mt-0 fsz-13 <?= isset(session()->getFlashdata('errors-rk')['rk_golongandarah']) ? 'is-invalid' : '' ?>" id="rk_golongandarah">
                 <option value="" disabled <?= old('rk_golongandarah') || (isset($rk['rk_golongandarah']) && $rk['rk_golongandarah'] !== '') ? '' : 'selected' ?>>Pilih Golongan Darah</option>
                 <option value="1" <?= old('rk_golongandarah') == '1' || (isset($rk['rk_golongandarah']) && $rk['rk_golongandarah'] == '1') ? 'selected' : '' ?>>A</option>
                 <option value="2" <?= old('rk_golongandarah') == '2' || (isset($rk['rk_golongandarah']) && $rk['rk_golongandarah'] == '2') ? 'selected' : '' ?>>B</option>
@@ -31,7 +31,7 @@
             <label for="rk_pernah_penyakit" class="form-label mb-0 fsz-14 ls-1 fw-bold">B. Penyakit yang Pernah Dialami:</label>
             <button type="button" class="save-before-show buttonModal btn btn-clr1 p-0 px-3 ms-1 ls-s fsz-12" data-bs-toggle="modal" data-bs-target="#modalTambahPenyakitPernah">Tambah</button>
             <?php if (session()->getFlashdata('errors-rk') && isset(session()->getFlashdata('errors-rk')['rk_pernah_penyakit'])): ?>
-                <div class="ls-s fsz-12 text-danger mt--1">
+                <div class="ls-s fsz-12 text-danger mt-0">
                     <?= session()->getFlashdata('errors-rk')['rk_pernah_penyakit'] ?>
                 </div>
             <?php endif; ?>
@@ -49,7 +49,7 @@
             <label for="rk_sedang_penyakit" class="form-label mb-0 fsz-14 ls-1 fw-bold">C. Penyakit yang Sedang Dialami:</label>
             <button type="button" class="save-before-show btn btn-clr1 p-0 px-3 ms-1 ls-s fsz-12" data-bs-toggle="modal" data-bs-target="#modalTambahPenyakitSedang">Tambah</button>
             <?php if (session()->getFlashdata('errors-rk') && isset(session()->getFlashdata('errors-rk')['rk_sedang_penyakit'])): ?>
-                <div class="ls-s fsz-12 text-danger mt--1">
+                <div class="ls-s fsz-12 text-danger mt-0">
                     <?= session()->getFlashdata('errors-rk')['rk_sedang_penyakit'] ?>
                 </div>
             <?php endif; ?>
@@ -65,7 +65,7 @@
         <!-- Perawatan -->
         <div class="mt-3">
             <label for="rk_perawatan" class="form-label mb-0 fsz-14 ls-1 fw-bold">D. Pernah Menjalani Perawatan:</label>
-            <select name="rk_perawatan" class="form-select input-clr1-out ps-3 py-2 mt--1 fsz-13 <?= isset(session()->getFlashdata('errors-rk')['rk_perawatan']) ? 'is-invalid' : '' ?>" id="rk_perawatan">
+            <select name="rk_perawatan" class="form-select input-clr1-out ps-3 py-2 mt-0 fsz-13 <?= isset(session()->getFlashdata('errors-rk')['rk_perawatan']) ? 'is-invalid' : '' ?>" id="rk_perawatan">
                 <option value="" disabled <?= old('rk_perawatan') || (isset($rk['rk_perawatan']) && $rk['rk_perawatan'] !== '') ? '' : 'selected' ?>>Pilih</option>
                 <option value="1" <?= old('rk_perawatan') == '1' || (isset($rk['rk_perawatan']) && $rk['rk_perawatan'] == '1') ? 'selected' : '' ?>>Iya</option>
                 <option value="2" <?= old('rk_perawatan') == '2' || (isset($rk['rk_perawatan']) && $rk['rk_perawatan'] == '2') ? 'selected' : '' ?>>Tidak</option>
@@ -80,7 +80,7 @@
         </div>
         <!-- Kontak -->
         <div class="mt-3">
-            <p for="rk_perawatan" class="form-label mb-1 fsz-14 lh-1 fw-bold ls-1">E. Apabila terjadi hal-hal yang mendesak atas diri saya, orang yang mudah dihubungi segera adalah:</p>
+            <p for="rk_perawatan" class="form-label mb-3 fsz-14 lh-1 fw-bold ls-1">E. Apabila terjadi hal-hal yang mendesak atas diri saya, orang yang mudah dihubungi segera adalah:</p>
             <!-- Nama -->
             <table class="mt-1">
                 <tr>
@@ -89,7 +89,7 @@
                         <p for="rk_kontak_nama" class="form-label mb-0 fsz-14 ls-1 fw-bold lh-1">Nama Lengkap:</p>
                     </td>
                     <td style="width:78%;">
-                        <input name="rk_kontak_nama" type="text" class="form-control he-28 input-clr1-out ps-3 py-2 mt--1 fsz-13 <?= session()->getFlashdata('errors-rk') && isset(session()->getFlashdata('errors-rk')['rk_kontak_nama']) ? 'is-invalid' : '' ?>" id="rk_kontak_nama" autocomplete="off" placeholder="Nama Lengkap" 
+                        <input name="rk_kontak_nama" type="text" class="form-control he-28 input-clr1-out ps-3 py-2 mt-0 fsz-13 <?= session()->getFlashdata('errors-rk') && isset(session()->getFlashdata('errors-rk')['rk_kontak_nama']) ? 'is-invalid' : '' ?>" id="rk_kontak_nama" autocomplete="off" placeholder="Nama Lengkap" 
                         value="<?= old('rk_kontak_nama') ? old('rk_kontak_nama') : (isset($rk['rk_kontak_nama']) ? $rk['rk_kontak_nama'] : '') ?>">
                         <?php if (session()->getFlashdata('errors-rk') && isset(session()->getFlashdata('errors-rk')['rk_kontak_nama'])): ?>
                             <div class="text-danger mt-0 mb-1 lh-s ms-2" style="font-size:13px;"><?= session()->getFlashdata('errors-rk')['rk_kontak_nama'] ?></div>
@@ -102,7 +102,7 @@
                         <p for="rk_kontak_alamat" class="form-label mb-0 fsz-14 ls-1 fw-bold lh-1">Alamat Lengkap:</p>
                     </td>
                     <td style="width:78%;">
-                        <input name="rk_kontak_alamat" type="text" class="form-control mt-1 he-28 input-clr1-out ps-3 py-2 mt--1 fsz-13 <?= session()->getFlashdata('errors-rk') && isset(session()->getFlashdata('errors-rk')['rk_kontak_alamat']) ? 'is-invalid' : '' ?>" id="rk_kontak_alamat" autocomplete="off" placeholder="Alamat Lengkap" 
+                        <input name="rk_kontak_alamat" type="text" class="form-control mt-1 he-28 input-clr1-out ps-3 py-2 mt-0 fsz-13 <?= session()->getFlashdata('errors-rk') && isset(session()->getFlashdata('errors-rk')['rk_kontak_alamat']) ? 'is-invalid' : '' ?>" id="rk_kontak_alamat" autocomplete="off" placeholder="Alamat Lengkap" 
                         value="<?= old('rk_kontak_alamat') ? old('rk_kontak_alamat') : (isset($rk['rk_kontak_alamat']) ? $rk['rk_kontak_alamat'] : '') ?>">
                         <?php if (session()->getFlashdata('errors-rk') && isset(session()->getFlashdata('errors-rk')['rk_kontak_alamat'])): ?>
                             <div class="text-danger mt-0 mb-1 lh-s ms-2" style="font-size:13px;"><?= session()->getFlashdata('errors-rk')['rk_kontak_alamat'] ?></div>
@@ -115,7 +115,7 @@
                         <p for="rk_kontak_hp" class="form-label mb-0 fsz-14 ls-1 fw-bold lh-1">No Telp/WA:</p>
                     </td>
                     <td style="width:78%;">
-                        <input name="rk_kontak_hp" type="number" class="form-control mt-1 he-28 input-clr1-out ps-3 py-2 mt--1 fsz-13 <?= session()->getFlashdata('errors-rk') && isset(session()->getFlashdata('errors-rk')['rk_kontak_hp']) ? 'is-invalid' : '' ?>" id="rk_kontak_hp" autocomplete="off" placeholder="08.. / 62.." 
+                        <input name="rk_kontak_hp" type="number" class="form-control mt-1 he-28 input-clr1-out ps-3 py-2 mt-0 fsz-13 <?= session()->getFlashdata('errors-rk') && isset(session()->getFlashdata('errors-rk')['rk_kontak_hp']) ? 'is-invalid' : '' ?>" id="rk_kontak_hp" autocomplete="off" placeholder="08.. / 62.." 
                         value="<?= old('rk_kontak_hp') ? old('rk_kontak_hp') : (isset($rk['rk_kontak_hp']) ? $rk['rk_kontak_hp'] : '') ?>">
                         <?php if (session()->getFlashdata('errors-rk') && isset(session()->getFlashdata('errors-rk')['rk_kontak_hp'])): ?>
                             <div class="text-danger mt-0 mb-1 lh-s ms-2" style="font-size:13px;"><?= session()->getFlashdata('errors-rk')['rk_kontak_hp'] ?></div>
@@ -132,7 +132,7 @@
             <label for="lain_prestasi_prestasi" class="form-label mb-0 fsz-14 ls-1 fw-bold">A. Prestasi:</label>
             <button type="button" class="save-before-show btn btn-clr1 p-0 px-3 ms-1 ls-s fsz-12" data-bs-toggle="modal" data-bs-target="#modalprestasi">Tambah</button>
             <?php if (session()->getFlashdata('errors-lain') && isset(session()->getFlashdata('errors-lain')['lain_prestasi_prestasi'])): ?>
-                <div class="ls-s fsz-12 text-danger mt--1">
+                <div class="ls-s fsz-12 text-danger mt-0">
                     <?= session()->getFlashdata('errors-lain')['lain_prestasi_prestasi'] ?>
                 </div>
             <?php endif; ?>
@@ -150,7 +150,7 @@
             <label for="lain_organisasi_organisasi" class="form-label mb-0 fsz-14 ls-1 fw-bold">B. Organisasi:</label>
             <button type="button" class="save-before-show btn btn-clr1 p-0 px-3 ms-1 ls-s fsz-12" data-bs-toggle="modal" data-bs-target="#modalOrganisasi">Tambah</button>
             <?php if (session()->getFlashdata('errors-lain') && isset(session()->getFlashdata('errors-lain')['lain_organisasi_organisasi'])): ?>
-                <div class="ls-s fsz-12 text-danger mt--1">
+                <div class="ls-s fsz-12 text-danger mt-0">
                     <?= session()->getFlashdata('errors-lain')['lain_organisasi_organisasi'] ?>
                 </div>
             <?php endif; ?>
@@ -265,7 +265,7 @@
                             <?php foreach($lain['lain_bahasa'] as $x) : ?>
                                 <li class="mt-2 ls-s fsz-14 p-0 ps-1 py-0" style="border-bottom:0.5px solid var(--clr1);">
                                     <div class="row m-0 p-0">
-                                        <div class="col-9 m-0 p-0">Bahasa <?= $x['lain_bahasa_bahasa'] ?></div>
+                                        <div class="col-9 m-0 p-0"><?= $x['lain_bahasa_bahasa'] ?></div>
                                         <div class="col-3 m-0 p-0 pe-2 d-flex justify-content-end"><a href="<?= base_url('hapus-bahasa/') . $x['lain_bahasa_id'] ?>" class="btn btn-sm btn-outline-danger p-0 fsz-10  px-2 pt-1"><i class="fas fa-trash"></i></a></div>
                                     </div>
                                 </li>
@@ -315,7 +315,7 @@
                             <?php foreach($lain['lain_keahlian'] as $x) : ?>
                                 <li class="mt-2 ls-s fsz-14 p-0 ps-1 py-0" style="border-bottom:0.5px solid var(--clr1);">
                                     <div class="row m-0 p-0">
-                                        <div class="col-9 m-0 p-0">Keahlian <?= $x['lain_keahlian_keahlian'] ?></div>
+                                        <div class="col-9 m-0 p-0"><?= $x['lain_keahlian_keahlian'] ?></div>
                                         <div class="col-3 m-0 p-0 pe-2 d-flex justify-content-end"><a href="<?= base_url('hapus-keahlian/') . $x['lain_keahlian_id'] ?>" class="btn btn-sm btn-outline-danger p-0 fsz-10  px-2 pt-1"><i class="fas fa-trash"></i></a></div>
                                     </div>
                                 </li>

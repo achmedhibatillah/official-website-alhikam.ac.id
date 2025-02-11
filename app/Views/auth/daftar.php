@@ -16,13 +16,13 @@
                 <div class="col-6 m-0 p-0 pe-1 d-flex align-items-end">
                     <div>
                         <label for="username" class="form-label mb-0 fsz-14 ls-1 lh-xs fw-bold">Username (No Telp/WA)</label>
-                        <input name="username" type="number" class="form-control input-clr3 ps-3 py-2 mt--1 fsz-13 <?= session()->getFlashdata('errors-daftar') && isset(session()->getFlashdata('errors-daftar')['username']) ? 'is-invalid' : '' ?>" id="username" placeholder="No Telp/WA" value="<?= old('username') ?>">
+                        <input name="username" type="number" class="form-control input-clr3 ps-3 py-2 mt-0 fsz-13 <?= session()->getFlashdata('errors-daftar') && isset(session()->getFlashdata('errors-daftar')['username']) ? 'is-invalid' : '' ?>" id="username" placeholder="No Telp/WA" value="<?= old('username') ?>">
                     </div>
                 </div>
                 <div class="col-6 m-0 p-0 d-flex align-items-end">
                     <div>
                         <label for="username" class="form-label mb-0 fsz-14 ls-1 fw-bold">Email</label>
-                        <input name="email" type="text" class="form-control input-clr3 ps-3 py-2 mt--1 fsz-13 <?= session()->getFlashdata('errors-daftar') && isset(session()->getFlashdata('errors-daftar')['email']) ? 'is-invalid' : '' ?>" id="username" placeholder="Email" value="<?= old('email') ?>">
+                        <input name="email" type="text" class="form-control input-clr3 ps-3 py-2 mt-0 fsz-13 <?= session()->getFlashdata('errors-daftar') && isset(session()->getFlashdata('errors-daftar')['email']) ? 'is-invalid' : '' ?>" id="username" placeholder="Email" value="<?= old('email') ?>">
                     </div>
                 </div>
             </div>
@@ -41,7 +41,7 @@
             <!-- Nama -->
             <div class="mb-3">
                 <label for="nama" class="form-label mb-0 fsz-14 ls-1 fw-bold">Nama Lengkap</label>
-                <input name="nama" type="text" class="form-control input-clr3 ps-3 py-2 mt--1 fsz-13 <?= session()->getFlashdata('errors-daftar') && isset(session()->getFlashdata('errors-daftar')['nama']) ? 'is-invalid' : '' ?>" id="nama" placeholder="Nama Lengkap" value="<?= old('nama') ?>">
+                <input name="nama" type="text" class="form-control input-clr3 ps-3 py-2 mt-0 fsz-13 <?= session()->getFlashdata('errors-daftar') && isset(session()->getFlashdata('errors-daftar')['nama']) ? 'is-invalid' : '' ?>" id="nama" placeholder="Nama Lengkap" value="<?= old('nama') ?>">
                 <?php if (session()->getFlashdata('errors-daftar') && isset(session()->getFlashdata('errors-daftar')['nama'])): ?>
                     <div class="text-danger mt-1 mb-1 lh-s ls-xs ms-2" style="font-size:13px;"><?= session()->getFlashdata('errors-daftar')['nama'] ?></div>
                 <?php endif; ?>
@@ -49,7 +49,7 @@
             <!-- KTP -->
             <div class="mb-3">
                 <label for="ktp" class="form-label mb-0 fsz-14 ls-1 fw-bold">No KTP</label>
-                <input name="ktp" type="number" class="form-control input-clr3 ps-3 py-2 mt--1 fsz-13 <?= session()->getFlashdata('errors-daftar') && isset(session()->getFlashdata('errors-daftar')['ktp']) ? 'is-invalid' : '' ?>" id="ktp" placeholder="16 digit" value="<?= old('ktp') ?>">
+                <input name="ktp" type="number" class="form-control input-clr3 ps-3 py-2 mt-0 fsz-13 <?= session()->getFlashdata('errors-daftar') && isset(session()->getFlashdata('errors-daftar')['ktp']) ? 'is-invalid' : '' ?>" id="ktp" placeholder="16 digit" value="<?= old('ktp') ?>">
                 <?php if (session()->getFlashdata('errors-daftar') && isset(session()->getFlashdata('errors-daftar')['ktp'])): ?>
                     <div class="text-danger mt-1 mb-1 lh-s ls-xs ms-2" style="font-size:13px;"><?= session()->getFlashdata('errors-daftar')['ktp'] ?></div>
                 <?php endif; ?>
@@ -61,7 +61,7 @@
                         <div>
                             <label for="pass" class="form-label mb-0 fsz-14 ls-1 lh-xs fw-bold">Password</label>
                             <div class="input-group">
-                                <input name="pass" type="password" class="form-control input-clr3 ps-3 py-2 mt--1 fsz-13 <?= session()->getFlashdata('errors-daftar') && isset(session()->getFlashdata('errors-daftar')['pass']) ? 'is-invalid' : '' ?>" id="pass" placeholder="Password" value="<?= old('pass') ?>">
+                                <input name="pass" type="password" class="form-control input-clr3 ps-3 py-2 mt-0 fsz-13 <?= session()->getFlashdata('errors-daftar') && isset(session()->getFlashdata('errors-daftar')['pass']) ? 'is-invalid' : '' ?>" id="pass" placeholder="Password" value="<?= old('pass') ?>">
                             </div>
                         </div>
                     </div>
@@ -69,7 +69,7 @@
                         <div>
                             <label for="pass" class="form-label mb-0 fsz-14 ls-1 lh-xs fw-bold">Konfirmasi Password</label>
                             <div class="input-group">
-                                <input name="pass2" type="password" class="form-control input-clr3 ps-3 py-2 mt--1 fsz-13 <?= session()->getFlashdata('errors-daftar') && isset(session()->getFlashdata('errors-daftar')['pass2']) ? 'is-invalid' : '' ?>" id="pass2" placeholder="Password" value="<?= old('pass2') ?>">
+                                <input name="pass2" type="password" class="form-control input-clr3 ps-3 py-2 mt-0 fsz-13 <?= session()->getFlashdata('errors-daftar') && isset(session()->getFlashdata('errors-daftar')['pass2']) ? 'is-invalid' : '' ?>" id="pass2" placeholder="Password" value="<?= old('pass2') ?>">
                             </div>
                         </div>
                     </div>

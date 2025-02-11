@@ -1,4 +1,4 @@
-<section class="bg-clr5 bg-web position-relative d-flex justify-content-center align-items-center" style="min-height:100vh;background-image:url('<?= base_url('images/bg-auth.png') ?>');">
+<section class="bg-clr5 bg-web position-relative d-flex justify-content-center align-items-center" style="min-height:100vh;padding:80px 0;background-image:url('<?= base_url('images/bg-auth.png') ?>');">
     <div class="">
         <?php if(session()->getFlashdata('success-daftar')): ?>
             <div class="alert alert-success text-center">
@@ -19,7 +19,7 @@
                 <form action="<?= base_url('authentication') ?>" method="post">
                     <div class="mb-3">
                         <label for="username" class="form-label mb-0 fsz-14 ls-1 fw-bold">Username (No Telp/WA)</label>
-                        <input name="username" type="number" class="form-control input-clr3 ps-3 py-2 mt--1 fsz-13 <?= session()->getFlashdata('errors-masuk') && isset(session()->getFlashdata('errors-masuk')['username']) ? 'is-invalid' : '' ?>" id="username" placeholder="No Telp/WA" value="<?= old('username') ?>">
+                        <input name="username" type="number" class="form-control input-clr3 ps-3 py-2 mt-0 fsz-13 <?= session()->getFlashdata('errors-masuk') && isset(session()->getFlashdata('errors-masuk')['username']) ? 'is-invalid' : '' ?>" id="username" placeholder="No Telp/WA" value="<?= old('username') ?>">
                         <?php if (session()->getFlashdata('errors-masuk') && isset(session()->getFlashdata('errors-masuk')['username'])): ?>
                             <div class="text-danger mt-1 mb-1 lh-s ms-2" style="font-size:13px;"><?= session()->getFlashdata('errors-masuk')['username'] ?></div>
                         <?php endif; ?>
@@ -27,7 +27,7 @@
                     <div class="mb-3 position-relative">
                         <label for="pass" class="form-label mb-0 fsz-14 ls-1 fw-bold">Password</label>
                         <div class="input-group">
-                            <input name="pass" type="password" class="form-control input-clr3 ps-3 py-2 mt--1 fsz-13 me-5 <?= session()->getFlashdata('errors-masuk') && isset(session()->getFlashdata('errors-masuk')['pass']) ? 'is-invalid' : '' ?>" id="pass" placeholder="Password" value="<?= old('pass') ?>">
+                            <input name="pass" type="password" class="form-control input-clr3 ps-3 py-2 mt-0 fsz-13 me-5 <?= session()->getFlashdata('errors-masuk') && isset(session()->getFlashdata('errors-masuk')['pass']) ? 'is-invalid' : '' ?>" id="pass" placeholder="Password" value="<?= old('pass') ?>">
                         </div>
                         <?php if (session()->getFlashdata('errors-masuk') && isset(session()->getFlashdata('errors-masuk')['pass'])): ?>
                             <div class="text-danger mt-1 mb-1 lh-s ms-2" style="font-size:13px;"><?= session()->getFlashdata('errors-masuk')['pass'] ?></div>
