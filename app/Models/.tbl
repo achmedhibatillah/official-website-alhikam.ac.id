@@ -229,3 +229,14 @@ CREATE TABLE testulis (
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (peserta_id) REFERENCES peserta(peserta_id) ON DELETE CASCADE ON UPDATE CASCADE
 );
+
+DELETE FROM santri WHERE peserta_id = 27;
+DELETE FROM ortu WHERE peserta_id = 27;
+DELETE FROM riwayatkesehatan WHERE peserta_id = 27;
+DELETE FROM bp WHERE peserta_id = 27;
+DELETE FROM lain WHERE peserta_id = 27;
+DELETE FROM testulis WHERE peserta_id = 27;
+DELETE FROM teswawancara WHERE peserta_id = 27;
+DELETE FROM pengumuman WHERE peserta_id = 27;
+DELETE FROM message WHERE peserta_id = 27;
+DELETE FROM peserta WHERE peserta_id = 27;

@@ -221,6 +221,11 @@ class Auth extends BaseController
         $twModel->insert($santriData);
         $messageModel->insert($santriData);
         $pengumumanModel->insert($santriData);
+
+        $email = $this->request->getPost('email');
+        $nama = ucwords(strtolower($this->request->getPost('nama')));
+        $sendEmail = new \App\Controllers\SendEmail();
+        $sendEmail->daftar_auth($email, $nama);
     
         return redirect()->to('masuk')->with('success-daftar', 'Anda berhasil melakukan pendaftaran. Silakan login dengan akun yang baru Anda buat.');
     }

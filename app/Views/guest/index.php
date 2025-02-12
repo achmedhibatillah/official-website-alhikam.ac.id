@@ -10,8 +10,8 @@
                 <h5 class="fw-900 ls-1 mb-0">PENERIMAAN SANTRI BARU TAHUN 2025</h5>
                 <p class="ls-s fw-bold mt--1 mb-0">Pesantren Mahasiswa/i Al-Hikam Malang</p>
                 <div class="mt-1 mb-lg-5">
-                    <a href="<?= base_url('daftar') ?>" class="btn btn-clr1-clr2-clr1 m-0 fw-bold py-1 fsz-12"><img src="<?= base_url('images/icon/daftar.png') ?>" class="he-14 mb-1"> Daftar Sekarang</a>
-                    <a href="https://wa.me/6281336008445" target="_blank" class="btn btn-clr1-clr2-clr1 m-0 fw-bold py-1 fsz-12"><img src="<?= base_url('images/icon/cp.png') ?>" class="he-14 mb-1"> Contact Person</a>
+                    <a href="<?= base_url('daftar') ?>" class="btn btn-clr1-clr2-clr1 m-0 fw-bold fsz-14"><img src="<?= base_url('images/icon/daftar.png') ?>" class="he-14 mb-1"> Daftar Sekarang</a>
+                    <a href="https://wa.me/6281336008445" target="_blank" class="btn btn-clr1-clr2-clr1 m-0 fw-bold fsz-14"><img src="<?= base_url('images/icon/cp.png') ?>" class="he-14 mb-1"> Contact Person</a>
                 </div>
             </div>
         </div>
