@@ -173,6 +173,7 @@ class Admin extends BaseController
         $bpModel = $this->bpModel;
         $ttModel = $this->ttModel;
         $twModel = $this->twModel;
+        $pengumumanModel = $this->pengumumanModel;
     
         // Ambil data santri
         $santriData = $santriModel->getSantriByPesertaId($peserta_id);
@@ -184,12 +185,14 @@ class Admin extends BaseController
         $bpData = $bpModel->getBpByPesertaId($peserta_id);
         $ttData = $ttModel->getTtByPesertaId($peserta_id);
         $twData = $twModel->getTwByPesertaId($peserta_id);
+        $pengumumanData = $pengumumanModel->getPengumumanByPesertaId($peserta_id);
     
         $santriData['ortu_saved'] = $ortuData['ortu_saved'] ?? 0;
         $santriData['rk_saved'] = $rkData['rk_saved'] ?? 0;
         $santriData['bp_saved'] = $bpData['bp_saved'] ?? 0;
         $santriData['tt_konfirm'] = $ttData['tt_konfirm'] ?? 0;
         $santriData['tw_status'] = $twData['tw_status'] ?? 0;
+        $santriData['pengumuman_saved'] = $pengumumanData['pengumuman_saved'] ?? 0;
 
         $pekerjaanOptions = [
             1 => 'Tidak bekerja',
@@ -278,7 +281,8 @@ class Admin extends BaseController
                 'lain' => $lainData,
                 'bp' => $bpData,
                 'tt' => $ttData,
-                'tw' => $twData
+                'tw' => $twData,
+                'pengumuman' => $pengumumanData
             ]) .
             view('templates/footbar-admin') .
             view('templates/footer');
@@ -355,6 +359,57 @@ class Admin extends BaseController
             ]) .
             view('templates/footbar-admin') .
             view('templates/footer');
+    }
+
+    public function testulis($cond = ''): string
+    {
+        $data = [
+            'title' => 'Atur Tes Tulis',
+            'page' => 'admin-tes-tulis',
+        ];
+        
+        $santriModel = $this->santriModel;
+
+        if ($cond == 'all') {
+            $santriData = $santriModel
+            ->select('santri.*, testulis.*, bp.*')
+            ->join('bp', 'bp.peserta_id = santri.peserta_id')
+            ->join('testulis', 'testulis.peserta_id = santri.peserta_id')
+            ->where('santri.santri_saved', '1')
+            ->where('bp.bp_konfirm', '1')
+            ->orderBy('santri.created_at', 'DESC')
+            ->findAll();
+        } elseif ($cond == 'verified') {
+            $santriData = $santriModel
+            ->select('santri.*, testulis.*, bp.*')
+            ->join('bp', 'bp.peserta_id = santri.peserta_id')
+            ->join('testulis', 'testulis.peserta_id = santri.peserta_id')
+            ->where('santri.santri_saved', '1')
+            ->where('bp.bp_konfirm', '1')
+            ->where('testulis.testulis_konfirm', '1')
+            ->orderBy('santri.created_at', 'DESC')
+            ->findAll(); 
+        } else {
+            $santriData = $santriModel
+            ->select('santri.*, testulis.*, bp.*')
+            ->join('bp', 'bp.peserta_id = santri.peserta_id')
+            ->join('testulis', 'testulis.peserta_id = santri.peserta_id')
+            ->where('santri.santri_saved', '1')
+            ->where('bp.bp_konfirm', '1')
+            ->where('testulis.testulis_konfirm', '0')
+            ->orderBy('santri.created_at', 'DESC')
+            ->findAll();
+        }
+
+        return 
+        view('templates/header', $data) .
+        view('templates/navbar-admin', $data) .
+        view('admin/atur-tes-tulis', [
+            'cond' => $cond,
+            'santri' => $santriData
+        ]) .
+        view('templates/footbar-admin') .
+        view('templates/footer');
     }
 
     public function wawancara($cond = ''): string

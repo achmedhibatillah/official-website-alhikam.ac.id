@@ -35,7 +35,7 @@
                 <td class="align-top lh-1 pt-3" style="width:30%;">Status</td>
                 <td class="align-top lh-1 pt-3" style="width:70%;">: 
                     <?= ($tw['tw_status'] == 1) 
-                    ? $tw['tw_status'] 
+                    ? '<div class="d-inline bg-clr1 rounded text-light px-3">Sudah wawancara</div>'
                     : '<div class="d-inline bg-danger rounded text-light px-3">Belum wawancara</div>' 
                     ?>
                 </td>

@@ -3,15 +3,14 @@
 namespace App\Controllers;
 
 use CodeIgniter\Controller;
-use CodeIgniter\Email\Email;
 
 class SendEmail extends Controller
 {
     public function daftar_auth($email, $nama)
     {
-        $emailService = \Config\Services::email();
+        $emailService = service('email'); // Lebih disarankan daripada \Config\Services::email()
 
-        // Konfigurasi email (gunakan .env atau set secara manual)
+        // Konfigurasi email
         $emailService->setFrom('alhikampsb@gmail.com', 'Admin Al-Hikam');
         $emailService->setTo($email);
         $emailService->setSubject('Pendaftaran Berhasil');
@@ -24,11 +23,11 @@ class SendEmail extends Controller
             <p><b>Admin Al-Hikam</b></p>
         ");
 
-        // Kirim email
+        // Kirim email dengan pengecekan error
         if ($emailService->send()) {
-            return true;
+            return "Email berhasil dikirim ke $email";
         } else {
-            return $emailService->printDebugger(['headers']);
+            return $emailService->printDebugger(['headers', 'subject', 'body']);
         }
     }
 }

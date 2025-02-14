@@ -12,7 +12,7 @@
             </iframe>
         </div>
         <div class="d-flex justify-content-center">
-            <button class="btn btn-clr1 mt-4 mb-4" data-bs-toggle="modal" data-bs-target="#modalTesTulis">Saya sudah men-submit formulir tes tulis online.</button>
+            <button class="btn btn-clr1 mt-4 mb-4" data-bs-toggle="modal" data-bs-target="#modalTesTulis">Saya sudah men-submit formulir tes tulis online di atas.</button>
         </div>
     </div>
     </div>

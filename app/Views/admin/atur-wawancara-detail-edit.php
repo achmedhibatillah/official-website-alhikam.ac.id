@@ -52,28 +52,48 @@
                 </div>
             <?php endif; ?>
             <div class="card m-0 p-3 mb-3 bg-clr5 text-clr1">
-                <form action="<?= base_url('simpan-wawancara') ?>" method="post" enctype="multipart/form-data">
-                    <input type="hidden" name="tw_id" value="<?= $tw['tw_id'] ?>">
-                    <div class="mb-3">
-                        <label for="tw_tgl" class="text-clr1 fw-bold ls-s">Tanggal wawancara:</label>
-                        <input type="date" name="tw_tgl" id="tw_tgl" class="form-control <?= (isset(session()->getFlashdata('errors-wawancara')['tw_tgl'])) ? 'is-invalid' : '' ?>"
-                        value="<?= old('tw_tgl') ? old('tw_tgl') : (isset($tw['tw_tgl']) ? $tw['tw_tgl'] : '') ?>">
-                        <?= (isset(session()->getFlashdata('errors-wawancara')['tw_tgl']) ? '<div class="fsz-12 text-danger">' . session()->getFlashdata('errors-wawancara')['tw_tgl'] . '</div>' : '') ?>
-                    </div>
-                    <div class="mb-3">
-                        <label for="tw_tempat" class="text-clr1 fw-bold ls-s">Tempat wawancara:</label>
-                        <input type="text" name="tw_tempat" id="tw_tempat" class="form-control <?= (isset(session()->getFlashdata('errors-wawancara')['tw_tempat'])) ? 'is-invalid' : '' ?>" placeholder="Masukkan tempat wawancara ..."
-                        value="<?= old('tw_tempat') ? old('tw_tempat') : (isset($tw['tw_tempat']) ? $tw['tw_tempat'] : '') ?>">
-                        <?= (isset(session()->getFlashdata('errors-wawancara')['tw_tempat']) ? '<div class="fsz-12 text-danger">' . session()->getFlashdata('errors-wawancara')['tw_tempat'] . '</div>' : '') ?>
-                    </div>
-                    <div class="mb-3">
-                        <label for="tw_pewawancara" class="text-clr1 fw-bold ls-s">Pewawancara:</label>
-                        <input type="text" name="tw_pewawancara" id="tw_pewawancara" class="form-control <?= (isset(session()->getFlashdata('errors-wawancara')['tw_pewawancara'])) ? 'is-invalid' : '' ?>" placeholder="Masukkan nama pewawancara ..."
-                        value="<?= old('tw_pewawancara') ? old('tw_pewawancara') : (isset($tw['tw_pewawancara']) ? $tw['tw_pewawancara'] : '') ?>">
-                        <?= (isset(session()->getFlashdata('errors-wawancara')['tw_pewawancara']) ? '<div class="fsz-12 text-danger">' . session()->getFlashdata('errors-wawancara')['tw_pewawancara'] . '</div>' : '') ?>
-                    </div>
-                    <button type="submit" class="btn btn-clr1 p-0 px-3 mt-2">Simpan</button>
-                </form>
+                <?php if ($tw['tw_status'] == 1): ?>
+                    <table class="text-clr1">
+                        <tr>
+                            <td style="width:30%;">Tanggal wawancara</td>
+                            <td style="width:2%;">:</td>
+                            <td style="width:68%;"><?= $tw['tw_tgl'] ?></td>
+                        </tr>
+                        <tr>
+                            <td>Tempat wawancara</td>
+                            <td>:</td>
+                            <td><?= $tw['tw_tempat'] ?></td>
+                        </tr>
+                        <tr>
+                            <td>Pewawancara</td>
+                            <td>:</td>
+                            <td><?= $tw['tw_pewawancara'] ?></td>
+                        </tr>
+                    </table>
+                <?php else: ?>
+                    <form action="<?= base_url('simpan-wawancara') ?>" method="post" enctype="multipart/form-data">
+                        <input type="hidden" name="tw_id" value="<?= $tw['tw_id'] ?>">
+                        <div class="mb-3">
+                            <label for="tw_tgl" class="text-clr1 fw-bold ls-s">Tanggal wawancara:</label>
+                            <input type="date" name="tw_tgl" id="tw_tgl" class="form-control <?= (isset(session()->getFlashdata('errors-wawancara')['tw_tgl'])) ? 'is-invalid' : '' ?>"
+                            value="<?= old('tw_tgl') ? old('tw_tgl') : (isset($tw['tw_tgl']) ? $tw['tw_tgl'] : '') ?>">
+                            <?= (isset(session()->getFlashdata('errors-wawancara')['tw_tgl']) ? '<div class="fsz-12 text-danger">' . session()->getFlashdata('errors-wawancara')['tw_tgl'] . '</div>' : '') ?>
+                        </div>
+                        <div class="mb-3">
+                            <label for="tw_tempat" class="text-clr1 fw-bold ls-s">Tempat wawancara:</label>
+                            <input type="text" name="tw_tempat" id="tw_tempat" class="form-control <?= (isset(session()->getFlashdata('errors-wawancara')['tw_tempat'])) ? 'is-invalid' : '' ?>" placeholder="Masukkan tempat wawancara ..."
+                            value="<?= old('tw_tempat') ? old('tw_tempat') : (isset($tw['tw_tempat']) ? $tw['tw_tempat'] : '') ?>">
+                            <?= (isset(session()->getFlashdata('errors-wawancara')['tw_tempat']) ? '<div class="fsz-12 text-danger">' . session()->getFlashdata('errors-wawancara')['tw_tempat'] . '</div>' : '') ?>
+                        </div>
+                        <div class="mb-3">
+                            <label for="tw_pewawancara" class="text-clr1 fw-bold ls-s">Pewawancara:</label>
+                            <input type="text" name="tw_pewawancara" id="tw_pewawancara" class="form-control <?= (isset(session()->getFlashdata('errors-wawancara')['tw_pewawancara'])) ? 'is-invalid' : '' ?>" placeholder="Masukkan nama pewawancara ..."
+                            value="<?= old('tw_pewawancara') ? old('tw_pewawancara') : (isset($tw['tw_pewawancara']) ? $tw['tw_pewawancara'] : '') ?>">
+                            <?= (isset(session()->getFlashdata('errors-wawancara')['tw_pewawancara']) ? '<div class="fsz-12 text-danger">' . session()->getFlashdata('errors-wawancara')['tw_pewawancara'] . '</div>' : '') ?>
+                        </div>
+                        <button type="submit" class="btn btn-clr1 p-0 px-3 mt-2">Simpan</button>
+                    </form>
+                <?php endif; ?>
             </div>
         </div>
     </div>

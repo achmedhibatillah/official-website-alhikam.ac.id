@@ -41,7 +41,7 @@
                     <?php elseif($tt['testulis_konfirm'] == 0 && $bp['bp_konfirm'] == 1): ?>
                         <div class="text-center bg-danger text-clr5 px-3 py-1 rounded lh-s ls-s fsz-12">Selesai</div>
                         <div class="d-flex justify-content-center">
-                            <button href="<?= base_url('') ?>" class="fsz-11 ls-s lh-1 mt-1">verifikasi di sini</button>
+                            <a href="<?= base_url('') ?>" class="fsz-11 ls-s lh-1 mt-1">lihat di sini</a>
                         </div>
                     <?php else: ?>
                         <div class="text-center bg-danger text-clr5 px-3 py-1 rounded lh-s ls-s fsz-12">Belum</div>
@@ -67,6 +67,25 @@
                         <?php if ($tt['testulis_konfirm'] == 1): ?>
                             <div class="d-flex justify-content-center">
                                 <a href="<?= base_url('atur-wawancara/' . $peserta['peserta_id']) ?>" class="fsz-11 ls-s lh-1 mt-1">isi datanya di sini</a>
+                            </div>
+                        <?php endif; ?>
+                    <?php endif; ?>
+                </td>
+            </tr>
+            <tr>
+                <td style="width:28%;">SK</td>
+                <td style="width:2%;">:</td>
+                <td style="width:70%;">
+                    <?php if($pengumuman['pengumuman_saved'] == 1): ?>
+                        <div class="text-center bg-clr1 text-clr5 px-3 py-1 rounded lh-s ls-s fsz-12">Sudah diumumkan</div>
+                        <div class="d-flex justify-content-center">
+                            <a href="<?= base_url('atur-pengumuman/' . $peserta['peserta_id']) ?>" class="fsz-11 ls-s lh-1 mt-1">lihat di sini</a>
+                        </div>
+                    <?php else: ?>
+                        <div class="text-center bg-warning text-clr5 px-3 py-1 rounded lh-s ls-s fsz-12">Menunggu</div>
+                        <?php if ($tw['tw_status'] == 1): ?>
+                            <div class="d-flex justify-content-center">
+                                <a href="<?= base_url('atur-wawancara/' . $peserta['peserta_id']) ?>" class="fsz-11 ls-s lh-1 mt-1">beri di sini</a>
                             </div>
                         <?php endif; ?>
                     <?php endif; ?>

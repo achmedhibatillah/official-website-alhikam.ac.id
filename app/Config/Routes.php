@@ -27,7 +27,7 @@ $routes->get('/tes-wawancara', 'User::tes_wawancara', ['filter' => 'user-auth'])
 $routes->get('/pengumuman-kelulusan', 'User::pengumuman', ['filter' => 'user-auth']);
 $routes->get('/download-surat-kelulusan/(:segment)', 'Pengumuman::downloadPengumuman/$1', ['filter' => 'user-auth']);
 $routes->get('/form-tes-tulis', 'TesTulis::form', ['filter' => 'user-auth']);
-$routes->post('/verifikasi-tes-tulis', 'TesTulis::verifikasi', ['filter' => 'user-auth']);
+$routes->post('/verifikasi-tes-tulis', 'TesTulis::verifikasi', ['filter' => 'user-auth']); 
 
 $routes->post('/simpan-santri', 'Santri::update', ['filter' => 'user-auth']);
 $routes->post('/santri-request-edit', 'Santri::request_edit', ['filter' => 'user-auth']);
@@ -77,6 +77,8 @@ $routes->get('/calon-santri/(:segment)', 'Admin::santri_d/$1', ['filter' => 'adm
 $routes->get('/verifikasi-pembayaran', 'Admin::pembayaran', ['filter' => 'admin-auth']);
 $routes->get('/verifikasi-pembayaran-where-(:segment)', 'Admin::pembayaran/$1', ['filter' => 'admin-auth']);
 $routes->get('/verifikasi-pembayaran/(:num)', 'Admin::pembayaran_d/$1', ['filter' => 'admin-auth']);
+$routes->get('/atur-tes-tulis', 'Admin::testulis', ['filter' => 'admin-auth']);
+$routes->get('/atur-tes-tulis-where-(:segment)', 'Admin::testulis/$1', ['filter' => 'admin-auth']);
 $routes->get('/atur-wawancara', 'Admin::wawancara', ['filter' => 'admin-auth']);
 $routes->get('/atur-wawancara-where-(:segment)', 'Admin::wawancara/$1', ['filter' => 'admin-auth']);
 $routes->get('/atur-wawancara/(:num)', 'Admin::wawancara_d/$1', ['filter' => 'admin-auth']);

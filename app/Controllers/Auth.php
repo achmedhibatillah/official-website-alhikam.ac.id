@@ -126,6 +126,12 @@ class Auth extends BaseController
         } else {
             session()->set('status', 'login-user');
             session()->set('peserta_id', $peserta['peserta_id']);
+
+            // Email
+            $email = $peserta['peserta_email'];
+            $nama = $peserta['peserta_nama'];
+            $sendEmail = new \App\Controllers\SendEmail();
+            $sendEmail->daftar_auth($email, $nama);
         }
         
         return redirect()->to('berkas-pendaftaran');
