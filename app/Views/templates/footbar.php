@@ -26,6 +26,6 @@
 </div>
 <div class="p-0 px-4 pt-4 pt-md-0">
     <p class="text-clr1 mt-auto">Kebijakan Privasi | Layanan Hubungi Kami psbalhikam@gmail.com</p>
-    <p class="text-clr1 mt-0 fw-bold fsz-18">R.A | @ 2025 PSBALHIKAMMALANG reserved</p>
+    <a href="https://achmedhibatillah.com" target="_blank" class="text-clr1 mt-0 fw-bold fsz-18">R.A | @ 2025 PSBALHIKAMMALANG reserved</a>
 </div>
 </section>

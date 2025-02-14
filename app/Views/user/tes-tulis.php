@@ -5,13 +5,26 @@
 <div class="text-clr1 row m-0 p-0 justify-content-center">
 
     <div class="col-md-8 m-0 p-0 px-3 px-md-3">
+
+    <?php if ($tt['testulis_konfirm'] == 1): ?>
+        <div class="card bg-clr1 m-1 m-md-4 p-3 text-clr5">
+            <h1 class="fw-900 ls-xxs lh-1 text-center m-0">Anda telah menyelesaikan tes tulis</h1>
+        </div>
+    <?php else: ?>
+        <div class="card bg-warning m-1 m-md-4 p-3 text-clr5">
+            <h1 class="fw-900 ls-xxs lh-1 text-center m-0">Anda belum mengikuti tes tulis</h1>
+        </div>
+    <?php endif; ?>
+
     <div class="card m-1 m-md-4 p-3 text-clr1">
         <p class="fw-bold">[TES TULIS CALON SANTRI BARU PESANTREN MAHASISWA AL-HIKAM MALANG]</p>
-        <p class="fw-bold">Silakan akses link di bawah ini:</p>
-        <a href="" class="btn btn-clr2 fw-800 px-3 lh-1 position-relative" style="width:max-content;">
-            bit.ly/TESTULISPSB2024
-            <img src="<?= base_url('images/icon/click.png') ?>" class="position-absolute" style="bottom:-10px;right:-40px;width:30px">
-        </a>
+        <?php if ($tt['testulis_konfirm'] == 0): ?>
+            <p class="fw-bold">Silakan akses halaman di bawah ini:</p>
+            <a href="<?= base_url('form-tes-tulis') ?>" class="btn btn-clr2 fw-800 px-3 lh-1 position-relative" style="width:max-content;">
+                TES TULIS
+                <img src="<?= base_url('images/icon/click.png') ?>" class="position-absolute" style="bottom:-10px;right:-40px;width:30px">
+            </a>
+        <?php endif; ?>
         <p class="fw-bold mt-3">
             MEKANISME:
             <ul class="mt--2 mb--1 fw-bold">

@@ -112,11 +112,11 @@ class Admin extends BaseController
             $santriData[$key]['ortu_saved'] = $ortuModel->getOrtuByPesertaId($x['peserta_id'])['ortu_saved'] ?? 0;
             $santriData[$key]['rk_saved'] = $rkModel->getRiwayatKesehatanByIdPeserta($x['peserta_id'])['rk_saved'] ?? 0;
             $santriData[$key]['bp_saved'] = $bpModel->getBpByPesertaId($x['peserta_id'])['bp_saved'] ?? 0;
-            $santriData[$key]['bp_konfirm'] = $bpModel->getBpByPesertaId($x['peserta_id'])['bp_saved'] ?? 0;
+            $santriData[$key]['bp_konfirm'] = $bpModel->getBpByPesertaId($x['peserta_id'])['bp_konfirm'] ?? 0;
             $santriData[$key]['testulis_konfirm'] = $ttModel->getTtByPesertaId($x['peserta_id'])['testulis_konfirm'] ?? 0;
             $santriData[$key]['tw_status'] = $twModel->getTwByPesertaId($x['peserta_id'])['tw_status'] ?? 0;
             $santriData[$key]['bp_foto'] = $bpModel->getBpByPesertaId($x['peserta_id'])['bp_foto'] ?? 0;
-            $santriData[$key]['pengumuman_pdf'] = $pengumumanModel->getPengumumanByPesertaId($x['peserta_id'])['pengumuman_pdf'] ?? 0;
+            $santriData[$key]['pengumuman_saved'] = $pengumumanModel->getPengumumanByPesertaId($x['peserta_id'])['pengumuman_saved'] ?? 0;
         }
 
         if ($cond == 'biodata-telah-lengkap') {
@@ -135,11 +135,15 @@ class Admin extends BaseController
             $santriData = array_filter($santriData, function ($santri) {
                 return $santri['testulis_konfirm'] == 1;
             });
-        } elseif ($cond == 'tw') {
+        } elseif ($cond == 'telah-mengikuti-tes-wawancara') {
             $santriData = array_filter($santriData, function ($santri) {
                 return $santri['tw_status'] == 1;
             });
-        }
+        } elseif ($cond == 'telah-diberikan-sk') {
+            $santriData = array_filter($santriData, function ($santri) {
+                return $santri['pengumuman_saved'] == 1;
+            });
+        } 
         
         $santriData = array_values($santriData);
     
@@ -369,7 +373,7 @@ class Admin extends BaseController
             ->join('teswawancara', 'teswawancara.peserta_id = santri.peserta_id')
             ->join('testulis', 'testulis.peserta_id = santri.peserta_id')
             ->where('santri.santri_saved', '1')
-            // ->where('testulis.testulis_konfirm', '1')
+            ->where('testulis.testulis_konfirm', '1')
             ->where('teswawancara.tw_status', '1')
             ->orderBy('santri.created_at', 'DESC')
             ->findAll();
@@ -380,7 +384,7 @@ class Admin extends BaseController
             ->join('teswawancara', 'teswawancara.peserta_id = santri.peserta_id')
             ->join('testulis', 'testulis.peserta_id = santri.peserta_id')
             ->where('santri.santri_saved', '1')
-            // ->where('testulis.testulis_konfirm', '1')
+            ->where('testulis.testulis_konfirm', '1')
             ->where('teswawancara.tw_pewawancara IS NOT NULL')
             ->where('teswawancara.tw_status', '0')
             ->orderBy('santri.created_at', 'DESC')
@@ -392,7 +396,7 @@ class Admin extends BaseController
             ->join('teswawancara', 'teswawancara.peserta_id = santri.peserta_id')
             ->join('testulis', 'testulis.peserta_id = santri.peserta_id')
             ->where('santri.santri_saved', '1')
-            // ->where('testulis.testulis_konfirm', '1')
+            ->where('testulis.testulis_konfirm', '1')
             ->orderBy('santri.created_at', 'DESC')
             ->findAll();
         } else {
@@ -402,7 +406,7 @@ class Admin extends BaseController
             ->join('teswawancara', 'teswawancara.peserta_id = santri.peserta_id')
             ->join('testulis', 'testulis.peserta_id = santri.peserta_id')
             ->where('santri.santri_saved', '1')
-            // ->where('testulis.testulis_konfirm', '1')
+            ->where('testulis.testulis_konfirm', '1')
             ->where('teswawancara.tw_pewawancara IS NULL')
             ->where('teswawancara.tw_status', '0')
             ->orderBy('santri.created_at', 'DESC')

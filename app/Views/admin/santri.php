@@ -21,11 +21,11 @@
                     <ul class="dropdown-menu w-100 bg-secondary fsz-12">
                         <li><a class="dropdown-item text-clr5" href="<?= base_url('daftar-calon-santri') ?>">Seluruhnya</a></li>
                         <li><a class="dropdown-item text-clr5" href="<?= base_url('daftar-calon-santri-where-biodata-telah-lengkap') ?>">Kelengkapan biodata</a></li>
-                        <li><a class="dropdown-item text-clr5" href="<?= base_url('daftar-calon-santri-where-bukti-pembayaran-tersimpan') ?>">Telah mengirim bukti pembayaran</a></li>
+                        <li><a class="dropdown-item text-clr5" href="<?= base_url('daftar-calon-santri-where-bukti-pembayaran-tersimpan') ?>">Menunggu verifikasi bukti pembayaran</a></li>
                         <li><a class="dropdown-item text-clr5" href="<?= base_url('daftar-calon-santri-where-bukti-pembayaran-terverifikasi') ?>">Bukti pembayaran telah terverifikasi</a></li>
                         <li><a class="dropdown-item text-clr5" href="<?= base_url('daftar-calon-santri-where-telah-mengikuti-tes-tulis') ?>">Telah mengikuti tes tulis</a></li>
                         <li><a class="dropdown-item text-clr5" href="<?= base_url('daftar-calon-santri-where-telah-mengikuti-tes-wawancara') ?>">Telah mengikuti tes wawancara</a></li>
-                        <li><a class="dropdown-item text-clr5" href="<?= base_url('daftar-calon-santri') ?>">Telah diberikan SK</a></li>
+                        <li><a class="dropdown-item text-clr5" href="<?= base_url('daftar-calon-santri-where-telah-diberikan-sk') ?>">Telah diberikan SK</a></li>
                     </ul>
                 </div>
             </div>
@@ -55,10 +55,10 @@
                             <td style="width:32%;"><a class="text-clr1 td-none" href="<?= base_url('calon-santri/') . $x['peserta_id'] ?>"><?= ($x['santri_nama']) ? $x['santri_nama'] : $x['peserta_nama'] ?> →</a></td>
                             <td style="width:16%;"><?= date('d/m/Y', strtotime($x['peserta_created_at'])) ?><br><?= date('H:i', strtotime($x['peserta_created_at'])) ?> WIB</td>
                             <td style="width:10%;"><?= ($x['santri_saved'] == 1 && $x['ortu_saved'] == 1 && $x['rk_saved'] == 1) ? '<div class="text-clr1 fw-bold">Terisi</div>' : '<div class="text-secondary">Belum</div>' ?></td>
-                            <td style="width:10%;"><?= ($x['bp_saved'] == 1 && $x['bp_konfirm'] == 1) ? '<div class="text-clr1 fw-bold">Terverifikasi</div>' : (($x['bp_saved'] == 1 && $x['bp_konfirm'] == 1) ? '<div class="text-warning">Menunggu konfirmasi</div>' : '<div class="text-secondary">Belum mengisi</div>') ?></td>
+                            <td style="width:10%;"><?= ($x['bp_saved'] == 1 && $x['bp_konfirm'] == 1) ? '<div class="text-clr1 fw-bold">Terverifikasi</div>' : (($x['bp_saved'] == 1 && $x['bp_konfirm'] == 0) ? '<div class="text-warning">Menunggu konfirmasi</div>' : '<div class="text-secondary">Belum mengisi</div>') ?></td>
                             <td style="width:10%;"><?= ($x['testulis_konfirm'] == 1) ? '<div class="text-clr1 fw-bold">Terisi</div>' : '<div class="text-secondary">Belum mengisi</div>' ?></td>
                             <td style="width:10%;"><?= ($x['tw_status'] == 1) ? '<div class="text-clr1 fw-bold">Terisi</div>' : '<div class="text-secondary">Belum mengisi</div>' ?></td>
-                            <td style="width:10%;"><?= ($x['pengumuman_pdf']) ? '<div class="text-clr1 fw-bold">Terisi</div>' : '<div class="text-secondary">Belum mengisi</div>' ?></td>
+                            <td style="width:10%;"><?= ($x['pengumuman_saved'] == 1) ? '<div class="text-clr1 fw-bold">Terisi</div>' : '<div class="text-secondary">Belum mengisi</div>' ?></td>
                         </tr>
                     <?php $i++ ?>
                     <?php endforeach; ?>

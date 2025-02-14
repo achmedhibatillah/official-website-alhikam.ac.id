@@ -5,7 +5,7 @@
                 <div class="row m-0 p-0">
                     <div class="col-md-3 col-lg-2 m-0 p-0 d-flex justify-content-center justify-content-md-end align-items-center pe-0 pe-md-4">
                         <div class="d-flex justify-content-center bg-clr4 rounded cursor-pointer" style="overflow:hidden;width:80px;height:100px;">
-                            <?php if ($bp['bp_foto']): ?>
+                            <?php if (isset($bp['bp_foto'])): ?>
                                 <img src="<?= base_url('/' . $bp['bp_foto']) ?>" alt="Pas foto" class="img-death">
                             <?php else: ?>
                                 <img src="<?= base_url('images/blank.png') ?>" alt="Pas foto" class="img-death">
@@ -17,11 +17,11 @@
                             <p class="fsz-20 fw-bold lh-1 m-0 text-center text-md-start"><?= $santri['santri_nama'] ?></p>
                             <p class="fsz-15 lh-1 m-0 mt-1 mb-0 text-center text-md-start"><i class="fas fa-id-card me-1"></i><?= $santri['santri_nik'] ?></p>
                             <a href="<?= base_url('calon-santri/') . $santri['peserta_id'] ?>" class="fsz-15 td-none text-clr2 mb-2 d-block">lihat profil →</a>
-                            <p class="fsz-15 text-secondary lh-1 m-0 text-center text-md-start d-inline position-relative">Status: <?= ($tw['tw_status'] == 1) ? 'Sudah wawancara <i class="fas fa-check fsz-12 bg-clr1 text-clr5 p-1 he-20 we-20 d-flex justify-content-center align-items-center rounded-circle position-absolute" style="top:-1px;right:-22px;"></i>' : 'Belum wawancara <i class="fas fa-hourglass-half fsz-12 bg-warning text-clr5 p-1 he-20 we-20 d-flex justify-content-center align-items-center rounded-circle position-absolute" style="top:-1px;right:-22px;"></i>' ?></p>
+                            <p class="fsz-15 text-secondary lh-1 m-0 text-center text-md-start d-inline position-relative">Status: <?= (isset($tw['tw_status']) && $tw['tw_status'] == 1) ? 'Sudah wawancara <i class="fas fa-check fsz-12 bg-clr1 text-clr5 p-1 he-20 we-20 d-flex justify-content-center align-items-center rounded-circle position-absolute" style="top:-1px;right:-22px;"></i>' : 'Belum wawancara <i class="fas fa-hourglass-half fsz-12 bg-warning text-clr5 p-1 he-20 we-20 d-flex justify-content-center align-items-center rounded-circle position-absolute" style="top:-1px;right:-22px;"></i>' ?></p>
                         </div>
                     </div>
                     <div class="col-md-12 col-lg-2 m-0 p-0 d-flex justify-content-center align-items-center">
-                        <?php if($tw['tw_tgl']): ?>
+                        <?php if(isset($tw['tw_tgl']) && $tw['tw_tgl']): ?>
                             <div class="bg-warning rounded d-flex justify-content-center align-items-center" style="height:100%;width:100%">
                                 <?php if ($tw['tw_status'] == 1): ?>
                                     <div class="my-3">
