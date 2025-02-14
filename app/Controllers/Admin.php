@@ -412,6 +412,33 @@ class Admin extends BaseController
         view('templates/footer');
     }
 
+    public function testulis_d($peserta_id): string
+    {
+        $data = [
+            'title' => 'Atur Tes Tulis',
+            'page' => 'admin-tes-tulis',
+        ];
+        
+        $santriModel = $this->santriModel;
+        $bpModel = $this->bpModel;
+        $ttModel = $this->ttModel;
+    
+        $santriData = $santriModel->getSantriByPesertaId($peserta_id);
+        $bpData = $bpModel->getBpByPesertaId($peserta_id);
+        $ttData = $ttModel->getTtByPesertaId($peserta_id);
+    
+        return 
+            view('templates/header', $data) .
+            view('templates/navbar-admin', $data) .
+            view('admin/atur-tes-tulis-detail', [
+                'santri' => $santriData,
+                'bp' => $bpData,
+                'tt' => $ttData
+            ]) .
+            view('templates/footbar-admin') .
+            view('templates/footer');
+    }
+
     public function wawancara($cond = ''): string
     {
         $data = [

@@ -79,6 +79,7 @@ $routes->get('/verifikasi-pembayaran-where-(:segment)', 'Admin::pembayaran/$1', 
 $routes->get('/verifikasi-pembayaran/(:num)', 'Admin::pembayaran_d/$1', ['filter' => 'admin-auth']);
 $routes->get('/atur-tes-tulis', 'Admin::testulis', ['filter' => 'admin-auth']);
 $routes->get('/atur-tes-tulis-where-(:segment)', 'Admin::testulis/$1', ['filter' => 'admin-auth']);
+$routes->get('/atur-tes-tulis/(:num)', 'Admin::testulis_d/$1', ['filter' => 'admin-auth']);
 $routes->get('/atur-wawancara', 'Admin::wawancara', ['filter' => 'admin-auth']);
 $routes->get('/atur-wawancara-where-(:segment)', 'Admin::wawancara/$1', ['filter' => 'admin-auth']);
 $routes->get('/atur-wawancara/(:num)', 'Admin::wawancara_d/$1', ['filter' => 'admin-auth']);
