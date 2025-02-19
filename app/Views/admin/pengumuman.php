@@ -48,6 +48,13 @@
                             <td style="width:70%;">
                                 <p class="ls-s lh-1 fw-bold text-clr1 fsz-17 mb-0"><?= $x['santri_nama'] ?></p>
                                 <p class="ls-s lh-1 text-clr1 fsz-12 mb-0"><?= $x['santri_nik'] ?></p>
+                                <?php if (isset($x['pengumuman_saved']) && isset($x['pengumuman_status']) && $x['pengumuman_saved'] == 1 && $x['pengumuman_status'] == 1): ?>
+                                    <p class="m-0 text-clr1 fsz-12">Status: <i class="fst-normal bg-clr1 text-clr5 px-1">Lulus</i></p>
+                                <?php elseif (isset($x['pengumuman_saved']) && isset($x['pengumuman_status']) && $x['pengumuman_saved'] == 1 && $x['pengumuman_status'] == 0): ?>
+                                    <p class="m-0 text-clr1 fsz-12">Status: <i class="fst-normal bg-danger text-clr5 px-1">Tidak Lulus</i></p>
+                                <?php else: ?>
+                                    <p class="m-0 text-clr1 fsz-12">Status: <i class="fst-normal bg-warning text-dark px-1">Menunggu</i></p>
+                                <?php endif; ?>
                                 <a href="<?= base_url('atur-pengumuman/' . $x['peserta_id']) ?>" class="btn btn-clr1 py-1 lh-s mt-1 fsz-12">Lihat detail</a>
                             </td>
                         </tr>
