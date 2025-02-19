@@ -7,11 +7,11 @@
         <div class="col-md-8 m-0 p-0 d-flex justify-content-center justify-content-lg-end align-items-center order-2 order-md-1">
             <div class="" id="welcome">
                 <h1 class="ff-ephesis mb-0">Selamat Datang</h1>
-                <h5 class="fw-900 ls-1 mb-0">PENERIMAAN SANTRI BARU TAHUN 2025</h5>
+                <h5 class="fw-900 ls-1 mb-0">PENERIMAAN SANTRI BARU</h5>
                 <p class="ls-s fw-bold mt--1 mb-0">Pesantren Mahasiswa/i Al-Hikam Malang</p>
                 <div class="mt-1 mb-lg-5">
                     <a href="<?= base_url('daftar') ?>" class="btn btn-clr1-clr2-clr1 m-0 fw-bold fsz-14"><img src="<?= base_url('images/icon/daftar.png') ?>" class="he-14 mb-1"> Daftar Sekarang</a>
-                    <a href="https://wa.me/6281336008445" target="_blank" class="btn btn-clr1-clr2-clr1 m-0 fw-bold fsz-14"><img src="<?= base_url('images/icon/cp.png') ?>" class="he-14 mb-1"> Contact Person</a>
+                    <a href="https://wa.me/6285171009493" target="_blank" class="btn btn-clr1-clr2-clr1 m-0 fw-bold fsz-14"><img src="<?= base_url('images/icon/cp.png') ?>" class="he-14 mb-1"> Contact Person</a>
                 </div>
             </div>
         </div>
@@ -155,7 +155,7 @@
                 </div>
             </div>
             <div class="col-3 m-0 p-0">
-                <img src="<?= base_url('images/other/qr-pendaftaran.png') ?>" class="w-100">
+                <img src="<?= base_url('images/other/qr-pendaftaran.png') ?>" class="w-100 rounded">
             </div>
         </div>
 
@@ -171,7 +171,7 @@
                 </tr>
                 <tr>
                     <td class="align-top">2.</td>
-                    <td class="ls-m">Membuka website <a href="<?= base_url() ?>" target="_blank" class="text-clr5">psbalhikam.ac.id</a></td>
+                    <td class="ls-m">Membuka website <a href="<?= base_url() ?>" target="_blank" class="text-clr5">psb.alhikam.ac.id</a></td>
                 </tr>
                 <tr>
                     <td class="align-top">3.</td>
@@ -179,7 +179,7 @@
                 </tr>
                 <tr>
                     <td class="align-top">4.</td>
-                    <td class="ls-m">Mengisi formulir pendaftaran <a href="<?= base_url('daftar') ?>" class="text-clr5">dirosah.alhikam.ac.id/psb/formulir</a></td>
+                    <td class="ls-m">Mengisi formulir pendaftaran <a href="<?= base_url('berkas-pendaftaran') ?>" class="text-clr5">psb.alhikam.ac.id/daftar</a></td>
                 </tr>
                 <tr>
                     <td class="align-top">5.</td>
@@ -211,7 +211,7 @@
             </div>
             <div class="col-md-7 row m-0 p-0 mt-5 mt-md-0" style="z-index:3;">
                 <div class="col-md-9">
-                    <div class="text-clr1 d-flex cursor-pointer td-none" style="border-bottom:1px solid #005501;" data-bs-toggle="modal" data-bs-target="#modalQNA1">Apakah ada tes masuk untuk calon santri baru? <i class="fas fa-plus ms-auto"></i></div>
+                    <!-- <div class="text-clr1 d-flex cursor-pointer td-none" style="border-bottom:1px solid #005501;" data-bs-toggle="modal" data-bs-target="#modalQNA1">Apakah ada tes masuk untuk calon santri baru? <i class="fas fa-plus ms-auto"></i></div> -->
                     <div class="text-clr1 d-flex cursor-pointer td-none mt-2" style="border-bottom:1px solid #005501;" data-bs-toggle="modal" data-bs-target="#modalQNA2">Apakah boleh membawa hp dan laptop di pondok? <i class="fas fa-plus ms-auto"></i></div>
                     <div class="text-clr1 d-flex cursor-pointer td-none mt-2" style="border-bottom:1px solid #005501;" data-bs-toggle="modal" data-bs-target="#modalQNA3">Waktu kegiatan pondok kapan saja? <i class="fas fa-plus ms-auto"></i></div>
                     <div class="text-clr1 d-flex cursor-pointer td-none mt-2" style="border-bottom:1px solid #005501;" data-bs-toggle="modal" data-bs-target="#modalQNA4">Kitabnya apa saja? <i class="fas fa-plus ms-auto"></i></div>

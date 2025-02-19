@@ -79,6 +79,21 @@ class Admin extends BaseController
         view('templates/footer');
     }
 
+    public function cog(): string
+    {
+        $data = [
+            'title' => 'Konfigurasi Utama',
+            'page' => 'admin-cog',
+        ];
+
+        return
+        view('templates/header', $data) . 
+        view('templates/navbar-admin', $data) . 
+        view('admin/cog') . 
+        view('templates/footbar-admin') . 
+        view('templates/footer');
+    }
+
     public function santri($cond = ''): string
     {
         $data = [
@@ -436,7 +451,7 @@ class Admin extends BaseController
                 'tt' => $ttData
             ]) .
             view('templates/footbar-admin') .
-            view('templates/footer');
+            view('templates/footer'); 
     }
 
     public function wawancara($cond = ''): string

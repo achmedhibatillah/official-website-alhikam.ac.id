@@ -71,6 +71,7 @@ $routes->get('/admin', 'Auth::admin');
 $routes->post('/authentication-admin', 'Auth::admin_auth');
 
 $routes->get('/dashboard-admin', 'Admin::index', ['filter' => 'admin-auth']);
+$routes->get('/konfigurasi-utama', 'Admin::cog', ['filter' => 'admin-auth']);
 $routes->get('/daftar-calon-santri', 'Admin::santri', ['filter' => 'admin-auth']);
 $routes->get('/daftar-calon-santri-where-(:segment)', 'Admin::santri/$1', ['filter' => 'admin-auth']);
 $routes->get('/calon-santri/(:segment)', 'Admin::santri_d/$1', ['filter' => 'admin-auth']);
@@ -85,7 +86,7 @@ $routes->get('/atur-wawancara-where-(:segment)', 'Admin::wawancara/$1', ['filter
 $routes->get('/atur-wawancara/(:num)', 'Admin::wawancara_d/$1', ['filter' => 'admin-auth']);
 $routes->get('/atur-pengumuman', 'Admin::pengumuman', ['filter' => 'admin-auth']);
 $routes->get('/atur-pengumuman/(:num)', 'Admin::pengumuman_d/$1', ['filter' => 'admin-auth']);
-$routes->get('/atur-pengumuman-where-(:segment)', 'Admin::pengumuman/$1', ['filter' => 'admin-auth']);
+$routes->get('/atur-pengumuman-where-(:segment)', 'Admin::pengumuman/$1', ['filter' => 'admin-auth']); 
 
 $routes->get('/admin-download-bukti-pembayaran/(:segment)', 'BuktiPembayaran::downloadBp/$1', ['filter' => 'admin-auth']);
 $routes->post('/verifikasi-bp', 'BuktiPembayaran::pembayaran_ver', ['filter' => 'admin-auth']);
