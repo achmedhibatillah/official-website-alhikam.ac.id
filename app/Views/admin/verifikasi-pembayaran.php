@@ -32,7 +32,7 @@
                         <tr>
                             <td style="width:30%;">
                                 <?php if ($x['bp_foto']): ?>
-                                    <div class="d-flex justify-content-center rounded ms-4 ms-md-1 ms-lg-4" style="overflow:hidden;width:50px;height:65px;">
+                                    <div class="d-flex justify-content-center bg-clr4 rounded ms-4 ms-md-1 ms-lg-4" style="overflow:hidden;width:50px;height:65px;">
                                         <img src="<?= base_url('/' . $x['bp_foto']) ?>" alt="Pas foto" class="img-death">
                                     </div>
                                 <?php else: ?>

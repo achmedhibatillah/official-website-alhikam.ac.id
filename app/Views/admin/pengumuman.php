@@ -14,7 +14,10 @@
                 <a href="<?= base_url('atur-pengumuman') ?>" class="btn btn-light fsz-13 p-1 ls-1 lh-1 text-clr1 <?= ($cond == '') ? 'bg-clr4' : '' ?>" style="width:95%;"><i class="fas fa-search me-2"></i>Menunggu dilampirkan</a>
             </div>
             <div class="col-md-3 m-0 p-0">
-                <a href="<?= base_url('atur-pengumuman-where-terlampir') ?>" class="btn btn-light fsz-13 p-1 ls-1 lh-1 text-clr1 mt-2 mt-md-0 <?= ($cond == 'terlampir') ? 'bg-clr4' : '' ?>" style="width:95%;"><i class="fas fa-search me-2"></i>Telah terlampir</a>
+                <a href="<?= base_url('atur-pengumuman-where-lulus') ?>" class="btn btn-light fsz-13 p-1 ls-1 lh-1 text-clr1 mt-2 mt-md-0 <?= ($cond == 'lulus') ? 'bg-clr4' : '' ?>" style="width:95%;"><i class="fas fa-search me-2"></i>Telah terlampir: Lulus</a>
+            </div>
+            <div class="col-md-3 m-0 p-0">
+                <a href="<?= base_url('atur-pengumuman-where-tidak-lulus') ?>" class="btn btn-light fsz-13 p-1 ls-1 lh-1 text-clr1 mt-2 mt-md-0 <?= ($cond == 'tidak-lulus') ? 'bg-clr4' : '' ?>" style="width:95%;"><i class="fas fa-search me-2"></i>Telah terlampir: Tidak Lulus</a>
             </div>
             <div class="col-md-3 m-0 p-0">
                 <a href="<?= base_url('atur-pengumuman-where-all') ?>" class="btn btn-light fsz-13 p-1 ls-1 lh-1 text-clr1 mt-2 mt-md-0 <?= ($cond == 'all') ? 'bg-clr4' : '' ?>" style="width:95%;"><i class="fas fa-search me-2"></i>Semuanya</a>
@@ -36,7 +39,7 @@
                         <tr>
                             <td style="width:30%;">
                                 <?php if ($x['bp_foto']): ?>
-                                    <div class="d-flex justify-content-center rounded ms-4 ms-md-1 ms-lg-4" style="overflow:hidden;width:50px;height:65px;">
+                                    <div class="d-flex justify-content-center bg-clr4 rounded ms-4 ms-md-1 ms-lg-4" style="overflow:hidden;width:50px;height:65px;">
                                         <img src="<?= base_url('/' . $x['bp_foto']) ?>" alt="Pas foto" class="img-death">
                                     </div>
                                 <?php else: ?>

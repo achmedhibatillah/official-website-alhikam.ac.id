@@ -28,6 +28,8 @@ class Admin extends BaseController
     protected $pengumumanModel;
     protected $periodeModel;
 
+    protected $periode_now;
+
     protected $periode_mulai;
     protected $periode_selesai;
 
@@ -62,8 +64,17 @@ class Admin extends BaseController
             $this->periode_mulai = '';
             $this->periode_selesai = '';
             $this->jumlah_peserta = $this->pesertaModel->countAllResults();
+            $this->jumlah_peserta_lulus = 
+            $this->pesertaModel
+            ->where('pengumuman.pengumuman_status', 1)
+            ->join('pengumuman', 'peserta.peserta_id = pengumuman.peserta_id')
+            ->countAllResults();
         }
         
+        $this->periode_now = $this->periodeModel
+        ->where('periode_mulai <=', date('Y-m-d'))
+        ->where('periode_selesai >=', date('Y-m-d'))
+        ->first();
     }
 
     public function index(): string
@@ -74,6 +85,7 @@ class Admin extends BaseController
         $data = [
             'title' => 'Dashboard Admin',
             'page' => 'admin-dashboard',
+            'periode_now' => $this->periode_now,
             'jumlah_peserta' => $this->jumlah_peserta,
             'jumlah_peserta_lulus' => $this->jumlah_peserta_lulus
         ];
@@ -112,6 +124,7 @@ class Admin extends BaseController
         $data = [
             'title' => 'Periode Penerimaan',
             'page' => 'admin-periode',
+            'periode_now' => $this->periode_now,
             'jumlah_peserta' => $this->jumlah_peserta,
             'jumlah_peserta_lulus' => $this->jumlah_peserta_lulus
         ];
@@ -142,6 +155,7 @@ class Admin extends BaseController
         $data = [
             'title' => 'Konfigurasi Utama',
             'page' => 'admin-cog',
+            'periode_now' => $this->periode_now,
             'jumlah_peserta' => $this->jumlah_peserta,
             'jumlah_peserta_lulus' => $this->jumlah_peserta_lulus
         ];
@@ -164,6 +178,7 @@ class Admin extends BaseController
         $data = [
             'title' => 'Daftar Calon Santri',
             'page' => 'admin-santri',
+            'periode_now' => $this->periode_now,
             'jumlah_peserta' => $this->jumlah_peserta,
             'jumlah_peserta_lulus' => $this->jumlah_peserta_lulus
         ];
@@ -251,6 +266,7 @@ class Admin extends BaseController
         $data = [
             'title' => 'Calon Santri',
             'page' => 'admin-santri',
+            'periode_now' => $this->periode_now,
             'jumlah_peserta' => $this->jumlah_peserta,
             'jumlah_peserta_lulus' => $this->jumlah_peserta_lulus
         ];
@@ -383,6 +399,7 @@ class Admin extends BaseController
         $data = [
             'title' => 'Verifikasi Pembayaran',
             'page' => 'admin-verifikasi',
+            'periode_now' => $this->periode_now,
             'jumlah_peserta' => $this->jumlah_peserta,
             'jumlah_peserta_lulus' => $this->jumlah_peserta_lulus
         ];
@@ -436,6 +453,7 @@ class Admin extends BaseController
         $data = [
             'title' => 'Detail Pembayaran',
             'page' => 'admin-verifikasi',
+            'periode_now' => $this->periode_now,
             'jumlah_peserta' => $this->jumlah_peserta,
             'jumlah_peserta_lulus' => $this->jumlah_peserta_lulus
         ];
@@ -462,6 +480,7 @@ class Admin extends BaseController
         $data = [
             'title' => 'Atur Tes Tulis',
             'page' => 'admin-tes-tulis',
+            'periode_now' => $this->periode_now,
             'jumlah_peserta' => $this->jumlah_peserta,
             'jumlah_peserta_lulus' => $this->jumlah_peserta_lulus
         ];
@@ -518,6 +537,7 @@ class Admin extends BaseController
         $data = [
             'title' => 'Atur Tes Tulis',
             'page' => 'admin-tes-tulis',
+            'periode_now' => $this->periode_now,
             'jumlah_peserta' => $this->jumlah_peserta,
             'jumlah_peserta_lulus' => $this->jumlah_peserta_lulus
         ];
@@ -547,6 +567,7 @@ class Admin extends BaseController
         $data = [
             'title' => 'Atur Wawancara',
             'page' => 'admin-wawancara',
+            'periode_now' => $this->periode_now,
             'jumlah_peserta' => $this->jumlah_peserta,
             'jumlah_peserta_lulus' => $this->jumlah_peserta_lulus
         ];
@@ -618,6 +639,7 @@ class Admin extends BaseController
         $data = [
             'title' => 'Atur Wawancara',
             'page' => 'admin-wawancara',
+            'periode_now' => $this->periode_now,
             'jumlah_peserta' => $this->jumlah_peserta,
             'jumlah_peserta_lulus' => $this->jumlah_peserta_lulus
         ];
@@ -647,6 +669,7 @@ class Admin extends BaseController
         $data = [
             'title' => 'Pengumuman Kelulusan',
             'page' => 'admin-pengumuman',
+            'periode_now' => $this->periode_now,
             'jumlah_peserta' => $this->jumlah_peserta,
             'jumlah_peserta_lulus' => $this->jumlah_peserta_lulus
         ];
@@ -654,7 +677,7 @@ class Admin extends BaseController
         $santriModel = $this->santriModel;
         $pengumumanModel = $this->pengumumanModel;
 
-        if ($cond == 'terlampir') {
+        if ($cond == 'lulus') {
             $santriData = $santriModel
             ->select('santri.*, teswawancara.*, pengumuman.*, bp.bp_saved, bp.bp_konfirm, bp.bp_foto, bp.bp_bp')
             ->join('bp', 'bp.peserta_id = santri.peserta_id')
@@ -663,10 +686,22 @@ class Admin extends BaseController
             ->where('santri.santri_saved', '1')
             ->where('teswawancara.tw_status', '1') //
             ->where('pengumuman.pengumuman_saved', '1')
+            ->where('pengumuman.pengumuman_status', '1')
+            ->orderBy('santri.created_at', 'DESC');
+        } elseif ($cond == 'tidak-lulus') {
+            $santriData = $santriModel
+            ->select('santri.*, teswawancara.*, pengumuman.*, bp.bp_saved, bp.bp_konfirm, bp.bp_foto, bp.bp_bp')
+            ->join('bp', 'bp.peserta_id = santri.peserta_id')
+            ->join('teswawancara', 'teswawancara.peserta_id = santri.peserta_id')
+            ->join('pengumuman', 'pengumuman.peserta_id = santri.peserta_id')
+            ->where('santri.santri_saved', '1')
+            ->where('teswawancara.tw_status', '1') //
+            ->where('pengumuman.pengumuman_saved', '1')
+            ->where('pengumuman.pengumuman_status', '0')
             ->orderBy('santri.created_at', 'DESC');
         } elseif ($cond == 'all'){
             $santriData = $santriModel
-            ->select('santri.*, teswawancara.*, bp.bp_saved, bp.bp_konfirm, bp.bp_foto, bp.bp_bp')
+            ->select('santri.*, teswawancara.*, pengumuman.*, bp.bp_saved, bp.bp_konfirm, bp.bp_foto, bp.bp_bp')
             ->join('bp', 'bp.peserta_id = santri.peserta_id')
             ->join('teswawancara', 'teswawancara.peserta_id = santri.peserta_id')
             ->join('pengumuman', 'pengumuman.peserta_id = santri.peserta_id')
@@ -675,7 +710,7 @@ class Admin extends BaseController
             ->orderBy('santri.created_at', 'DESC');
         } else {
             $santriData = $santriModel
-            ->select('santri.*, teswawancara.*, bp.bp_saved, bp.bp_konfirm, bp.bp_foto, bp.bp_bp')
+            ->select('santri.*, teswawancara.*, pengumuman.*, bp.bp_saved, bp.bp_konfirm, bp.bp_foto, bp.bp_bp')
             ->join('bp', 'bp.peserta_id = santri.peserta_id')
             ->join('teswawancara', 'teswawancara.peserta_id = santri.peserta_id')
             ->join('pengumuman', 'pengumuman.peserta_id = santri.peserta_id')
@@ -711,6 +746,7 @@ class Admin extends BaseController
         $data = [
             'title' => 'Detail Pengumuman',
             'page' => 'admin-pengumuman',
+            'periode_now' => $this->periode_now,
             'jumlah_peserta' => $this->jumlah_peserta,
             'jumlah_peserta_lulus' => $this->jumlah_peserta_lulus
         ];
