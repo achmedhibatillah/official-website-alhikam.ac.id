@@ -16,12 +16,29 @@
             </div>
         </div>
     </div>
+    <div class="mt-3">
+        <div class="text-clr5 fw-light m-0 p-2 ls-1 lh-1 fsz-13">
+            <p class="m-0 fw-light mb-1">Konfigurasi:</p>
+            <?php if (session()->get('periode') !== null): ?>
+                <?= session()->get('periode')['nama'] ?> (<?= date('d/m/Y', strtotime(session()->get('periode')['mulai'])) ?> sampai <?= date('d/m/Y', strtotime(session()->get('periode')['selesai'])) ?>)
+            <?php else: ?>
+                Seluruh data
+            <?php endif; ?>
+        </div>
+    </div>
     <div class="mt-4">
         <div class="btn m-0 py-1 border-clr5 btn-outline-light lh-1 fsz-12 mb-2 d-flex justify-content-center px-3 cursor-pointer" style="border-radius:5px;" onclick="window.location.href = '<?= base_url('dashboard-admin'); ?>'">
             <div class="row m-0 p-0 w-100">
                 <div class="col-1 m-0 p-0"><i class="fas fa-tachometer-alt"></i></div>
                 <div class="col-10 m-0 p-0 d-flex justify-content-start ps-2">Dashboard</div>
                 <div class="col-1 m-0 p-0 d-flex align-items-center justify-content-end"><?= ($page == 'admin-dashboard') ? '<i class="fas fa-circle"></i>' : '' ?></div>
+            </div>
+        </div>
+        <div class="btn m-0 py-1 btn-outline-light text-clr5 lh-1 fsz-12 mb-2 d-flex justify-content-center px-3 cursor-pointer" style="border-radius:5px;" onclick="window.location.href = '<?= base_url('periode-penerimaan'); ?>'">
+            <div class="row m-0 p-0 w-100">
+                <div class="col-1 m-0 p-0"><i class="fas fa-clock"></i></div>
+                <div class="col-10 m-0 p-0 d-flex justify-content-start ps-2">Periode Penerimaan</div>
+                <div class="col-1 m-0 p-0 d-flex align-items-center justify-content-end"><?= ($page == 'admin-periode') ? '<i class="fas fa-circle"></i>' : '' ?></div>
             </div>
         </div>
         <div class="btn m-0 py-1 btn-outline-light text-clr5 lh-1 fsz-12 mb-2 d-flex justify-content-center px-3 cursor-pointer" style="border-radius:5px;" onclick="window.location.href = '<?= base_url('konfigurasi-utama'); ?>'">

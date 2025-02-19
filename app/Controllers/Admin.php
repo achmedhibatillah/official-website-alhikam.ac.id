@@ -12,6 +12,7 @@ use \App\Models\TesTulisModel;
 use \App\Models\TeswawancaraModel;
 use \App\Models\MessageModel;
 use \App\Models\PengumumanModel;
+use \App\Models\PeriodeModel;
 
 class Admin extends BaseController
 {
@@ -25,6 +26,10 @@ class Admin extends BaseController
     protected $twModel;
     protected $messageModel;
     protected $pengumumanModel;
+    protected $periodeModel;
+
+    protected $periode_mulai;
+    protected $periode_selesai;
 
     public function __construct()
     {
@@ -38,6 +43,15 @@ class Admin extends BaseController
         $this->twModel = new TeswawancaraModel();
         $this->messageModel = new MessageModel();
         $this->pengumumanModel = new PengumumanModel();
+        $this->periodeModel = new PeriodeModel();
+
+        if (session()->get('periode') !== null) {
+            $this->periode_mulai = session()->get('periode')['mulai'];
+            $this->periode_selesai = session()->get('periode')['selesai'];
+        } else {
+            $this->periode_mulai = '';
+            $this->periode_selesai = '';
+        }
     }
 
     public function index(): string
@@ -79,6 +93,34 @@ class Admin extends BaseController
         view('templates/footer');
     }
 
+    public function periode(): string
+    {
+        $data = [
+            'title' => 'Periode Penerimaan',
+            'page' => 'admin-periode',
+        ];
+
+        $periodeModel = $this->periodeModel;
+        $periodeData = $periodeModel->orderBy('created_at', 'DESC')->findAll();
+
+        $pesertaModel = $this->pesertaModel;
+        foreach ($periodeData as $key => $periode) {
+            $periodeData[$key]['jumlah_peserta'] = $pesertaModel
+                ->where('created_at >=', $periode['periode_mulai'] . ' 00:00:00')
+                ->where('created_at <=', $periode['periode_selesai'] . ' 23:59:59')
+                ->countAllResults();
+        }
+
+        return
+        view('templates/header', $data) . 
+        view('templates/navbar-admin', $data) . 
+        view('admin/periode', [
+            'periode' => $periodeData
+        ]) . 
+        view('templates/footbar-admin') . 
+        view('templates/footer');
+    }
+
     public function cog(): string
     {
         $data = [
@@ -86,10 +128,15 @@ class Admin extends BaseController
             'page' => 'admin-cog',
         ];
 
+        $periodeModel = $this->periodeModel;
+        $periodeData = $periodeModel->orderBy('created_at', 'DESC')->findAll();
+
         return
         view('templates/header', $data) . 
         view('templates/navbar-admin', $data) . 
-        view('admin/cog') . 
+        view('admin/cog', [
+            'periode' => $periodeData
+        ]) . 
         view('templates/footbar-admin') . 
         view('templates/footer');
     }
@@ -106,6 +153,11 @@ class Admin extends BaseController
         $keyword = $this->request->getGet('keyword') ?? '';
     
         $santriQuery = $santriModel->orderBy('created_at', 'DESC');
+
+        if (!empty($this->periode_mulai) && !empty($this->periode_selesai)) {
+            $santriQuery->where('created_at >=', $this->periode_mulai)
+                        ->where('created_at <=', $this->periode_selesai);
+        }            
         
         if (!empty($keyword)) {
             $santriQuery->groupStart()->like('santri_nama', $keyword)->orLike('santri_nik', $keyword)->groupEnd();

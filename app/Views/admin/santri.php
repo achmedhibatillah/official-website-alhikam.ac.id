@@ -17,21 +17,7 @@
             </div>
         </div>
         <div class="col-md-6 row m-0 p-0 d-flex align-items-center">
-            <div class="col-6 m-0 p-0 mt-3 mt-md-0">
-                <div class="dropdown me-1">
-                    <button class="rounded border-none bg-clr1 text-clr5 dropdown-toggle he-33 fsz-13 py-0 px-3 lh-1 w-100" type="button" data-bs-toggle="dropdown" aria-expanded="false">Tahun</button>
-                    <ul class="dropdown-menu w-100 bg-secondary fsz-12">
-                        <?php $current_year = date("Y");
-                        for ($i = 0; $i < 5; $i++):
-                        $year = $current_year - $i;
-                        ?>
-                            <li><a class="dropdown-item text-clr5" href="<?= base_url('daftar-calon-santri-' . $year) ?>"><?= $year ?></a></li>
-                        <?php endfor; ?>
-
-                    </ul>
-                </div>
-            </div>
-            <div class="col-6 m-0 p-0 mt-3 mt-md-0">
+            <div class="col-md-6 m-0 p-0 mt-3 mt-md-0">
                 <div class="dropdown">
                     <button class="rounded border-none bg-clr1 text-clr5 dropdown-toggle he-33 fsz-13 py-0 px-3 lh-1 w-100" type="button" data-bs-toggle="dropdown" aria-expanded="false">Filter berdasarkan</button>
                     <ul class="dropdown-menu w-100 bg-secondary fsz-12">

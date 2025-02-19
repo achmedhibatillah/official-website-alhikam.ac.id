@@ -71,7 +71,12 @@ $routes->get('/admin', 'Auth::admin');
 $routes->post('/authentication-admin', 'Auth::admin_auth');
 
 $routes->get('/dashboard-admin', 'Admin::index', ['filter' => 'admin-auth']);
+$routes->get('/periode-penerimaan', 'Admin::periode', ['filter' => 'admin-auth']);
+$routes->post('/simpan-periode-penerimaan-baru', 'Periode::add', ['filter' => 'admin-auth']);
+$routes->get('/hapus-periode-penerimaan/(:num)', 'Periode::del/$1', ['filter' => 'admin-auth']);
 $routes->get('/konfigurasi-utama', 'Admin::cog', ['filter' => 'admin-auth']);
+$routes->post('/konfigurasi-utama', 'Periode::manage', ['filter' => 'admin-auth']);
+$routes->get('/konfigurasi-utama-seluruhnya', 'Periode::manage_destroy', ['filter' => 'admin-auth']);
 $routes->get('/daftar-calon-santri', 'Admin::santri', ['filter' => 'admin-auth']);
 $routes->get('/daftar-calon-santri-where-(:segment)', 'Admin::santri/$1', ['filter' => 'admin-auth']);
 $routes->get('/calon-santri/(:segment)', 'Admin::santri_d/$1', ['filter' => 'admin-auth']);
