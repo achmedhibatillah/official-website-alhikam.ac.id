@@ -30,8 +30,24 @@
                 <form action="<?= base_url('simpan-pengumuman') ?>" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="pengumuman_id" value="<?= $pengumuman['pengumuman_id'] ?>">
                     <div class="mb-3">
+                        <div class="fw-bold ls-1 lh-1 mb-2">Status kelulusan:</div>
+                        <?php if(isset(session()->getFlashdata('errors-pengumuman')['pengumuman_status'])): ?>
+                            <p class="d-block text-danger fsz-12 ls-1 lh-1 mb-2"><?= session()->getFlashdata('errors-pengumuman')['pengumuman_status'] ?></p>
+                        <?php endif; ?>
+                        <div class="">
+                            <input type="radio" name="pengumuman_status" value="1" id="pengumuman_saved_true"
+                                <?= old('pengumuman_status') === '1' ? 'checked' : '' ?>>
+                            <label for="pengumuman_saved_true" class="text-clr1">Lulus</label>
+                        </div>
+                        <div class="">
+                            <input type="radio" name="pengumuman_status" value="0" id="pengumuman_saved_false"
+                                <?= old('pengumuman_status') === '0' ? 'checked' : '' ?>>
+                            <label for="pengumuman_saved_false" class="text-clr1">Tidak Lulus</label>
+                        </div>
+                    </div>
+                    <div class="mb-3">
                         <label for="pengumuman_pdf" class="fw-bold ls-1 lh-1 mb-2">Unggah surat kelulusan santri:</label>
-                        <?php if(session()->getFlashdata('errors-pengumuman')): ?>
+                        <?php if(isset(session()->getFlashdata('errors-pengumuman')['pengumuman_pdf'])): ?>
                             <p class="d-block text-danger fsz-12 ls-1 lh-1 mb-2"><?= session()->getFlashdata('errors-pengumuman')['pengumuman_pdf'] ?></p>
                         <?php endif; ?>
                         <input class="d-block" type="file" name="pengumuman_pdf" id="pengumuman_pdf" accept=".pdf" enctype="multipart/form-data">

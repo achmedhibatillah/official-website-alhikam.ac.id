@@ -27,12 +27,18 @@
     <div class="row m-0 p-0">
         <div class="col-md-8 m-0 p-0">
             <div class="card m-0 p-3 mb-3 bg-clr5 text-clr1">
+                <p class="fw-bold ls-1 text-center">Status: 
+                    <?php if($pengumuman['pengumuman_status'] == 1): ?>
+                        <i class="bg-clr1 text-clr5 fst-normal px-2 rounded">Lulus</i>
+                    <?php else: ?>
+                        <i class="bg-danger text-clr5 fst-normal px-2 rounded">Tidak Lulus</i>
+                    <?php endif; ?>
+                </p>
                 <div class="row m-0 p-0">
                     <?php if($pengumuman['pengumuman_pdf']): ?>
-                        <p class="ls-1 fw-bold mb-1 text-center">Lihat surat kelulusan santri:</p>
                         <div class="d-flex justify-content-center">
                             <?php $file_pengumuman = str_replace('uploads/pengumuman/', '', $pengumuman['pengumuman_pdf']); ?>
-                            <a href="<?= base_url('admin-download-surat-kelulusan/') . $file_pengumuman  ?>" class="btn btn-clr1" style="width:220px;"><i class="fas fa-download"></i> Lihat pengumuman</a>
+                            <a href="<?= base_url('admin-download-surat-kelulusan/') . $file_pengumuman  ?>" class="btn btn-clr1" style="width:220px;"><i class="fas fa-download"></i> Lihat SK</a>
                         </div>
                     <?php endif; ?>
                 </div>

@@ -93,9 +93,14 @@ $routes->get('/atur-pengumuman', 'Admin::pengumuman', ['filter' => 'admin-auth']
 $routes->get('/atur-pengumuman/(:num)', 'Admin::pengumuman_d/$1', ['filter' => 'admin-auth']);
 $routes->get('/atur-pengumuman-where-(:segment)', 'Admin::pengumuman/$1', ['filter' => 'admin-auth']); 
 
+$routes->post('/hapus-peserta', 'Peserta::delete' , ['filter' => 'admin-auth']);
+
 $routes->get('/admin-download-bukti-pembayaran/(:segment)', 'BuktiPembayaran::downloadBp/$1', ['filter' => 'admin-auth']);
 $routes->post('/verifikasi-bp', 'BuktiPembayaran::pembayaran_ver', ['filter' => 'admin-auth']);
 $routes->post('/tolak-verifikasi-bp', 'BuktiPembayaran::pembayaran_unver', ['filter' => 'admin-auth']);
+
+$routes->post('/verifikasi-tt', 'TesTulis::verifikasi_admin', ['filter' => 'admin-auth']);
+$routes->post('/tolak-verifikasi-tt', 'TesTulis::unver_admin', ['filter' => 'admin-auth']);
 
 $routes->get('/admin-download-surat-kelulusan/(:segment)', 'Pengumuman::downloadPengumuman/$1', ['filter' => 'admin-auth']);
 $routes->post('/simpan-pengumuman', 'Pengumuman::update', ['filter' => 'admin-auth']);

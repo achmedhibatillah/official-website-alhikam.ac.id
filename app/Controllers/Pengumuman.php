@@ -17,6 +17,7 @@ class Pengumuman extends BaseController
     {
         $rules = [
             'pengumuman_pdf' => 'uploaded[pengumuman_pdf]|max_size[pengumuman_pdf,10240]|ext_in[pengumuman_pdf,pdf]',
+            'pengumuman_status' => 'required'
         ];
         
         $errors = [
@@ -25,6 +26,9 @@ class Pengumuman extends BaseController
                 'max_size' => 'Ukuran file tidak boleh lebih dari 10 MB.',
                 'ext_in'   => 'Format file harus PDF.',
             ],
+            'pengumuman_status' => [
+                'required' => 'Status kelulusan wajib diisi.',
+            ]
         ];        
 
         if (!$this->validate($rules, $errors)) {
@@ -55,6 +59,7 @@ class Pengumuman extends BaseController
             'pengumuman_kopiah' => $this->request->getPost('pengumuman_kopiah'),
             'pengumuman_bukukitab' => $this->request->getPost('pengumuman_bukukitab'),
             'pengumuman_bukubio' => $this->request->getPost('pengumuman_bukubio'),
+            'pengumuman_status' => $this->request->getPost('pengumuman_status'),
             'pengumuman_saved' => 1
         ]; 
 

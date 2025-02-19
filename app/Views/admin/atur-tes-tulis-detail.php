@@ -30,7 +30,9 @@
                                         </div>
                                     </div>
                                 <?php else: ?>
-                                    <div id="tw-konfirmasi" class="btn btn-light text-clr1 p-1 ls-s lh-1 fsz-12 cursor-pointer" data-bs-toggle="modal" data-bs-target="#modal-tw-konfirm"><i class="fas fa-check me-2"></i>verifikasi</div>
+                                    <div class="d-flex justify-content-center">
+                                        <i class="fas fa-check-circle text-clr1 fsz-30"></i>
+                                    </div>
                                 <?php endif; ?>
                             </div>
                         <?php endif; ?>
@@ -41,40 +43,58 @@
     </div>
     <div class="row m-0 p-0">
         <div class="col-md-8 m-0 p-0">
-            <?php if (session()->getFlashdata('success-wawancara')): ?>
+            <?php if (session()->getFlashdata('success-testulis')): ?>
                 <div class="alert alert-success text-center">
-                    <?= session()->getFlashdata('success-wawancara') ?>
-                </div>
-            <?php endif; ?>
-            <?php if (session()->getFlashdata('success-wawancara-ver')): ?>
-                <div class="alert alert-success text-center">
-                    <?= session()->getFlashdata('success-wawancara-ver') ?>
+                    <?= session()->getFlashdata('success-testulis') ?>
                 </div>
             <?php endif; ?>
             <div class="card m-0 p-3 mb-3 bg-clr5 text-clr1">
                 <?php if ($tt['testulis_konfirm'] == 1): ?>
-                    <button class="btn btn-danger">Batalkan verifikasi tes tulis</button>
+                    <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal-tt-batal">Batalkan verifikasi tes tulis</button>
                 <?php else: ?>
-                    <button class="btn btn-clr1">Verifikasi tes tulis</button>
+                    <button class="btn btn-clr1" data-bs-toggle="modal" data-bs-target="#modal-tt-konfirm">Verifikasi tes tulis</button>
                 <?php endif; ?>
             </div>
         </div>
     </div>
 </div>
 
-<div class="modal fade" id="modal-tw-konfirm" tabindex="-1" aria-labelledby="tw-konfirmasi-label" aria-hidden="true">
+<!-- Modal -->
+
+<div class="modal fade" id="modal-tt-konfirm" tabindex="-1" aria-labelledby="bp-konfirmasi-label" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title text-clr1 fw-bold ls-s" id="tw-konfirmasi-label">Verifikasi Tes Wawancara</h5>
+                <h5 class="modal-title text-clr1 fw-bold ls-s" id="bp-konfirmasi-label">Verifikasi Tes Tulis</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p class="ls-1 text-clr1">Apakah Anda yakin ingin memverifikasi tes tes tulis <i class="fst-normal fw-bold"><?= $santri['santri_nama'] ?></i>?</p>
-                <form action="<?= base_url('verifikasi-tw') ?>" method="post">
-                    <input type="hidden" name="tw_id" value="<?= $tt['testulis_id'] ?>">
+                <p class="ls-1 text-clr1">Apakah Anda yakin ingin memverifikasi tes tulis <i class="fst-normal fw-bold"><?= $santri['santri_nama'] ?></i>? Pastikan Anda cek bukti pembayaran terlebih dahulu.</p>
+                <form action="<?= base_url('verifikasi-tt') ?>" method="post">
+                    <input type="hidden" name="testulis_id" value="<?= $tt['testulis_id'] ?>">
                     <input type="hidden" name="bp_konfirm" value="1">
                     <button type="submit" class="btn btn-sm btn-clr1 fsz-12">Verifikasi</button>
+                    <button type="button" class="btn btn-sm btn-secondary fsz-12" data-bs-dismiss="modal">Kembali</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal-tt-batal" tabindex="-1" aria-labelledby="bp-tt-batal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-clr1 fw-bold ls-s" id="bp-tolak-konfirmasi-label">Batalkan Verifikasi Tes Tulis</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="ls-1 text-clr1">Apakah Anda yakin ingin membatalkan verifikasi tes tulis <i class="fst-normal fw-bold"><?= $santri['santri_nama'] ?></i>? Pastikan Anda cek bukti pembayaran terlebih dahulu.</p>
+                <form action="<?= base_url('tolak-verifikasi-tt') ?>" method="post">
+                    <input type="hidden" name="testulis_id" value="<?= $tt['testulis_id'] ?>">
+                    <input type="hidden" name="bp_saved" value="0">
+                    <input type="hidden" name="santri_nama" value="<?= $santri['santri_nama'] ?>">
+                    <button type="submit" class="btn btn-sm btn-danger fsz-12">Tolak</button>
                     <button type="button" class="btn btn-sm btn-secondary fsz-12" data-bs-dismiss="modal">Kembali</button>
                 </form>
             </div>

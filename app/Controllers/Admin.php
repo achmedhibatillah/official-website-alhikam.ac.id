@@ -31,6 +31,9 @@ class Admin extends BaseController
     protected $periode_mulai;
     protected $periode_selesai;
 
+    protected $jumlah_peserta;
+    protected $jumlah_peserta_lulus;
+
     public function __construct()
     {
         $this->pesertaModel = new PesertaModel();
@@ -48,10 +51,19 @@ class Admin extends BaseController
         if (session()->get('periode') !== null) {
             $this->periode_mulai = session()->get('periode')['mulai'];
             $this->periode_selesai = session()->get('periode')['selesai'];
+            $this->jumlah_peserta = $this->pesertaModel->where('created_at >=', $this->periode_mulai . ' 00:00:00')->where('created_at <=', $this->periode_selesai . ' 23:59:59')->countAllResults();
+            $this->jumlah_peserta_lulus = 
+            $this->pesertaModel
+            ->where('peserta.created_at >=', $this->periode_mulai . ' 00:00:00')->where('peserta.created_at <=', $this->periode_selesai . ' 23:59:59')
+            ->where('pengumuman.pengumuman_status', 1)
+            ->join('pengumuman', 'peserta.peserta_id = pengumuman.peserta_id')
+            ->countAllResults();
         } else {
             $this->periode_mulai = '';
             $this->periode_selesai = '';
+            $this->jumlah_peserta = $this->pesertaModel->countAllResults();
         }
+        
     }
 
     public function index(): string
@@ -62,6 +74,8 @@ class Admin extends BaseController
         $data = [
             'title' => 'Dashboard Admin',
             'page' => 'admin-dashboard',
+            'jumlah_peserta' => $this->jumlah_peserta,
+            'jumlah_peserta_lulus' => $this->jumlah_peserta_lulus
         ];
 
         $santriModel = $this->santriModel;
@@ -98,6 +112,8 @@ class Admin extends BaseController
         $data = [
             'title' => 'Periode Penerimaan',
             'page' => 'admin-periode',
+            'jumlah_peserta' => $this->jumlah_peserta,
+            'jumlah_peserta_lulus' => $this->jumlah_peserta_lulus
         ];
 
         $periodeModel = $this->periodeModel;
@@ -126,6 +142,8 @@ class Admin extends BaseController
         $data = [
             'title' => 'Konfigurasi Utama',
             'page' => 'admin-cog',
+            'jumlah_peserta' => $this->jumlah_peserta,
+            'jumlah_peserta_lulus' => $this->jumlah_peserta_lulus
         ];
 
         $periodeModel = $this->periodeModel;
@@ -146,6 +164,8 @@ class Admin extends BaseController
         $data = [
             'title' => 'Daftar Calon Santri',
             'page' => 'admin-santri',
+            'jumlah_peserta' => $this->jumlah_peserta,
+            'jumlah_peserta_lulus' => $this->jumlah_peserta_lulus
         ];
         
         $santriModel = $this->santriModel;
@@ -155,15 +175,16 @@ class Admin extends BaseController
         $santriQuery = $santriModel->orderBy('created_at', 'DESC');
 
         if (!empty($this->periode_mulai) && !empty($this->periode_selesai)) {
-            $santriQuery->where('created_at >=', $this->periode_mulai)
-                        ->where('created_at <=', $this->periode_selesai);
-        }            
+            $santriQueryFix = $santriQuery->where('created_at >=', $this->periode_mulai . ' 00:00:00')->where('created_at <=', $this->periode_selesai . ' 23:59:59');
+        } else {
+            $santriQueryFix = $santriQuery;
+        }        
         
         if (!empty($keyword)) {
             $santriQuery->groupStart()->like('santri_nama', $keyword)->orLike('santri_nik', $keyword)->groupEnd();
         }
         
-        $santriData = $santriQuery->findAll();
+        $santriData = $santriQueryFix->findAll();
     
         $pesertaModel = $this->pesertaModel;
         $ortuModel = $this->ortuModel;
@@ -202,7 +223,7 @@ class Admin extends BaseController
             $santriData = array_filter($santriData, function ($santri) {
                 return $santri['testulis_konfirm'] == 1;
             });
-        } elseif ($cond == 'telah-mengikuti-tes-wawancara') {
+        } elseif ($cond == 'telah-mengikuti-tes-wawancara') { 
             $santriData = array_filter($santriData, function ($santri) {
                 return $santri['tw_status'] == 1;
             });
@@ -230,6 +251,8 @@ class Admin extends BaseController
         $data = [
             'title' => 'Calon Santri',
             'page' => 'admin-santri',
+            'jumlah_peserta' => $this->jumlah_peserta,
+            'jumlah_peserta_lulus' => $this->jumlah_peserta_lulus
         ];
         
         $pesertaModel = $this->pesertaModel;
@@ -360,6 +383,8 @@ class Admin extends BaseController
         $data = [
             'title' => 'Verifikasi Pembayaran',
             'page' => 'admin-verifikasi',
+            'jumlah_peserta' => $this->jumlah_peserta,
+            'jumlah_peserta_lulus' => $this->jumlah_peserta_lulus
         ];
         
         $santriModel = $this->santriModel;
@@ -371,16 +396,14 @@ class Admin extends BaseController
             ->where('santri.santri_saved', '1')
             ->where('bp.bp_saved', '1')
             ->where('bp.bp_konfirm', '1')
-            ->orderBy('santri.updated_at', 'DESC')
-            ->findAll();
+            ->orderBy('santri.updated_at', 'DESC');
         } elseif ($cond == 'all') {
             $santriData = $santriModel
             ->select('santri.*, bp.bp_saved, bp.bp_konfirm, bp.bp_foto, bp.bp_bp')
             ->join('bp', 'bp.peserta_id = santri.peserta_id')
             ->where('santri.santri_saved', '1')
             ->where('bp.bp_saved', '1')
-            ->orderBy('santri.created_at', 'DESC')
-            ->findAll();
+            ->orderBy('santri.created_at', 'DESC');
         } else {
             $santriData = $santriModel
             ->select('santri.*, bp.bp_saved, bp.bp_konfirm, bp.bp_foto, bp.bp_bp')
@@ -388,17 +411,21 @@ class Admin extends BaseController
             ->where('santri.santri_saved', '1')
             ->where('bp.bp_saved', '1')
             ->where('bp.bp_konfirm', '0')
-            ->orderBy('santri.created_at', 'DESC')
-            ->findAll();
+            ->orderBy('santri.created_at', 'DESC');
         }
 
+        if (!empty($this->periode_mulai) && !empty($this->periode_selesai)) {
+            $santriDataFix = $santriData->where('santri.created_at >=', $this->periode_mulai)->where('santri.created_at <=', $this->periode_selesai)->findAll();
+        } else {
+            $santriDataFix = $santriData->findAll();
+        }
 
         return 
         view('templates/header', $data) .
         view('templates/navbar-admin', $data) .
         view('admin/verifikasi-pembayaran', [
             'cond' => $cond,
-            'santri' => $santriData
+            'santri' => $santriDataFix
         ]) .
         view('templates/footbar-admin') .
         view('templates/footer');
@@ -409,6 +436,8 @@ class Admin extends BaseController
         $data = [
             'title' => 'Detail Pembayaran',
             'page' => 'admin-verifikasi',
+            'jumlah_peserta' => $this->jumlah_peserta,
+            'jumlah_peserta_lulus' => $this->jumlah_peserta_lulus
         ];
         
         $santriModel = $this->santriModel;
@@ -433,6 +462,8 @@ class Admin extends BaseController
         $data = [
             'title' => 'Atur Tes Tulis',
             'page' => 'admin-tes-tulis',
+            'jumlah_peserta' => $this->jumlah_peserta,
+            'jumlah_peserta_lulus' => $this->jumlah_peserta_lulus
         ];
         
         $santriModel = $this->santriModel;
@@ -444,8 +475,7 @@ class Admin extends BaseController
             ->join('testulis', 'testulis.peserta_id = santri.peserta_id')
             ->where('santri.santri_saved', '1')
             ->where('bp.bp_konfirm', '1')
-            ->orderBy('santri.created_at', 'DESC')
-            ->findAll();
+            ->orderBy('santri.created_at', 'DESC');
         } elseif ($cond == 'verified') {
             $santriData = $santriModel
             ->select('santri.*, testulis.*, bp.*')
@@ -454,8 +484,7 @@ class Admin extends BaseController
             ->where('santri.santri_saved', '1')
             ->where('bp.bp_konfirm', '1')
             ->where('testulis.testulis_konfirm', '1')
-            ->orderBy('santri.created_at', 'DESC')
-            ->findAll(); 
+            ->orderBy('santri.created_at', 'DESC');
         } else {
             $santriData = $santriModel
             ->select('santri.*, testulis.*, bp.*')
@@ -464,8 +493,13 @@ class Admin extends BaseController
             ->where('santri.santri_saved', '1')
             ->where('bp.bp_konfirm', '1')
             ->where('testulis.testulis_konfirm', '0')
-            ->orderBy('santri.created_at', 'DESC')
-            ->findAll();
+            ->orderBy('santri.created_at', 'DESC');
+        }
+
+        if (!empty($this->periode_mulai) && !empty($this->periode_selesai)) {
+            $santriDataFix = $santriData->where('santri.created_at >=', $this->periode_mulai)->where('santri.created_at <=', $this->periode_selesai)->findAll();
+        } else {
+            $santriDataFix = $santriData->findAll();
         }
 
         return 
@@ -473,7 +507,7 @@ class Admin extends BaseController
         view('templates/navbar-admin', $data) .
         view('admin/atur-tes-tulis', [
             'cond' => $cond,
-            'santri' => $santriData
+            'santri' => $santriDataFix
         ]) .
         view('templates/footbar-admin') .
         view('templates/footer');
@@ -484,6 +518,8 @@ class Admin extends BaseController
         $data = [
             'title' => 'Atur Tes Tulis',
             'page' => 'admin-tes-tulis',
+            'jumlah_peserta' => $this->jumlah_peserta,
+            'jumlah_peserta_lulus' => $this->jumlah_peserta_lulus
         ];
         
         $santriModel = $this->santriModel;
@@ -511,6 +547,8 @@ class Admin extends BaseController
         $data = [
             'title' => 'Atur Wawancara',
             'page' => 'admin-wawancara',
+            'jumlah_peserta' => $this->jumlah_peserta,
+            'jumlah_peserta_lulus' => $this->jumlah_peserta_lulus
         ];
         
         $santriModel = $this->santriModel;
@@ -524,8 +562,7 @@ class Admin extends BaseController
             ->where('santri.santri_saved', '1')
             ->where('testulis.testulis_konfirm', '1')
             ->where('teswawancara.tw_status', '1')
-            ->orderBy('santri.created_at', 'DESC')
-            ->findAll();
+            ->orderBy('santri.created_at', 'DESC');
         } elseif ($cond == 'queue') {
             $santriData = $santriModel
             ->select('santri.*, testulis.*, teswawancara.*, bp.bp_saved, bp.bp_konfirm, bp.bp_foto, bp.bp_bp')
@@ -536,8 +573,7 @@ class Admin extends BaseController
             ->where('testulis.testulis_konfirm', '1')
             ->where('teswawancara.tw_pewawancara IS NOT NULL')
             ->where('teswawancara.tw_status', '0')
-            ->orderBy('santri.created_at', 'DESC')
-            ->findAll();
+            ->orderBy('santri.created_at', 'DESC');
         } elseif ($cond == 'all') {
             $santriData = $santriModel
             ->select('santri.*, testulis.*, teswawancara.*, bp.bp_saved, bp.bp_konfirm, bp.bp_foto, bp.bp_bp')
@@ -546,8 +582,7 @@ class Admin extends BaseController
             ->join('testulis', 'testulis.peserta_id = santri.peserta_id')
             ->where('santri.santri_saved', '1')
             ->where('testulis.testulis_konfirm', '1')
-            ->orderBy('santri.created_at', 'DESC')
-            ->findAll();
+            ->orderBy('santri.created_at', 'DESC');
         } else {
             $santriData = $santriModel
             ->select('santri.*, testulis.*, teswawancara.*, bp.bp_saved, bp.bp_konfirm, bp.bp_foto, bp.bp_bp')
@@ -558,8 +593,13 @@ class Admin extends BaseController
             ->where('testulis.testulis_konfirm', '1')
             ->where('teswawancara.tw_pewawancara IS NULL')
             ->where('teswawancara.tw_status', '0')
-            ->orderBy('santri.created_at', 'DESC')
-            ->findAll();
+            ->orderBy('santri.created_at', 'DESC');
+        }
+        
+        if (!empty($this->periode_mulai) && !empty($this->periode_selesai)) {
+            $santriDataFix = $santriData->where('santri.created_at >=', $this->periode_mulai)->where('santri.created_at <=', $this->periode_selesai)->findAll();
+        } else {
+            $santriDataFix = $santriData->findAll();
         }
 
         return 
@@ -567,7 +607,7 @@ class Admin extends BaseController
         view('templates/navbar-admin', $data) .
         view('admin/atur-wawancara', [
             'cond' => $cond,
-            'santri' => $santriData
+            'santri' => $santriDataFix
         ]) .
         view('templates/footbar-admin') .
         view('templates/footer');
@@ -578,6 +618,8 @@ class Admin extends BaseController
         $data = [
             'title' => 'Atur Wawancara',
             'page' => 'admin-wawancara',
+            'jumlah_peserta' => $this->jumlah_peserta,
+            'jumlah_peserta_lulus' => $this->jumlah_peserta_lulus
         ];
         
         $santriModel = $this->santriModel;
@@ -605,6 +647,8 @@ class Admin extends BaseController
         $data = [
             'title' => 'Pengumuman Kelulusan',
             'page' => 'admin-pengumuman',
+            'jumlah_peserta' => $this->jumlah_peserta,
+            'jumlah_peserta_lulus' => $this->jumlah_peserta_lulus
         ];
         
         $santriModel = $this->santriModel;
@@ -619,8 +663,7 @@ class Admin extends BaseController
             ->where('santri.santri_saved', '1')
             ->where('teswawancara.tw_status', '1') //
             ->where('pengumuman.pengumuman_saved', '1')
-            ->orderBy('santri.created_at', 'DESC')
-            ->findAll();
+            ->orderBy('santri.created_at', 'DESC');
         } elseif ($cond == 'all'){
             $santriData = $santriModel
             ->select('santri.*, teswawancara.*, bp.bp_saved, bp.bp_konfirm, bp.bp_foto, bp.bp_bp')
@@ -629,8 +672,7 @@ class Admin extends BaseController
             ->join('pengumuman', 'pengumuman.peserta_id = santri.peserta_id')
             ->where('santri.santri_saved', '1')
             ->where('teswawancara.tw_status', '1') //
-            ->orderBy('santri.created_at', 'DESC')
-            ->findAll();     
+            ->orderBy('santri.created_at', 'DESC');
         } else {
             $santriData = $santriModel
             ->select('santri.*, teswawancara.*, bp.bp_saved, bp.bp_konfirm, bp.bp_foto, bp.bp_bp')
@@ -641,8 +683,13 @@ class Admin extends BaseController
             ->where('teswawancara.tw_status', '1') //
             ->where('pengumuman.pengumuman_saved IS NULL')
             ->orWhere('pengumuman.pengumuman_saved', '0')
-            ->orderBy('santri.created_at', 'DESC')
-            ->findAll();
+            ->orderBy('santri.created_at', 'DESC');
+        }
+
+        if (!empty($this->periode_mulai) && !empty($this->periode_selesai)) {
+            $santriDataFix = $santriData->where('santri.created_at >=', $this->periode_mulai)->where('santri.created_at <=', $this->periode_selesai)->findAll();
+        } else {
+            $santriDataFix = $santriData->findAll();
         }
 
         $pengumumanData = $pengumumanModel->findAll();
@@ -652,7 +699,7 @@ class Admin extends BaseController
         view('templates/navbar-admin', $data) .
         view('admin/pengumuman', [
             'cond' => $cond,
-            'santri' => $santriData,
+            'santri' => $santriDataFix,
             'pengumuman' => $pengumumanData
         ]) .
         view('templates/footbar-admin') .
@@ -664,6 +711,8 @@ class Admin extends BaseController
         $data = [
             'title' => 'Detail Pengumuman',
             'page' => 'admin-pengumuman',
+            'jumlah_peserta' => $this->jumlah_peserta,
+            'jumlah_peserta_lulus' => $this->jumlah_peserta_lulus
         ];
         
         $santriModel = $this->santriModel;

@@ -17,13 +17,27 @@
         </div>
     </div>
     <div class="mt-3">
-        <div class="text-clr5 fw-light m-0 p-2 ls-1 lh-1 fsz-13">
+        <div class="text-clr5 fw-light m-0 ls-1 lh-1 fsz-13">
             <p class="m-0 fw-light mb-1">Konfigurasi:</p>
             <?php if (session()->get('periode') !== null): ?>
                 <?= session()->get('periode')['nama'] ?> (<?= date('d/m/Y', strtotime(session()->get('periode')['mulai'])) ?> sampai <?= date('d/m/Y', strtotime(session()->get('periode')['selesai'])) ?>)
             <?php else: ?>
                 Seluruh data
             <?php endif; ?>
+        </div>
+    </div>
+    <div class="mt-2 row m-0 p-0">
+        <div class="col-6 m-0 p-0 pe-1">
+            <div class="card border-clr5 text-clr5 bg-transparent">
+                <div class="text-center"><?= $jumlah_peserta ?></div>
+            </div>
+            <div class="text-center text-clr5 fsz-14">peserta</div>
+        </div>
+        <div class="col-6 m-0 p-0 ps-1">
+            <div class="card border-clr5 text-clr5 bg-transparent">
+                <div class="text-center"><?= $jumlah_peserta_lulus ?></div>
+            </div>
+            <div class="text-center text-clr5 fsz-14">santri lulus</div>
         </div>
     </div>
     <div class="mt-4">

@@ -36,7 +36,7 @@
     <hr>
     <div class="border-clr4 p-2 overflow-x-scroll w-100">
         <div class="overflow-y-scroll w-100" style="max-height:70vh;">
-            <table class="table table-md table-striped w-100">
+            <table class="table table-md table-striped w-100 m-0">
                 <thead class="w-100 lh-1 table-dark">
                     <tr>
                         <th style="width:2%;">No</th>
@@ -47,6 +47,7 @@
                         <th style="width:10%;">Tes tulis</th>
                         <th style="width:10%;">Tes wawancara</th>
                         <th style="width:10%;">SK</th>
+                        <th class="text-center">Tindakan</th>
                     </tr>
                 </thead>
                 <tbody class="w-100 lh-1 fsz-12">
@@ -61,6 +62,7 @@
                             <td style="width:10%;"><?= ($x['testulis_konfirm'] == 1) ? '<div class="text-clr1 fw-bold">Terisi</div>' : '<div class="text-secondary">Belum mengisi</div>' ?></td>
                             <td style="width:10%;"><?= ($x['tw_status'] == 1) ? '<div class="text-clr1 fw-bold">Terisi</div>' : '<div class="text-secondary">Belum mengisi</div>' ?></td>
                             <td style="width:10%;"><?= ($x['pengumuman_saved'] == 1) ? '<div class="text-clr1 fw-bold">Terisi</div>' : '<div class="text-secondary">Belum mengisi</div>' ?></td>
+                            <td class="text-center"><button class="btn btn-sm btn-outline-danger p-0 px-2 fsz-12" data-bs-toggle="modal" data-bs-target="#modal-peserta-<?= $x['peserta_id'] ?>"><i class="fas fa-trash"></i></button></td>
                         </tr>
                     <?php $i++ ?>
                     <?php endforeach; ?>
@@ -69,3 +71,26 @@
         </div>
     </div>
 </div>
+
+
+<!-- Modal -->
+<?php foreach($santri as $x) : ?>
+    <div class="modal fade" id="modal-peserta-<?= $x['peserta_id'] ?>" tabindex="-1" aria-labelledby="modal-peserta-label-<?= $x['peserta_id'] ?>" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-clr1 fw-bold ls-s" id="modal-peserta-label-<?= $x['peserta_id'] ?>">Hapus Data Peserta</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="ls-1 text-clr1">Apakah Anda yakin ingin menghapus data peserta dengan nama <i class="fst-normal fw-bold"><?= ($x['santri_nama']) ? $x['santri_nama'] : $x['peserta_nama'] ?></i>?</p>
+                    <form action="<?= base_url('hapus-peserta') ?>" method="post">
+                        <input type="hidden" name="peserta_id" value="<?= $x['peserta_id'] ?>">
+                        <button type="submit" class="btn btn-sm btn-danger fsz-12">Hapus</button>
+                        <button type="button" class="btn btn-sm btn-secondary fsz-12" data-bs-dismiss="modal">Kembali</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php endforeach; ?>

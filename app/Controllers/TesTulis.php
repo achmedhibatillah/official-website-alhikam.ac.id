@@ -66,4 +66,32 @@ class TesTulis extends BaseController
 
         return redirect()->to('tes-tulis')->with('success-testulis', 'Terimakasih telah mengisi tes tulis.');
     }
+
+    public function verifikasi_admin()
+    {
+        $testulis_id = $this->request->getPost('testulis_id');
+
+        $update = [
+            'testulis_konfirm' => 1
+        ];
+
+        $ttModel = $this->ttModel;
+        $ttModel->update($testulis_id, $update);
+
+        return redirect()->back()->with('success-testulis', 'Tes tulis berhasil diverifikasi.');
+    }
+
+    public function unver_admin()
+    {
+        $testulis_id = $this->request->getPost('testulis_id');
+
+        $update = [
+            'testulis_konfirm' => 0
+        ];
+
+        $ttModel = $this->ttModel;
+        $ttModel->update($testulis_id, $update);
+
+        return redirect()->back()->with('success-testulis', 'Tes tulis berhasil dibatalkan verifikasinya.');
+    }
 }

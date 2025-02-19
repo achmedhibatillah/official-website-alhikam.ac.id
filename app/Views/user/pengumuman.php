@@ -11,7 +11,14 @@
             <?php $file_pengumuman = str_replace('uploads/pengumuman/', '', $pengumuman['pengumuman_pdf']); ?>
             <a href="<?= base_url('download-surat-kelulusan/' . $file_pengumuman) ?>" class="btn btn-clr1 lh-1 px-3"><i class="fas fa-download me-2"></i> Download SK</a>
             <div class="card m-0 p-0 border-clr1 mt-3 px-3 py-3 text-clr1">
-            <hr class="my-4">
+            <p class="fw-bold ls-1 m-0">Status: 
+                <?php if($pengumuman['pengumuman_status'] == 1): ?>
+                    <i class="bg-clr1 text-clr5 fst-normal px-2 rounded">Lulus</i>
+                <?php else: ?>
+                    <i class="bg-danger text-clr5 fst-normal px-2 rounded">Tidak Lulus</i>
+                <?php endif; ?>
+            </p>
+            <hr class="my-3">
                 <p class="fw-bold ls-1">Kartu fasilitas santri baru:</p>
                 <div class="row m-0 p-0">
                     <div class="col-1 p-0 m-0 d-flex justify-content-end">

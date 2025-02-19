@@ -4,7 +4,7 @@
             <?= session()->getFlashdata('unver-success') ?>
         </div>
     <?php endif; ?>
-    <div class="card m-0 p-3 mb-3 bg-clr1 text-clr5">
+    <div class="card m-0 p-3 mb-2 bg-clr1 text-clr5">
         <div class="row m-0 p-0">
             <div class="col-md-3 m-0 p-0">
                 <a href="<?= base_url('verifikasi-pembayaran') ?>" class="btn btn-light fsz-13 p-1 ls-1 lh-1 text-clr1 <?= ($cond == '') ? 'bg-clr4' : '' ?>" style="width:95%;"><i class="fas fa-search me-2"></i>Menunggu verifikasi</a>
@@ -14,6 +14,13 @@
             </div>
             <div class="col-md-3 m-0 p-0">
                 <a href="<?= base_url('verifikasi-pembayaran-where-all') ?>" class="btn btn-light fsz-13 p-1 ls-1 lh-1 text-clr1 mt-2 mt-md-0 <?= ($cond == 'all') ? 'bg-clr4' : '' ?>" style="width:95%;"><i class="fas fa-search me-2"></i>Semuanya</a>
+            </div>
+        </div>
+    </div>
+    <div class="row m-0 p-0">
+        <div class="col-md-6 m-0 p-0">
+            <div class="card m-0 p-3 mb-3 bg-clr4 text-clr1 border-clr1">
+                <p class="m-0 ls-1 lh-1 fsz-14">Data yang tertera di bawah hanya peserta yang telah mengirimkan bukti pembayaran.</p>
             </div>
         </div>
     </div>
