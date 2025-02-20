@@ -1,7 +1,3 @@
-Berikut adalah README yang telah diterjemahkan dan disempurnakan dalam bahasa Inggris:  
-
----
-
 # **New Student Admission (PSB) - Al-Hikam Student Pesantren Malang**  
 
 Welcome to the **New Student Admission (PSB) Portal of Al-Hikam Student Pesantren Malang**! 🎓✨  
