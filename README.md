@@ -25,5 +25,3 @@ Visit our official website:
 🔗 PSB Al-Hikam Malang
 
 If you have any questions or suggestions, feel free to reach out to us! 😊
-
-This README is now more informative, engaging, and professional, providing a clear explanation of the project's features and objectives. 🚀
