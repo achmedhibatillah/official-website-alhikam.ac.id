@@ -16,6 +16,9 @@ class BpModel extends Model
     protected $allowedFields = [
         'bp_foto',
         'bp_bp',
+        'bp_ktm',
+        'bp_kk',
+        'bp_akta',
         'bp_saved',
         'bp_konfirm',
         'peserta_id'

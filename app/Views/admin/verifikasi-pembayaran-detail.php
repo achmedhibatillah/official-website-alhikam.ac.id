@@ -4,7 +4,7 @@
             <div class="card m-0 p-3 mb-3 bg-clr5 text-clr1">
                 <div class="row m-0 p-0">
                     <div class="col-md-3 col-lg-2 m-0 p-0 d-flex justify-content-center justify-content-md-end align-items-center pe-0 pe-md-4">
-                        <div class="d-flex justify-content-center bg-clr4 rounded cursor-pointer" style="overflow:hidden;width:80px;height:100px;">
+                        <div class="d-flex justify-content-center bg-clr4 rounded cursor-pointer shadow-m" style="overflow:hidden;width:80px;height:100px;">
                             <?php if ($bp['bp_foto']): ?>
                                 <img src="<?= base_url('/' . $bp['bp_foto']) ?>" alt="Pas foto" class="img-death">
                             <?php else: ?>

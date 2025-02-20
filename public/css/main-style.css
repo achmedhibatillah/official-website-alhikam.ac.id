@@ -87,6 +87,8 @@
 .fw-800 { font-weight:800; }
 .fw-900 { font-weight:900; }
 
+.shadow-m { box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); }
+
 .cursor-pointer { cursor: pointer; }
 .img-death { pointer-events: none; -webkit-user-drag: none; }
 .td-none { text-decoration: none !important; }

@@ -18,7 +18,7 @@
     <div class="col-6 col-md-4 m-0 p-0 px-1">
         <a href="<?= base_url('daftar-calon-santri') ?>" class="btn btn-clr1 w-100 d-flex justify-content-center align-items-center mb-2" style="height:150px;">
             <div class="">
-                <i class="fas fa-receipt fsz-30"></i>
+                <i class="fas fa-users fsz-30"></i>
                 <p class="text-center m-0 fw-lighter lh-1 ls-1 mt-3 mx-3">Daftar Calon Santri</p>
             </div>
         </a>

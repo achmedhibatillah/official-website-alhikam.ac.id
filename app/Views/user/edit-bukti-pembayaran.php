@@ -13,31 +13,61 @@
             <div class="ls-1 fw-bold text-clr1 text-center mb-3">Maksimal ukuran file adalah 2 MB.</div>
             <table>
                 <tr>
-                    <td class="ls-1 lh-1 fw-bold text-clr1" style="width:30%;">1. Foto</td>
+                    <td class="ls-1 lh-1 fw-bold text-clr1" style="width:30%;">1. Pas Foto (3x4)</td>
                     <td class="" style="width:40%;">
                         <input type="file" class="d-none" name="bp_foto_file" id="bp_foto_file" accept=".jpg,.jpeg,.png">
                         <label for="bp_foto_file" class="btn btn-clr2 fw-bold ls-1 lh-1 fsz-14 w-100" id="bp_foto_label">Unggah di sini</label>
-                        <div id="file-foto-name" class="text-muted text-center mt-0 ls-1 lh-1 fsz-14"></div>
+                        <div id="file-foto-name" class="text-muted text-center mt-1 ls-1 lh-1 fsz-14"></div>
                         <?php if (session()->getFlashdata('errors-bp') && isset(session()->getFlashdata('errors-bp')['bp_foto_file'])): ?>
                             <div class="text-danger text-center mt-1 mb-1 lh-s ms-2" style="font-size:13px;"><?= session()->getFlashdata('errors-bp')['bp_foto_file'] ?></div>
                         <?php endif; ?>
                     </td>
                 </tr>
                 <tr>
-                    <td class="pt-3 ls-1 lh-1 fw-bold text-clr1" style="width:30%;">2. Slip Pembayaran</td>
+                    <td class="pt-3 ls-1 lh-1 fw-bold text-clr1" style="width:30%;">2. Kartu Tanda Mahasiswa (KTM)</td>
+                    <td class="pt-3" style="width:40%;">
+                        <input type="file" class="d-none" name="bp_ktm_file" id="bp_ktm_file" accept=".jpg,.jpeg,.png">
+                        <label for="bp_ktm_file" class="btn btn-clr2 fw-bold ls-1 lh-1 fsz-14 w-100" id="bp_foto_label">Unggah di sini</label>
+                        <div id="file-ktm-name" class="text-muted text-center mt-1 ls-1 lh-1 fsz-14"></div>
+                        <?php if (session()->getFlashdata('errors-bp') && isset(session()->getFlashdata('errors-bp')['bp_ktm_file'])): ?>
+                            <div class="text-danger text-center mt-1 mb-1 lh-s ms-2" style="font-size:13px;"><?= session()->getFlashdata('errors-bp')['bp_ktm_file'] ?></div>
+                        <?php endif; ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="pt-3 ls-1 lh-1 fw-bold text-clr1" style="width:30%;">3. Kartu Keluarga (KK)</td>
+                    <td class="pt-3" style="width:40%;">
+                        <input type="file" class="d-none" name="bp_kk_file" id="bp_kk_file" accept=".jpg,.jpeg,.png">
+                        <label for="bp_kk_file" class="btn btn-clr2 fw-bold ls-1 lh-1 fsz-14 w-100" id="bp_foto_label">Unggah di sini</label>
+                        <div id="file-kk-name" class="text-muted text-center mt-1 ls-1 lh-1 fsz-14"></div>
+                        <?php if (session()->getFlashdata('errors-bp') && isset(session()->getFlashdata('errors-bp')['bp_kk_file'])): ?>
+                            <div class="text-danger text-center mt-1 mb-1 lh-s ms-2" style="font-size:13px;"><?= session()->getFlashdata('errors-bp')['bp_kk_file'] ?></div>
+                        <?php endif; ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="pt-3 ls-1 lh-1 fw-bold text-clr1" style="width:30%;">4. Akta Kelahiran</td>
+                    <td class="pt-3" style="width:40%;">
+                        <input type="file" class="d-none" name="bp_akta_file" id="bp_akta_file" accept=".jpg,.jpeg,.png">
+                        <label for="bp_akta_file" class="btn btn-clr2 fw-bold ls-1 lh-1 fsz-14 w-100" id="bp_foto_label">Unggah di sini</label>
+                        <div id="file-akta-name" class="text-muted text-center mt-1 ls-1 lh-1 fsz-14"></div>
+                        <?php if (session()->getFlashdata('errors-bp') && isset(session()->getFlashdata('errors-bp')['bp_akta_file'])): ?>
+                            <div class="text-danger text-center mt-1 mb-1 lh-s ms-2" style="font-size:13px;"><?= session()->getFlashdata('errors-bp')['bp_akta_file'] ?></div>
+                        <?php endif; ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="pt-3 ls-1 lh-1 fw-bold text-clr1" style="width:30%;">5. Slip Pembayaran</td>
                     <td class="pt-3" style="width:60%;">
                         <input type="file" class="d-none" name="bp_bp_file" id="bp_bp_file" accept=".jpg,.jpeg,.png,.pdf">
                         <label for="bp_bp_file" class="btn btn-clr2 fw-bold ls-1 lh-1 fsz-14 w-100" id="bp_foto_label">Unggah di sini</label>
-                        <div id="file-bp-name" class="text-muted text-center mt-0 ls-1 lh-1 fsz-14"></div>
+                        <div id="file-bp-name" class="text-muted text-center mt-1 ls-1 lh-1 fsz-14"></div>
                         <?php if (session()->getFlashdata('errors-bp') && isset(session()->getFlashdata('errors-bp')['bp_bp_file'])): ?>
                             <div class="text-danger text-center mt-1 mb-1 lh-s ms-2" style="font-size:13px;"><?= session()->getFlashdata('errors-bp')['bp_bp_file'] ?></div>
                         <?php endif; ?>
                     </td>
                 </tr>
             </table>
-            <div class="d-flex justify-content-center align-items-center">
-                <a target="_blank" href="https://chat.whatsapp.com/Dg31q8T8YNeENGwem01bpi" class="btn btn-clr1 py-1 ls-s lh-1 fsz-14 mt-4" style="width:290px;">Grup Whatsapp calon santri Al-Hikam <i class="fab fa-whatsapp"></i></a>
-            </div>
         </div>
         <div class="w-100">
             <div class="card px-3 px-md-3 m-1 m-md-4 rounded mt-2">
@@ -65,6 +95,15 @@
 <script>
 document.getElementById("bp_foto_file").addEventListener("change", function() {
     document.getElementById("file-foto-name").textContent = this.files[0] ? this.files[0].name : "";
+});
+document.getElementById("bp_ktm_file").addEventListener("change", function() {
+    document.getElementById("file-ktm-name").textContent = this.files[0] ? this.files[0].name : "";
+});
+document.getElementById("bp_kk_file").addEventListener("change", function() {
+    document.getElementById("file-kk-name").textContent = this.files[0] ? this.files[0].name : "";
+});
+document.getElementById("bp_akta_file").addEventListener("change", function() {
+    document.getElementById("file-akta-name").textContent = this.files[0] ? this.files[0].name : "";
 });
 document.getElementById("bp_bp_file").addEventListener("change", function() {
     document.getElementById("file-bp-name").textContent = this.files[0] ? this.files[0].name : "";

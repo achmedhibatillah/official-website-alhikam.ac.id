@@ -91,7 +91,7 @@
                 </div>
                 <div class="btn m-0 py-1 btn-outline-light text-clr5 lh-1 fsz-12 mb-2 d-flex justify-content-center px-3 cursor-pointer" style="border-radius:5px;" onclick="window.location.href = '<?= base_url('daftar-calon-santri'); ?>'">
                     <div class="row m-0 p-0 w-100">
-                        <div class="col-1 m-0 p-0"><i class="fas fa-receipt"></i></div>
+                        <div class="col-1 m-0 p-0"><i class="fas fa-users"></i></div>
                         <div class="col-10 m-0 p-0 d-flex justify-content-start text-start ps-2">Daftar Calon Santri</div>
                         <div class="col-1 m-0 p-0 d-flex align-items-center justify-content-end"><?= ($page == 'admin-santri') ? '<i class="fas fa-circle"></i>' : '' ?></div>
                     </div>
@@ -170,31 +170,30 @@ document.getElementById("close-card").addEventListener("click", function() {
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-    const totalPeserta = <?= $jumlah_peserta ?>; 
-    const pesertaLulus = <?= $jumlah_peserta_lulus ?>; 
-
-    const persentaseKelulusan = (pesertaLulus / totalPeserta) * 100;
-
-    const ctx = document.getElementById('speedometerChart').getContext('2d');
-
-    new Chart(ctx, {
-        type: 'doughnut',
-        data: {
-            labels: ['Lulus', 'Belum Lulus'],
-            datasets: [{
-                data: [persentaseKelulusan, 100 - persentaseKelulusan],
-                backgroundColor: ['#4CAF50', '#E0E0E0'], 
-                borderWidth: 0
-            }]
-        },
-        options: {
-            rotation: 270, 
-            circumference: 180, 
-            cutout: '75%', 
-            plugins: {
-                legend: { display: false },
-                tooltip: { enabled: true }
-            }
+const totalPeserta = <?= $jumlah_peserta ?>; 
+const pesertaLulus = <?= $jumlah_peserta_lulus ?>; 
+const validTotalPeserta = totalPeserta === 0 ? 1 : totalPeserta;
+const validPesertaLulus = totalPeserta === 0 ? 0 : pesertaLulus;
+const persentaseKelulusan = (validPesertaLulus / validTotalPeserta) * 100;
+const ctx = document.getElementById('speedometerChart').getContext('2d');
+new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+        labels: ['Lulus', 'Belum Lulus'],
+        datasets: [{
+            data: [persentaseKelulusan, 100 - persentaseKelulusan],
+            backgroundColor: ['#4CAF50', '#E0E0E0'], 
+            borderWidth: 0
+        }]
+    },
+    options: {
+        rotation: 270, 
+        circumference: 180, 
+        cutout: '75%', 
+        plugins: {
+            legend: { display: false },
+            tooltip: { enabled: true }
         }
-    });
+    }
+});
 </script>

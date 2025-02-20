@@ -23,13 +23,31 @@ class BuktiPembayaran extends BaseController
     {
         $rules = [
             'bp_foto_file' => 'uploaded[bp_foto_file]|max_size[bp_foto_file,2048]|ext_in[bp_foto_file,jpg,jpeg,png]',
-            'bp_bp_file' => 'uploaded[bp_foto_file]|max_size[bp_foto_file,2048]|ext_in[bp_foto_file,jpg,jpeg,png,pdf]',
+            'bp_ktm_file' => 'uploaded[bp_ktm_file]|max_size[bp_ktm_file,2048]|ext_in[bp_ktm_file,jpg,jpeg,png]',
+            'bp_kk_file' => 'uploaded[bp_kk_file]|max_size[bp_kk_file,2048]|ext_in[bp_kk_file,jpg,jpeg,png]',
+            'bp_akta_file' => 'uploaded[bp_akta_file]|max_size[bp_akta_file,2048]|ext_in[bp_akta_file,jpg,jpeg,png]',
+            'bp_bp_file' => 'uploaded[bp_bp_file]|max_size[bp_bp_file,2048]|ext_in[bp_bp_file,jpg,jpeg,png,pdf]',
             'bp_saved' => 'required',
         ];
     
         $errors = [
             'bp_foto_file' => [
                 'uploaded' => 'Foto wajib diunggah.',
+                'max_size' => 'Ukuran file tidak boleh lebih dari 2MB.',
+                'ext_in' => 'Format file harus JPG, JPEG, atau PNG.',
+            ],
+            'bp_ktm_file' => [
+                'uploaded' => 'KTM wajib diunggah.',
+                'max_size' => 'Ukuran file tidak boleh lebih dari 2MB.',
+                'ext_in' => 'Format file harus JPG, JPEG, atau PNG.',
+            ],
+            'bp_kk_file' => [
+                'uploaded' => 'KK wajib diunggah.',
+                'max_size' => 'Ukuran file tidak boleh lebih dari 2MB.',
+                'ext_in' => 'Format file harus JPG, JPEG, atau PNG.',
+            ],
+            'bp_akta_file' => [
+                'uploaded' => 'Akta wajib diunggah.',
                 'max_size' => 'Ukuran file tidak boleh lebih dari 2MB.',
                 'ext_in' => 'Format file harus JPG, JPEG, atau PNG.',
             ],
@@ -58,6 +76,36 @@ class BuktiPembayaran extends BaseController
             return redirect()->to('bukti-pembayaran')->withInput();
         }
 
+        $ktm_file = $this->request->getFile('bp_ktm_file');
+        if ($ktm_file->isValid() && !$ktm_file->hasMoved()) {
+            $ktm_newName = $ktm_file->getRandomName(); 
+            $ktm_file->move('uploads/ktm', $ktm_newName); 
+            $path_ktm = 'uploads/ktm/' . $ktm_newName;
+        } else {
+            session()->setFlashdata('errors-bp', ['bp_ktm_file' => 'Gagal mengunggah file.']);
+            return redirect()->to('bukti-pembayaran')->withInput();
+        }
+
+        $kk_file = $this->request->getFile('bp_kk_file');
+        if ($kk_file->isValid() && !$kk_file->hasMoved()) {
+            $kk_newName = $kk_file->getRandomName(); 
+            $kk_file->move('uploads/kk', $kk_newName); 
+            $path_kk = 'uploads/kk/' . $kk_newName;
+        } else {
+            session()->setFlashdata('errors-bp', ['bp_kk_file' => 'Gagal mengunggah file.']);
+            return redirect()->to('bukti-pembayaran')->withInput();
+        }
+
+        $akta_file = $this->request->getFile('bp_akta_file');
+        if ($akta_file->isValid() && !$akta_file->hasMoved()) {
+            $akta_newName = $akta_file->getRandomName(); 
+            $akta_file->move('uploads/akta', $akta_newName); 
+            $path_akta = 'uploads/akta/' . $akta_newName;
+        } else {
+            session()->setFlashdata('errors-bp', ['bp_akta_file' => 'Gagal mengunggah file.']);
+            return redirect()->to('bukti-pembayaran')->withInput();
+        }
+
         $bp_file = $this->request->getFile('bp_bp_file');
         if ($bp_file->isValid() && !$bp_file->hasMoved()) {
             $bp_newName = $bp_file->getRandomName(); 
@@ -70,6 +118,9 @@ class BuktiPembayaran extends BaseController
 
         $update = [
             'bp_foto' => $path_foto,
+            'bp_ktm' => $path_ktm,
+            'bp_kk' => $path_kk,
+            'bp_akta' => $path_akta,
             'bp_bp' => $path_bp,
             'bp_saved' => $this->request->getPost('bp_saved')
         ];
@@ -105,7 +156,7 @@ class BuktiPembayaran extends BaseController
         return redirect()->back();
     }
 
-    public function pembayaran_unver()
+    public function pembayaran_unver() 
     {
         $bpModel = $this->bpModel;
         $messageModel = $this->messageModel;
@@ -122,4 +173,5 @@ class BuktiPembayaran extends BaseController
         $santri_nama = $this->request->getPost('santri_nama');
         return redirect()->to('verifikasi-pembayaran')->with('unver-success', 'Anda berhasil menolak verifikasi pembayaran <b>' . $santri_nama . '</b>.');
     }
+
 }

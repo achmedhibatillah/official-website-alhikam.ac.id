@@ -3,11 +3,11 @@
 <div class="col-md-3 m-0 p-0 order-1 order-md-2">
     <div class="card mt-1 m-1 m-md-0 mt-md-4 me-1 me-md-4 py-3">
         <div class="d-flex justify-content-center">
-            <div class="d-flex justify-content-center rounded bg-clr4 cursor-pointer" style="overflow:hidden;width:80px;height:100px;">
+            <div class="d-flex justify-content-center rounded cursor-pointer shadow-m" style="overflow:hidden;width:80px;height:100px;">
                 <?php if (!empty($bp['bp_foto'])): ?> 
                     <img src="<?= base_url('/' . $bp['bp_foto']) ?>" alt="Pas foto" class="img-death">
                 <?php else: ?>
-                    <img src="<?= base_url('images/blank.png') ?>" alt="Pas foto" class="img-death">
+                    <img src="<?= base_url('images/blank.png') ?>" alt="Pas foto" class="img-death shadow">
                 <?php endif; ?>
             </div>
         </div>
@@ -44,7 +44,7 @@
                     <?php elseif($tt['testulis_konfirm'] == 0 && $bp['bp_konfirm'] == 1): ?>
                         <div class="text-center bg-danger text-clr5 px-3 py-1 rounded lh-s ls-s fsz-12">Belum</div>
                         <div class="d-flex justify-content-center">
-                            <a href="<?= base_url('atur-tes-tulis/' . $santri['peserta_id']) ?>" class="fsz-11 ls-s lh-1 mt-1">lihat di sini</a>
+                            <a href="<?= base_url('atur-tes-tulis/' . $santri['peserta_id']) ?>" class="fsz-11 ls-s lh-1 mt-1">verifikasi di sini</a>
                         </div>
                     <?php else: ?>
                         <div class="text-center bg-danger text-clr5 px-3 py-1 rounded lh-s ls-s fsz-12">Belum</div>
@@ -85,10 +85,10 @@
                             <a href="<?= base_url('atur-pengumuman/' . $peserta['peserta_id']) ?>" class="fsz-11 ls-s lh-1 mt-1">lihat di sini</a>
                         </div>
                     <?php else: ?>
-                        <div class="text-center bg-warning text-clr5 px-3 py-1 rounded lh-s ls-s fsz-12">Menunggu</div>
+                        <div class="text-center bg-danger text-clr5 px-3 py-1 rounded lh-s ls-s fsz-12">Belum</div>
                         <?php if ($tw['tw_status'] == 1): ?>
                             <div class="d-flex justify-content-center">
-                                <a href="<?= base_url('atur-wawancara/' . $peserta['peserta_id']) ?>" class="fsz-11 ls-s lh-1 mt-1">beri di sini</a>
+                                <a href="<?= base_url('atur-pengumuman/' . $peserta['peserta_id']) ?>" class="fsz-11 ls-s lh-1 mt-1">beri di sini</a>
                             </div>
                         <?php endif; ?>
                     <?php endif; ?>
