@@ -62,7 +62,10 @@
                             <td style="width:10%;"><?= ($x['testulis_konfirm'] == 1) ? '<div class="text-clr1 fw-bold">Terisi</div>' : '<div class="text-secondary">Belum mengisi</div>' ?></td>
                             <td style="width:10%;"><?= ($x['tw_status'] == 1) ? '<div class="text-clr1 fw-bold">Terisi</div>' : '<div class="text-secondary">Belum mengisi</div>' ?></td>
                             <td style="width:10%;"><?= ($x['pengumuman_saved'] == 1 && $x['pengumuman_status'] == 1) ? '<div class="text-clr1 fw-bold">Lulus</div>' : (($x['pengumuman_saved'] == 1) ? '<div class="fw-bold text-danger">Tidak Lulus</div>' : '<div class="text-secondary">Belum terisi</div>') ?></td>
-                            <td class="text-center"><button class="btn btn-sm btn-outline-danger p-0 px-2 fsz-12" data-bs-toggle="modal" data-bs-target="#modal-peserta-<?= $x['peserta_id'] ?>"><i class="fas fa-trash"></i></button></td>
+                            <td class="text-center">
+                                <button onclick="window.location.href='<?= base_url('download-detail-data-santri/' . $x['peserta_id']) ?>'" class="btn btn-sm btn-outline-success p-0 px-2 fsz-12 we-30 text-center" ><i class="fas fa-file-pdf"></i></button>
+                                <button class="btn btn-sm btn-outline-danger p-0 px-2 fsz-12 we-30 text-center" data-bs-toggle="modal" data-bs-target="#modal-peserta-<?= $x['peserta_id'] ?>"><i class="fas fa-trash"></i></button>
+                            </td>
                         </tr>
                     <?php $i++ ?>
                     <?php endforeach; ?>

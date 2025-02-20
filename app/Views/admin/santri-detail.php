@@ -95,6 +95,9 @@
                 </td>
             </tr>
         </table>
+        <div class="d-flex">
+            <button onclick="window.location.href='<?= base_url('download-detail-data-santri/' . $peserta['peserta_id']) ?>'" class="btn btn-sm btn-outline-clr1 p-1 px-1 fsz-14 w-100 mx-2 text-center fw-bold lh-1 ls-s" ><i class="fas fa-file-pdf me-2"></i> unduh data santri</button>
+        </div>
     </div>
 </div>
 
@@ -306,10 +309,9 @@
                 <td class="align-top ls-1 lh-1 pt-3" style="width:67%;"><?= $rk['rk_kontak_hp'] ?></td>
             </tr>
         </table>
-        <?php else: ?>
-            <div class="alert alert-danger text-center lh-1 ls-1">data belum diisi</div>
-        <?php endif; ?>
     </div>
+
+    <!-- Lain -->
     <div class="card m-1 m-md-4 p-3">
         <h4 class="bg-clr1 text-clr5 rounded py-3 px-4 fw-bold ls-xs mb-4">V. LAIN-LAIN</h4>
         <?php if ($santri['rk_saved'] == 1): ?>
@@ -346,6 +348,7 @@
             </tr>
         </table>
         <p class="ls-1 lh-1 mt-3 mb-1">C. Kemampuan Diri:</p>
+
         <table class="ms-3">
             <tr>
                 <td class="align-top ls-1 lh-1 pt-3" style="width:30%;">1. Baca Tulis Al-Qur'an</td>

@@ -4,16 +4,49 @@ namespace App\Controllers;
 
 use \App\Models\PesertaModel;
 use \App\Models\SantriModel;
+use \App\Models\OrtuModel;
+use \App\Models\RiwayatKesehatanModel;
+use \App\Models\LainModel;
+use \App\Models\BpModel;
+use \App\Models\TesTulisModel;
+use \App\Models\TeswawancaraModel;
+use \App\Models\MessageModel;
+use \App\Models\PengumumanModel;
+use \App\Models\PeriodeModel;
+
+use \Dompdf\Dompdf;
 
 class Santri extends BaseController
 {
     protected $pesertaModel;
     protected $santriModel;
+    protected $ortuModel;
+    protected $riwayatKesehatanModel;
+    protected $lainModel;
+    protected $bpModel;
+    protected $ttModel;
+    protected $twModel;
+    protected $messageModel;
+    protected $pengumumanModel;
+    protected $periodeModel;
+
+    protected $dompdf;
 
     public function __construct()
     {
         $this->pesertaModel = new PesertaModel();
         $this->santriModel = new SantriModel();
+        $this->ortuModel = new OrtuModel();
+        $this->riwayatKesehatanModel = new RiwayatKesehatanModel();
+        $this->lainModel = new LainModel();
+        $this->bpModel = new BpModel();
+        $this->ttModel = new TesTulisModel();
+        $this->twModel = new TeswawancaraModel();
+        $this->messageModel = new MessageModel();
+        $this->pengumumanModel = new PengumumanModel();
+        $this->periodeModel = new PeriodeModel();
+
+        $this->dompdf = new Dompdf();
     }
 
     public function update()
@@ -227,5 +260,138 @@ class Santri extends BaseController
         $santriModel->update($santri_id, $update);
 
         return redirect()->back();
+    }
+
+    public function download_d($peserta_id)
+    {
+        $data = [
+            'title' => 'Daftar Calon Santri',
+        ];
+
+        $dompdf = $this->dompdf;
+
+        $pesertaModel = $this->pesertaModel;
+        $santriModel = $this->santriModel;
+        $ortuModel = $this->ortuModel;
+        $rkModel = $this->riwayatKesehatanModel;
+        $lainModel = $this->lainModel;
+        $bpModel = $this->bpModel;
+        $ttModel = $this->ttModel;
+        $twModel = $this->twModel;
+        $pengumumanModel = $this->pengumumanModel;
+    
+        // Ambil data santri
+        $santriData = $santriModel->getSantriByPesertaId($peserta_id);
+    
+        $pesertaData = $pesertaModel->find($peserta_id);
+        $ortuData = $ortuModel->getOrtuByPesertaId($peserta_id);
+        $rkData = $rkModel->getRiwayatKesehatanByIdPeserta($peserta_id);
+        $lainData = $lainModel->getLainByIdPeserta($peserta_id);
+        $bpData = $bpModel->getBpByPesertaId($peserta_id);
+        $ttData = $ttModel->getTtByPesertaId($peserta_id);
+        $twData = $twModel->getTwByPesertaId($peserta_id);
+        $pengumumanData = $pengumumanModel->getPengumumanByPesertaId($peserta_id);
+    
+        $santriData['ortu_saved'] = $ortuData['ortu_saved'] ?? 0;
+        $santriData['rk_saved'] = $rkData['rk_saved'] ?? 0;
+        $santriData['bp_saved'] = $bpData['bp_saved'] ?? 0;
+        $santriData['tt_konfirm'] = $ttData['tt_konfirm'] ?? 0;
+        $santriData['tw_status'] = $twData['tw_status'] ?? 0;
+        $santriData['pengumuman_saved'] = $pengumumanData['pengumuman_saved'] ?? 0;
+
+        $pekerjaanOptions = [
+            1 => 'Tidak bekerja',
+            2 => 'Nelayan',
+            3 => 'Petani',
+            4 => 'Peternak',
+            5 => 'PNS/TNI/Polri',
+            6 => 'Karyawan swasta',
+            7 => 'Pedagang kecil',
+            8 => 'Pedagang besar',
+            9 => 'Wiraswasta',
+            10 => 'Buruh',
+            11 => 'Pensiunan',
+            12 => 'Sudah meninggal',
+            13 => 'Lainnya'
+        ];
+        $ortuData['ortu_a_pekerjaan_string'] = $pekerjaanOptions[$ortuData['ortu_a_pekerjaan']] ?? '';
+        $ortuData['ortu_i_pekerjaan_string'] = $pekerjaanOptions[$ortuData['ortu_i_pekerjaan']] ?? '';
+
+        $agamaOptions = [
+            1 => 'Islam',
+            2 => 'Protestan',
+            3 => 'Katolik',
+            4 => 'Hindu',
+            5 => 'Buddha',
+            6 => 'Konghuchu',
+            7 => 'Lainnya'
+        ];
+        $ortuData['ortu_a_agama_string'] = $agamaOptions[$ortuData['ortu_a_agama']] ?? '';
+        $ortuData['ortu_i_agama_string'] = $agamaOptions[$ortuData['ortu_i_agama']] ?? '';
+
+        $pendidikanOptions = [
+            1 => 'Tidak sekolah',
+            2 => 'PAUD',
+            3 => 'TK / sederajat',
+            4 => 'Putus SD',
+            5 => 'SD / sederajat',
+            6 => 'SMP / sederajat',
+            7 => 'SMA / sederajat',
+            8 => 'Paket A',
+            9 => 'Paket B',
+            10 => 'Paket C',
+            11 => 'D1',
+            12 => 'D2',
+            13 => 'D3',
+            14 => 'D4',
+            15 => 'Profesi',
+            16 => 'S1',
+            17 => 'SP-1',
+            18 => 'S2',
+            19 => 'SP-2',
+            20 => 'S3',
+            21 => 'Non-Formal',
+            22 => 'Informal',
+            23 => 'Lainnya'
+        ];
+        $ortuData['ortu_a_pendidikan_string'] = $pendidikanOptions[$ortuData['ortu_a_pendidikan']] ?? '';
+        $ortuData['ortu_i_pendidikan_string'] = $pendidikanOptions[$ortuData['ortu_i_pendidikan']] ?? '';
+
+        $golonganDarahOptions = [
+            1 => 'A',
+            2 => 'B',
+            3 => 'AB',
+            4 => 'O',
+            5 => '-'
+        ];
+        $rkData['rk_golongandarah_string'] = $golonganDarahOptions[$rkData['rk_golongandarah']] ?? 'Tidak Diketahui';
+        
+        $perawatanOptions = [
+            1 => 'Iya',
+            2 => 'Tidak',
+            3 => 'Jalan',
+            4 => 'Inap'
+        ];
+        $rkData['rk_perawatan_string'] = $perawatanOptions[$rkData['rk_perawatan']] ?? 'Tidak Diketahui';
+
+        $html = 
+        view('templates/header-laporan') .
+        view('laporan/santri-detail', [
+            'peserta' => $pesertaData,
+            'santri' => $santriData,
+            'ortu' => $ortuData,
+            'rk' => $rkData,
+            'lain' => $lainData,
+            'bp' => $bpData,
+            'tt' => $ttData,
+            'tw' => $twData,
+            'pengumuman' => $pengumumanData
+        ]) . 
+        view('templates/footer-laporan');
+
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'potrait');
+        $dompdf->render();
+        $dompdf->stream();
     }
 }

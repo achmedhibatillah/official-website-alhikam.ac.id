@@ -93,6 +93,7 @@ $routes->get('/atur-pengumuman', 'Admin::pengumuman', ['filter' => 'admin-auth']
 $routes->get('/atur-pengumuman/(:num)', 'Admin::pengumuman_d/$1', ['filter' => 'admin-auth']);
 $routes->get('/atur-pengumuman-where-(:segment)', 'Admin::pengumuman/$1', ['filter' => 'admin-auth']); 
 
+$routes->get('/download-detail-data-santri/(:num)', 'Santri::download_d/$1', ['filter' => 'admin-auth']);
 $routes->post('/hapus-peserta', 'Peserta::delete' , ['filter' => 'admin-auth']);
 
 $routes->get('/admin-download-bukti-pembayaran/(:segment)', 'BuktiPembayaran::downloadBp/$1', ['filter' => 'admin-auth']);
