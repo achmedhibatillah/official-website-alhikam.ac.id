@@ -38,10 +38,13 @@
                 <td style="width:70%;">
                     <?php if($tt['testulis_konfirm'] == 1 && $bp['bp_konfirm'] == 1): ?>
                         <div class="text-center bg-clr1 text-clr5 px-3 py-1 rounded lh-s ls-s fsz-12">Selesai</div>
-                    <?php elseif($tt['testulis_konfirm'] == 0 && $bp['bp_konfirm'] == 1): ?>
-                        <div class="text-center bg-danger text-clr5 px-3 py-1 rounded lh-s ls-s fsz-12">Selesai</div>
                         <div class="d-flex justify-content-center">
-                            <a href="<?= base_url('') ?>" class="fsz-11 ls-s lh-1 mt-1">lihat di sini</a>
+                            <a href="<?= base_url('atur-tes-tulis/' . $santri['peserta_id']) ?>" class="fsz-11 ls-s lh-1 mt-1">lihat di sini</a>
+                        </div>
+                    <?php elseif($tt['testulis_konfirm'] == 0 && $bp['bp_konfirm'] == 1): ?>
+                        <div class="text-center bg-danger text-clr5 px-3 py-1 rounded lh-s ls-s fsz-12">Belum</div>
+                        <div class="d-flex justify-content-center">
+                            <a href="<?= base_url('atur-tes-tulis/' . $santri['peserta_id']) ?>" class="fsz-11 ls-s lh-1 mt-1">lihat di sini</a>
                         </div>
                     <?php else: ?>
                         <div class="text-center bg-danger text-clr5 px-3 py-1 rounded lh-s ls-s fsz-12">Belum</div>
@@ -133,6 +136,78 @@
                 <td class="align-top ls-1 lh-1 pt-3" style="width:30%;">7. Nomor HP/Whatsapp:</td>
                 <td class="align-top ls-1 lh-1 pt-3" style="width:3%;">:</td>
                 <td class="align-top ls-1 lh-1 pt-3" style="width:67%;"><?= $santri['santri_hp'] ? '+' . $santri['santri_hp'] : '<div class="text-secondary fst-italic">Belum diisi</div>' ?></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="card m-1 m-md-4 p-3">
+        <h4 class="bg-clr1 text-clr5 rounded py-3 px-4 fw-bold ls-xs mb-4">II. PENDIDIKAN CALON SANTRI</h4>
+        <p class="ls-1 mb-0 fw-bold">1. Riwayat Pendidikan</p>
+        <table class="ms-3">
+            <tr>
+                <td class="align-top ls-1 lh-1 pt-3" style="width:30%;">a. SD / MI</td>
+                <td class="align-top ls-1 lh-1 pt-3" style="width:3%;">:</td>
+                <td class="align-top ls-1 lh-1 pt-3" style="width:67%;">Masuk tahun <?= $santri['santri_sdmasuk'] ?>, lulus tahun <?= $santri['santri_sdlulus'] ?> (<?= $santri['santri_sdlulus'] - $santri['santri_sdmasuk'] ?> tahun)</td>
+            </tr>
+            <tr>
+                <td class="align-top ls-1 lh-1 pt-3" style="width:30%;">b. SMP / MTs</td>
+                <td class="align-top ls-1 lh-1 pt-3" style="width:3%;">:</td>
+                <td class="align-top ls-1 lh-1 pt-3" style="width:67%;">
+                    Masuk tahun <?= $santri['santri_smpmasuk'] ?>, lulus tahun <?= $santri['santri_smplulus'] ?> (<?= $santri['santri_smplulus'] - $santri['santri_smpmasuk'] ?> tahun)
+                </td>
+            </tr>
+            <tr>
+                <td class="align-top ls-1 lh-1 pt-3" style="width:30%;">c. SMU / MA / SMK</td>
+                <td class="align-top ls-1 lh-1 pt-3" style="width:3%;">:</td>
+                <td class="align-top ls-1 lh-1 pt-3" style="width:67%;">
+                    Masuk tahun <?= $santri['santri_smamasuk'] ?>, lulus tahun <?= $santri['santri_smalulus'] ?> (<?= $santri['santri_smalulus'] - $santri['santri_smamasuk'] ?> tahun)
+                </td>
+            </tr>
+        </table>
+        <p class="ls-1 mt-4 mb-0 fw-bold">2. Pendidikan Asal</p>
+        <table class="ms-3">
+            <tr>
+                <td class="align-top ls-1 lh-1 pt-3" style="width:30%;">a. SMU / MA / SMK</td>
+                <td class="align-top ls-1 lh-1 pt-3" style="width:3%;">:</td>
+                <td class="align-top ls-1 lh-1 pt-3" style="width:67%;"><?= $santri['santri_pa'] ?></td>
+            </tr>
+            <tr>
+                <td class="align-top ls-1 lh-1 pt-3" style="width:30%;">b. Alamat</td>
+                <td class="align-top ls-1 lh-1 pt-3" style="width:3%;">:</td>
+                <td class="align-top ls-1 lh-1 pt-3" style="width:67%;"><?= $santri['santri_pa_alamat'] ?></td>
+            </tr>
+            <tr>
+                <td class="align-top ls-1 lh-1 pt-3" style="width:30%;">c. Jurusan</td>
+                <td class="align-top ls-1 lh-1 pt-3" style="width:3%;">:</td>
+                <td class="align-top ls-1 lh-1 pt-3" style="width:67%;"><?= $santri['santri_pa_jurusan'] ?></td>
+            </tr>
+            <tr>
+                <td class="align-top ls-1 lh-1 pt-3" style="width:30%;">d. Tahun Kelulusan</td>
+                <td class="align-top ls-1 lh-1 pt-3" style="width:3%;">:</td>
+                <td class="align-top ls-1 lh-1 pt-3" style="width:67%;"><?= $santri['santri_pa_lulus'] ?></td>
+            </tr>
+        </table>
+        <p class="ls-1 mt-4 mb-0 fw-bold">3. Pendidikan Saat Ini</p>
+        <table class="ms-3">
+            <tr>
+                <td class="align-top ls-1 lh-1 pt-3" style="width:30%;">a. Perguruan Tinggi</td>
+                <td class="align-top ls-1 lh-1 pt-3" style="width:3%;">:</td>
+                <td class="align-top ls-1 lh-1 pt-3" style="width:67%;"><?= $santri['santri_ps_pt'] ?></td>
+            </tr>
+            <tr>
+                <td class="align-top ls-1 lh-1 pt-3" style="width:30%;">b. Fakultas</td>
+                <td class="align-top ls-1 lh-1 pt-3" style="width:3%;">:</td>
+                <td class="align-top ls-1 lh-1 pt-3" style="width:67%;"><?= $santri['santri_ps_fakultas'] ?></td>
+            </tr>
+            <tr>
+                <td class="align-top ls-1 lh-1 pt-3" style="width:30%;">c. Program Studi</td>
+                <td class="align-top ls-1 lh-1 pt-3" style="width:3%;">:</td>
+                <td class="align-top ls-1 lh-1 pt-3" style="width:67%;"><?= $santri['santri_ps_prodi'] ?></td>
+            </tr>
+            <tr>
+                <td class="align-top ls-1 lh-1 pt-3" style="width:30%;">d. Tahun Masuk</td>
+                <td class="align-top ls-1 lh-1 pt-3" style="width:3%;">:</td>
+                <td class="align-top ls-1 lh-1 pt-3" style="width:67%;"><?= $santri['santri_ps_masuk'] ?></td>
             </tr>
         </table>
     </div>

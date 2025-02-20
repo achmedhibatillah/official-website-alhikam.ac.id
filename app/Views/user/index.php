@@ -67,11 +67,11 @@
                 <div class="col-9 col-md-10 col-lg-11 m-0 p-0">
                     <h5 class="fw-bold text-clr1 ls-s ls-1 mb-2">Bukti Pembayaran</h5>
                     <?php if($santri['santri_saved'] == 1 && $ortu['ortu_saved'] == 1 && $rk['rk_saved'] == 1 && $bp['bp_saved'] == 0): ?>
-                        <p class="text-clr1 m-0 ls-s lh-1">Akses telah dibuka, segera isi!</p>
+                        <p class="text-clr1 m-0 ls-s lh-1 me-5">Akses telah dibuka, segera isi!</p>
                     <?php elseif($bp['bp_saved'] == 1): ?>
-                        <p class="text-clr1 m-0 ls-s lh-1">Sudah mengisi</p>
+                        <p class="text-clr1 m-0 ls-s lh-1 me-5">Sudah mengisi</p>
                     <?php else: ?>
-                        <p class="text-danger m-0 ls-s lh-1">Akses ditutup, lengkapi biodata terlebih dahulu!</p>
+                        <p class="text-danger m-0 ls-s lh-1 me-5">Akses ditutup, lengkapi biodata terlebih dahulu!</p>
                     <?php endif; ?>
                 </div>
             </div>
@@ -92,13 +92,13 @@
                 <div class="col-9 col-md-10 col-lg-11 m-0 p-0">
                     <h5 class="fw-bold text-clr1 ls-s ls-1 mb-2">Tes Tulis</h5>
                     <?php if($bp['bp_konfirm'] == 1 && $tt['testulis_konfirm'] == 0): ?>
-                        <p class="text-clr1 m-0 ls-s lh-1">Akses telah dibuka, segera isi!</p>
+                        <p class="text-clr1 m-0 ls-s lh-1 me-5">Akses telah dibuka, segera isi!</p>
                     <?php elseif($tt['testulis_konfirm'] == 1): ?>
-                        <p class="text-clr1 m-0 ls-s lh-1">Sudah mengisi</p>
+                        <p class="text-clr1 m-0 ls-s lh-1 me-5">Sudah mengisi</p>
                     <?php elseif($tt['testulis_konfirm'] == 0 && $bp['bp_konfirm'] == 0): ?>
-                        <p class="text-danger m-0 ls-s lh-1">Akses ditutup, tunggu bukti pembayaran terkonfirmasi oleh admin!</p>
+                        <p class="text-danger m-0 ls-s lh-1 me-5">Akses ditutup, isi bukti pembayaran dan tunggu konfirmasi admin!</p>
                     <?php elseif($tt['testulis_konfirm'] == 0 && $bp['bp_konfirm'] == 1): ?>
-                        <p class="text-danger m-0 ls-s lh-1">Akses ditutup, isi bukti pembayaran terlebih dahulu!</p>
+                        <p class="text-danger m-0 ls-s lh-1 me-5">Akses ditutup, isi bukti pembayaran terlebih dahulu!</p>
                     <?php endif; ?>
                 </div>
             </div>
@@ -117,13 +117,13 @@
                 <div class="col-9 col-md-10 col-lg-11 m-0 p-0">
                     <h5 class="fw-bold text-clr1 ls-s ls-1 mb-2">Tes Wawancara</h5>
                     <?php if($tw['tw_status'] == 1): ?>
-                        <p class="text-clr1 m-0 ls-s lh-1">Sudah terlaksana</p>
+                        <p class="text-clr1 m-0 ls-s lh-1 me-5">Sudah terlaksana</p>
                     <?php elseif($tw['tw_tgl']): ?>
-                        <p class="text-clr1 m-0 ls-s me-5 lh-1">Dilaksanakan pada: <i class="fst-normal bg-warning rounded fsz-13 px-2 fw-bold ls-s"><?= date('d F Y', strtotime($tw['tw_tgl'])) ?></i> <i class="fsz-14 ls-s">(<?= (date('d m y') < date('d m y', strtotime($tw['tw_tgl']))) ? 'beberapa hari lagi' : ((date('d m y') == date('d m y', strtotime($tw['tw_tgl']))) ? 'hari ini' : 'terlewat') ?>)</i></p> 
+                        <p class="text-clr1 m-0 ls-s lh-1 me-5">Dilaksanakan pada: <i class="fst-normal bg-warning rounded fsz-13 px-2 fw-bold ls-s"><?= date('d F Y', strtotime($tw['tw_tgl'])) ?></i> <i class="fsz-14 ls-s">(<?= (date('d m y') < date('d m y', strtotime($tw['tw_tgl']))) ? 'beberapa hari lagi' : ((date('d m y') == date('d m y', strtotime($tw['tw_tgl']))) ? 'hari ini' : 'terlewat') ?>)</i></p> 
                     <?php elseif($tw['tw_status'] == 0 && $tt['testulis_konfirm'] == 1): ?>
-                        <p class="text-clr1 m-0 ls-s lh-1">Lihat informasinya di sini</p>
+                        <p class="text-clr1 m-0 ls-s lh-1 me-5">Lihat informasinya di sini</p>
                     <?php else: ?>
-                        <p class="text-danger m-0 ls-s lh-1">Belum terlaksana</p>
+                        <p class="text-danger m-0 ls-s lh-1 me-5">Belum terlaksana</p>
                     <?php endif; ?>
                 </div>
             </div>

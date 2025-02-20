@@ -61,7 +61,7 @@
                             <td style="width:10%;"><?= ($x['bp_saved'] == 1 && $x['bp_konfirm'] == 1) ? '<div class="text-clr1 fw-bold">Terverifikasi</div>' : (($x['bp_saved'] == 1 && $x['bp_konfirm'] == 0) ? '<div class="text-warning">Menunggu verifikasi</div>' : '<div class="text-secondary">Belum mengisi</div>') ?></td>
                             <td style="width:10%;"><?= ($x['testulis_konfirm'] == 1) ? '<div class="text-clr1 fw-bold">Terisi</div>' : '<div class="text-secondary">Belum mengisi</div>' ?></td>
                             <td style="width:10%;"><?= ($x['tw_status'] == 1) ? '<div class="text-clr1 fw-bold">Terisi</div>' : '<div class="text-secondary">Belum mengisi</div>' ?></td>
-                            <td style="width:10%;"><?= ($x['pengumuman_saved'] == 1) ? '<div class="text-clr1 fw-bold">Terisi</div>' : '<div class="text-secondary">Belum mengisi</div>' ?></td>
+                            <td style="width:10%;"><?= ($x['pengumuman_saved'] == 1 && $x['pengumuman_status'] == 1) ? '<div class="text-clr1 fw-bold">Lulus</div>' : (($x['pengumuman_saved'] == 1) ? '<div class="fw-bold text-danger">Tidak Lulus</div>' : '<div class="text-secondary">Belum terisi</div>') ?></td>
                             <td class="text-center"><button class="btn btn-sm btn-outline-danger p-0 px-2 fsz-12" data-bs-toggle="modal" data-bs-target="#modal-peserta-<?= $x['peserta_id'] ?>"><i class="fas fa-trash"></i></button></td>
                         </tr>
                     <?php $i++ ?>

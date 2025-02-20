@@ -220,6 +220,7 @@ class Admin extends BaseController
             $santriData[$key]['tw_status'] = $twModel->getTwByPesertaId($x['peserta_id'])['tw_status'] ?? 0;
             $santriData[$key]['bp_foto'] = $bpModel->getBpByPesertaId($x['peserta_id'])['bp_foto'] ?? 0;
             $santriData[$key]['pengumuman_saved'] = $pengumumanModel->getPengumumanByPesertaId($x['peserta_id'])['pengumuman_saved'] ?? 0;
+            $santriData[$key]['pengumuman_status'] = $pengumumanModel->getPengumumanByPesertaId($x['peserta_id'])['pengumuman_status'] ?? 0;
         }
 
         if ($cond == 'biodata-telah-lengkap') {
