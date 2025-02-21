@@ -718,7 +718,7 @@ class Admin extends BaseController
             ->where('santri.santri_saved', '1')
             ->where('teswawancara.tw_status', '1') //
             ->where('pengumuman.pengumuman_saved IS NULL')
-            ->orWhere('pengumuman.pengumuman_saved', '0')
+            ->where('pengumuman.pengumuman_saved', '0')
             ->orderBy('santri.created_at', 'DESC');
         }
 
