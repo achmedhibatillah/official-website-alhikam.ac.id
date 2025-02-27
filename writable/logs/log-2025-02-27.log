@@ -1,0 +1,102 @@
+INFO - 2025-02-27 13:02:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-02-27 13:02:47 --> Error connecting to the database: mysqli_sql_exception: Unknown database 'alhikam' in /home/achmedhibatillah/Documents/Project/php/alhikam/system/Database/MySQLi/Connection.php:186
+Stack trace:
+#0 /home/achmedhibatillah/Documents/Project/php/alhikam/system/Database/MySQLi/Connection.php(186): mysqli->real_connect()
+#1 /home/achmedhibatillah/Documents/Project/php/alhikam/system/Database/BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect()
+#2 /home/achmedhibatillah/Documents/Project/php/alhikam/system/Database/BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#3 /home/achmedhibatillah/Documents/Project/php/alhikam/system/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query()
+#4 /home/achmedhibatillah/Documents/Project/php/alhikam/system/Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+#5 /home/achmedhibatillah/Documents/Project/php/alhikam/system/BaseModel.php(714): CodeIgniter\Model->doFirst()
+#6 /home/achmedhibatillah/Documents/Project/php/alhikam/app/Controllers/Guest.php(19): CodeIgniter\BaseModel->first()
+#7 /home/achmedhibatillah/Documents/Project/php/alhikam/system/CodeIgniter.php(933): App\Controllers\Guest->index()
+#8 /home/achmedhibatillah/Documents/Project/php/alhikam/system/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController()
+#9 /home/achmedhibatillah/Documents/Project/php/alhikam/system/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest()
+#10 /home/achmedhibatillah/Documents/Project/php/alhikam/system/Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 /home/achmedhibatillah/Documents/Project/php/alhikam/system/Boot.php(67): CodeIgniter\Boot::runCodeIgniter()
+#12 /home/achmedhibatillah/Documents/Project/php/alhikam/public/index.php(56): CodeIgniter\Boot::bootWeb()
+#13 /home/achmedhibatillah/Documents/Project/php/alhikam/system/rewrite.php(44): require_once('...')
+#14 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Unknown database 'alhikam' in /home/achmedhibatillah/Documents/Project/php/alhikam/system/Database/MySQLi/Connection.php:231
+Stack trace:
+#0 /home/achmedhibatillah/Documents/Project/php/alhikam/system/Database/BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect()
+#1 /home/achmedhibatillah/Documents/Project/php/alhikam/system/Database/BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#2 /home/achmedhibatillah/Documents/Project/php/alhikam/system/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query()
+#3 /home/achmedhibatillah/Documents/Project/php/alhikam/system/Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+#4 /home/achmedhibatillah/Documents/Project/php/alhikam/system/BaseModel.php(714): CodeIgniter\Model->doFirst()
+#5 /home/achmedhibatillah/Documents/Project/php/alhikam/app/Controllers/Guest.php(19): CodeIgniter\BaseModel->first()
+#6 /home/achmedhibatillah/Documents/Project/php/alhikam/system/CodeIgniter.php(933): App\Controllers\Guest->index()
+#7 /home/achmedhibatillah/Documents/Project/php/alhikam/system/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController()
+#8 /home/achmedhibatillah/Documents/Project/php/alhikam/system/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest()
+#9 /home/achmedhibatillah/Documents/Project/php/alhikam/system/Boot.php(325): CodeIgniter\CodeIgniter->run()
+#10 /home/achmedhibatillah/Documents/Project/php/alhikam/system/Boot.php(67): CodeIgniter\Boot::runCodeIgniter()
+#11 /home/achmedhibatillah/Documents/Project/php/alhikam/public/index.php(56): CodeIgniter\Boot::bootWeb()
+#12 /home/achmedhibatillah/Documents/Project/php/alhikam/system/rewrite.php(44): require_once('...')
+#13 {main}
+CRITICAL - 2025-02-27 13:02:47 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Unknown database 'alhikam'
+[Method: GET, Route: /]
+in SYSTEMPATH/Database/BaseConnection.php on line 467.
+ 1 SYSTEMPATH/Database/BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query()
+ 3 SYSTEMPATH/Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH/BaseModel.php(714): CodeIgniter\Model->doFirst()
+ 5 APPPATH/Controllers/Guest.php(19): CodeIgniter\BaseModel->first()
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Guest->index()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb()
+12 SYSTEMPATH/rewrite.php(44): require_once('/home/achmedhibatillah/Documents/Project/php/alhikam/public/index.php')
+INFO - 2025-02-27 15:39:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-02-27 15:39:05 --> Error connecting to the database: mysqli_sql_exception: Unknown database 'alhikam' in /home/achmedhibatillah/Documents/Project/php/alhikam/system/Database/MySQLi/Connection.php:186
+Stack trace:
+#0 /home/achmedhibatillah/Documents/Project/php/alhikam/system/Database/MySQLi/Connection.php(186): mysqli->real_connect()
+#1 /home/achmedhibatillah/Documents/Project/php/alhikam/system/Database/BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect()
+#2 /home/achmedhibatillah/Documents/Project/php/alhikam/system/Database/BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#3 /home/achmedhibatillah/Documents/Project/php/alhikam/system/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query()
+#4 /home/achmedhibatillah/Documents/Project/php/alhikam/system/Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+#5 /home/achmedhibatillah/Documents/Project/php/alhikam/system/BaseModel.php(714): CodeIgniter\Model->doFirst()
+#6 /home/achmedhibatillah/Documents/Project/php/alhikam/app/Controllers/Guest.php(19): CodeIgniter\BaseModel->first()
+#7 /home/achmedhibatillah/Documents/Project/php/alhikam/system/CodeIgniter.php(933): App\Controllers\Guest->index()
+#8 /home/achmedhibatillah/Documents/Project/php/alhikam/system/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController()
+#9 /home/achmedhibatillah/Documents/Project/php/alhikam/system/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest()
+#10 /home/achmedhibatillah/Documents/Project/php/alhikam/system/Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 /home/achmedhibatillah/Documents/Project/php/alhikam/system/Boot.php(67): CodeIgniter\Boot::runCodeIgniter()
+#12 /home/achmedhibatillah/Documents/Project/php/alhikam/public/index.php(56): CodeIgniter\Boot::bootWeb()
+#13 /home/achmedhibatillah/Documents/Project/php/alhikam/system/rewrite.php(44): require_once('...')
+#14 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Unknown database 'alhikam' in /home/achmedhibatillah/Documents/Project/php/alhikam/system/Database/MySQLi/Connection.php:231
+Stack trace:
+#0 /home/achmedhibatillah/Documents/Project/php/alhikam/system/Database/BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect()
+#1 /home/achmedhibatillah/Documents/Project/php/alhikam/system/Database/BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#2 /home/achmedhibatillah/Documents/Project/php/alhikam/system/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query()
+#3 /home/achmedhibatillah/Documents/Project/php/alhikam/system/Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+#4 /home/achmedhibatillah/Documents/Project/php/alhikam/system/BaseModel.php(714): CodeIgniter\Model->doFirst()
+#5 /home/achmedhibatillah/Documents/Project/php/alhikam/app/Controllers/Guest.php(19): CodeIgniter\BaseModel->first()
+#6 /home/achmedhibatillah/Documents/Project/php/alhikam/system/CodeIgniter.php(933): App\Controllers\Guest->index()
+#7 /home/achmedhibatillah/Documents/Project/php/alhikam/system/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController()
+#8 /home/achmedhibatillah/Documents/Project/php/alhikam/system/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest()
+#9 /home/achmedhibatillah/Documents/Project/php/alhikam/system/Boot.php(325): CodeIgniter\CodeIgniter->run()
+#10 /home/achmedhibatillah/Documents/Project/php/alhikam/system/Boot.php(67): CodeIgniter\Boot::runCodeIgniter()
+#11 /home/achmedhibatillah/Documents/Project/php/alhikam/public/index.php(56): CodeIgniter\Boot::bootWeb()
+#12 /home/achmedhibatillah/Documents/Project/php/alhikam/system/rewrite.php(44): require_once('...')
+#13 {main}
+CRITICAL - 2025-02-27 15:39:05 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Unknown database 'alhikam'
+[Method: GET, Route: /]
+in SYSTEMPATH/Database/BaseConnection.php on line 467.
+ 1 SYSTEMPATH/Database/BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query()
+ 3 SYSTEMPATH/Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH/BaseModel.php(714): CodeIgniter\Model->doFirst()
+ 5 APPPATH/Controllers/Guest.php(19): CodeIgniter\BaseModel->first()
+ 6 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Guest->index()
+ 7 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest()
+ 9 SYSTEMPATH/Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter()
+11 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb()
+12 SYSTEMPATH/rewrite.php(44): require_once('/home/achmedhibatillah/Documents/Project/php/alhikam/public/index.php')
